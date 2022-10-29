@@ -32,8 +32,6 @@ header {
 
 /*Hardcoding main*/
 main{
-    min-height: 440px;
-    background-color: #32CD32;
     order: initial; /*Important!*/
     width: 100%;    /*Important!*/
 
