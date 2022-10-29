@@ -31,6 +31,7 @@ import { RouterLink, RouterView } from "vue-router";
         <!-- Testing purposes -->
         <nav>
           <RouterLink to="/timeline">Timeline</RouterLink>
+          <RouterLink to="/chat">Chat</RouterLink>
         </nav>
 
     </div>
