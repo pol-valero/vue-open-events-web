@@ -81,6 +81,20 @@
 }
 
 
+#nav-timeline{
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: black;
+}
+
+#nav-timeline:hover{
+    color:#25D366;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+
 </style>
 
 <template>
@@ -129,7 +143,9 @@
         </section>
 
         <section id="container-full-profile">
-            <RouterLink to="/timeline">View timeline</RouterLink>
+            <nav>
+                <a id="nav-timeline" href="/timeline">View timeline</a>
+            </nav>
         </section>
 
 
