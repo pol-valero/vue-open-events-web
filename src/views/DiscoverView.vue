@@ -16,6 +16,23 @@
         <button>Filters</button>
       </article>
     </section>
+    <!-- Filters selector -->
+    <section id="users-filters-box">
+      <img
+        src="../assets/filter-icon.svg"
+        alt="Close filters"
+        id="users-filters-close-button"
+      />
+      <article class="user-filter">
+        <p class="user-filter-text">Name</p>
+      </article>
+      <article class="user-filter">
+        <p class="user-filter-text">Date</p>
+      </article>
+      <article class="user-filter">
+        <p class="user-filter-text">Location</p>
+      </article>
+    </section>
     <!-- Users list -->
     <section id="users-list-section">
       <article class="users-list-item">
@@ -152,6 +169,51 @@
   background-color: #5a5a5a;
 }
 
+/* Will be hidden until "Filters" button is pressed */
+#users-filters-box {
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 40%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#users-filters-close-button {
+  width: 10%;
+  height: auto;
+  margin-right: 20px;
+}
+
+.user-filter {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 9px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.user-filter ~ .user-filter {
+  margin-left: 10px;
+}
+
+.user-filter:hover {
+  background-color: #bce7c8;
+}
+
+.user-filter > p {
+  font-size: 1.6vmin;
+}
+
 #users-list-section {
   /* Configure flex layout */
   display: flex;
@@ -193,6 +255,25 @@
   #discover-users-list-main {
     margin: 20px;
   }
+
+  #users-filters-box {
+    max-width: 70%;
+  }
+
+  #users-filters-close-button {
+    width: 12%;
+    height: auto;
+    margin-right: 30px;
+  }
+
+  .user-filter ~ .user-filter {
+    margin-left: 20px;
+  }
+
+  .user-filter > p {
+    font-size: 2vmin;
+  }
+
   #users-list-section {
     display: flex;
     flex-direction: column;
