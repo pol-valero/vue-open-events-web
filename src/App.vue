@@ -26,17 +26,16 @@ import { RouterLink, RouterView } from "vue-router";
       <input type="checkbox" id="check-box" />
 
       <nav id="barra-nav">
-        <a class="std-padding" href="/">HOME</a>
-        <a class="std-padding" href="#">DISCOVER</a>
-        <a class="std-padding" href="#">FRIENDS</a>
-        <!--<label for="check-box" id="hide-menu">&#215</label>-->
+        <a id="barra-nav-home" class="std-padding" href="/">HOME</a>
+        <a id="barra-nav-discover" class="std-padding" href="/discover">DISCOVER</a>
+        <a id="barra-nav-friends" class="std-padding" href="/chat">FRIENDS</a>
+        <label for="check-box" id="hide-menu">&#215</label>
       </nav>
-      <!--<label for="check-box" id="show-menu">&#8801</label>-->
+      <label for="check-box" id="show-menu">&#8801</label>
 
       <!-- Testing purposes -->
       <nav>
         <RouterLink to="/timeline">Timeline</RouterLink>
-        <RouterLink to="/chat">Chat</RouterLink>
         <RouterLink to="/profile">Profile</RouterLink>
       </nav>
     </div>
@@ -78,8 +77,7 @@ import { RouterLink, RouterView } from "vue-router";
   </div>
 
   <footer>
-    <!--<p class="small-padding">Copyright &copy LaSalle 2022</p>-->
-    <p class="small-padding">Copyright copy LaSalle 2022</p>
+    <p class="small-padding">Copyright &copy LaSalle 2022</p>
   </footer>
 </template>
 

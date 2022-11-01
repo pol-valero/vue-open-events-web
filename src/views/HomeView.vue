@@ -20,7 +20,11 @@
     <!-- Events list -->
     <section id="events-list-section">
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">20/11/2022 - 15:08</p>
           <h2 class="events-list-item-title">House BBQ</h2>
@@ -28,7 +32,11 @@
         </div>
       </article>
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">01/12/2022 - 11:20</p>
           <h2 class="events-list-item-title">Mushroom harvesting</h2>
@@ -36,7 +44,11 @@
         </div>
       </article>
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">27/11/2022 - 20:00</p>
           <h2 class="events-list-item-title">Ping pong tournament</h2>
@@ -44,7 +56,11 @@
         </div>
       </article>
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">13/12/2022 - 9:45</p>
           <h2 class="events-list-item-title">LOTR marathon</h2>
@@ -52,7 +68,11 @@
         </div>
       </article>
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">11/02/2023 - 14:00</p>
           <h2 class="events-list-item-title">Private car race</h2>
@@ -60,7 +80,11 @@
         </div>
       </article>
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">01/01/2023 - 22:55</p>
           <h2 class="events-list-item-title">New year party #2</h2>
@@ -68,7 +92,11 @@
         </div>
       </article>
       <article class="events-list-item">
-        <img src="../assets/default_img.png" alt="Picture of the event" class="events-list-item-picture" />
+        <img
+          src="../assets/default_img.png"
+          alt="Picture of the event"
+          class="events-list-item-picture"
+        />
         <div class="event-preview-content">
           <p class="events-list-item-date">10/11/2022 - 18:15</p>
           <h2 class="events-list-item-title">Interdimensional cable</h2>
