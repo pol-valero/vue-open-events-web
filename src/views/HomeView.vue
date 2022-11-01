@@ -17,6 +17,23 @@
       <!-- Create event button -->
       <button id="create-event-button">Create event</button>
     </section>
+    <!-- Filters selector -->
+    <section id="events-filters-box">
+      <img
+        src="../assets/filter-icon.svg"
+        alt="Close filters"
+        id="events-filters-close-button"
+      />
+      <article class="event-filter">
+        <p class="event-filter-text">Name</p>
+      </article>
+      <article class="event-filter">
+        <p class="event-filter-text">Date</p>
+      </article>
+      <article class="event-filter">
+        <p class="event-filter-text">Location</p>
+      </article>
+    </section>
     <!-- Events list -->
     <section id="events-list-section">
       <article class="events-list-item">
@@ -111,6 +128,7 @@
 #home-events-list-section {
   min-height: 100%;
   margin: 20px;
+  margin-bottom: 40px;
 }
 
 #events-searchbar {
@@ -160,6 +178,51 @@
   padding: 5px;
 }
 
+/* Will be hidden until "Filters" button is pressed */
+#events-filters-box {
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 40%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#events-filters-close-button {
+  width: 10%;
+  height: auto;
+  margin-right: 20px;
+}
+
+.event-filter {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 9px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.event-filter ~ .event-filter {
+  margin-left: 10px;
+}
+
+.event-filter:hover {
+  background-color: #bce7c8;
+}
+
+.event-filter > p {
+  font-size: 1.6vmin;
+}
+
 #events-list-section {
   /* Configure flex layout */
   display: flex;
@@ -204,7 +267,6 @@
   /* Style of title in events preview */
   font-size: 2vmin;
   margin-top: 10px;
-  /*font-weight: bold;*/
 }
 
 .events-list-item-location {
@@ -218,6 +280,25 @@
   #home-events-list-section {
     margin: 20px;
   }
+
+  #events-filters-box {
+    max-width: 70%;
+  }
+
+  #events-filters-close-button {
+    width: 12%;
+    height: auto;
+    margin-right: 30px;
+  }
+
+  .event-filter ~ .event-filter {
+    margin-left: 20px;
+  }
+
+  .event-filter > p {
+    font-size: 2vmin;
+  }
+
   #events-list-section {
     display: flex;
     flex-direction: column;

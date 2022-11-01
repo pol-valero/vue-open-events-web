@@ -106,7 +106,7 @@
 #discover-users-list-main {
   min-height: 100%;
   margin: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 #users-searchbar {
