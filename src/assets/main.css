@@ -1,7 +1,11 @@
-*{
+* {
     margin: 0px;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
+}
+
+html {
+    height: 100%;
 }
 
 img {
@@ -11,6 +15,7 @@ img {
 
 body {
     border: #1b1e23 10px solid;
+    min-height: 100%;
 }
 
 header {
@@ -29,12 +34,10 @@ header {
     align-items: center;
 }
 
-
 /*Hardcoding main*/
-main{
+main {
     order: initial; /*Important!*/
     width: 100%;    /*Important!*/
-
 }
 
 #title-logo{
@@ -131,7 +134,7 @@ footer{
     padding: 5px;
     margin: 10px;
     border: gray 10px solid;
-    border-radius: 20%;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -190,17 +193,17 @@ aside {
     }
 
     #barra-nav{
-    display: block;
-       position: fixed;
-       background: #1b1e23;
-       height: 100vh;
-       right: -100%;
-       width: 100%;
-       top: 0;
-       padding: 100px 0px;
-       z-index: 100;
-       text-align: center;
-       transition: 0.5s;
+        display: block;
+        position: fixed;
+        background: #1b1e23;
+        height: 100vh;
+        right: -100%;
+        width: 100%;
+        top: 0;
+        padding: 100px 0px;
+        z-index: 100;
+        text-align: center;
+        transition: 0.5s;
     }
 
 
@@ -227,6 +230,6 @@ aside {
     .request-container{
         margin-left: 20%;
         margin-right: 20%;
-        border-radius: 10%;
+        border-radius: 15px;
     }
 }

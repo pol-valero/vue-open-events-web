@@ -23,7 +23,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Timeline.vue"),
+      component: () => import("../views/TimelineView.vue"),
     },
     {
       path: "/chat",
@@ -31,7 +31,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Chat.vue"),
+      component: () => import("../views/ChatView.vue"),
     },
     {
       path: "/profile",
@@ -40,7 +40,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/ProfileView.vue"),
-    }
+    },
   ],
 });
 

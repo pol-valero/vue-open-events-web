@@ -1,65 +1,105 @@
 <template>
-    <!-- Main content -->
-    <section id="discover-users-list-main">
-         <!-- Users list header -->
-        <h1 id="users-list-header">Users</h1>
-        <!-- Searchbar -->
-        <section id="users-searchbar">
-        <article id="users-searchbar-field">
-            <form action="">
-            <input
-                id="users-searchbar-placeholder"
-                type="text"
-                placeholder="Search"
-            />
-            </form>
-            <button>Filters</button>
-        </article>
-        </section>
-        <!-- Users list -->
-        <section id="users-list-section">
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-            <article class="users-list-item">
-                <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture">
-                <h2 class="users-list-item-title">User 1</h2>
-            </article>
-        </section>
+  <!-- Main content -->
+  <section id="discover-users-list-main">
+    <!-- Users list header -->
+    <h1 id="users-list-header">Users</h1>
+    <!-- Searchbar -->
+    <section id="users-searchbar">
+      <article id="users-searchbar-field">
+        <form action="">
+          <input
+            id="users-searchbar-placeholder"
+            type="text"
+            placeholder="Search"
+          />
+        </form>
+        <button>Filters</button>
+      </article>
     </section>
+    <!-- Users list -->
+    <section id="users-list-section">
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+      <article class="users-list-item">
+        <img
+          src="../assets/default_img.png"
+          alt="User's profile picture"
+          class="users-list-item-picture"
+        />
+        <h2 class="users-list-item-title">User 1</h2>
+      </article>
+    </section>
+  </section>
 </template>
 
 <style scoped>
@@ -141,7 +181,7 @@
 }
 
 .users-list-item-picture:empty {
-    font-size: 1.2vmin;
+  font-size: 1.2vmin;
 }
 
 .users-list-item-title {
