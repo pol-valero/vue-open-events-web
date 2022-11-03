@@ -120,6 +120,7 @@
 </template>
 
 <style scoped>
+
 #discover-users-list-main {
   min-height: 100%;
   margin: 20px;
@@ -167,6 +168,7 @@
 
 #users-searchbar-field > button:hover {
   background-color: #5a5a5a;
+  transition: 0.4s;
 }
 
 /* Will be hidden until "Filters" button is pressed */
@@ -208,6 +210,7 @@
 
 .user-filter:hover {
   background-color: #bce7c8;
+  transition: 0.4s;
 }
 
 .user-filter > p {
