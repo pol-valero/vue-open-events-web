@@ -37,6 +37,7 @@ import { RouterLink, RouterView } from "vue-router";
       <nav>
         <RouterLink to="/timeline">Timeline</RouterLink>
         <RouterLink to="/profile">Profile</RouterLink>
+        <RouterLink to="/login">Login</RouterLink>
       </nav>
     </div>
   </header>
