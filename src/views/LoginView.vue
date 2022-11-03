@@ -1,17 +1,35 @@
 <style>
+
+aside{
+    display: none
+}
+
+header{
+    display: none
+}
+
+footer{
+    display: none
+}
+
+body{
+    border: 0px;
+}
+
 .login-box{
-    display: flex;
     padding: 30px;    
     width: 300px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    
+    margin-top: 50px;
     text-align: center;
     background-color: rgb(203, 208, 206);
     border-radius: 10px;
 }
+
+#main-login-box{
+    display: flex;
+    justify-content:center;
+}
+
 
 body{
     background-color: rgb(255, 255, 255);
@@ -35,41 +53,45 @@ body{
     margin-bottom: 5px;
 }
 
-aside{
-    display: none
+#image-box{
+    display: flex;
+    justify-content:center;
+    margin-top: 130px;
 }
 
-header{
-    display: none
-}
-
-footer{
-    display: none
-}
-
-body{
-    border: 0px;
+#logo-image{
+    width: 100px;
+    height: 100px;
+    scale: 2;
 }
 
 </style>
-
 <template>
     <body>
         <main>
-            <div class="login-box">
-                <form action="">
-                    <h1>Login</h1>
-                        <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
-                        <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">        
-                    <div>
-                        <input type="submit" value="Sign In">        
-                    </div>
-                    <div>
-                        <label>¿Not registered? </label>
-                        <a id="nav-signup" href="/signup">Signup</a>
-                    </div>
-                </form>
+            <div id="image-box">
+                <img id="logo-image" src="src/assets/logo_wildframe.svg">
             </div>
+
+            <div id="main-login-box">
+                <div class="login-box">
+                    <form action="">
+                        <h1>Login</h1>
+                            <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
+                            <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">        
+                        <div>
+                            <input type="submit" value="Sign In">        
+                        </div>
+                        <div>
+                            <label>¿Not registered? </label>
+                            <!-- TEMPORAL -->
+                            <a id="nav-signup" href="/">Signup</a>
+                            <!-- TEMPORAL -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </main>
     </body>
 </template>
