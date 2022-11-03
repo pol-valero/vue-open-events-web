@@ -145,13 +145,17 @@ input {
   #container-full-chat {
     margin: 10px;
   }
+
+  #chat-main {
+    flex-direction: column;
+  }
 }
 </style>
 
 <template>
   <div id="chat-main">
     <section id="container-chat-person">
-      <h4 id="chats-title">Chats</h4>
+      <h4 id="chats-title">Friends</h4>
 
       <button class="btn-chat">
         <div class="chat-person">
