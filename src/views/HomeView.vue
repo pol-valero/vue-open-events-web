@@ -172,6 +172,7 @@
 
 #events-searchbar-field > button:hover {
   background-color: #5a5a5a;
+  transition: 0.4s;
 }
 
 #create-event-button {
@@ -217,6 +218,7 @@
 
 .event-filter:hover {
   background-color: #bce7c8;
+  transition: 0.4s;
 }
 
 .event-filter > p {
