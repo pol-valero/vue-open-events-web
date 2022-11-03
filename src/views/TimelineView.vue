@@ -1,4 +1,9 @@
 <style>
+
+aside{
+  display: none;
+}
+
 #container-timeline {
   margin: 25px 90px;
   border-left: 5px solid #82cd47;

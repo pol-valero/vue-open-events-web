@@ -1,4 +1,9 @@
 <style>
+
+aside{
+  display: none;
+}
+
 /* People */
 .little-img {
   width: 40px;
