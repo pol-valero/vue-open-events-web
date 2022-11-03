@@ -126,9 +126,7 @@
 
 <style scoped>
 #home-events-list-section {
-  min-height: 100%;
-  margin: 20px;
-  margin-bottom: 40px;
+  padding: 20px 30px 50px 20px;
 }
 
 #events-searchbar {

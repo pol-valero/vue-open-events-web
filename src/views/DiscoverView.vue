@@ -122,9 +122,7 @@
 <style scoped>
 
 #discover-users-list-main {
-  min-height: 100%;
-  margin: 20px;
-  margin-bottom: 40px;
+  padding: 20px 30px 0px 20px;
 }
 
 #users-searchbar {
