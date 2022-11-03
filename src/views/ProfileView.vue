@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 #profile-main {
   width: 100%;
   height: 100%;
@@ -80,7 +80,7 @@
 #nav-timeline {
   border: none;
   background: none;
-  text-decoration: none;
+  text-decoration: underline;
   color: black;
 }
 

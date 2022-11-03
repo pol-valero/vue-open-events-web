@@ -1,4 +1,5 @@
-<style>
+<style scoped>
+
 /* People */
 .little-img {
   width: 40px;
@@ -82,7 +83,7 @@ hr {
 
 .my-message h4 {
   border: #25d366 12px solid;
-  border-radius: 40%;
+  border-radius: 30px;
   background-color: #25d366;
   margin-bottom: 5px;
 }
@@ -102,7 +103,7 @@ hr {
 
 .other-message h4 {
   border: #ece5dd 12px solid;
-  border-radius: 40%;
+  border-radius: 30px;
   background-color: #ece5dd;
   margin-bottom: 4px;
 }

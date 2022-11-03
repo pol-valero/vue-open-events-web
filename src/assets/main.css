@@ -4,6 +4,10 @@
     font-family: Helvetica, Arial, sans-serif;
 }
 
+button{
+    cursor: pointer;
+}
+
 html {
     height: 100%;
 }
@@ -38,6 +42,7 @@ header {
 main {
     order: initial; /*Important!*/
     width: 100%;    /*Important!*/
+    height: 100%;
 }
 
 #title-logo{
@@ -88,6 +93,8 @@ main {
 #center-screen{
     display: flex;
     flex-direction: row;
+    align-content: stretch;
+
 }
 
 aside{
@@ -121,7 +128,7 @@ footer{
     background: #1b1e23;
     color: white;
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: space-around;
 }
 

@@ -1,4 +1,9 @@
-<style>
+<style scoped>
+
+aside{
+  display: none;
+}
+
 #container-timeline {
   margin: 25px 90px;
   border-left: 5px solid #82cd47;
@@ -11,6 +16,8 @@
 .event-timeline {
   background-color: #82cd47;
   padding: 10px 25px;
+  box-shadow: 5px 5px 5px #ddd;
+  border-radius: 12px;
   flex-basis: 30%;
   display: flex;
   border: 2px solid #9247cd;
