@@ -15,7 +15,10 @@ import { RouterLink, RouterView } from "vue-router";
         </div>
 
         <div id="user-photo">
-          <h2 class="title">USER</h2>
+          <div id="user-and-profile">
+            <h2 class="title">USER</h2>
+            <a id="profile-btn" class="std-padding" href="/profile">Profile</a>
+          </div>
           <img
             src="src\assets\default_img.png"
             alt="user photo"
@@ -33,11 +36,6 @@ import { RouterLink, RouterView } from "vue-router";
           <label for="check-box" id="hide-menu">&#215</label>
         </nav>
         <label for="check-box" id="show-menu">&#8801</label>
-
-        <!-- Testing purposes -->
-        <nav>
-          <RouterLink to="/profile">Profile</RouterLink>
-        </nav>
       </div>
     </header>
 
