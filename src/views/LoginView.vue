@@ -18,7 +18,7 @@ body{
 
 .login-box{
     padding: 30px;    
-    width: 300px;
+    width: 250px;
     margin-top: 50px;
     text-align: center;
     background-color: rgb(203, 208, 206);
@@ -44,7 +44,7 @@ body{
     margin-bottom: 7px;
     margin-top: 15px;
     padding-block: 7px;
-    padding-inline: 30px;
+    padding-inline: 40px;
 }
 
 .icon_lock {
@@ -56,7 +56,7 @@ body{
     border-radius: 10px;
     margin-bottom: 5px;
     padding-block: 7px;
-    padding-inline: 30px;
+    padding-inline: 40px;
 }
 
 #image-box{
@@ -81,6 +81,19 @@ body{
 }
 
 
+#nav-signup{
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: black;
+}
+
+#nav-signup:hover {
+  color: #25d366;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
 </style>
 <template>
     <body>
@@ -100,9 +113,7 @@ body{
                         </div>
                         <div>
                             <label>¿Not registered? </label>
-                            <!-- TEMPORAL -->
                             <a id="nav-signup" href="/">Signup</a>
-                            <!-- TEMPORAL -->
                         </div>
                     </form>
                 </div>
