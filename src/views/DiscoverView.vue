@@ -49,7 +49,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 2</h2>
       </article>
       <article class="users-list-item">
         <img
@@ -57,7 +57,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 3</h2>
       </article>
       <article class="users-list-item">
         <img
@@ -65,7 +65,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 4</h2>
       </article>
       <article class="users-list-item">
         <img
@@ -73,7 +73,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 5</h2>
       </article>
       <article class="users-list-item">
         <img
@@ -81,7 +81,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 6</h2>
       </article>
       <article class="users-list-item">
         <img
@@ -89,7 +89,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 7</h2>
       </article>
       <article class="users-list-item">
         <img
@@ -97,23 +97,7 @@
           alt="User's profile picture"
           class="users-list-item-picture"
         />
-        <h2 class="users-list-item-title">User 1</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 1</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 1</h2>
+        <h2 class="users-list-item-title">User 8</h2>
       </article>
     </section>
   </section>
@@ -122,7 +106,7 @@
 <style scoped>
 
 #discover-users-list-main {
-  padding: 20px 30px 0px 20px;
+  padding: 20px 30px 50px 20px;
 }
 
 #users-searchbar {
@@ -173,7 +157,7 @@
 #users-filters-box {
   background-color: black;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
@@ -207,6 +191,7 @@
 }
 
 .user-filter:hover {
+  cursor: pointer;
   background-color: #bce7c8;
   transition: 0.4s;
 }
@@ -224,15 +209,21 @@
 
 .users-list-item {
   background: #fafafa;
-  margin-top: 10px;
-  width: 30%;
+  margin-top: 20px;
+  margin-right: 10px;
+  width: 45%;
   padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   border-radius: 12px;
-  box-shadow: 5px 5px 5px #ddd;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.users-list-item:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .users-list-item-picture {
@@ -249,12 +240,11 @@
 
 .users-list-item-title {
   font-size: 2vmin;
-  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
   #discover-users-list-main {
-    margin: 20px;
+    padding-bottom: 0px;
   }
 
   #users-filters-box {
@@ -284,7 +274,7 @@
     width: 85%;
   }
   .users-list-item-title {
-    font-size: 2.8vmin;
+    font-size: 3.5vmin;
   }
 }
 </style>

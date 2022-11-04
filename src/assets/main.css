@@ -9,7 +9,7 @@ button {
 }
 
 html {
-    height: 100%;
+    height: 100vh;
 }
 
 img {
@@ -19,7 +19,7 @@ img {
 
 body {
     border: #1b1e23 10px solid;
-    min-height: 100%;
+    min-height: 100vh;
     position: relative;
 }
 
@@ -42,7 +42,6 @@ header {
 main {
     order: initial; /*Important!*/
     width: 100%;    /*Important!*/
-    padding-bottom: 50px;
 }
 
 #title-logo {
@@ -93,11 +92,12 @@ main {
 #center-screen {
     display: flex;
     flex-direction: row;
-    /*align-content: stretch;*/ /* check if needs to be removed */
+    min-height: 79vh;
+    height: auto;
+    padding-bottom: 50px;
 }
 
 aside {
-    /*width: 160px;*/
     background: #1b1e23;
     width: 100%;
     flex-shrink: 4;
@@ -105,6 +105,7 @@ aside {
     flex-wrap: wrap;
     flex-direction:column;
     justify-content:flex-start;
+    padding-top: 10px;
 }
 
 #barra-nav a:hover, #show-menu:hover, #hide-menu:hover {
@@ -125,6 +126,8 @@ aside {
 footer {
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     height: 50px;
     background: #1b1e23;
@@ -185,10 +188,6 @@ footer {
     margin-bottom: 30px;
 }
 
-aside {
-    padding-top: 10px;
-}
-
 /*MEDIA QUERIES*/
 @media(max-width: 768px) {
     #show-menu, #hide-menu {
@@ -214,7 +213,6 @@ aside {
         transition: 0.5s;
     }
 
-
     #check-box:checked ~ #barra-nav {
         right: 0;
     }
@@ -225,10 +223,16 @@ aside {
         align-content: stretch;
         justify-content:center;
         align-items: center;
+        min-height: 100%;
+        padding-bottom: 50px;
     }
 
     #top-header {
         justify-content: space-around;
+    }
+
+    main {
+        padding-bottom: 20px;
     }
 
     footer {
