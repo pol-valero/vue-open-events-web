@@ -245,13 +245,6 @@ input {
             <h6>9:32</h6>
           </div>
         </div>
-
-        <div class="other-message">
-          <div>
-            <h4 class="message">Per cert, recorda fer el peer2peer!</h4>
-            <h6>9:32</h6>
-          </div>
-        </div>
       </div>
 
       <div id="container-chat-input">

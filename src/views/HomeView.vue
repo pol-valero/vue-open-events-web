@@ -126,9 +126,7 @@
 
 <style scoped>
 #home-events-list-section {
-  min-height: 100%;
-  margin: 20px;
-  margin-bottom: 40px;
+  padding: 20px 30px 50px 20px;
 }
 
 #events-searchbar {
@@ -217,6 +215,7 @@
 }
 
 .event-filter:hover {
+  cursor: pointer;
   background-color: #bce7c8;
   transition: 0.4s;
 }
@@ -242,7 +241,12 @@
   flex-direction: row;
   align-items: center;
   border-radius: 12px;
-  box-shadow: 5px 5px 5px #ddd;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.events-list-item:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .events-list-item-picture {
@@ -280,7 +284,7 @@
 
 @media (max-width: 768px) {
   #home-events-list-section {
-    margin: 20px;
+    padding-bottom: 0px;
   }
 
   #events-filters-box {
