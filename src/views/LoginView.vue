@@ -1,4 +1,4 @@
-<style>
+<style scooped>
 
 aside{
     display: none
@@ -41,16 +41,22 @@ body{
     padding-left:30px;
     background-color: white;
     border-radius: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+    margin-top: 15px;
+    padding-block: 7px;
+    padding-inline: 30px;
 }
 
 .icon_lock {
     background: url(src/assets/icon_message.svg) no-repeat scroll;
-    background-size: contain;
+    background-size: 20px;
+    background-position: 0px;
     padding-left:30px;
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
+    padding-block: 7px;
+    padding-inline: 30px;
 }
 
 #image-box{
@@ -63,6 +69,15 @@ body{
     width: 100px;
     height: 100px;
     scale: 2;
+}
+
+#button-sign-in{
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    height: 30px;
+    width: 170px;
+    margin: 10px;
 }
 
 </style>
@@ -80,7 +95,7 @@ body{
                             <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
                             <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">        
                         <div>
-                            <input type="submit" value="Sign In">        
+                            <input id="button-sign-in" type="submit" value="Sign In">        
                         </div>
                         <div>
                             <label>¿Not registered? </label>
