@@ -1,41 +1,22 @@
 <style scoped>
 
-aside{
-    display: none
-}
 
-header{
-    display: none
-}
-
-footer{
-    display: none
-}
-
-body{
-    border: 0px;
-}
-
-.login-box{
+.register-box{
     display: flex;
-
     padding: 30px;    
     width: 500px;
-    margin-top: 50px;
     text-align: center;
     background-color: rgb(203, 208, 206);
     border-radius: 10px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
-#main-login-box{
+#main-register-box{
     display: flex;
     justify-content:center;
 }
 
-
-body{
-    background-color: rgb(255, 255, 255);
-}
 
 .input-user-name {
     background: url(src/assets/icon_user.svg) no-repeat scroll left;
@@ -135,13 +116,19 @@ body{
     scale: 2;
 }
 
-#button-sign-in{
+#button-sign-up{
     background-color: black;
     color: white;
     border-radius: 10px;
     height: 30px;
     width: 170px;
     margin: 10px;
+    
+}
+
+#button-sign-up:hover {
+  background-color: #5a5a5a;
+  transition: 0.4s;
 }
 
 
@@ -199,37 +186,29 @@ body{
 
 </style>
 <template>
-    <body>
-        <main>
-            <div id="image-box">
-                <a href="/">
-                <!--TEMPORAL NAV -->
-                    <img id="logo-image" src="src/assets/logo_image.png">
-                </a>
-            </div>
+    <div id="image-box">
+        <img id="logo-image" src="src/assets/logo_image.png">
+    </div>
 
-            <div id="main-login-box">
-                <div class="login-box">
-                    <form action="">
-                        <h1>Signup</h1>
-                        <input class="input-user-name" type="text" name="name" id="name" required placeholder="Name">            
-                        <input class="input-user-lastname" type="text" name="last-name" id="last-name" required placeholder="Last Name">            
-                        <input class="input-user-email" type="text" name="email" id="email" required placeholder="abc@email.com">            
-                        <input class="input-password" type="text" name="password" id="password" required placeholder="Password">            
-                        <input class="input-confirm-password" type="text" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">            
-                        <input class="input-birth-date" type="text" name="birth-date" id="birth-date" required placeholder="Birth date">            
-                        <input class="input-profile-picture" type="text" name="profile-picture" id="profile-picture" required placeholder="Profile picture">            
-                        <div>
-                            <input id="button-sign-in" type="submit" value="Register">        
-                        </div>
-                        <div>
-                            <label>¿Already registered? </label>
-                            <a id="nav-login" href="/login">Login</a>
-                        </div>
-                    </form>
+    <div id="main-register-box">
+        <div class="register-box">
+            <form action="">
+                <h1>Signup</h1>
+                <input class="input-user-name" type="text" name="name" id="name" required placeholder="Name">            
+                <input class="input-user-lastname" type="text" name="last-name" id="last-name" required placeholder="Last Name">            
+                <input class="input-user-email" type="text" name="email" id="email" required placeholder="abc@email.com">            
+                <input class="input-password" type="text" name="password" id="password" required placeholder="Password">            
+                <input class="input-confirm-password" type="text" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">            
+                <input class="input-birth-date" type="text" name="birth-date" id="birth-date" required placeholder="Birth date">            
+                <input class="input-profile-picture" type="text" name="profile-picture" id="profile-picture" required placeholder="Profile picture">            
+                <div>
+                    <input id="button-sign-up" type="submit" value="Register">        
                 </div>
-            </div>
-
-        </main>
-    </body>
+                <div>
+                    <label>¿Already registered? </label>
+                    <a id="nav-login" href="/login">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </template>

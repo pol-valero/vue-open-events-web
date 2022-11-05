@@ -1,21 +1,5 @@
 <style scoped>
 
-aside{
-    display: none
-}
-
-header{
-    display: none
-}
-
-footer{
-    display: none
-}
-
-body{
-    border: 0px;
-}
-
 .login-box{
     padding: 30px;    
     width: 250px;
@@ -30,10 +14,6 @@ body{
     justify-content:center;
 }
 
-
-body{
-    background-color: rgb(255, 255, 255);
-}
 
 .icon_message {
     background: url(src/assets/icon_lock.svg) no-repeat scroll left;
@@ -79,8 +59,13 @@ body{
     height: 30px;
     width: 170px;
     margin: 10px;
+    
 }
 
+#button-sign-in:hover {
+  background-color: #5a5a5a;
+  transition: 0.4s;
+}
 
 #nav-signup{
   border: none;
@@ -99,31 +84,27 @@ body{
     padding-bottom: 0px;
 }
 
+
 </style>
 <template>
-    <body>
-        <main>
-            <div id="image-box">
-                <img id="logo-image" src="src/assets/logo_image.png">
-            </div>
+    <div id="image-box">
+        <img id="logo-image" src="src/assets/logo_image.png">
+    </div>
 
-            <div id="main-login-box">
-                <div class="login-box">
-                    <form action="">
-                        <h1>Login</h1>
-                            <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
-                            <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">        
-                        <div>
-                            <input id="button-sign-in" type="submit" value="Sign In">        
-                        </div>
-                        <div>
-                            <label>¿Not registered? </label>
-                            <a id="nav-signup" href="/signup">Signup</a>
-                        </div>
-                    </form>
+    <div id="main-login-box">
+        <div class="login-box">
+            <form action="">
+                <h1>Login</h1>
+                    <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
+                    <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">        
+                <div>
+                    <input id="button-sign-in" type="submit" value="Sign In">        
                 </div>
-            </div>
-
-        </main>
-    </body>
+                <div>
+                    <label>¿Not registered? </label>
+                    <a id="nav-signup" href="/signup">Signup</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </template>
