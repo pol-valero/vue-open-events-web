@@ -5,6 +5,7 @@
     display: flex;
     padding: 30px;    
     width: 500px;
+    justify-content:center;
     text-align: center;
     background-color: rgb(203, 208, 206);
     border-radius: 10px;
@@ -136,42 +137,30 @@
   border: none;
   background: none;
   text-decoration: none;
-  color: black;
+  color: #25d366;
 }
 
-#nav-login:hover {
-  color: #25d366;
+#nav-signup:hover {
+  color: black;
   transition: 0.4s;
   cursor: pointer;
 }
 
-#center-screen {
-    padding-bottom: 0px;
-}
 
-
-#nav-login{
-  border: none;
-  background: none;
-  text-decoration: none;
-  color: black;
-}
-
-#nav-login:hover {
-  color: #25d366;
-  transition: 0.4s;
-  cursor: pointer;
-}
-
-#center-screen {
-    padding-bottom: 0px;
-}
 
 @media (max-width: 530px) {
     .input-user-name {
         margin-right: 0px;
     }
 
+    .register-box{
+        width: 220px;
+    }
+    
+    #image-box{
+        padding-bottom: 0px;
+    }
+    
     .input-user-email ,
     .input-password ,
     .input-confirm-password ,
@@ -205,8 +194,8 @@
                     <input id="button-sign-up" type="submit" value="Register">        
                 </div>
                 <div>
-                    <label>¿Already registered? </label>
-                    <a id="nav-login" href="/login">Login</a>
+                    <label>Already registered? </label>
+                    <a id="nav-signup" href="/login">Login</a>
                 </div>
             </form>
         </div>

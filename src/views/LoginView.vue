@@ -7,17 +7,20 @@
     text-align: center;
     background-color: rgb(203, 208, 206);
     border-radius: 10px;
+    margin: 50px;
 }
 
 #main-login-box{
     display: flex;
     justify-content:center;
+    
 }
 
 
 .icon_message {
     background: url(src/assets/icon_lock.svg) no-repeat scroll left;
     background-size: 20px;
+    background-position: 8px;
     padding-left:30px;
     background-color: white;
     border-radius: 10px;
@@ -30,7 +33,7 @@
 .icon_lock {
     background: url(src/assets/icon_message.svg) no-repeat scroll;
     background-size: 20px;
-    background-position: 0px;
+    background-position: 8px;
     padding-left:30px;
     background-color: white;
     border-radius: 10px;
@@ -67,23 +70,32 @@
   transition: 0.4s;
 }
 
-#nav-signup{
+#nav-login{
   border: none;
   background: none;
   text-decoration: none;
-  color: black;
+  color: #25d366;
 }
 
-#nav-signup:hover {
-  color: #25d366;
+#nav-login:hover {
+  color: black;
   transition: 0.4s;
   cursor: pointer;
 }
 
-#center-screen {
-    padding-bottom: 0px;
+@media (max-width: 530px) {
+    .login-box{
+        padding: 15px;    
+    }
+    #logo-image{
+        scale: 1.2;
+    }
+    #image-box{
+        padding-top: 40px;
+        padding-bottom: 0px;
+    }
+    
 }
-
 
 </style>
 <template>
@@ -101,8 +113,8 @@
                     <input id="button-sign-in" type="submit" value="Sign In">        
                 </div>
                 <div>
-                    <label>¿Not registered? </label>
-                    <a id="nav-signup" href="/signup">Signup</a>
+                    <label>Not registered? </label>
+                    <a id="nav-login" href="/signup">Signup</a>
                 </div>
             </form>
         </div>
