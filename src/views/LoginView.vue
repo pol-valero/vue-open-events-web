@@ -62,7 +62,7 @@ body{
 #image-box{
     display: flex;
     justify-content:center;
-    margin-top: 130px;
+    padding-top: 130px;
 }
 
 #logo-image{
@@ -92,6 +92,10 @@ body{
   color: #25d366;
   transition: 0.4s;
   cursor: pointer;
+}
+
+#center-screen {
+    padding-bottom: 0px;
 }
 
 </style>
