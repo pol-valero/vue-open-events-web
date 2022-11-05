@@ -141,8 +141,11 @@
 
     <section id="container-full-profile">
       <div class="button-container">
-        <button class="logout-button">LOGOUT</button>
-        <button class="edit-button">EDIT</button>
+        <!--TEMPORAL PER HTML I CSS-->
+          <a href="/login">
+            <button class="logout-button">LOGOUT</button>
+          </a>    
+          <button a class="edit-button">EDIT</button>   
       </div>
     </section>
   </div>
