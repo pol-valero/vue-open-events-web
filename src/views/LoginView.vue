@@ -118,7 +118,7 @@ body{
                         </div>
                         <div>
                             <label>¿Not registered? </label>
-                            <a id="nav-signup" href="/">Signup</a>
+                            <a id="nav-signup" href="/signup">Signup</a>
                         </div>
                     </form>
                 </div>
