@@ -1,4 +1,4 @@
-<style scooped>
+<style scoped>
 
 aside{
     display: none
