@@ -15,7 +15,9 @@
         <button>Filters</button>
       </article>
       <!-- Create event button -->
-      <button id="create-event-button">Create event</button>
+      <a href="/createEvent">
+        <button id="create-event-button" type="button">Create event</button>
+      </a>
     </section>
     <!-- Filters selector -->
     <section id="events-filters-box">
@@ -182,10 +184,7 @@
   background-color: black;
   margin-top: 10px;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 15px 5px 15px;
   border-radius: 15px;
   width: fit-content;
   max-width: 40%;

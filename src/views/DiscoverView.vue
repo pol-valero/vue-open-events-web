@@ -247,6 +247,14 @@
     padding-bottom: 0px;
   }
 
+  #users-searchbar-field {
+    flex-wrap: wrap;
+  }
+
+  #users-searchbar-field > form, button {
+    margin-bottom: 10px;
+  }
+
   #users-filters-box {
     max-width: 70%;
   }
