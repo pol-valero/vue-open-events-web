@@ -17,6 +17,8 @@ body{
 }
 
 .login-box{
+    display: flex;
+
     padding: 30px;    
     width: 500px;
     margin-top: 50px;
@@ -35,9 +37,10 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
-.icon_message {
-    background: url(src/assets/icon_lock.svg) no-repeat scroll left;
+.input-user-name {
+    background: url(src/assets/icon_user.svg) no-repeat scroll left;
     background-size: 20px;
+    background-position: 8px;
     padding-left:30px;
     background-color: white;
     border-radius: 10px;
@@ -45,19 +48,78 @@ body{
     margin-top: 15px;
     padding-block: 7px;
     padding-inline: 40px;
+    margin-right: 10px;
 }
 
-.icon_lock {
-    background: url(src/assets/icon_message.svg) no-repeat scroll;
+.input-user-lastname {
+    background: url(src/assets/icon_user.svg) no-repeat scroll;
     background-size: 20px;
-    background-position: 0px;
-    padding-left:30px;
+    background-position: 8px;
     background-color: white;
     border-radius: 10px;
     margin-bottom: 5px;
     padding-block: 7px;
     padding-inline: 40px;
+}
 
+.input-user-email {
+    background: url(src/assets/icon_message.svg) no-repeat scroll;
+    background-size: 20px;
+    background-position: 8px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-block: 7px;
+    width: 395px;
+    padding-inline: 40px;
+}
+
+.input-password{
+    background: url(src/assets/icon_lock.svg) no-repeat scroll;
+    background-size: 20px;
+    background-position: 8px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-block: 7px;
+    width: 395px;
+    padding-inline: 40px;
+}
+
+.input-confirm-password{
+    background: url(src/assets/icon_lock.svg) no-repeat scroll;
+    background-size: 20px;
+    background-position: 8px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-block: 7px;
+    width: 395px;
+    padding-inline: 40px;
+}
+
+.input-birth-date{
+    background: url(src/assets/icon_calendar.svg) no-repeat scroll;
+    background-size: 20px;
+    background-position: 8px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-block: 7px;
+    width: 395px;
+    padding-inline: 40px;
+}
+
+.input-profile-picture{
+    background: url(src/assets/icon_image.svg) no-repeat scroll;
+    background-size: 20px;
+    background-position: 8px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding-block: 7px;
+    width: 395px;
+    padding-inline: 40px;
 }
 
 #image-box{
@@ -100,25 +162,65 @@ body{
     padding-bottom: 0px;
 }
 
+
+#nav-login{
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: black;
+}
+
+#nav-login:hover {
+  color: #25d366;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+#center-screen {
+    padding-bottom: 0px;
+}
+
+@media (max-width: 530px) {
+    .input-user-name {
+        margin-right: 0px;
+    }
+
+    .input-user-email ,
+    .input-password ,
+    .input-confirm-password ,
+    .input-birth-date ,
+    .input-profile-picture
+    {
+        width: 150px;
+        padding-inline: 40px;
+    }
+
+}
+
 </style>
 <template>
     <body>
         <main>
             <div id="image-box">
-                <img id="logo-image" src="src/assets/logo_image.png">
+                <a href="/">
+                <!--TEMPORAL NAV -->
+                    <img id="logo-image" src="src/assets/logo_image.png">
+                </a>
             </div>
 
             <div id="main-login-box">
                 <div class="login-box">
                     <form action="">
                         <h1>Signup</h1>
-                        <span class="inline">
-                            <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
-                            <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">  
-                        </span>
-      
+                        <input class="input-user-name" type="text" name="name" id="name" required placeholder="Name">            
+                        <input class="input-user-lastname" type="text" name="last-name" id="last-name" required placeholder="Last Name">            
+                        <input class="input-user-email" type="text" name="email" id="email" required placeholder="abc@email.com">            
+                        <input class="input-password" type="text" name="password" id="password" required placeholder="Password">            
+                        <input class="input-confirm-password" type="text" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">            
+                        <input class="input-birth-date" type="text" name="birth-date" id="birth-date" required placeholder="Birth date">            
+                        <input class="input-profile-picture" type="text" name="profile-picture" id="profile-picture" required placeholder="Profile picture">            
                         <div>
-                            <input id="button-sign-in" type="submit" value="Sign In">        
+                            <input id="button-sign-in" type="submit" value="Register">        
                         </div>
                         <div>
                             <label>¿Already registered? </label>
