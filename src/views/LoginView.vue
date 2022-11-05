@@ -62,7 +62,8 @@ body{
 #image-box{
     display: flex;
     justify-content:center;
-    padding-top: 130px;
+    padding-top: 80px;
+    padding-bottom: 20px;
 }
 
 #logo-image{
@@ -103,7 +104,7 @@ body{
     <body>
         <main>
             <div id="image-box">
-                <img id="logo-image" src="src/assets/logo_wildframe.svg">
+                <img id="logo-image" src="src/assets/logo_image.png">
             </div>
 
             <div id="main-login-box">
