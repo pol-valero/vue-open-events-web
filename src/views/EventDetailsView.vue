@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 
 /*aside {
   display: none;
