@@ -244,7 +244,8 @@
 
 @media (max-width: 768px) {
   #discover-users-list-main {
-    padding-bottom: 0px;
+    padding-bottom: 40px;
+    padding-right: 20px;
   }
 
   #users-searchbar-field {

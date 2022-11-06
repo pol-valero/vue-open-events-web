@@ -283,25 +283,45 @@
 
 @media (max-width: 768px) {
   #home-events-list-section {
-    padding-bottom: 0px;
+    padding-bottom: 40px;
+    padding-right: 20px;
+  }
+
+  #events-searchbar-field {
+    max-width: 75%;
+    width: 75%;
+  }
+
+  #events-searchbar-placeholder {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #create-event-button {
+    margin-bottom: 10px;
   }
 
   #events-filters-box {
-    max-width: 70%;
+    max-width: 88%;
   }
 
   #events-filters-close-button {
     width: 12%;
     height: auto;
-    margin-right: 30px;
+    margin-right: 15px;
+  }
+
+  .event-filter {
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .event-filter ~ .event-filter {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .event-filter > p {
-    font-size: 2vmin;
+    font-size: 3.3vmin;
   }
 
   #events-list-section {
@@ -314,16 +334,20 @@
     width: 85%;
   }
 
+  .events-list-item-picture {
+    max-width: 25%;
+  }
+
   .events-list-item-date {
-    font-size: 2vmin;
+    font-size: 2.7vmin;
   }
 
   .events-list-item-title {
-    font-size: 2.8vmin;
+    font-size: 3.4vmin;
   }
 
   .events-list-item-location {
-    font-size: 2.2vmin;
+    font-size: 2.9vmin;
   }
 }
 </style>
