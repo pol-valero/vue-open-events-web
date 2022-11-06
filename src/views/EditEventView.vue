@@ -161,8 +161,8 @@
       </div>
 
       <div class="button-container">
-        <button onclick="location.href='/';" class="save-button">SAVE CHANGES</button>
-        <button onclick="location.href='/';" class="cancel-button">CANCEL</button>
+        <button onclick="location.href='/eventDetails';" class="save-button">SAVE CHANGES</button>
+        <button onclick="location.href='/eventDetails';" class="cancel-button">CANCEL</button>
       </div>
       
     </section>
