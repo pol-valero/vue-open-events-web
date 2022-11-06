@@ -16,6 +16,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 40%;
+  min-height: 200px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -47,11 +48,12 @@
 
 #details-container {
     display: flex;
-    height: 10%;
+    height: fit-content;
     flex-flow: row wrap;
     justify-content: space-between;
     margin-left: 70px;
     margin-right: 70px;
+    margin-top: 20px;
 }
 
 .detail {
@@ -59,6 +61,7 @@
     flex-direction: row;
     align-items: center;
     margin: 10px;
+    flex-wrap: wrap;
 }
 
 .users-list-item-picture {
@@ -76,6 +79,11 @@
     margin-bottom: 3px;
 }
 
+.detail-text text {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
 #follow-button {
     height: 30px;
     width: 90px;
@@ -84,16 +92,16 @@
     color: black;
     border-radius: 10px;
     margin-left: 50px;
+    margin-top: 30px; 
 }
 
 #event-description {
   margin-left: 80px;
   margin-right: 80px;
-  margin-top: 20px;
-
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
-  height: 25%;
+  height: fit-content;
   line-height: 200%;
 }
 
@@ -103,6 +111,7 @@
 }
 
 #participate-button {
+  margin-top: 100px;
   align-self: center;
 }
 
@@ -113,6 +122,70 @@
     color: white;
     border-radius: 10px;
     font-size: 22px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 530px) {
+  .users-list-item-picture {
+  width: 40px;
+  height: 40px;
+}
+
+.detail-text h4 {
+    font-size: 16px;
+}
+
+.detail-text text {
+    font-size: 12px;
+}
+
+#details-container {
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#text-title {
+    padding-left: 40px;
+    font-size: 16px;
+}
+
+#share-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 70px;
+    padding-right: 30px;
+}
+
+
+#event-description {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  line-height: 150%;
+}
+
+#event-description p {
+  text-align: justify;
+  font-size: 14px;
+}
+
+#participate-button {
+  margin-top: 40px;
+  align-self: center;
+}
+
+#participate-button button {
+    height: 50px;
+    width: 120px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+    
 }
 
 </style>
