@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 
 /*aside {
   display: none;
@@ -118,8 +118,8 @@
       </div>
 
       <div class="button-container">
-        <button class="create-event-button">CREATE EVENT</button>
-        <button class="cancel-button">CANCEL</button>
+        <button onclick="location.href='/';" class="create-event-button">CREATE EVENT</button>
+        <button onclick="location.href='/';" class="cancel-button">CANCEL</button>
       </div>
       
     </section>
