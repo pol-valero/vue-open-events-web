@@ -46,7 +46,10 @@
         />
         <div class="event-preview-content">
           <p class="events-list-item-date">20/11/2022 - 15:08</p>
-          <h2 class="events-list-item-title">House BBQ</h2>
+          <!-- Temporary link to be able to access "Event Details" view -->
+          <a href="/eventDetails">
+            <h2 class="events-list-item-title">House BBQ</h2>
+          </a>
           <p class="events-list-item-location">Alabama</p>
         </div>
       </article>
@@ -138,7 +141,6 @@
   align-items: center;
   width: inherit;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 #events-searchbar-field {
@@ -166,8 +168,8 @@
   background-color: black;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 7px;
 }
 
 #events-searchbar-field > button:hover {
@@ -176,13 +178,22 @@
 }
 
 #create-event-button {
-  padding: 5px;
+  padding: 7px;
+  margin-bottom: 10px;
+  background-color: rgb(119, 34, 255);
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+#create-event-button:hover {
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Will be hidden until "Filters" button is pressed */
 #events-filters-box {
   background-color: black;
-  margin-top: 10px;
   margin-bottom: 20px;
   padding: 5px 15px 5px 15px;
   border-radius: 15px;
@@ -196,8 +207,16 @@
 
 #events-filters-close-button {
   width: 10%;
-  height: auto;
+  height: fit-content;
   margin-right: 20px;
+  align-self: center;
+  padding: 2px;
+}
+
+#events-filters-close-button:hover {
+  cursor: pointer;
+  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
+  background-color: #000;
 }
 
 .event-filter {
@@ -288,8 +307,16 @@
   }
 
   #events-searchbar-field {
-    max-width: 75%;
-    width: 75%;
+    max-width: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 0px;
+  }
+
+  #events-searchbar-field > form {
+    min-width: 65%;
+    margin-right: 10px;
   }
 
   #events-searchbar-placeholder {
