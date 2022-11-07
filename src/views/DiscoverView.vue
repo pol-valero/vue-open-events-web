@@ -116,7 +116,6 @@
   align-items: center;
   width: inherit;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 #users-searchbar-field {
@@ -144,8 +143,8 @@
   background-color: black;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 7px;
 }
 
 #users-searchbar-field > button:hover {
@@ -156,7 +155,6 @@
 /* Will be hidden until "Filters" button is pressed */
 #users-filters-box {
   background-color: black;
-  margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
@@ -173,8 +171,16 @@
 
 #users-filters-close-button {
   width: 10%;
-  height: auto;
+  height: fit-content;
   margin-right: 20px;
+  align-self: center;
+  padding: 2px;
+}
+
+#users-filters-close-button:hover {
+  cursor: pointer;
+  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
+  background-color: #000;
 }
 
 .user-filter {
@@ -244,25 +250,40 @@
 
 @media (max-width: 768px) {
   #discover-users-list-main {
-    padding-bottom: 0px;
+    padding-bottom: 40px;
+    padding-right: 20px;
+  }
+
+  #users-searchbar-field {
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
+
+  #users-searchbar-field > form, button {
+    margin-bottom: 10px;
   }
 
   #users-filters-box {
-    max-width: 70%;
+    max-width: 88%;
   }
 
   #users-filters-close-button {
     width: 12%;
     height: auto;
-    margin-right: 30px;
+    margin-right: 15px;
+  }
+
+  .user-filter {
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .user-filter ~ .user-filter {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .user-filter > p {
-    font-size: 2vmin;
+    font-size: 3.3vmin;
   }
 
   #users-list-section {

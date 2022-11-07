@@ -15,7 +15,9 @@
         <button>Filters</button>
       </article>
       <!-- Create event button -->
-      <button id="create-event-button">Create event</button>
+      <a href="/createEvent">
+        <button id="create-event-button" type="button">Create event</button>
+      </a>
     </section>
     <!-- Filters selector -->
     <section id="events-filters-box">
@@ -44,7 +46,10 @@
         />
         <div class="event-preview-content">
           <p class="events-list-item-date">20/11/2022 - 15:08</p>
-          <h2 class="events-list-item-title">House BBQ</h2>
+          <!-- Temporary link to be able to access "Event Details" view -->
+          <a href="/eventDetails">
+            <h2 class="events-list-item-title">House BBQ</h2>
+          </a>
           <p class="events-list-item-location">Alabama</p>
         </div>
       </article>
@@ -136,7 +141,6 @@
   align-items: center;
   width: inherit;
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 #events-searchbar-field {
@@ -164,8 +168,8 @@
   background-color: black;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 7px;
 }
 
 #events-searchbar-field > button:hover {
@@ -174,18 +178,24 @@
 }
 
 #create-event-button {
-  padding: 5px;
+  padding: 7px;
+  margin-bottom: 10px;
+  background-color: rgb(119, 34, 255);
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+#create-event-button:hover {
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Will be hidden until "Filters" button is pressed */
 #events-filters-box {
   background-color: black;
-  margin-top: 10px;
   margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px 15px 5px 15px;
   border-radius: 15px;
   width: fit-content;
   max-width: 40%;
@@ -197,8 +207,16 @@
 
 #events-filters-close-button {
   width: 10%;
-  height: auto;
+  height: fit-content;
   margin-right: 20px;
+  align-self: center;
+  padding: 2px;
+}
+
+#events-filters-close-button:hover {
+  cursor: pointer;
+  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
+  background-color: #000;
 }
 
 .event-filter {
@@ -284,25 +302,53 @@
 
 @media (max-width: 768px) {
   #home-events-list-section {
-    padding-bottom: 0px;
+    padding-bottom: 40px;
+    padding-right: 20px;
+  }
+
+  #events-searchbar-field {
+    max-width: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 0px;
+  }
+
+  #events-searchbar-field > form {
+    min-width: 65%;
+    margin-right: 10px;
+  }
+
+  #events-searchbar-placeholder {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #create-event-button {
+    margin-bottom: 10px;
   }
 
   #events-filters-box {
-    max-width: 70%;
+    max-width: 88%;
   }
 
   #events-filters-close-button {
     width: 12%;
     height: auto;
-    margin-right: 30px;
+    margin-right: 15px;
+  }
+
+  .event-filter {
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .event-filter ~ .event-filter {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .event-filter > p {
-    font-size: 2vmin;
+    font-size: 3.3vmin;
   }
 
   #events-list-section {
@@ -315,16 +361,20 @@
     width: 85%;
   }
 
+  .events-list-item-picture {
+    max-width: 25%;
+  }
+
   .events-list-item-date {
-    font-size: 2vmin;
+    font-size: 2.7vmin;
   }
 
   .events-list-item-title {
-    font-size: 2.8vmin;
+    font-size: 3.4vmin;
   }
 
   .events-list-item-location {
-    font-size: 2.2vmin;
+    font-size: 2.9vmin;
   }
 }
 </style>
