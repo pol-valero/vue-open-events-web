@@ -1,3 +1,106 @@
+<template>
+  <div id="chat-main">
+    <section id="container-chat-person">
+      <h4 id="chats-title">Friends</h4>
+
+      <button class="btn-chat">
+        <div class="chat-person">
+          <img
+            class="little-img"
+            src="../assets/default_img.png"
+            alt="logo"
+          />
+          <h5 class="name-padding">Ángel García</h5>
+        </div>
+        <hr />
+      </button>
+
+      <button class="btn-chat">
+        <div class="chat-person">
+          <img
+            class="little-img"
+            src="../assets/default_img.png"
+            alt="logo"
+          />
+          <h5 class="name-padding">Claudia Lajara</h5>
+        </div>
+        <hr />
+      </button>
+
+      <button class="btn-chat">
+        <div class="chat-person">
+          <img
+            class="little-img"
+            src="../assets/default_img.png"
+            alt="logo"
+          />
+          <h5 class="name-padding">Pol Valero</h5>
+        </div>
+        <hr />
+      </button>
+
+      <button class="btn-chat">
+        <div class="chat-person">
+          <img
+            class="little-img"
+            src="../assets/default_img.png"
+            alt="logo"
+          />
+          <h5 class="name-padding">Marc Geremias</h5>
+        </div>
+        <hr />
+      </button>
+    </section>
+
+    <section id="container-chat-interactive">
+      <div id="container-chat-person-selected">
+        <img
+          class="little-img"
+          src="../assets/default_img.png"
+          alt="logo"
+        />
+        <h5 id="name-big-padding">Marc Geremias</h5>
+      </div>
+
+      <div id="container-full-chat">
+        <div class="my-message">
+          <h4 class="message">Com vas amb web?</h4>
+          <h6>9:03</h6>
+        </div>
+
+        <div class="other-message">
+          <div>
+            <h4 class="message">Em falta 1 vista</h4>
+            <h6>9:32</h6>
+          </div>
+        </div>
+
+        <div class="my-message">
+          <h4 class="message">Jo estic acabant aquesta</h4>
+          <h6>9:54</h6>
+        </div>
+
+        <div class="my-message">
+          <h4 class="message">Recorda que s'entrega en poc</h4>
+          <h6>9:54</h6>
+        </div>
+
+        <div class="other-message">
+          <div>
+            <h4 class="message">Si si, demà ho acabo</h4>
+            <h6>9:32</h6>
+          </div>
+        </div>
+      </div>
+
+      <div id="container-chat-input">
+        <input type="text" placeholder="Message"/>
+        <button class="btn-chat"><i class="material-icons">send</i></button>
+      </div>
+    </section>
+  </div>
+</template>
+
 <style scoped>
 
 /* People */
@@ -135,6 +238,8 @@ input {
   width: 80%;
   padding: 5px;
   margin-right: 5px;
+  border: solid #e3e3e3 2px;
+  border-radius: 10px;
 }
 
 .message {
@@ -151,106 +256,3 @@ input {
   }
 }
 </style>
-
-<template>
-  <div id="chat-main">
-    <section id="container-chat-person">
-      <h4 id="chats-title">Friends</h4>
-
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Ángel García</h5>
-        </div>
-        <hr />
-      </button>
-
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Claudia Lajara</h5>
-        </div>
-        <hr />
-      </button>
-
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Pol Valero</h5>
-        </div>
-        <hr />
-      </button>
-
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Marc Geremias</h5>
-        </div>
-        <hr />
-      </button>
-    </section>
-
-    <section id="container-chat-interactive">
-      <div id="container-chat-person-selected">
-        <img
-          class="little-img"
-          src="../assets/default_img.png"
-          alt="logo"
-        />
-        <h5 id="name-big-padding">Marc Geremias</h5>
-      </div>
-
-      <div id="container-full-chat">
-        <div class="my-message">
-          <h4 class="message">Com vas amb web?</h4>
-          <h6>9:03</h6>
-        </div>
-
-        <div class="other-message">
-          <div>
-            <h4 class="message">Em falta 1 vista</h4>
-            <h6>9:32</h6>
-          </div>
-        </div>
-
-        <div class="my-message">
-          <h4 class="message">Jo estic acabant aquesta</h4>
-          <h6>9:54</h6>
-        </div>
-
-        <div class="my-message">
-          <h4 class="message">Recorda que s'entrega en poc</h4>
-          <h6>9:54</h6>
-        </div>
-
-        <div class="other-message">
-          <div>
-            <h4 class="message">Si si, demà ho acabo</h4>
-            <h6>9:32</h6>
-          </div>
-        </div>
-      </div>
-
-      <div id="container-chat-input">
-        <input type="text" />
-        <button class="btn-chat"><i class="material-icons">send</i></button>
-      </div>
-    </section>
-  </div>
-</template>

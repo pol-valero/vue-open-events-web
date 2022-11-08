@@ -8,6 +8,11 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
 html {
     height: 100vh;
 }
@@ -68,6 +73,7 @@ main {
     color:#fff;
     text-decoration: none;
     transition: 0.4s;
+    text-decoration: underline;
 }
 
 .std-padding {

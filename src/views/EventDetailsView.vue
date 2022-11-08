@@ -1,8 +1,62 @@
-<style scoped>
+<template>
 
-/*aside {
-  display: none;
-}*/
+  <div id="event-details-main">
+    
+    <section id = "title-container">   
+        <div id ="text-title">
+            <h2>Event title</h2>
+        </div>
+      
+        <div id = "share-button">
+            <button>SHARE!</button>
+        </div>
+        
+    </section>
+
+    <section id="details-container">
+
+      <div class="detail">
+        <img src="../assets/calendar-img.png" class="users-list-item-picture" />
+            <div class="detail-text">
+                <h4>DD/MM/YYYY</h4>
+                <text>Day, HH:MM - HH:MM</text>
+            </div>
+        </div>
+        
+        <div class="detail">
+          <img src="../assets/location-img.png" class="users-list-item-picture" />
+            <div class="detail-text">
+                <h4>Location name</h4>
+                <text>Address</text>
+            </div>
+        </div>
+
+        <div class="detail">
+          <img src="../assets/user-img.png" class="users-list-item-picture" />
+            <div class="detail-text">
+                <h4>Firstname Lastname</h4>
+                <text>Organizer</text>
+            </div>
+            <button id="follow-button">Follow</button>
+        </div>
+
+    </section>
+
+    <section id="event-description">
+      <h4>About event</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+    
+    </section>
+
+    <div id="participate-button">
+      <button>PARTICIPATE</button>
+    </div>
+
+  </div>
+    
+</template>
+
+<style scoped>
 
 #event-details-main{
   width: 100%;
@@ -189,63 +243,3 @@
 }
 
 </style>
-
-
-<template>
-
-  <div id="event-details-main">
-    
-    <section id = "title-container">
-       
-        <div id ="text-title">
-            <h2>Event title</h2>
-        </div>
-      
-        <div id = "share-button">
-            <button>SHARE!</button>
-        </div>
-        
-    </section>
-
-    <section id="details-container">
-
-      <div class="detail">
-        <img src="../assets/calendar-img.png" class="users-list-item-picture" />
-            <div class="detail-text">
-                <h4>DD/MM/YYYY</h4>
-                <text>Day, HH:MM - HH:MM</text>
-            </div>
-        </div>
-        
-        <div class="detail">
-          <img src="../assets/location-img.png" class="users-list-item-picture" />
-            <div class="detail-text">
-                <h4>Location name</h4>
-                <text>Address</text>
-            </div>
-        </div>
-
-        <div class="detail">
-          <img src="../assets/user-img.png" class="users-list-item-picture" />
-            <div class="detail-text">
-                <h4>Firstname Lastname</h4>
-                <text>Organizer</text>
-            </div>
-            <button id="follow-button">Follow</button>
-        </div>
-
-    </section>
-
-    <section id="event-description">
-      <h4>About event</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-    
-    </section>
-
-    <div id="participate-button">
-      <button>PARTICIPATE</button>
-    </div>
-
-  </div>
-    
-</template>

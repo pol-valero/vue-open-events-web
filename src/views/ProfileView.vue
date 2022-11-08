@@ -1,3 +1,65 @@
+<template>
+  <div id="profile-main">
+    <section id="container-full-profile">
+      <h1 id="profile-title">Profile</h1>
+
+      <div class="main-container">
+        <div class="profile-info">
+          <img
+            id="profile-img"
+            src="../assets/default_img.png"
+            alt="logo"
+          />
+        </div>
+
+        <div class="info-container">
+          <h2 class="info-title">Name</h2>
+          <p class="user-name">Firstname Lastname</p>
+          <h2 class="info-title">Email</h2>
+          <p class="user-name">email@email.com</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="container-full-profile">
+      <h1 id="statistics-title">Statistics</h1>
+
+      <div class="statistics-container">
+        <div class="info-component">
+          <h2>7.5</h2>
+          <h3>rating</h3>
+        </div>
+        <div class="info-component">
+          <h2>201</h2>
+          <h3>comments</h3>
+        </div>
+        <div class="info-component">
+          <h2>38%</h2>
+          <h3>of users behind you</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="container-full-profile">
+      <nav>
+        <RouterLink id="nav-timeline" to="/timeline">View timeline</RouterLink>
+      </nav>
+    </section>
+
+    <section id="container-full-profile">
+      <div class="button-container">
+        <!--TEMPORAL PER HTML I CSS-->
+          <a href="/login">
+            <button class="logout-button">LOGOUT</button>
+          </a>
+          <a href="/editProfile">
+            <button a class="edit-button">EDIT</button> 
+          </a>    
+      </div>
+    </section>
+  </div>
+</template>
+
 <style scoped>
 #profile-main {
   width: 100%;
@@ -65,9 +127,6 @@
   text-align: center;
 }
 
-.info-component h2 {
-}
-
 .info-component h3 {
   font-size: 15px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -90,63 +149,3 @@
   cursor: pointer;
 }
 </style>
-
-<template>
-  <div id="profile-main">
-    <section id="container-full-profile">
-      <h1 id="profile-title">Profile</h1>
-
-      <div class="main-container">
-        <div class="profile-info">
-          <img
-            id="profile-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-        </div>
-
-        <div class="info-container">
-          <h2 class="info-title">Name</h2>
-          <p class="user-name">Firstname Lastname</p>
-          <h2 class="info-title">Email</h2>
-          <p class="user-name">email@email.com</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="container-full-profile">
-      <h1 id="statistics-title">Statistics</h1>
-
-      <div class="statistics-container">
-        <div class="info-component">
-          <h2>7.5</h2>
-          <h3>rating</h3>
-        </div>
-        <div class="info-component">
-          <h2>201</h2>
-          <h3>comments</h3>
-        </div>
-        <div class="info-component">
-          <h2>38%</h2>
-          <h3>of users behind you</h3>
-        </div>
-      </div>
-    </section>
-
-    <section id="container-full-profile">
-      <nav>
-        <a id="nav-timeline" href="/timeline">View timeline</a>
-      </nav>
-    </section>
-
-    <section id="container-full-profile">
-      <div class="button-container">
-        <!--TEMPORAL PER HTML I CSS-->
-          <a href="/login">
-            <button class="logout-button">LOGOUT</button>
-          </a>    
-          <button a class="edit-button">EDIT</button>   
-      </div>
-    </section>
-  </div>
-</template>
