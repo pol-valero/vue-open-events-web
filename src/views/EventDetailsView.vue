@@ -48,8 +48,10 @@
     
     </section>
 
-    <div id="participate-button">
+    <div class="event-details-bottom-buttons">
+      <!-- One will be hidden with JS (edit only for event creator) -->
       <button>PARTICIPATE</button>
+      <button onclick="location.href='/editEvent';">EDIT</button>
     </div>
 
   </div>
@@ -164,12 +166,12 @@
   text-align: justify;
 }
 
-#participate-button {
+.event-details-bottom-buttons {
   margin-top: 100px;
   align-self: center;
 }
 
-#participate-button button {
+.event-details-bottom-buttons button {
     height: 100px;
     width: 240px;
     background-color: black;
@@ -225,12 +227,12 @@
   font-size: 14px;
 }
 
-#participate-button {
+#event-details-bottom-buttons {
   margin-top: 40px;
   align-self: center;
 }
 
-#participate-button button {
+#event-details-bottom-buttons button {
     height: 50px;
     width: 120px;
     background-color: black;
