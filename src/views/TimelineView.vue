@@ -90,7 +90,7 @@ aside{
 
 #container-timeline {
   margin: 25px 90px;
-  border-left: 5px solid #82cd47;
+  border-left: 5px solid #000;
   padding: 0 20px 0 30px;
   display: flex;
   flex-direction: column;
@@ -98,13 +98,12 @@ aside{
 }
 
 .event-timeline {
-  background-color: #82cd47;
+  background-color: #fafafa;
   padding: 10px 25px;
-  box-shadow: 5px 5px 5px #ddd;
+  box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   flex-basis: 30%;
   display: flex;
-  border: 2px solid #9247cd;
   line-height: 1.7;
   position: relative;
   margin-bottom: 10px;
@@ -112,6 +111,12 @@ aside{
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+img {
+  width: 130px;
+  height: 130px;
+  border-radius: 12px;
 }
 
 .img-date-title-timeline {
@@ -132,14 +137,14 @@ aside{
 .event-timeline::before {
   content: "";
   border-radius: 50%;
-  background-color: #9247cd;
-  border: 2px solid #82cd47;
+  background-color: #000;
+  border: 2px solid #000;
   display: block;
   width: 10px;
   height: 10px;
   position: absolute;
   top: 35px;
-  left: -41px;
+  left: -40px;
 }
 
 /*MEDIA QUERIES*/

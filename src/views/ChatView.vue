@@ -12,7 +12,6 @@
           />
           <h5 class="name-padding">Ángel García</h5>
         </div>
-        <hr />
       </button>
 
       <button class="btn-chat">
@@ -24,7 +23,6 @@
           />
           <h5 class="name-padding">Claudia Lajara</h5>
         </div>
-        <hr />
       </button>
 
       <button class="btn-chat">
@@ -36,7 +34,6 @@
           />
           <h5 class="name-padding">Pol Valero</h5>
         </div>
-        <hr />
       </button>
 
       <button class="btn-chat">
@@ -48,7 +45,6 @@
           />
           <h5 class="name-padding">Marc Geremias</h5>
         </div>
-        <hr />
       </button>
     </section>
 
@@ -109,10 +105,6 @@
   height: 40px;
 }
 
-hr {
-  width: 100%;
-}
-
 #chat-main {
   width: 100%;
   height: 100%;
@@ -121,18 +113,21 @@ hr {
 }
 
 #container-chat-person {
-  background-color: rgb(252, 244, 244);
+  background-color: #f8f8f8;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  z-index: -1;
 }
 
 .chat-person {
-  margin-top: 10px;
-  margin-bottom: 3px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-bottom: #ddd solid 2px;
 }
 
 #chats-title {
@@ -151,21 +146,27 @@ hr {
 }
 
 .btn-chat:hover {
-  color: #25d366;
-  transition: 0.4s;
+  color: #7722ff;
+  transition: 0.2s;
   cursor: pointer;
 }
+
+.btn-chat h5 {
+  cursor: pointer;
+}
+
 /* Messages */
 #container-chat-interactive {
-  background-color: #dcf8c6;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  z-index: -2;
 }
 
 #container-chat-person-selected {
-  background-color: #ece5dd;
+  background-color: #eee;
   padding: 10px 15px;
   display: flex;
   flex-direction: row;
@@ -185,10 +186,11 @@ hr {
 }
 
 .my-message h4 {
-  border: #25d366 12px solid;
   border-radius: 30px;
-  background-color: #25d366;
+  padding: 12px;
+  background-color: #7722ff;
   margin-bottom: 5px;
+  color: #fff;
 }
 
 .my-message h6 {
@@ -205,9 +207,9 @@ hr {
 }
 
 .other-message h4 {
-  border: #ece5dd 12px solid;
   border-radius: 30px;
-  background-color: #ece5dd;
+  padding: 12px;
+  background-color: #eee;
   margin-bottom: 4px;
 }
 
@@ -226,9 +228,8 @@ hr {
 }
 
 #container-chat-input {
-  background: #dcf8c6;
+  background: #eeeeff;
   padding: 10px;
-  margin-bottom: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
