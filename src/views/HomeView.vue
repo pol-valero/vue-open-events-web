@@ -134,6 +134,7 @@
   padding: 20px 30px 50px 20px;
 }
 
+/* Searchbar */
 #events-searchbar {
   display: flex;
   flex-wrap: wrap;
@@ -174,11 +175,11 @@
 
 #events-searchbar-field > button:hover {
   background-color: #5a5a5a;
-  transition: 0.4s;
 }
 
+/* Create event */
 #create-event-button {
-  padding: 7px;
+  padding: 8px;
   margin-bottom: 10px;
   background-color: rgb(119, 34, 255);
   color: #fff;
@@ -191,6 +192,7 @@
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Filters */
 /* Will be hidden until "Filters" button is pressed */
 #events-filters-box {
   background-color: black;
@@ -232,7 +234,7 @@
   margin-left: 10px;
 }
 
-.event-filter:hover {
+.event-filter:hover, .event-filter:hover > p {
   cursor: pointer;
   background-color: #bce7c8;
   transition: 0.4s;
@@ -242,8 +244,8 @@
   font-size: 1.6vmin;
 }
 
+/* Events list */
 #events-list-section {
-  /* Configure flex layout */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -298,23 +300,24 @@
 }
 
 .events-list-item-date {
-  /* Style of dates in events preview */
   font-size: 1.7vmin;
+  cursor: pointer;
 }
 
 .events-list-item-title {
-  /* Style of title in events preview */
   font-size: 2vmin;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .events-list-item-location {
-  /* Style of location in events preview */
   align-self: flex-end;
   margin-top: 10px;
   font-size: 1.9vmin;
+  cursor: pointer;
 }
 
+/* Adapt to device */
 @media (max-width: 768px) {
   #home-events-list-section {
     padding-bottom: 40px;

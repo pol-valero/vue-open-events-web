@@ -9,18 +9,19 @@ import { RouterLink, RouterView } from "vue-router";
         <img
           src="src\assets\logo_image.png"
           alt="logo"
+          class="header-img"
         />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
 
       <div id="user-photo">
-        <div id="user-and-profile">
-          <h2 class="title">USER</h2>
-          <RouterLink id="profile-btn" class="std-padding" to="/profile">Profile</RouterLink>
-        </div>
+        <RouterLink id="profile-btn" to="/profile">
+        <h2 class="title">USER</h2>
+        </RouterLink>
         <img
           src="src\assets\default_img.png"
           alt="user photo"
+          class="header-img"
         />
       </div>
     </div>
@@ -51,24 +52,24 @@ import { RouterLink, RouterView } from "vue-router";
       <div class="request-container">
         <p id="name-request">Ángel García</p>
         <div id="answer-buttons">
-          <button class="small-button">Accept</button>
-          <button class="small-button">Reject</button>
+          <button class="accept-button">Accept</button>
+          <button class="reject-button">Reject</button>
         </div>
       </div>
 
       <div class="request-container">
         <p id="name-request">Pol Valero</p>
         <div id="answer-buttons">
-          <button class="small-button">Accept</button>
-          <button class="small-button">Reject</button>
+          <button class="accept-button">Accept</button>
+          <button class="reject-button">Reject</button>
         </div>
       </div>
 
       <div id="last-request" class="request-container">
         <p id="name-request">Daniel Amo</p>
         <div id="answer-buttons">
-          <button class="small-button">Accept</button>
-          <button class="small-button">Reject</button>
+          <button class="accept-button">Accept</button>
+          <button class="reject-button">Reject</button>
         </div>
       </div>
     </aside>
