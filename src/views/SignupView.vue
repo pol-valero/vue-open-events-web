@@ -1,6 +1,37 @@
+<template>
+    <div id="image-box">
+        <img id="logo-image" src="src/assets/logo_image.png">
+    </div>
+
+    <div id="main-register-box">
+        <div class="register-box">
+            <form action="">
+                <h1>Signup</h1>
+                <input class="input-user-name" type="text" name="name" id="name" required placeholder="Name">            
+                <input class="input-user-lastname" type="text" name="last-name" id="last-name" required placeholder="Last Name">            
+                <input class="input-user-email input-margin" type="text" name="email" id="email" required placeholder="abc@email.com">            
+                <input class="input-password input-margin" type="password" name="password" id="password" required placeholder="Password">            
+                <input class="input-confirm-password input-margin" type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">            
+                <input class="input-birth-date input-margin" type="text" name="birth-date" id="birth-date" required placeholder="Birth date">            
+                <input class="input-profile-picture input-margin" type="text" name="profile-picture" id="profile-picture" required placeholder="Profile picture">            
+                
+                <div>
+                    <input id="button-sign-up" type="submit" value="Register">        
+                </div>
+                <div>
+                    <label>Already registered? </label>
+                    <RouterLink id="nav-signup" to="/login">Login</RouterLink>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
 <style scoped>
 
-
+.input-margin{
+    margin: 10px;
+}
 .register-box{
     display: flex;
     padding: 30px;    
@@ -128,22 +159,22 @@
 }
 
 #button-sign-up:hover {
-  background-color: #5a5a5a;
-  transition: 0.4s;
+    background-color: #5a5a5a;
+    transition: 0.4s;
 }
 
 
 #nav-signup{
-  border: none;
-  background: none;
-  text-decoration: none;
-  color: #25d366;
+    border: none;
+    background: none;
+    text-decoration: none;
+    color: #25d366;
 }
 
 #nav-signup:hover {
-  color: black;
-  transition: 0.4s;
-  cursor: pointer;
+    color: black;
+    transition: 0.4s;
+    cursor: pointer;
 }
 
 
@@ -174,30 +205,3 @@
 }
 
 </style>
-<template>
-    <div id="image-box">
-        <img id="logo-image" src="src/assets/logo_image.png">
-    </div>
-
-    <div id="main-register-box">
-        <div class="register-box">
-            <form action="">
-                <h1>Signup</h1>
-                <input class="input-user-name" type="text" name="name" id="name" required placeholder="Name">            
-                <input class="input-user-lastname" type="text" name="last-name" id="last-name" required placeholder="Last Name">            
-                <input class="input-user-email" type="text" name="email" id="email" required placeholder="abc@email.com">            
-                <input class="input-password" type="text" name="password" id="password" required placeholder="Password">            
-                <input class="input-confirm-password" type="text" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">            
-                <input class="input-birth-date" type="text" name="birth-date" id="birth-date" required placeholder="Birth date">            
-                <input class="input-profile-picture" type="text" name="profile-picture" id="profile-picture" required placeholder="Profile picture">            
-                <div>
-                    <input id="button-sign-up" type="submit" value="Register">        
-                </div>
-                <div>
-                    <label>Already registered? </label>
-                    <a id="nav-signup" href="/login">Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</template>

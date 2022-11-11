@@ -1,77 +1,3 @@
-<style scoped>
-
-aside{
-  display: none;
-}
-
-#container-timeline {
-  margin: 25px 90px;
-  border-left: 5px solid #82cd47;
-  padding: 0 20px 0 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.event-timeline {
-  background-color: #82cd47;
-  padding: 10px 25px;
-  box-shadow: 5px 5px 5px #ddd;
-  border-radius: 12px;
-  flex-basis: 30%;
-  display: flex;
-  border: 2px solid #9247cd;
-  line-height: 1.7;
-  position: relative;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.img-date-title-timeline {
-  display: flex;
-  flex-direction: row;
-}
-
-.date-title-timeline {
-  padding-bottom: 7px;
-  padding-top: 7px;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-}
-
-.event-timeline::before {
-  content: "";
-  border-radius: 50%;
-  background-color: #9247cd;
-  border: 2px solid #82cd47;
-  display: block;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 35px;
-  left: -41px;
-}
-
-/*MEDIA QUERIES*/
-@media (max-width: 768px) {
-  #container-timeline {
-    margin: 25px;
-    flex-wrap: wrap;
-  }
-
-  .event-timeline {
-    flex-wrap: wrap;
-    padding: 5px 12px;
-  }
-}
-</style>
-
 <template>
   <section id="container-timeline">
     <div class="event-timeline">
@@ -155,3 +81,77 @@ aside{
     </div>
   </section>
 </template>
+
+<style scoped>
+
+aside{
+  display: none;
+}
+
+#container-timeline {
+  margin: 25px 90px;
+  border-left: 5px solid #82cd47;
+  padding: 0 20px 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.event-timeline {
+  background-color: #82cd47;
+  padding: 10px 25px;
+  box-shadow: 5px 5px 5px #ddd;
+  border-radius: 12px;
+  flex-basis: 30%;
+  display: flex;
+  border: 2px solid #9247cd;
+  line-height: 1.7;
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.img-date-title-timeline {
+  display: flex;
+  flex-direction: row;
+}
+
+.date-title-timeline {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.event-timeline::before {
+  content: "";
+  border-radius: 50%;
+  background-color: #9247cd;
+  border: 2px solid #82cd47;
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 35px;
+  left: -41px;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 768px) {
+  #container-timeline {
+    margin: 25px;
+    flex-wrap: wrap;
+  }
+
+  .event-timeline {
+    flex-wrap: wrap;
+    padding: 5px 12px;
+  }
+}
+</style>

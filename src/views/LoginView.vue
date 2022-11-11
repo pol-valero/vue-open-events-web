@@ -1,5 +1,31 @@
+<template>
+    <div id="image-box">
+        <img id="logo-image" src="src/assets/logo_image.png">
+    </div>
+
+    <div id="main-login-box">
+        <div class="login-box">
+            <form action="">
+                <h1>Login</h1>
+                    <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
+                    <input class="icon_lock" type="password" name="password" id="password" required placeholder="Your password">        
+                <div>
+                    <input id="button-sign-in" type="submit" value="Sign In">        
+                </div>
+                <div>
+                    <label>Not registered? </label>
+                    <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
 <style scoped>
 
+input{
+    margin: 10px;
+}
 .login-box{
     padding: 30px;    
     width: 250px;
@@ -98,25 +124,3 @@
 }
 
 </style>
-<template>
-    <div id="image-box">
-        <img id="logo-image" src="src/assets/logo_image.png">
-    </div>
-
-    <div id="main-login-box">
-        <div class="login-box">
-            <form action="">
-                <h1>Login</h1>
-                    <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
-                    <input class="icon_lock" type="text" name="password" id="password" required placeholder="Your password">        
-                <div>
-                    <input id="button-sign-in" type="submit" value="Sign In">        
-                </div>
-                <div>
-                    <label>Not registered? </label>
-                    <a id="nav-login" href="/signup">Signup</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</template>

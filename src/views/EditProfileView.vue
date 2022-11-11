@@ -1,3 +1,60 @@
+<template>
+
+  <div id="edit-profile-main">
+    
+    <section id = "title-container">
+      <h2>Edit profile</h2>
+    </section>
+
+    <section id="forms-container">
+
+    <div class="dual-form">
+        <div class="single-form">
+          <h4 class="form-title">Name</h4>  
+          <input class="field"  type="text" placeholder="Firstname" />
+        </div>
+        <div class="single-form">
+          <h4 class="form-title">Lastname</h4>  
+          <input class="field"  type="text" placeholder="Lastname"  />
+        </div>
+    </div>
+      
+      <div class="single-form">
+        <h4 class="form-title">Email</h4>  
+        <input class="field"  type="text"  placeholder="Ex.- email@gmail.com"/>
+      </div>
+
+      <div class="single-form">
+        <h4 class="form-title">Password</h4>  
+        <input class="field"  type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
+      </div>
+
+      <div class="single-form">
+        <h4 class="form-title">Confirm password</h4>  
+        <input class="field" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
+      </div>
+
+      <div class="single-form">
+          <h4 class="form-title" >Birth date</h4>  
+          <input class="field"  type="date" />
+        </div>
+
+      <nav id="delete-account-link">
+        <RouterLink id="nav-delete-account" to="/">Delete account</RouterLink>
+
+      </nav>  
+
+      <div class="button-container">
+        <button onclick="location.href='/profile';" class="save-button">SAVE CHANGES</button>
+        <button onclick="location.href='/profile';" class="cancel-button">CANCEL</button>
+      </div>
+
+    </section>
+
+  </div>
+    
+</template>
+
 <style scoped>
 
 #edit-profile-main{
@@ -105,61 +162,3 @@
 }
 
 </style>
-
-
-
-<template>
-
-  <div id="edit-profile-main">
-    
-    <section id = "title-container">
-      <h2>Edit profile</h2>
-    </section>
-
-    <section id="forms-container">
-
-    <div class="dual-form">
-        <div class="single-form">
-          <h4 class="form-title">Name</h4>  
-          <input class="field"  type="text" placeholder="Firstname" />
-        </div>
-        <div class="single-form">
-          <h4 class="form-title">Lastname</h4>  
-          <input class="field"  type="text" placeholder="Lastname"  />
-        </div>
-    </div>
-      
-      <div class="single-form">
-        <h4 class="form-title">Email</h4>  
-        <input class="field"  type="text"  placeholder="Ex.- email@gmail.com"/>
-      </div>
-
-      <div class="single-form">
-        <h4 class="form-title">Password</h4>  
-        <input class="field"  type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
-      </div>
-
-      <div class="single-form">
-        <h4 class="form-title">Confirm password</h4>  
-        <input class="field" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
-      </div>
-
-      <div class="single-form">
-          <h4 class="form-title" >Birth date</h4>  
-          <input class="field"  type="date" />
-        </div>
-
-     <nav id="delete-account-link">
-        <a id="nav-delete-account" href="/">Delete account</a>
-      </nav>  
-
-      <div class="button-container">
-        <button onclick="location.href='/profile';" class="save-button">SAVE CHANGES</button>
-        <button onclick="location.href='/profile';" class="cancel-button">CANCEL</button>
-      </div>
-
-    </section>
-
-  </div>
-    
-</template>
