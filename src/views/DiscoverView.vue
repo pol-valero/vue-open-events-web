@@ -35,6 +35,7 @@
     </section>
     <!-- Users list -->
     <section id="users-list-section">
+      <RouterLink id="tmp-users-item-link" to="/profile">
       <article class="users-list-item">
         <img
           src="../assets/default_img.png"
@@ -43,6 +44,7 @@
         />
         <h2 class="users-list-item-title">User 1</h2>
       </article>
+      </RouterLink>
       <article class="users-list-item">
         <img
           src="../assets/default_img.png"
@@ -213,6 +215,18 @@
   flex-wrap: wrap;
 }
 
+/* Temporary style for ProfileView temporary link (will be done with JS later) */
+#tmp-users-item-link {
+  width: 45%;
+  text-decoration: none;
+}
+
+#tmp-users-item-link > .users-list-item {
+  width: 100%;
+  color: #000;
+}
+/* End of temporary style */
+
 .users-list-item {
   background: #fafafa;
   margin-top: 20px;
@@ -291,9 +305,20 @@
     flex-direction: column;
     align-items: center;
   }
+
+  /* Temporary style for ProfileView temporary link (will be done with JS later) */
+  #tmp-users-item-link {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* End of temporary style */
+
   .users-list-item {
     width: 85%;
   }
+
   .users-list-item-title {
     font-size: 3.5vmin;
   }

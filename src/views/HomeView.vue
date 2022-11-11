@@ -38,6 +38,8 @@
     </section>
     <!-- Events list -->
     <section id="events-list-section">
+      <!-- Temporary link to EventDetailsView -->
+      <RouterLink id="tmp-events-item-link" to="/eventDetails">
       <article class="events-list-item">
         <img
           src="../assets/default_img.png"
@@ -46,13 +48,11 @@
         />
         <div class="event-preview-content">
           <p class="events-list-item-date">20/11/2022 - 15:08</p>
-          <!-- Temporary link to be able to access "Event Details" view -->
-          <a href="/eventDetails">
-            <h2 class="events-list-item-title">House BBQ</h2>
-          </a>
+          <h2 class="events-list-item-title">House BBQ</h2>
           <p class="events-list-item-location">Alabama</p>
         </div>
       </article>
+      </RouterLink>
       <article class="events-list-item">
         <img
           src="../assets/default_img.png"
@@ -249,6 +249,21 @@
   flex-wrap: wrap;
 }
 
+/* Temporary style for link to EventDetailsView (will be done with JS later) */
+#tmp-events-item-link {
+  width: 45%;
+  text-decoration: none;
+}
+
+#tmp-events-item-link > .events-list-item {
+  width: 100%;
+}
+
+#tmp-events-item-link p, h2 {
+  color: #000;
+}
+/* End of temporary style */
+
 .events-list-item {
   background: #fafafa;
   margin-top: 10px;
@@ -356,6 +371,15 @@
     flex-direction: column;
     align-items: center;
   }
+
+  /* Temporary style for link to EventDetailsView (will be done with JS later) */
+  #tmp-events-item-link {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* End of temporary style */
 
   .events-list-item {
     width: 85%;

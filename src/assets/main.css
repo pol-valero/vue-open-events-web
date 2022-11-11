@@ -24,7 +24,7 @@ img {
 }
 
 body {
-    border: #1b1e23 10px solid;
+    /*border: #1b1e23 10px solid;*/
     min-height: 100vh;
     position: relative;
 }
