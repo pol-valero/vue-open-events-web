@@ -1,7 +1,5 @@
 <template>
-
   <div id="create-event-main">
-    
     <section id = "title-container">
       <h2>Create event</h2>
     </section>
@@ -53,15 +51,11 @@
         <button onclick="location.href='/eventDetails';" class="create-event-button">CREATE EVENT</button>
         <button onclick="location.href='/';" class="cancel-button">CANCEL</button>
       </div>
-      
     </section>
-
   </div>
-    
 </template>
 
 <style scoped>
-
 /*aside {
   display: none;
 }*/
@@ -84,13 +78,12 @@
 #forms-container {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 40%;
   align-self: center;
   padding: 30px;    
-  background-color: rgb(203, 208, 206);
+  background-color: #eeeeff;
   border-radius: 10px;
   margin-bottom: 50px;
-
 }
 
 .single-form{
@@ -118,8 +111,12 @@
   margin-top: 5px;
   padding-block: 7px;
   padding-inline: 7px;
-  border-color: black;
-  border-width: 2px;
+  border: #ccc solid 2px;
+}
+
+.textarea:focus {
+  border-color: #7722ff;
+  outline: none;
 }
 
 .button-container {
@@ -133,39 +130,59 @@
   background-color: black;
   color: white;
   border-radius: 10px;
+  border: none;
   height: 50px;
   width: 170px;
   margin: 10px;
+  transition: 0.1s;
 }
 
-.cancel-button{
+.create-event-button:hover {
+  background-color: #7722ff;
+  opacity: 1;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cancel-button {
   background-color: white;
-  color: black;
+  color: #7722ff;
   border-radius: 10px;
+  border: #7722ff solid 2px;
   height: 50px;
   width: 170px;
   margin: 10px;
+  transition: 0.1s;
+}
+
+.cancel-button:hover {
+  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .field {
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 7px;
-    margin-top: 5px;
-    padding-block: 7px;
-    padding-inline: 7px;
-    border-color: black;
+  background-size: 20px;
+  background-position: 8px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 7px;
+  margin-top: 5px;
+  padding-block: 7px;
+  padding-inline: 7px;
+  border: #ccc solid 2px;
 }
 
+.field:focus {
+  border-color: #7722ff;
+  outline: none;
+}
 
-@media (max-width: 650px) {
-
+@media (max-width: 768px) {
   #forms-container{
-    width: 180px;
+    width: 70%;
+    padding: 15px;
   }
 
+  .button-container {
+    margin: 10px;
+  }
 }
-
 </style>
