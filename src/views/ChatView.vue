@@ -55,7 +55,9 @@
           src="../assets/default_img.png"
           alt="logo"
         />
+        <RouterLink to="/profile" id="friend-profile-btn">
         <h5 id="name-big-padding">Marc Geremias</h5>
+        </RouterLink>
       </div>
 
       <div id="container-full-chat">
@@ -117,8 +119,8 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, 0.1);
-  z-index: -1;
+  box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .chat-person {
@@ -162,7 +164,6 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  z-index: -2;
 }
 
 #container-chat-person-selected {
@@ -173,10 +174,21 @@
   align-items: center;
 }
 
+/* Current chat header */
+#friend-profile-btn {
+  color: #000;
+  text-decoration: none;
+}
+
 #name-big-padding {
   padding-left: 10px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+#name-big-padding:hover {
+  color: #7722ff;
 }
 
 #container-full-chat {
