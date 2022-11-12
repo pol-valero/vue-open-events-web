@@ -60,7 +60,7 @@
   display: none;
 }*/
 
-#create-event-main{
+#create-event-main {
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -86,13 +86,13 @@
   margin-bottom: 50px;
 }
 
-.single-form{
+.single-form {
   display: flex;
   flex-direction: column;
   margin: 5px;
 }
 
-.dual-form{
+.dual-form {
   display: flex;
   flex-flow: row wrap;
 }

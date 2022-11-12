@@ -190,6 +190,12 @@ p, h1, h2, h3, h4, h5, h6 {
     cursor: default;
 }
 
+img {
+    width: 130px;
+    height: 130px;
+    border-radius: 12px;
+}
+
 button {
     cursor: pointer;
 }

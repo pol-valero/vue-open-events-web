@@ -113,12 +113,6 @@ aside{
   align-items: flex-end;
 }
 
-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 12px;
-}
-
 .img-date-title-timeline {
   display: flex;
   flex-direction: row;
