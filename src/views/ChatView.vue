@@ -5,44 +5,28 @@
 
       <button class="btn-chat">
         <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
+          <img class="little-img" src="../assets/default_img.png" alt="logo" />
           <h5 class="name-padding">Ángel García</h5>
         </div>
       </button>
 
       <button class="btn-chat">
         <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
+          <img class="little-img" src="../assets/default_img.png" alt="logo" />
           <h5 class="name-padding">Claudia Lajara</h5>
         </div>
       </button>
 
       <button class="btn-chat">
         <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
+          <img class="little-img" src="../assets/default_img.png" alt="logo" />
           <h5 class="name-padding">Pol Valero</h5>
         </div>
       </button>
 
       <button class="btn-chat">
         <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
+          <img class="little-img" src="../assets/default_img.png" alt="logo" />
           <h5 class="name-padding">Marc Geremias</h5>
         </div>
       </button>
@@ -50,13 +34,9 @@
 
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
-        <img
-          class="little-img"
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+        <img class="little-img" src="../assets/default_img.png" alt="logo" />
         <RouterLink to="/profile" id="friend-profile-btn">
-        <h5 id="name-big-padding">Marc Geremias</h5>
+          <h5 id="name-big-padding">Marc Geremias</h5>
         </RouterLink>
       </div>
 
@@ -92,7 +72,7 @@
       </div>
 
       <div id="container-chat-input">
-        <input type="text" placeholder="Message"/>
+        <input type="text" placeholder="Message" />
         <button class="btn-chat"><i class="material-icons">send</i></button>
       </div>
     </section>
@@ -100,7 +80,6 @@
 </template>
 
 <style scoped>
-
 /* People */
 .little-img {
   width: 40px;

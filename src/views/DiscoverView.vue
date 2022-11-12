@@ -36,14 +36,14 @@
     <!-- Users list -->
     <section id="users-list-section">
       <RouterLink id="tmp-users-item-link" to="/profile">
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 1</h2>
-      </article>
+        <article class="users-list-item">
+          <img
+            src="../assets/default_img.png"
+            alt="User's profile picture"
+            class="users-list-item-picture"
+          />
+          <h2 class="users-list-item-title">User 1</h2>
+        </article>
       </RouterLink>
       <article class="users-list-item">
         <img
@@ -106,7 +106,6 @@
 </template>
 
 <style scoped>
-
 #discover-users-list-main {
   padding: 20px 30px 50px 20px;
 }
@@ -273,7 +272,8 @@
     margin-bottom: 0px;
   }
 
-  #users-searchbar-field > form, button {
+  #users-searchbar-field > form,
+  button {
     margin-bottom: 10px;
   }
 

@@ -5,11 +5,7 @@
 
       <div class="main-container">
         <div class="profile-info">
-          <img
-            id="profile-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
+          <img id="profile-img" src="../assets/default_img.png" alt="logo" />
         </div>
 
         <div class="info-container">
@@ -49,12 +45,12 @@
     <section id="container-full-profile">
       <div class="button-container">
         <!--TEMPORAL PER HTML I CSS-->
-          <a href="/login">
-            <button class="logout-button">LOGOUT</button>
-          </a>
-          <a href="/editProfile">
-            <button a class="edit-button">EDIT</button> 
-          </a>    
+        <a href="/login">
+          <button class="logout-button">LOGOUT</button>
+        </a>
+        <a href="/editProfile">
+          <button a class="edit-button">EDIT</button>
+        </a>
       </div>
     </section>
   </div>

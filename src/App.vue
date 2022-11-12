@@ -6,17 +6,13 @@ import { RouterLink, RouterView } from "vue-router";
   <header>
     <div id="top-header">
       <div id="title-logo">
-        <img
-          src="src\assets\logo_image.png"
-          alt="logo"
-          class="header-img"
-        />
+        <img src="src\assets\logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
 
       <div id="user-photo">
         <RouterLink id="profile-btn" to="/profile">
-        <h2 class="title">USER</h2>
+          <h2 class="title">USER</h2>
         </RouterLink>
         <img
           src="src\assets\default_img.png"
@@ -26,17 +22,23 @@ import { RouterLink, RouterView } from "vue-router";
       </div>
     </div>
 
-  <div id="bot-header">
-    <input type="checkbox" id="check-box" />
+    <div id="bot-header">
+      <input type="checkbox" id="check-box" />
 
       <nav id="barra-nav">
-        <RouterLink id="barra-nav-home" class="std-padding" to="/">HOME</RouterLink>
-        <RouterLink id="barra-nav-discover" class="std-padding" to="/discover">DISCOVER</RouterLink>
-        <RouterLink id="barra-nav-friends" class="std-padding" to="/chat">FRIENDS</RouterLink>
-        
-        <label for="check-box" id="hide-menu">&#215</label>
+        <RouterLink id="barra-nav-home" class="std-padding" to="/"
+          >HOME</RouterLink
+        >
+        <RouterLink id="barra-nav-discover" class="std-padding" to="/discover"
+          >DISCOVER</RouterLink
+        >
+        <RouterLink id="barra-nav-friends" class="std-padding" to="/chat"
+          >FRIENDS</RouterLink
+        >
+
+        <label for="check-box" id="hide-menu"></label>
       </nav>
-      <label for="check-box" id="show-menu">&#8801</label>
+      <label for="check-box" id="show-menu"></label>
     </div>
   </header>
 
@@ -76,7 +78,7 @@ import { RouterLink, RouterView } from "vue-router";
   </div>
 
   <footer>
-    <h5 class="small-padding">Copyright &copy LaSalle 2022</h5>
+    <h5 class="small-padding">Copyright <span> LaSalle 2022</span></h5>
   </footer>
 </template>
 

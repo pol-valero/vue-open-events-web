@@ -40,18 +40,18 @@
     <section id="events-list-section">
       <!-- Temporary link to EventDetailsView -->
       <RouterLink id="tmp-events-item-link" to="/eventDetails">
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">20/11/2022 - 15:08</p>
-          <h2 class="events-list-item-title">House BBQ</h2>
-          <p class="events-list-item-location">Alabama</p>
-        </div>
-      </article>
+        <article class="events-list-item">
+          <img
+            src="../assets/default_img.png"
+            alt="Picture of the event"
+            class="events-list-item-picture"
+          />
+          <div class="event-preview-content">
+            <p class="events-list-item-date">20/11/2022 - 15:08</p>
+            <h2 class="events-list-item-title">House BBQ</h2>
+            <p class="events-list-item-location">Alabama</p>
+          </div>
+        </article>
       </RouterLink>
       <article class="events-list-item">
         <img
@@ -234,7 +234,8 @@
   margin-left: 10px;
 }
 
-.event-filter:hover, .event-filter:hover > p {
+.event-filter:hover,
+.event-filter:hover > p {
   cursor: pointer;
   background-color: #bce7c8;
   transition: 0.4s;
@@ -261,7 +262,8 @@
   width: 100%;
 }
 
-#tmp-events-item-link p, h2 {
+#tmp-events-item-link p,
+h2 {
   color: #000;
 }
 /* End of temporary style */
