@@ -80,7 +80,6 @@
 </template>
 
 <style scoped>
-
 img {
   width: 50%;
   height: fit-content;

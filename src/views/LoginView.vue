@@ -8,11 +8,29 @@
       <form action="">
         <h1 id="login-heading">Login</h1>
         <div id="signup-fields">
-          <input class="icon_message" type="text" name="email" id="login-email" required placeholder="abc@email.com">        
-          <input class="icon_lock" type="password" name="password" id="login-password" required placeholder="Your password">        
-          <input id="button-sign-in" type="submit" value="Sign In">        
+          <input
+            class="icon_message"
+            type="text"
+            name="email"
+            id="login-email"
+            required
+            placeholder="abc@email.com"
+          />
+          <input
+            class="icon_lock"
+            type="password"
+            name="password"
+            id="login-password"
+            required
+            placeholder="Your password"
+          />
+          <input
+            id="button-sign-in"
+            class="primary-button"
+            type="submit"
+            value="Sign In"
+          />
         </div>
-        
         <div id="signup-link-box">
           <label>Not registered? </label>
           <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
@@ -72,7 +90,7 @@ input:focus {
   background: url(src/assets/icon_message.svg) no-repeat scroll;
   background-size: 20px;
   background-position: 8px;
-  padding-left:30px;
+  padding-left: 30px;
   background-color: white;
   border-radius: 10px;
   margin-bottom: 5px;
@@ -82,7 +100,7 @@ input:focus {
 
 #image-box {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   padding-top: 40px;
   padding-bottom: 0px;
 }
@@ -93,21 +111,10 @@ input:focus {
 }
 
 #button-sign-in {
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  border: none;
   height: 30px;
   width: 170px;
   margin: 30px 10px 10px 10px;
-  cursor: pointer;
-  transition: 0.1s;
-}
-
-#button-sign-in:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 #nav-login {

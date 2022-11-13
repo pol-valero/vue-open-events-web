@@ -6,7 +6,7 @@
       </div>
 
       <div id="share-button">
-        <button>SHARE!</button>
+        <button class="primary-button">SHARE!</button>
       </div>
     </section>
 
@@ -33,7 +33,7 @@
           <h4>Firstname Lastname</h4>
           <text>Organizer</text>
         </div>
-        <button id="follow-button">Follow</button>
+        <button id="follow-button" class="secondary-button">Follow</button>
       </div>
     </section>
 
@@ -56,8 +56,10 @@
 
     <div class="event-details-bottom-buttons">
       <!-- One will be hidden with JS (edit only for event creator) -->
-      <button>PARTICIPATE</button>
-      <button onclick="location.href='/editEvent';">EDIT</button>
+      <button class="primary-button">PARTICIPATE</button>
+      <button class="primary-button" onclick="location.href='/editEvent';">
+        EDIT
+      </button>
     </div>
   </div>
 </template>
@@ -100,18 +102,7 @@
 #share-button button {
   height: 50px;
   width: 120px;
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  border: none;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
-  transition: 0.1s;
-}
-
-#share-button button:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
 }
 
 #details-container {
@@ -156,15 +147,7 @@
   height: 30px;
   width: 90px;
   font-size: 12px;
-  background-color: #f6f6f6;
-  color: #7722ff;
-  border-radius: 10px;
-  border: #7722ff solid 2px;
   margin-left: 50px;
-}
-
-#follow-button:hover {
-  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 #event-description {
@@ -190,19 +173,9 @@
 .event-details-bottom-buttons button {
   height: 80px;
   width: 210px;
-  background-color: black;
-  color: white;
   border-radius: 20px;
-  border: none;
   font-size: 22px;
   margin: 0px 10px 30px 10px;
-  transition: 0.1s;
-}
-
-.event-details-bottom-buttons button:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 530px) {

@@ -34,8 +34,7 @@
             <td><h3>of users behind</h3></td>
           </tr>
         </tbody>
-        <tfoot>
-        </tfoot>
+        <tfoot></tfoot>
       </table>
     </section>
 
@@ -49,10 +48,10 @@
       <div class="button-container">
         <!--TEMPORAL PER HTML I CSS-->
         <a href="/login">
-          <button class="logout-button">LOGOUT</button>
+          <button class="logout-button primary-button">LOGOUT</button>
         </a>
         <a href="/editProfile">
-          <button a class="edit-button">EDIT</button>
+          <button a class="edit-button secondary-button">EDIT</button>
         </a>
       </div>
     </section>
@@ -74,18 +73,19 @@
 
 #statistics-title {
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 #profile-img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 
 .main-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .info-container {
@@ -94,6 +94,10 @@
 
 .info-title {
   padding-bottom: 20px;
+  padding-top: 0px;
+}
+
+.info-title ~ .info-title {
   padding-top: 20px;
 }
 
@@ -108,37 +112,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 7px;
+  padding: 40px 7px;
 }
 
 .edit-button {
-  background-color: #fefefe;
-  border-radius: 10px;
-  border: #7722ff solid 2px;
-  color: #7722ff;
   padding: 10px;
   width: 100px;
-  transition: 0.1s;
-}
-
-.edit-button:hover {
-  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .logout-button {
   padding: 10px;
-  background-color: black;
-  color: #fff;
-  border-radius: 10px;
-  border: none;
   width: 100px;
-  transition: 0.1s;
-}
-
-.logout-button:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .info-component {
@@ -184,6 +168,34 @@ td {
 }
 
 @media (max-width: 530px) {
+  .main-container {
+    justify-content: flex-start;
+  }
+
+  .profile-info {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .info-container {
+    padding: 0px 20px;
+  }
+
+  .info-title {
+    padding-top: 20px;
+  }
+
+  #profile-img {
+    width: 120px;
+    height: 120px;
+    align-self: center;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
   td {
     padding-inline: 20px;
   }

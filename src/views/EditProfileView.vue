@@ -49,10 +49,10 @@
       </nav>
 
       <div class="button-container">
-        <button onclick="location.href='/profile';" class="save-button">
+        <button onclick="location.href='/profile';" class="save-button primary-button">
           SAVE CHANGES
         </button>
-        <button onclick="location.href='/profile';" class="cancel-button">
+        <button onclick="location.href='/profile';" class="cancel-button secondary-button">
           CANCEL
         </button>
       </div>
@@ -110,18 +110,12 @@
 }
 
 .save-button {
-  background-color: black;
-  color: white;
-  border-radius: 10px;
   height: 50px;
   width: 170px;
   margin: 10px;
 }
 
 .cancel-button {
-  background-color: white;
-  color: black;
-  border-radius: 10px;
   height: 50px;
   width: 170px;
   margin: 10px;

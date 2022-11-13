@@ -9,21 +9,67 @@
         <h1 id="signup-heading">Signup</h1>
         <div id="signup-fields-box">
           <div id="input-user-fullname">
-            <input id="input-user-name" type="text" name="name" required placeholder="Name">            
-            <input id="input-user-lastname" type="text" name="last-name" required placeholder="Last Name">            
+            <input
+              id="input-user-name"
+              type="text"
+              name="name"
+              required
+              placeholder="Name"
+            />
+            <input
+              id="input-user-lastname"
+              type="text"
+              name="last-name"
+              required
+              placeholder="Last Name"
+            />
           </div>
-          
-          <input id="input-user-email" type="text" name="email" required placeholder="abc@email.com">            
-          <input id="input-password" type="password" name="password" required placeholder="Password">            
-          <input id="input-confirm-password" type="password" name="confirm-password" required placeholder="Confirm Password">            
-          <input id="input-birth-date" type="text" name="birth-date" required placeholder="Birth date">            
-          <input id="input-profile-picture" type="text" name="profile-picture" required placeholder="Profile picture">            
+          <div id="remaining-fields">
+            <input
+              id="input-user-email"
+              type="text"
+              name="email"
+              required
+              placeholder="abc@email.com"
+            />
+            <input
+              id="input-password"
+              type="password"
+              name="password"
+              required
+              placeholder="Password"
+            />
+            <input
+              id="input-confirm-password"
+              type="password"
+              name="confirm-password"
+              required
+              placeholder="Confirm Password"
+            />
+            <input
+              id="input-birth-date"
+              type="text"
+              name="birth-date"
+              required
+              placeholder="Birth date"
+            />
+            <input
+              id="input-profile-picture"
+              type="text"
+              name="profile-picture"
+              required
+              placeholder="Profile picture"
+            />
+          </div>
         </div>
-              
         <div>
-          <input id="button-sign-up" type="submit" value="Register">        
+          <input
+            id="button-sign-up"
+            class="primary-button"
+            type="submit"
+            value="Register"
+          />
         </div>
-        
         <div id="login-link-box">
           <label>Already registered? </label>
           <RouterLink id="nav-signup" to="/login">Login</RouterLink>
@@ -42,7 +88,7 @@
   display: flex;
   flex-direction: column;
   padding: 30px 15px;    
-  width: 60%;
+  width: 70%;
   justify-content: center;
   text-align: center;
   background-color: #eeeeff;
@@ -56,7 +102,7 @@
 }
 
 #signup-fields-box {
-    padding: 30px 10px 10px 10px;
+  padding: 30px 10px 10px 10px;
 }
 
 #signup-fields-box input {
@@ -67,7 +113,6 @@
   background-position: 8px;
   padding: 7px 15px 7px 40px;
   margin-bottom: 15px;
-  width: 60%;
 }
 
 #signup-fields-box input:focus {
@@ -83,42 +128,40 @@
 
 #input-user-name {
   background: url(src/assets/icon_user.svg) no-repeat scroll left;
-  width: 33%;
 }
 
 #input-user-lastname {
   background: url(src/assets/icon_user.svg) no-repeat scroll;
-  width: 33%;
+}
+
+#remaining-fields {
+  display: flex;
+  flex-direction: column;
 }
 
 #input-user-email {
   background: url(src/assets/icon_message.svg) no-repeat scroll;
-  width: 89%;
 }
 
 #input-password {
   background: url(src/assets/icon_lock.svg) no-repeat scroll;
-  width: 89%;
 }
 
 #input-confirm-password {
   background: url(src/assets/icon_lock.svg) no-repeat scroll;
-  width: 89%;
 }
 
 #input-birth-date {
   background: url(src/assets/icon_calendar.svg) no-repeat scroll;
-  width: 89%;
 }
 
 #input-profile-picture {
   background: url(src/assets/icon_image.svg) no-repeat scroll;
-  width: 89%;
 }
 
 #image-box {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   padding-top: 40px;
   padding-bottom: 0px;
 }
@@ -129,21 +172,9 @@
 }
 
 #button-sign-up {
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  border: none;
   height: 30px;
   width: 170px;
   margin: 10px;
-  cursor: pointer;
-  transition: 0.1s;
-}
-
-#button-sign-up:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #login-link-box {
@@ -179,7 +210,7 @@
   }
 
   .register-box {
-    width: 70%;
+    width: 50%;
     padding: 30px;
   }
 
@@ -187,9 +218,18 @@
     font-size: default;
   }
 
+  #remaining-fields input {
+    width: auto;
+  }
+
   #input-user-fullname {
+    flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  #input-user-fullname input {
+    width: 33%;
   }
 }
 </style>

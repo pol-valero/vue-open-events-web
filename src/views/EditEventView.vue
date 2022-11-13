@@ -58,10 +58,10 @@
       </div>
 
       <div class="button-container">
-        <button onclick="location.href='/eventDetails';" class="save-button">
+        <button onclick="location.href='/eventDetails';" class="save-button primary-button">
           SAVE CHANGES
         </button>
-        <button onclick="location.href='/eventDetails';" class="cancel-button">
+        <button onclick="location.href='/eventDetails';" class="cancel-button secondary-button">
           CANCEL
         </button>
       </div>
@@ -138,34 +138,15 @@
 }
 
 .save-button {
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  border: none;
   height: 50px;
   width: 170px;
   margin: 10px;
-  transition: 0.1s;
-}
-
-.save-button:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .cancel-button {
-  background-color: white;
-  color: #7722ff;
-  border-radius: 10px;
-  border: #7722ff solid 2px;
   height: 50px;
   width: 170px;
   margin: 10px;
-}
-
-.cancel-button:hover {
-  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .field {
