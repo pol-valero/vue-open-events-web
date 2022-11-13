@@ -18,22 +18,25 @@
     </section>
 
     <section id="container-full-profile">
-      <h1 id="statistics-title">Statistics</h1>
-
-      <div class="statistics-container">
-        <div class="info-component">
-          <h2>7.5</h2>
-          <h3>rating</h3>
-        </div>
-        <div class="info-component">
-          <h2>201</h2>
-          <h3>comments</h3>
-        </div>
-        <div class="info-component">
-          <h2>38%</h2>
-          <h3>of users behind you</h3>
-        </div>
-      </div>
+      <table class="stats-table">
+        <thead>
+          <h1 id="statistics-title">Statistics</h1>
+        </thead>
+        <tbody>
+          <tr>
+            <td><h2>7.5</h2></td>
+            <td><h2>201</h2></td>
+            <td><h2>38%</h2></td>
+          </tr>
+          <tr>
+            <td><h3>rating</h3></td>
+            <td><h3>comments</h3></td>
+            <td><h3>of users behind</h3></td>
+          </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+      </table>
     </section>
 
     <section id="container-full-profile">
@@ -163,4 +166,27 @@
   transition: 0.2s;
   cursor: pointer;
 }
+
+h3{
+  font-weight: normal;
+}
+
+td{
+  padding-inline: 70px;
+}
+
+.stats-table{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media (max-width: 530px) {
+  td{
+    padding-inline: 20px;
+  }
+}
+
 </style>
