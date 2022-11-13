@@ -167,15 +167,15 @@
   cursor: pointer;
 }
 
-h3{
+h3 {
   font-weight: normal;
 }
 
-td{
+td {
   padding-inline: 70px;
 }
 
-.stats-table{
+.stats-table {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -184,9 +184,13 @@ td{
 }
 
 @media (max-width: 530px) {
-  td{
+  td {
     padding-inline: 20px;
   }
-}
 
+  h3 {
+    font-size: 14px;
+    padding-top: 5px;
+  }
+}
 </style>
