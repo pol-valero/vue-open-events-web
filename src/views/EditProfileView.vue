@@ -79,7 +79,7 @@
 #forms-container {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 180px;
   align-self: center;
   padding: 30px;
   background-color: #eeeeff;
@@ -138,9 +138,9 @@
   transition: 0.1s;
 }
 
-@media (max-width: 650px) {
+@media (min-width: 650px) {
   #forms-container {
-    width: 180px;
+    width: 40%;
   }
 }
 </style>
