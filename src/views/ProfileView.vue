@@ -119,8 +119,8 @@
 
 .button-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
   padding: 40px 7px;
 }
 
@@ -137,6 +137,7 @@
 .follow-button {
   padding: 10px;
   width: 100px;
+  margin: 15px 0px;
 }
 
 .info-component {
@@ -203,6 +204,15 @@ td {
 
   .info-title {
     padding-top: 0px;
+  }
+
+  .button-container {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .follow-button {
+    margin: 0px;
   }
 
   #profile-img {
