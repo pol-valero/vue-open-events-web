@@ -60,11 +60,11 @@
       <div class="button-container">
         <button
           onclick="location.href='/eventDetails';"
-          class="create-event-button"
+          class="create-event-button primary-button"
         >
           CREATE EVENT
         </button>
-        <button onclick="location.href='/';" class="cancel-button">
+        <button onclick="location.href='/';" class="cancel-button secondary-button">
           CANCEL
         </button>
       </div>
@@ -144,35 +144,15 @@
 }
 
 .create-event-button {
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  border: none;
   height: 50px;
   width: 170px;
   margin: 10px;
-  transition: 0.1s;
-}
-
-.create-event-button:hover {
-  background-color: #7722ff;
-  opacity: 1;
-  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .cancel-button {
-  background-color: white;
-  color: #7722ff;
-  border-radius: 10px;
-  border: #7722ff solid 2px;
   height: 50px;
   width: 170px;
   margin: 10px;
-  transition: 0.1s;
-}
-
-.cancel-button:hover {
-  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .field {

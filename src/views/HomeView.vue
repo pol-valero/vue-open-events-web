@@ -237,7 +237,7 @@
 .event-filter:hover,
 .event-filter:hover > p {
   cursor: pointer;
-  background-color: #bce7c8;
+  background-color: #d2d2ff;
   transition: 0.4s;
 }
 

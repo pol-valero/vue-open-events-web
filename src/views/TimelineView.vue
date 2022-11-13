@@ -68,7 +68,6 @@
 </template>
 
 <style scoped>
-
 img {
   width: 50%;
   height: fit-content;
@@ -139,10 +138,9 @@ img {
     padding: 5px 12px;
   }
 
-  h4{
+  h4 {
     font-size: 0.9em;
     font-weight: bold;
-
   }
 
   h5 {
