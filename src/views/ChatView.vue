@@ -90,7 +90,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #container-chat-person {
@@ -171,7 +171,7 @@
 }
 
 #container-full-chat {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -237,14 +237,15 @@ input {
 .message {
   font-size: 13px;
 }
+
 /*MEDIA QUERIES*/
-@media (max-width: 768px) {
-  #container-full-chat {
-    margin: 10px;
+@media(min-width: 768px) {
+  #chat-main {
+    flex-direction: row;
   }
 
-  #chat-main {
-    flex-direction: column;
+  #container-full-chat {
+    margin: 20px;
   }
 }
 </style>
