@@ -6,19 +6,22 @@
     <div id="main-register-box">
         <div class="register-box">
             <form action="">
-                <h1>Signup</h1>
-                <input class="input-user-name" type="text" name="name" id="name" required placeholder="Name">            
-                <input class="input-user-lastname" type="text" name="last-name" id="last-name" required placeholder="Last Name">            
-                <input class="input-user-email input-margin" type="text" name="email" id="email" required placeholder="abc@email.com">            
-                <input class="input-password input-margin" type="password" name="password" id="password" required placeholder="Password">            
-                <input class="input-confirm-password input-margin" type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">            
-                <input class="input-birth-date input-margin" type="text" name="birth-date" id="birth-date" required placeholder="Birth date">            
-                <input class="input-profile-picture input-margin" type="text" name="profile-picture" id="profile-picture" required placeholder="Profile picture">            
-                
+                <h1 id="signup-heading">Signup</h1>
+                <div id="signup-fields-box">
+                    <div id="input-user-fullname">
+                        <input id="input-user-name" type="text" name="name" required placeholder="Name">            
+                        <input id="input-user-lastname" type="text" name="last-name" required placeholder="Last Name">            
+                    </div>
+                    <input id="input-user-email" type="text" name="email" required placeholder="abc@email.com">            
+                    <input id="input-password" type="password" name="password" required placeholder="Password">            
+                    <input id="input-confirm-password" type="password" name="confirm-password" required placeholder="Confirm Password">            
+                    <input id="input-birth-date" type="text" name="birth-date" required placeholder="Birth date">            
+                    <input id="input-profile-picture" type="text" name="profile-picture" required placeholder="Profile picture">            
+                </div>
                 <div>
                     <input id="button-sign-up" type="submit" value="Register">        
                 </div>
-                <div>
+                <div id="login-link-box">
                     <label>Already registered? </label>
                     <RouterLink id="nav-signup" to="/login">Login</RouterLink>
                 </div>
@@ -28,180 +31,162 @@
 </template>
 
 <style scoped>
-
-.input-margin{
+.input-margin {
     margin: 10px;
 }
-.register-box{
+
+.register-box {
     display: flex;
+    flex-direction: column;
     padding: 30px;    
-    width: 500px;
-    justify-content:center;
+    width: 70%;
+    justify-content: center;
     text-align: center;
-    background-color: rgb(203, 208, 206);
+    background-color: #eeeeff;
     border-radius: 10px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 50px 0px 80px 0px;
 }
 
-#main-register-box{
+#main-register-box {
     display: flex;
-    justify-content:center;
+    justify-content: center;
 }
 
+#signup-fields-box {
+    padding: 30px 10px 10px 10px;
+}
 
-.input-user-name {
+#signup-fields-box input {
+    background-color: white;
+    border: #ccc solid 2px;
+    border-radius: 10px;
+    background-size: 20px;
+    background-position: 8px;
+    padding: 7px 15px 7px 40px;
+    margin-bottom: 15px;
+}
+
+#signup-fields-box input:focus {
+    border-color: #7722ff;
+    outline: none;
+}
+
+#input-user-fullname {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#input-user-name {
     background: url(src/assets/icon_user.svg) no-repeat scroll left;
-    background-size: 20px;
-    background-position: 8px;
-    padding-left:30px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 7px;
-    margin-top: 15px;
-    padding-block: 7px;
-    padding-inline: 40px;
-    margin-right: 10px;
+    width: 33%;
 }
 
-.input-user-lastname {
+#input-user-lastname {
     background: url(src/assets/icon_user.svg) no-repeat scroll;
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    padding-block: 7px;
-    padding-inline: 40px;
+    width: 33%;
 }
 
-.input-user-email {
+#input-user-email {
     background: url(src/assets/icon_message.svg) no-repeat scroll;
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    padding-block: 7px;
-    width: 395px;
-    padding-inline: 40px;
+    width: 89%;
 }
 
-.input-password{
+#input-password {
     background: url(src/assets/icon_lock.svg) no-repeat scroll;
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    padding-block: 7px;
-    width: 395px;
-    padding-inline: 40px;
+    width: 89%;
 }
 
-.input-confirm-password{
+#input-confirm-password {
     background: url(src/assets/icon_lock.svg) no-repeat scroll;
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    padding-block: 7px;
-    width: 395px;
-    padding-inline: 40px;
+    width: 89%;
 }
 
-.input-birth-date{
+#input-birth-date {
     background: url(src/assets/icon_calendar.svg) no-repeat scroll;
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    padding-block: 7px;
-    width: 395px;
-    padding-inline: 40px;
+    width: 89%;
 }
 
-.input-profile-picture{
+#input-profile-picture {
     background: url(src/assets/icon_image.svg) no-repeat scroll;
-    background-size: 20px;
-    background-position: 8px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    padding-block: 7px;
-    width: 395px;
-    padding-inline: 40px;
+    width: 89%;
 }
 
-#image-box{
+#image-box {
     display: flex;
     justify-content:center;
     padding-top: 80px;
     padding-bottom: 20px;
 }
 
-#logo-image{
-    width: 100px;
-    height: 100px;
-    scale: 2;
+#logo-image {
+    width: 150px;
+    height: 150px;
 }
 
-#button-sign-up{
+#button-sign-up {
     background-color: black;
     color: white;
     border-radius: 10px;
+    border: none;
     height: 30px;
     width: 170px;
     margin: 10px;
-    
+    cursor: pointer;
+    transition: 0.1s;
 }
 
 #button-sign-up:hover {
-    background-color: #5a5a5a;
-    transition: 0.4s;
+    background-color: #7722ff;
+    opacity: 1;
+    box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
+#login-link-box {
+    padding-top: 10px;
+}
 
-#nav-signup{
+#nav-signup {
     border: none;
     background: none;
-    text-decoration: none;
-    color: #25d366;
+    text-decoration: underline;
+    color: #7722ff;
+    cursor: pointer;
 }
 
 #nav-signup:hover {
     color: black;
-    transition: 0.4s;
-    cursor: pointer;
+    transition: 0.2s;
 }
-
-
 
 @media (max-width: 530px) {
-    .input-user-name {
-        margin-right: 0px;
-    }
-
-    .register-box{
-        width: 220px;
-    }
-    
-    #image-box{
+    #image-box {
         padding-bottom: 0px;
+        padding-top: 40px;
     }
     
-    .input-user-email ,
-    .input-password ,
-    .input-confirm-password ,
-    .input-birth-date ,
-    .input-profile-picture
-    {
-        width: 150px;
-        padding-inline: 40px;
+    #logo-image {
+        width: 100px;
+        height: 100px;
     }
 
-}
+    .register-box {
+        width: 60%;
+        padding: 30px 15px;
+    }
 
+    #signup-heading {
+        font-size: 26px;
+    }
+
+    #signup-fields-box input {
+        width: 60%;
+    }
+
+    #input-user-fullname {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+}
 </style>

@@ -6,13 +6,13 @@
     <div id="main-login-box">
         <div class="login-box">
             <form action="">
-                <h1>Login</h1>
-                    <input class="icon_message" type="text" name="email" id="email" required placeholder="abc@email.com">        
-                    <input class="icon_lock" type="password" name="password" id="password" required placeholder="Your password">        
-                <div>
+                <h1 id="login-heading">Login</h1>
+                <div id="signup-fields">
+                    <input class="icon_message" type="text" name="email" id="login-email" required placeholder="abc@email.com">        
+                    <input class="icon_lock" type="password" name="password" id="login-password" required placeholder="Your password">        
                     <input id="button-sign-in" type="submit" value="Sign In">        
                 </div>
-                <div>
+                <div id="signup-link-box">
                     <label>Not registered? </label>
                     <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
                 </div>
@@ -22,26 +22,37 @@
 </template>
 
 <style scoped>
-
-input{
+input {
     margin: 10px;
+    border: #ccc solid 2px;
 }
-.login-box{
+
+input:focus {
+    border-color: #7722ff;
+    outline: none;
+}
+
+#signup-link-box {
+    padding: 10px;
+}
+
+#signup-fields {
+    margin-top: 20px;
+}
+
+.login-box {
     padding: 30px;    
     width: 250px;
-    margin-top: 50px;
     text-align: center;
-    background-color: rgb(203, 208, 206);
+    background-color: #eeeeff;
     border-radius: 10px;
-    margin: 50px;
+    margin: 50px 50px 80px 50px;
 }
 
-#main-login-box{
+#main-login-box {
     display: flex;
     justify-content:center;
-    
 }
-
 
 .icon_message {
     background: url(src/assets/icon_lock.svg) no-repeat scroll left;
@@ -68,59 +79,66 @@ input{
     padding-inline: 40px;
 }
 
-#image-box{
+#image-box {
     display: flex;
     justify-content:center;
     padding-top: 80px;
     padding-bottom: 20px;
 }
 
-#logo-image{
-    width: 100px;
-    height: 100px;
-    scale: 2;
+#logo-image {
+    width: 150px;
+    height: 150px;
 }
 
-#button-sign-in{
+#button-sign-in {
     background-color: black;
     color: white;
     border-radius: 10px;
+    border: none;
     height: 30px;
     width: 170px;
-    margin: 10px;
-    
+    margin: 30px 10px 10px 10px;
+    cursor: pointer;
+    transition: 0.1s;
 }
 
 #button-sign-in:hover {
-  background-color: #5a5a5a;
-  transition: 0.4s;
+  background-color: #7722ff;
+  opacity: 1;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-#nav-login{
+#nav-login {
   border: none;
   background: none;
-  text-decoration: none;
-  color: #25d366;
+  text-decoration: underline;
+  color: #7722ff;
+  cursor: pointer;
 }
 
 #nav-login:hover {
   color: black;
   transition: 0.4s;
-  cursor: pointer;
 }
 
 @media (max-width: 530px) {
-    .login-box{
-        padding: 15px;    
+    .login-box {
+        padding: 30px 15px;
     }
-    #logo-image{
-        scale: 1.2;
+
+    #logo-image {
+        width: 100px;
+        height: 100px;
     }
-    #image-box{
+
+    #image-box {
         padding-top: 40px;
         padding-bottom: 0px;
     }
-    
-}
 
+    #login-heading {
+        font-size: 26px;
+    }
+}
 </style>
