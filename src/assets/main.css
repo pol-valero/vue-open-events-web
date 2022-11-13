@@ -114,18 +114,18 @@ header {
 }
 
 #check-box:checked ~ #barra-nav {
-    right: 0;
+  right: 0;
 }
 
 /* Middle */
 #center-screen {
   display: flex;
-    flex-direction: column;
-    align-content: stretch;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    padding-bottom: 50px;
+  flex-direction: column;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding-bottom: 50px;
 }
 
 /* Main */
@@ -387,13 +387,13 @@ button:hover {
 }
 
 .filter > p {
-    font-size: 3.3vmin;
+  font-size: 3.3vmin;
 }
 
 .filters-close-button {
-    width: 12%;
-    height: auto;
-    margin-right: 15px;
+  width: 12%;
+  height: auto;
+  margin-right: 15px;
   align-self: center;
   padding: 2px;
 }
