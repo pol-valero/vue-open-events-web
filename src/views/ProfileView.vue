@@ -5,11 +5,7 @@
 
       <div class="main-container">
         <div class="profile-info">
-          <img
-            id="profile-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
+          <img id="profile-img" src="../assets/default_img.png" alt="logo" />
         </div>
 
         <div class="info-container">
@@ -22,22 +18,24 @@
     </section>
 
     <section id="container-full-profile">
-      <h1 id="statistics-title">Statistics</h1>
-
-      <div class="statistics-container">
-        <div class="info-component">
-          <h2>7.5</h2>
-          <h3>rating</h3>
-        </div>
-        <div class="info-component">
-          <h2>201</h2>
-          <h3>comments</h3>
-        </div>
-        <div class="info-component">
-          <h2>38%</h2>
-          <h3>of users behind you</h3>
-        </div>
-      </div>
+      <table class="stats-table">
+        <thead>
+          <h1 id="statistics-title">Statistics</h1>
+        </thead>
+        <tbody>
+          <tr>
+            <td><h2>7.5</h2></td>
+            <td><h2>201</h2></td>
+            <td><h2>38%</h2></td>
+          </tr>
+          <tr>
+            <td><h3>rating</h3></td>
+            <td><h3>comments</h3></td>
+            <td><h3>of users behind</h3></td>
+          </tr>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
     </section>
 
     <section id="container-full-profile">
@@ -49,12 +47,12 @@
     <section id="container-full-profile">
       <div class="button-container">
         <!--TEMPORAL PER HTML I CSS-->
-          <a href="/login">
-            <button class="logout-button">LOGOUT</button>
-          </a>
-          <a href="/editProfile">
-            <button a class="edit-button">EDIT</button> 
-          </a>    
+        <a href="/login">
+          <button class="logout-button primary-button">LOGOUT</button>
+        </a>
+        <a href="/editProfile">
+          <button a class="edit-button secondary-button">EDIT</button>
+        </a>
       </div>
     </section>
   </div>
@@ -75,32 +73,45 @@
 
 #statistics-title {
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 #profile-img {
-  width: 250px;
-  height: 250px;
+  width: 120px;
+  height: 120px;
+  align-self: center;
 }
 
 .main-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .info-container {
-  padding-left: 50px;
+  padding: 0px 20px;
 }
+
 .info-title {
   padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.info-title ~ .info-title {
   padding-top: 20px;
 }
 
 .statistics-container {
   display: flex;
   flex-direction: row;
-
   justify-content: space-around;
   padding: 20px;
 }
@@ -108,19 +119,18 @@
 .button-container {
   display: flex;
   flex-direction: row;
-
   justify-content: space-evenly;
-  padding: 7px;
+  padding: 40px 7px;
 }
 
 .edit-button {
   padding: 10px;
+  width: 100px;
 }
 
 .logout-button {
   padding: 10px;
-  background-color: black;
-  color: aliceblue;
+  width: 100px;
 }
 
 .info-component {
@@ -144,8 +154,67 @@
 }
 
 #nav-timeline:hover {
-  color: #25d366;
-  transition: 0.4s;
+  color: #7722ff;
+  transition: 0.2s;
   cursor: pointer;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+td {
+  padding-inline: 20px;
+}
+
+.stats-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media (min-width: 530px) {
+  .main-container {
+    justify-content: initial;
+  }
+
+  .profile-info {
+    display: block;
+    width: auto;
+  }
+
+  .info-container {
+    padding: 0px 0px 0px 50px;
+  }
+
+  .info-title {
+    padding-top: 0px;
+  }
+
+  #profile-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  h2 {
+    font-size: revert;
+  }
+
+  td {
+    padding-inline: 70px;
+  }
+
+  h3 {
+    font-size: revert;
+    padding-top: 0px;
+  }
 }
 </style>

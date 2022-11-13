@@ -1,110 +1,107 @@
 <template>
   <section id="container-timeline">
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+    <ul>
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">13/11/2022 - 21:00</h5>
-          <h4 class="event-title">GP F1 BRAZIL</h4>
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">13/11/2022 - 21:00</h5>
+              <h4 class="event-title">GP F1 BRAZIL</h4>
+            </div>
+          </div>
+
+          <h5 class="event-location">Sao Paulo</h5>
         </div>
-      </div>
+      </li>
 
-      <h5 class="event-location">Sao Paulo</h5>
-    </div>
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">23/11/2022 - 17:00</h5>
+              <h4 class="event-title">Spain - Costa Rica</h4>
+            </div>
+          </div>
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">23/11/2022 - 17:00</h5>
-          <h4 class="event-title">Spain - Costa Rica</h4>
+          <h5 class="event-location">Qatar</h5>
         </div>
-      </div>
+      </li>
 
-      <h5 class="event-location">Qatar</h5>
-    </div>
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">18/12/2022 - 16:00</h5>
+              <h4 class="event-title">Final Mundial Qatar</h4>
+            </div>
+          </div>
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">18/12/2022 - 16:00</h5>
-          <h4 class="event-title">Final Mundial Qatar</h4>
+          <h5 class="event-location">Qatar</h5>
         </div>
-      </div>
+      </li>
 
-      <h5 class="event-location">Qatar</h5>
-    </div>
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">1/1/2023 - 23:00</h5>
+              <h4 class="event-title">New year party</h4>
+            </div>
+          </div>
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">1/1/2023 - 23:00</h5>
-          <h4 class="event-title">New year party</h4>
+          <h5 class="event-location">Costa Breve</h5>
         </div>
-      </div>
+      </li>
 
-      <h5 class="event-location">Costa Breve</h5>
-    </div>
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">12/2/2023 - 8:00</h5>
+              <h4 class="event-title">LSSkying</h4>
+            </div>
+          </div>
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">12/2/2023 - 8:00</h5>
-          <h4 class="event-title">LSSkying</h4>
+          <h5 class="event-location">La Molina</h5>
         </div>
-      </div>
-
-      <h5 class="event-location">La Molina</h5>
-    </div>
+      </li>
+    </ul>
   </section>
 </template>
 
 <style scoped>
-
-aside{
-  display: none;
+img {
+  width: 50%;
+  height: fit-content;
 }
 
 #container-timeline {
-  margin: 25px 90px;
-  border-left: 5px solid #82cd47;
+  margin: 25px;
+  border-left: 5px solid #000;
   padding: 0 20px 0 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .event-timeline {
-  background-color: #82cd47;
-  padding: 10px 25px;
-  box-shadow: 5px 5px 5px #ddd;
+  background-color: #fafafa;
+  padding: 5px 12px;
+  box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   flex-basis: 30%;
   display: flex;
-  border: 2px solid #9247cd;
   line-height: 1.7;
   position: relative;
   margin-bottom: 10px;
@@ -112,6 +109,7 @@ aside{
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .img-date-title-timeline {
@@ -132,26 +130,49 @@ aside{
 .event-timeline::before {
   content: "";
   border-radius: 50%;
-  background-color: #9247cd;
-  border: 2px solid #82cd47;
+  background-color: #000;
+  border: 2px solid #000;
   display: block;
   width: 10px;
   height: 10px;
   position: absolute;
   top: 35px;
-  left: -41px;
+  left: -40px;
+}
+
+h4 {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 0.7em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*MEDIA QUERIES*/
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #container-timeline {
-    margin: 25px;
-    flex-wrap: wrap;
+    margin: 25px 90px;
+    flex-wrap: nowrap;
   }
 
   .event-timeline {
-    flex-wrap: wrap;
-    padding: 5px 12px;
+    flex-wrap: nowrap;
+    padding: 10px 25px;
+  }
+
+  h4 {
+    font-size: default;
+  }
+
+  h5 {
+    font-size: default;
   }
 }
 </style>

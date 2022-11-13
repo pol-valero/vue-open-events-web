@@ -2,64 +2,66 @@
   <div id="chat-main">
     <section id="container-chat-person">
       <h4 id="chats-title">Friends</h4>
+      <ul>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
+              <h5 class="name-padding">Ángel García</h5>
+            </div>
+          </button>
+        </li>
 
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Ángel García</h5>
-        </div>
-        <hr />
-      </button>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
+              <h5 class="name-padding">Claudia Lajara</h5>
+            </div>
+          </button>
+        </li>
 
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Claudia Lajara</h5>
-        </div>
-        <hr />
-      </button>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
+              <h5 class="name-padding">Pol Valero</h5>
+            </div>
+          </button>
+        </li>
 
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Pol Valero</h5>
-        </div>
-        <hr />
-      </button>
-
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img
-            class="little-img"
-            src="../assets/default_img.png"
-            alt="logo"
-          />
-          <h5 class="name-padding">Marc Geremias</h5>
-        </div>
-        <hr />
-      </button>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
+              <h5 class="name-padding">Marc Geremias</h5>
+            </div>
+          </button>
+        </li>
+      </ul>
     </section>
-
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
-        <img
-          class="little-img"
-          src="../assets/default_img.png"
-          alt="logo"
-        />
-        <h5 id="name-big-padding">Marc Geremias</h5>
+        <img class="little-img" src="../assets/default_img.png" alt="logo" />
+        <RouterLink to="/profile" id="friend-profile-btn">
+          <h5 id="name-big-padding">Marc Geremias</h5>
+        </RouterLink>
       </div>
 
       <div id="container-full-chat">
@@ -94,7 +96,7 @@
       </div>
 
       <div id="container-chat-input">
-        <input type="text" placeholder="Message"/>
+        <input type="text" placeholder="Message" />
         <button class="btn-chat"><i class="material-icons">send</i></button>
       </div>
     </section>
@@ -102,37 +104,35 @@
 </template>
 
 <style scoped>
-
 /* People */
 .little-img {
   width: 40px;
   height: 40px;
 }
 
-hr {
-  width: 100%;
-}
-
 #chat-main {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
-}
-
-#container-chat-person {
-  background-color: rgb(252, 244, 244);
-  padding: 15px;
-  display: flex;
   flex-direction: column;
 }
 
+#container-chat-person {
+  background-color: #f8f8f8;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
 .chat-person {
-  margin-top: 10px;
-  margin-bottom: 3px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-bottom: #ddd solid 2px;
 }
 
 #chats-title {
@@ -151,13 +151,18 @@ hr {
 }
 
 .btn-chat:hover {
-  color: #25d366;
-  transition: 0.4s;
+  color: #7722ff;
+  transition: 0.2s;
   cursor: pointer;
 }
+
+.btn-chat h5 {
+  cursor: pointer;
+}
+
 /* Messages */
 #container-chat-interactive {
-  background-color: #dcf8c6;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -165,30 +170,42 @@ hr {
 }
 
 #container-chat-person-selected {
-  background-color: #ece5dd;
+  background-color: #eee;
   padding: 10px 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+/* Current chat header */
+#friend-profile-btn {
+  color: #000;
+  text-decoration: none;
+}
+
 #name-big-padding {
   padding-left: 10px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+#name-big-padding:hover {
+  color: #7722ff;
 }
 
 #container-full-chat {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
 }
 
 .my-message h4 {
-  border: #25d366 12px solid;
   border-radius: 30px;
-  background-color: #25d366;
+  padding: 12px;
+  background-color: #7722ff;
   margin-bottom: 5px;
+  color: #fff;
 }
 
 .my-message h6 {
@@ -205,9 +222,9 @@ hr {
 }
 
 .other-message h4 {
-  border: #ece5dd 12px solid;
   border-radius: 30px;
-  background-color: #ece5dd;
+  padding: 12px;
+  background-color: #eee;
   margin-bottom: 4px;
 }
 
@@ -226,9 +243,8 @@ hr {
 }
 
 #container-chat-input {
-  background: #dcf8c6;
+  background: #eeeeff;
   padding: 10px;
-  margin-bottom: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -245,14 +261,21 @@ input {
 .message {
   font-size: 13px;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 /*MEDIA QUERIES*/
-@media (max-width: 768px) {
-  #container-full-chat {
-    margin: 10px;
+@media (min-width: 768px) {
+  #chat-main {
+    flex-direction: row;
   }
 
-  #chat-main {
-    flex-direction: column;
+  #container-full-chat {
+    margin: 20px;
   }
 }
 </style>

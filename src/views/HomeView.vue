@@ -3,16 +3,17 @@
     <!-- Events header -->
     <h1 id="events-list-header">Events</h1>
     <!-- Searchbar -->
-    <section id="events-searchbar">
-      <article id="events-searchbar-field">
+    <section id="events-searchbar" class="searchbar">
+      <article id="events-searchbar-field" class="searchbar-field">
         <form action="">
           <input
             id="events-searchbar-placeholder"
+            class="searchbar-placeholder"
             type="text"
             placeholder="Search"
           />
         </form>
-        <button>Filters</button>
+        <button class="filters-show-button">Filters</button>
       </article>
       <!-- Create event button -->
       <a href="/createEvent">
@@ -20,39 +21,40 @@
       </a>
     </section>
     <!-- Filters selector -->
-    <section id="events-filters-box">
+    <section id="events-filters-box" class="filters-box">
       <img
         src="../assets/filter-icon.svg"
         alt="Close filters"
         id="events-filters-close-button"
+        class="filters-close-button"
       />
-      <article class="event-filter">
+      <article class="filter">
         <p class="event-filter-text">Name</p>
       </article>
-      <article class="event-filter">
+      <article class="filter">
         <p class="event-filter-text">Date</p>
       </article>
-      <article class="event-filter">
+      <article class="filter">
         <p class="event-filter-text">Location</p>
       </article>
     </section>
     <!-- Events list -->
     <section id="events-list-section">
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">20/11/2022 - 15:08</p>
-          <!-- Temporary link to be able to access "Event Details" view -->
-          <a href="/eventDetails">
+      <!-- Temporary link to EventDetailsView -->
+      <RouterLink id="tmp-events-item-link" to="/eventDetails">
+        <article class="events-list-item">
+          <img
+            src="../assets/default_img.png"
+            alt="Picture of the event"
+            class="events-list-item-picture"
+          />
+          <div class="event-preview-content">
+            <p class="events-list-item-date">20/11/2022 - 15:08</p>
             <h2 class="events-list-item-title">House BBQ</h2>
-          </a>
-          <p class="events-list-item-location">Alabama</p>
-        </div>
-      </article>
+            <p class="events-list-item-location">Alabama</p>
+          </div>
+        </article>
+      </RouterLink>
       <article class="events-list-item">
         <img
           src="../assets/default_img.png"
@@ -131,54 +133,26 @@
 
 <style scoped>
 #home-events-list-section {
-  padding: 20px 30px 50px 20px;
+  padding: 20px 20px 40px 20px;
 }
 
-#events-searchbar {
-  display: flex;
+/* Searchbar */
+#events-searchbar-field {
+  max-width: 100%;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
-  width: inherit;
-  margin-top: 10px;
-}
-
-#events-searchbar-field {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 80%;
-  margin-right: 40px;
-  margin-bottom: 10px;
+  margin-right: 0px;
 }
 
 #events-searchbar-field > form {
-  min-width: 85%;
-  margin-right: 40px;
+  min-width: 65%;
+  margin-right: 10px;
 }
 
-#events-searchbar-placeholder {
-  padding: 5px;
-  border: solid #e3e3e3 2px;
-  border-radius: 10px;
-  width: 100%;
-}
-
-#events-searchbar-field > button {
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 7px;
-}
-
-#events-searchbar-field > button:hover {
-  background-color: #5a5a5a;
-  transition: 0.4s;
-}
-
+/* Create event */
 #create-event-button {
-  padding: 7px;
+  padding: 8px;
   margin-bottom: 10px;
   background-color: rgb(119, 34, 255);
   color: #fff;
@@ -191,68 +165,44 @@
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Will be hidden until "Filters" button is pressed */
+/* Filters */
+/* Will be hidden until "Filters" button is pressed
 #events-filters-box {
-  background-color: black;
-  margin-bottom: 20px;
-  padding: 5px 15px 5px 15px;
-  border-radius: 15px;
-  width: fit-content;
-  max-width: 40%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: none;
 }
+*/
 
-#events-filters-close-button {
-  width: 10%;
-  height: fit-content;
-  margin-right: 20px;
-  align-self: center;
-  padding: 2px;
-}
-
-#events-filters-close-button:hover {
-  cursor: pointer;
-  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
-  background-color: #000;
-}
-
-.event-filter {
-  background-color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 9px;
-  border-radius: 15px;
-  width: fit-content;
-}
-
-.event-filter ~ .event-filter {
-  margin-left: 10px;
-}
-
-.event-filter:hover {
-  cursor: pointer;
-  background-color: #bce7c8;
-  transition: 0.4s;
-}
-
-.event-filter > p {
-  font-size: 1.6vmin;
-}
-
+/* Events list */
 #events-list-section {
-  /* Configure flex layout */
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
 }
+
+/* Temporary style for link to EventDetailsView (will be done with JS later) */
+#tmp-events-item-link {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+#tmp-events-item-link > .events-list-item {
+  width: 100%;
+}
+
+#tmp-events-item-link p,
+h2 {
+  color: #000;
+}
+/* End of temporary style */
 
 .events-list-item {
   background: #fafafa;
   margin-top: 10px;
-  width: 45%;
+  width: 85%;
   height: auto;
   padding: 10px;
   display: flex;
@@ -268,7 +218,7 @@
 }
 
 .events-list-item-picture {
-  max-width: 15%;
+  max-width: 25%;
   width: auto;
   height: fit-content;
   border-radius: 12px;
@@ -283,98 +233,78 @@
 }
 
 .events-list-item-date {
-  /* Style of dates in events preview */
-  font-size: 1.7vmin;
+  font-size: 2.7vmin;
+  cursor: pointer;
 }
 
 .events-list-item-title {
-  /* Style of title in events preview */
-  font-size: 2vmin;
+  font-size: 3.4vmin;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .events-list-item-location {
-  /* Style of location in events preview */
   align-self: flex-end;
   margin-top: 10px;
-  font-size: 1.9vmin;
+  font-size: 2.9vmin;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* Adapt to device */
+@media (min-width: 768px) {
   #home-events-list-section {
-    padding-bottom: 40px;
-    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-right: 30px;
   }
 
   #events-searchbar-field {
-    max-width: 100%;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-right: 0px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-right: 40px;
+    width: auto;
+    min-width: 80%;
   }
 
   #events-searchbar-field > form {
-    min-width: 65%;
-    margin-right: 10px;
+    min-width: 85%;
+    margin-right: 40px;
   }
 
-  #events-searchbar-placeholder {
+  /*#events-searchbar-placeholder {
     max-width: 100%;
     width: 100%;
-  }
-
-  #create-event-button {
-    margin-bottom: 10px;
-  }
-
-  #events-filters-box {
-    max-width: 88%;
-  }
-
-  #events-filters-close-button {
-    width: 12%;
-    height: auto;
-    margin-right: 15px;
-  }
-
-  .event-filter {
-    margin-top: 6px;
-    margin-bottom: 6px;
-  }
-
-  .event-filter ~ .event-filter {
-    margin-left: 10px;
-  }
-
-  .event-filter > p {
-    font-size: 3.3vmin;
-  }
+  }*/
 
   #events-list-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
+  /* Temporary style for link to EventDetailsView (will be done with JS later) */
+  #tmp-events-item-link {
+    display: block;
+    width: 45%;
+  }
+  /* End of temporary style */
+
   .events-list-item {
-    width: 85%;
+    width: 45%;
   }
 
   .events-list-item-picture {
-    max-width: 25%;
+    max-width: 15%;
   }
 
   .events-list-item-date {
-    font-size: 2.7vmin;
+    font-size: 1.7vmin;
   }
 
   .events-list-item-title {
-    font-size: 3.4vmin;
+    font-size: 2vmin;
   }
 
   .events-list-item-location {
-    font-size: 2.9vmin;
+    font-size: 1.9vmin;
   }
 }
 </style>
