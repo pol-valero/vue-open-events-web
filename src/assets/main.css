@@ -484,8 +484,16 @@ button:hover {
   }
 
   /* Aside */
+  aside {
+    width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .request-container {
     border-radius: 20px;
+    margin: 10px 0px;
+    align-self: center;
   }
 
   /* Other styles */
