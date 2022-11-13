@@ -77,8 +77,9 @@
 }
 
 #profile-img {
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
+  align-self: center;
 }
 
 .main-container {
@@ -86,15 +87,22 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .info-container {
-  padding-left: 50px;
+  padding: 0px 20px;
 }
 
 .info-title {
   padding-bottom: 20px;
-  padding-top: 0px;
+  padding-top: 20px;
 }
 
 .info-title ~ .info-title {
@@ -151,12 +159,18 @@
   cursor: pointer;
 }
 
+h2 {
+  font-size: 20px;
+}
+
 h3 {
   font-weight: normal;
+  font-size: 14px;
+  padding-top: 5px;
 }
 
 td {
-  padding-inline: 70px;
+  padding-inline: 20px;
 }
 
 .stats-table {
@@ -167,42 +181,40 @@ td {
   text-align: center;
 }
 
-@media (max-width: 530px) {
+@media (min-width: 530px) {
   .main-container {
-    justify-content: flex-start;
+    justify-content: initial;
   }
 
   .profile-info {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    display: block;
+    width: auto;
   }
 
   .info-container {
-    padding: 0px 20px;
+    padding: 0px 0px 0px 50px;
   }
 
   .info-title {
-    padding-top: 20px;
+    padding-top: 0px;
   }
 
   #profile-img {
-    width: 120px;
-    height: 120px;
-    align-self: center;
+    width: 200px;
+    height: 200px;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: revert;
   }
 
   td {
-    padding-inline: 20px;
+    padding-inline: 70px;
   }
 
   h3 {
-    font-size: 14px;
-    padding-top: 5px;
+    font-size: revert;
+    padding-top: 0px;
   }
 }
 </style>
