@@ -208,6 +208,20 @@ img {
   border-radius: 12px;
 }
 
+.title {
+  font-weight: 500;
+  padding: 10px 30px 10px 30px;
+}
+
+.std-padding {
+  padding: 30px;
+}
+
+.small-padding {
+  padding: 15px;
+}
+
+/* Buttons */
 button {
   cursor: pointer;
 }
@@ -245,19 +259,6 @@ button:hover {
   box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
-.title {
-  font-weight: 500;
-  padding: 10px 30px 10px 30px;
-}
-
-.std-padding {
-  padding: 30px;
-}
-
-.small-padding {
-  padding: 15px;
-}
-
 #answer-buttons {
   margin-top: 1px;
   display: flex;
@@ -287,6 +288,105 @@ button:hover {
   opacity: 1;
   color: #fff;
   background-color: #BF3A2E;
+}
+
+/* Searchbars */
+.searchbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: inherit;
+  margin-top: 10px;
+}
+
+.searchbar-field {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 40px;
+  margin-bottom: 10px;
+}
+
+.searchbar-field > form {
+  min-width: 85%;
+  margin-right: 40px;
+}
+
+.searchbar-placeholder {
+  padding: 5px;
+  border: solid #e3e3e3 2px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.searchbar-placeholder:focus {
+  outline: none;
+  border-color: #7722ff;
+}
+
+/* Filters */
+.filters-show-button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+}
+
+.filters-show-button:hover {
+  background-color: #5a5a5a;
+}
+
+.filters-box {
+  background-color: black;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  border-radius: 15px;
+  width: fit-content;
+  max-width: 40%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.filter {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 9px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.filter ~ .filter {
+  margin-left: 10px;
+}
+
+.filter:hover,
+.filter:hover > p {
+  cursor: pointer;
+  background-color: #d2d2ff;
+  transition: 0.4s;
+}
+
+.filter > p {
+  font-size: 1.6vmin;
+}
+
+.filters-close-button {
+  width: 10%;
+  height: fit-content;
+  margin-right: 20px;
+  align-self: center;
+  padding: 2px;
+}
+
+.filters-close-button:hover {
+  cursor: pointer;
+  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
+  background-color: #000;
 }
 
 /* Adapt to device */
@@ -360,5 +460,30 @@ button:hover {
     margin-left: 15%;
     margin-right: 15%;
     border-radius: 15px;
+  }
+
+  /* Other styles */
+  /* Filters */
+  .filters-box {
+    max-width: 88%;
+  }
+
+  .filters-close-button {
+    width: 12%;
+    height: auto;
+    margin-right: 15px;
+  }
+
+  .filter {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  .filter ~ .filter {
+    margin-left: 10px;
+  }
+
+  .filter > p {
+    font-size: 3.3vmin;
   }
 }

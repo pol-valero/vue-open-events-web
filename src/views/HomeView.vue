@@ -3,16 +3,17 @@
     <!-- Events header -->
     <h1 id="events-list-header">Events</h1>
     <!-- Searchbar -->
-    <section id="events-searchbar">
-      <article id="events-searchbar-field">
+    <section id="events-searchbar" class="searchbar">
+      <article id="events-searchbar-field" class="searchbar-field">
         <form action="">
           <input
             id="events-searchbar-placeholder"
+            class="searchbar-placeholder"
             type="text"
             placeholder="Search"
           />
         </form>
-        <button>Filters</button>
+        <button class="filters-show-button">Filters</button>
       </article>
       <!-- Create event button -->
       <a href="/createEvent">
@@ -20,19 +21,20 @@
       </a>
     </section>
     <!-- Filters selector -->
-    <section id="events-filters-box">
+    <section id="events-filters-box" class="filters-box">
       <img
         src="../assets/filter-icon.svg"
         alt="Close filters"
         id="events-filters-close-button"
+        class="filters-close-button"
       />
-      <article class="event-filter">
+      <article class="filter">
         <p class="event-filter-text">Name</p>
       </article>
-      <article class="event-filter">
+      <article class="filter">
         <p class="event-filter-text">Date</p>
       </article>
-      <article class="event-filter">
+      <article class="filter">
         <p class="event-filter-text">Location</p>
       </article>
     </section>
@@ -135,46 +137,8 @@
 }
 
 /* Searchbar */
-#events-searchbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: inherit;
-  margin-top: 10px;
-}
-
 #events-searchbar-field {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   min-width: 80%;
-  margin-right: 40px;
-  margin-bottom: 10px;
-}
-
-#events-searchbar-field > form {
-  min-width: 85%;
-  margin-right: 40px;
-}
-
-#events-searchbar-placeholder {
-  padding: 5px;
-  border: solid #e3e3e3 2px;
-  border-radius: 10px;
-  width: 100%;
-}
-
-#events-searchbar-field > button {
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 7px;
-}
-
-#events-searchbar-field > button:hover {
-  background-color: #5a5a5a;
 }
 
 /* Create event */
@@ -193,57 +157,11 @@
 }
 
 /* Filters */
-/* Will be hidden until "Filters" button is pressed */
+/* Will be hidden until "Filters" button is pressed
 #events-filters-box {
-  background-color: black;
-  margin-bottom: 20px;
-  padding: 5px 15px 5px 15px;
-  border-radius: 15px;
-  width: fit-content;
-  max-width: 40%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: none;
 }
-
-#events-filters-close-button {
-  width: 10%;
-  height: fit-content;
-  margin-right: 20px;
-  align-self: center;
-  padding: 2px;
-}
-
-#events-filters-close-button:hover {
-  cursor: pointer;
-  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
-  background-color: #000;
-}
-
-.event-filter {
-  background-color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 9px;
-  border-radius: 15px;
-  width: fit-content;
-}
-
-.event-filter ~ .event-filter {
-  margin-left: 10px;
-}
-
-.event-filter:hover,
-.event-filter:hover > p {
-  cursor: pointer;
-  background-color: #d2d2ff;
-  transition: 0.4s;
-}
-
-.event-filter > p {
-  font-size: 1.6vmin;
-}
+*/
 
 /* Events list */
 #events-list-section {
@@ -346,29 +264,6 @@ h2 {
 
   #create-event-button {
     margin-bottom: 10px;
-  }
-
-  #events-filters-box {
-    max-width: 88%;
-  }
-
-  #events-filters-close-button {
-    width: 12%;
-    height: auto;
-    margin-right: 15px;
-  }
-
-  .event-filter {
-    margin-top: 6px;
-    margin-bottom: 6px;
-  }
-
-  .event-filter ~ .event-filter {
-    margin-left: 10px;
-  }
-
-  .event-filter > p {
-    font-size: 3.3vmin;
   }
 
   #events-list-section {

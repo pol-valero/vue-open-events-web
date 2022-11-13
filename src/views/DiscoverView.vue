@@ -4,32 +4,34 @@
     <!-- Users list header -->
     <h1 id="users-list-header">Users</h1>
     <!-- Searchbar -->
-    <section id="users-searchbar">
-      <article id="users-searchbar-field">
+    <section id="users-searchbar" class="searchbar">
+      <article id="users-searchbar-field" class="searchbar-field">
         <form action="">
           <input
             id="users-searchbar-placeholder"
+            class="searchbar-placeholder"
             type="text"
             placeholder="Search"
           />
         </form>
-        <button>Filters</button>
+        <button class="filters-show-button">Filters</button>
       </article>
     </section>
     <!-- Filters selector -->
-    <section id="users-filters-box">
+    <section id="users-filters-box" class="filters-box">
       <img
         src="../assets/filter-icon.svg"
         alt="Close filters"
         id="users-filters-close-button"
+        class="filters-close-button"
       />
-      <article class="user-filter">
+      <article class="filter">
         <p class="user-filter-text">Name</p>
       </article>
-      <article class="user-filter">
+      <article class="filter">
         <p class="user-filter-text">Date</p>
       </article>
-      <article class="user-filter">
+      <article class="filter">
         <p class="user-filter-text">Location</p>
       </article>
     </section>
@@ -110,103 +112,19 @@
   padding: 20px 30px 50px 20px;
 }
 
-#users-searchbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: inherit;
-  margin-top: 10px;
-}
-
+/* Searchbar */
 #users-searchbar-field {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   min-width: 100%;
-  margin-right: 40px;
-  margin-bottom: 10px;
 }
 
-#users-searchbar-field > form {
-  min-width: 85%;
-  margin-right: 40px;
-}
-
-#users-searchbar-placeholder {
-  padding: 5px;
-  border: solid #e3e3e3 2px;
-  border-radius: 10px;
-  width: 100%;
-}
-
-#users-searchbar-field > button {
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 7px;
-}
-
-#users-searchbar-field > button:hover {
-  background-color: #5a5a5a;
-  transition: 0.4s;
-}
-
-/* Will be hidden until "Filters" button is pressed */
+/* Filters */
+/* Will be hidden until "Filters" button is pressed
 #users-filters-box {
-  background-color: black;
-  margin-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 15px;
-  width: fit-content;
-  max-width: 40%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: none;
 }
+*/
 
-#users-filters-close-button {
-  width: 10%;
-  height: fit-content;
-  margin-right: 20px;
-  align-self: center;
-  padding: 2px;
-}
-
-#users-filters-close-button:hover {
-  cursor: pointer;
-  box-shadow: inset 0px 2px 5px rgba(255, 255, 255, 0.8);
-  background-color: #000;
-}
-
-.user-filter {
-  background-color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 9px;
-  border-radius: 15px;
-  width: fit-content;
-}
-
-.user-filter ~ .user-filter {
-  margin-left: 10px;
-}
-
-.user-filter:hover {
-  cursor: pointer;
-  background-color: #bce7c8;
-  transition: 0.4s;
-}
-
-.user-filter > p {
-  font-size: 1.6vmin;
-}
-
+/* Users list */
 #users-list-section {
   /* Configure flex layout */
   display: flex;
@@ -261,6 +179,7 @@
   font-size: 2vmin;
 }
 
+/* Adapt to device */
 @media (max-width: 768px) {
   #discover-users-list-main {
     padding-bottom: 40px;
@@ -275,29 +194,6 @@
   #users-searchbar-field > form,
   button {
     margin-bottom: 10px;
-  }
-
-  #users-filters-box {
-    max-width: 88%;
-  }
-
-  #users-filters-close-button {
-    width: 12%;
-    height: auto;
-    margin-right: 15px;
-  }
-
-  .user-filter {
-    margin-top: 6px;
-    margin-bottom: 6px;
-  }
-
-  .user-filter ~ .user-filter {
-    margin-left: 10px;
-  }
-
-  .user-filter > p {
-    font-size: 3.3vmin;
   }
 
   #users-list-section {
