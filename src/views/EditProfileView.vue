@@ -82,7 +82,7 @@
   width: 30%;
   align-self: center;
   padding: 30px;
-  background-color: rgb(203, 208, 206);
+  background-color: #eeeeff;
   border-radius: 10px;
   margin-bottom: 50px;
 }
@@ -121,18 +121,6 @@
   margin: 10px;
 }
 
-.field {
-  background-size: 20px;
-  background-position: 8px;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 7px;
-  margin-top: 5px;
-  padding-block: 7px;
-  padding-inline: 7px;
-  border-color: black;
-}
-
 #delete-account-link {
   margin-top: 20px;
 }
@@ -142,12 +130,12 @@
   background: none;
   text-decoration: underline;
   color: black;
+  cursor: pointer;
 }
 
 #nav-delete-account:hover {
-  color: #d32525;
-  transition: 0.4s;
-  cursor: pointer;
+  color: #d40303;
+  transition: 0.1s;
 }
 
 @media (max-width: 650px) {

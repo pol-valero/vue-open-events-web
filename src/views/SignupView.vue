@@ -80,10 +80,6 @@
 </template>
 
 <style scoped>
-.input-margin {
-  margin: 10px;
-}
-
 .register-box {
   display: flex;
   flex-direction: column;

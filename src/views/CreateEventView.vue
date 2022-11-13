@@ -13,7 +13,7 @@
       <div class="single-form">
         <h4 class="form-title">Description</h4>
         <textarea
-          class="textarea"
+          class="textarea field"
           name="Text1"
           cols="40"
           rows="5"
@@ -73,7 +73,6 @@
 </template>
 
 <style scoped>
-
 #create-event-main {
   width: 100%;
   height: 100%;
@@ -117,20 +116,6 @@
 
 .textarea {
   resize: none;
-  background-size: 20px;
-  background-position: 8px;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 7px;
-  margin-top: 5px;
-  padding-block: 7px;
-  padding-inline: 7px;
-  border: #ccc solid 2px;
-}
-
-.textarea:focus {
-  border-color: #7722ff;
-  outline: none;
 }
 
 .button-container {
@@ -152,23 +137,6 @@
   margin: 10px;
 }
 
-.field {
-  background-size: 20px;
-  background-position: 8px;
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 7px;
-  margin-top: 5px;
-  padding-block: 7px;
-  padding-inline: 7px;
-  border: #ccc solid 2px;
-}
-
-.field:focus {
-  border-color: #7722ff;
-  outline: none;
-}
-
 @media (min-width: 768px) {
   #forms-container {
     width: 40%;
@@ -179,5 +147,4 @@
     margin: 30px;
   }
 }
-
 </style>
