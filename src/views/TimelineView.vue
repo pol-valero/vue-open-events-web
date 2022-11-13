@@ -1,69 +1,81 @@
 <template>
-  <section id="container-timeline">
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img src="../assets/default_img.png" alt="logo" />
+  <section id="container-timeline">    
+    <ul>
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">13/11/2022 - 21:00</h5>
-          <h4 class="event-title">GP F1 BRAZIL</h4>
-        </div>
-      </div>
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">13/11/2022 - 21:00</h5>
+              <h4 class="event-title">GP F1 BRAZIL</h4>
+            </div>
+          </div>
 
-      <h5 class="event-location">Sao Paulo</h5>
-    </div>
+          <h5 class="event-location">Sao Paulo</h5>
+        </div>        
+      </li>
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img src="../assets/default_img.png" alt="logo" />
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">23/11/2022 - 17:00</h5>
-          <h4 class="event-title">Spain - Costa Rica</h4>
-        </div>
-      </div>
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">23/11/2022 - 17:00</h5>
+              <h4 class="event-title">Spain - Costa Rica</h4>
+            </div>
+          </div>
 
-      <h5 class="event-location">Qatar</h5>
-    </div>
+          <h5 class="event-location">Qatar</h5>
+        </div>        
+      </li>
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img src="../assets/default_img.png" alt="logo" />
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">18/12/2022 - 16:00</h5>
-          <h4 class="event-title">Final Mundial Qatar</h4>
-        </div>
-      </div>
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">18/12/2022 - 16:00</h5>
+              <h4 class="event-title">Final Mundial Qatar</h4>
+            </div>
+          </div>
 
-      <h5 class="event-location">Qatar</h5>
-    </div>
+          <h5 class="event-location">Qatar</h5>
+        </div>        
+      </li>
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img src="../assets/default_img.png" alt="logo" />
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">1/1/2023 - 23:00</h5>
-          <h4 class="event-title">New year party</h4>
-        </div>
-      </div>
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">1/1/2023 - 23:00</h5>
+              <h4 class="event-title">New year party</h4>
+            </div>
+          </div>
 
-      <h5 class="event-location">Costa Breve</h5>
-    </div>
+          <h5 class="event-location">Costa Breve</h5>
+        </div>        
+      </li>
 
-    <div class="event-timeline">
-      <div class="img-date-title-timeline">
-        <img src="../assets/default_img.png" alt="logo" />
+      <li>
+        <div class="event-timeline">
+          <div class="img-date-title-timeline">
+            <img src="../assets/default_img.png" alt="logo" />
 
-        <div class="date-title-timeline">
-          <h5 class="event-datetime">12/2/2023 - 8:00</h5>
-          <h4 class="event-title">LSSkying</h4>
-        </div>
-      </div>
+            <div class="date-title-timeline">
+              <h5 class="event-datetime">12/2/2023 - 8:00</h5>
+              <h4 class="event-title">LSSkying</h4>
+            </div>
+          </div>
 
-      <h5 class="event-location">La Molina</h5>
-    </div>
+          <h5 class="event-location">La Molina</h5>
+        </div>        
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -137,6 +149,12 @@ h4 {
 
 h5 {
   font-size: 0.7em;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*MEDIA QUERIES*/

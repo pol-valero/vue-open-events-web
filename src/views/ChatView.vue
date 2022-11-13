@@ -2,36 +2,44 @@
   <div id="chat-main">
     <section id="container-chat-person">
       <h4 id="chats-title">Friends</h4>
+      <ul>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <h5 class="name-padding">Ángel García</h5>
+            </div>
+          </button>
+        </li>
 
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img class="little-img" src="../assets/default_img.png" alt="logo" />
-          <h5 class="name-padding">Ángel García</h5>
-        </div>
-      </button>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <h5 class="name-padding">Claudia Lajara</h5>
+            </div>
+          </button>
+        </li>
 
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img class="little-img" src="../assets/default_img.png" alt="logo" />
-          <h5 class="name-padding">Claudia Lajara</h5>
-        </div>
-      </button>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <h5 class="name-padding">Pol Valero</h5>
+            </div>
+          </button>
+        </li>
 
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img class="little-img" src="../assets/default_img.png" alt="logo" />
-          <h5 class="name-padding">Pol Valero</h5>
-        </div>
-      </button>
-
-      <button class="btn-chat">
-        <div class="chat-person">
-          <img class="little-img" src="../assets/default_img.png" alt="logo" />
-          <h5 class="name-padding">Marc Geremias</h5>
-        </div>
-      </button>
+        <li>
+          <button class="btn-chat">
+            <div class="chat-person">
+              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <h5 class="name-padding">Marc Geremias</h5>
+            </div>
+          </button>
+        </li>
+      </ul>
     </section>
-
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
         <img class="little-img" src="../assets/default_img.png" alt="logo" />
@@ -236,6 +244,12 @@ input {
 
 .message {
   font-size: 13px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 /*MEDIA QUERIES*/
