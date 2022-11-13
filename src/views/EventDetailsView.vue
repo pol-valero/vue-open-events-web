@@ -86,8 +86,8 @@
 }
 
 #text-title {
-  padding-left: 80px;
-  font-size: 20px;
+  padding-left: 40px;
+  font-size: 16px;
   width: 100%;
 }
 
@@ -95,8 +95,8 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
-  width: 100%;
-  padding-right: 70px;
+  width: 70px;
+  padding-right: 30px;
 }
 
 #share-button button {
@@ -110,9 +110,9 @@
   height: fit-content;
   flex-flow: row wrap;
   justify-content: space-between;
-  margin-left: 70px;
-  margin-right: 70px;
-  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
 .detail {
@@ -124,8 +124,8 @@
 }
 
 .users-list-item-picture {
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
 }
 
@@ -134,12 +134,12 @@
 }
 
 .detail-text h4 {
-  font-size: 22px;
+  font-size: 16px;
   margin-bottom: 3px;
 }
 
 .detail-text text {
-  font-size: 15px;
+  font-size: 12px;
   margin-bottom: 3px;
 }
 
@@ -148,97 +148,95 @@
   width: 90px;
   font-size: 12px;
   margin-left: 50px;
+  margin-top: 10px;
 }
 
 #event-description {
-  margin-left: 80px;
-  margin-right: 80px;
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   height: fit-content;
-  line-height: 200%;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  line-height: 150%;
 }
 
 #event-description p {
   margin-top: 10px;
   text-align: justify;
+  font-size: 14px;
 }
 
 .event-details-bottom-buttons {
-  margin-top: 60px;
+  margin-top: 40px;
   align-self: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .event-details-bottom-buttons button {
-  height: 80px;
-  width: 210px;
-  border-radius: 20px;
-  font-size: 22px;
-  margin: 0px 10px 30px 10px;
+  height: 50px;
+  width: 120px;
+  font-size: 16px;
+  margin: 0px 40px 30px 40px;
 }
 
-@media (max-width: 530px) {
+@media (min-width: 596px) {
   .users-list-item-picture {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
   }
 
   .detail-text h4 {
-    font-size: 16px;
+    font-size: 22px;
   }
 
   .detail-text text {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   #details-container {
-    margin-left: 40px;
-    margin-right: 20px;
-    margin-top: 10px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 20px;
   }
 
   #text-title {
-    padding-left: 40px;
-    font-size: 16px;
+    padding-left: 80px;
+    font-size: 20px;
   }
 
   #share-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    width: 70px;
-    padding-right: 30px;
+    width: 100%;
+    padding-right: 70px;
   }
 
   #event-description {
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 20px;
-    line-height: 150%;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 40px;
+    line-height: 200%;
   }
 
   #event-description p {
-    text-align: justify;
-    font-size: 14px;
+    font-size: default;
   }
 
   .event-details-bottom-buttons {
-    margin-top: 40px;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    margin-top: 60px;
   }
 
   .event-details-bottom-buttons button {
-    height: 50px;
-    width: 120px;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    font-size: 16px;
-    margin: 0px 40px 30px 40px;
+    height: 80px;
+    width: 210px;
+    border-radius: 20px;
+    font-size: 22px;
+    margin: 0px 10px 30px 10px;
+  }
+  
+  #follow-button {
+    margin-top: 0px;
   }
 }
 </style>

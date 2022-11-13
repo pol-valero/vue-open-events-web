@@ -133,12 +133,21 @@
 
 <style scoped>
 #home-events-list-section {
-  padding: 20px 30px 50px 20px;
+  padding: 20px 20px 40px 20px;
 }
 
 /* Searchbar */
 #events-searchbar-field {
-  min-width: 80%;
+  max-width: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 0px;
+}
+
+#events-searchbar-field > form {
+  min-width: 65%;
+  margin-right: 10px;
 }
 
 /* Create event */
@@ -166,13 +175,17 @@
 /* Events list */
 #events-list-section {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 /* Temporary style for link to EventDetailsView (will be done with JS later) */
 #tmp-events-item-link {
-  width: 45%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
 }
 
@@ -189,7 +202,7 @@ h2 {
 .events-list-item {
   background: #fafafa;
   margin-top: 10px;
-  width: 45%;
+  width: 85%;
   height: auto;
   padding: 10px;
   display: flex;
@@ -205,7 +218,7 @@ h2 {
 }
 
 .events-list-item-picture {
-  max-width: 15%;
+  max-width: 25%;
   width: auto;
   height: fit-content;
   border-radius: 12px;
@@ -220,12 +233,12 @@ h2 {
 }
 
 .events-list-item-date {
-  font-size: 1.7vmin;
+  font-size: 2.7vmin;
   cursor: pointer;
 }
 
 .events-list-item-title {
-  font-size: 2vmin;
+  font-size: 3.4vmin;
   margin-top: 10px;
   cursor: pointer;
 }
@@ -233,72 +246,65 @@ h2 {
 .events-list-item-location {
   align-self: flex-end;
   margin-top: 10px;
-  font-size: 1.9vmin;
+  font-size: 2.9vmin;
   cursor: pointer;
 }
 
 /* Adapt to device */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #home-events-list-section {
-    padding-bottom: 40px;
-    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-right: 30px;
   }
 
   #events-searchbar-field {
-    max-width: 100%;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-right: 0px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-right: 40px;
+    width: auto;
+    min-width: 80%;
   }
 
   #events-searchbar-field > form {
-    min-width: 65%;
-    margin-right: 10px;
+    min-width: 85%;
+    margin-right: 40px;
   }
 
-  #events-searchbar-placeholder {
+  /*#events-searchbar-placeholder {
     max-width: 100%;
     width: 100%;
-  }
-
-  #create-event-button {
-    margin-bottom: 10px;
-  }
+  }*/
 
   #events-list-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   /* Temporary style for link to EventDetailsView (will be done with JS later) */
   #tmp-events-item-link {
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
+    width: 45%;
   }
   /* End of temporary style */
 
   .events-list-item {
-    width: 85%;
+    width: 45%;
   }
 
   .events-list-item-picture {
-    max-width: 25%;
+    max-width: 15%;
   }
 
   .events-list-item-date {
-    font-size: 2.7vmin;
+    font-size: 1.7vmin;
   }
 
   .events-list-item-title {
-    font-size: 3.4vmin;
+    font-size: 2vmin;
   }
 
   .events-list-item-location {
-    font-size: 2.9vmin;
+    font-size: 1.9vmin;
   }
 }
 </style>

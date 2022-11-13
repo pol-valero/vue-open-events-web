@@ -109,12 +109,19 @@
 
 <style scoped>
 #discover-users-list-main {
-  padding: 20px 30px 50px 20px;
+  padding: 20px 20px 40px 20px;
 }
 
 /* Searchbar */
 #users-searchbar-field {
   min-width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 0px;
+}
+
+#users-searchbar-field > form,
+button {
+  margin-bottom: 10px;
 }
 
 /* Filters */
@@ -126,16 +133,19 @@
 
 /* Users list */
 #users-list-section {
-  /* Configure flex layout */
-  display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Temporary style for ProfileView temporary link (will be done with JS later) */
 #tmp-users-item-link {
-  width: 45%;
   text-decoration: none;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #tmp-users-item-link > .users-list-item {
@@ -148,7 +158,7 @@
   background: #fafafa;
   margin-top: 20px;
   margin-right: 10px;
-  width: 45%;
+  width: 85%;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -176,47 +186,46 @@
 }
 
 .users-list-item-title {
-  font-size: 2vmin;
+  font-size: 3.5vmin;
 }
 
 /* Adapt to device */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #discover-users-list-main {
-    padding-bottom: 40px;
-    padding-right: 20px;
+    padding-bottom: 50px;
+    padding-right: 30px;
   }
 
   #users-searchbar-field {
-    flex-wrap: wrap;
-    margin-bottom: 0px;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
   }
 
   #users-searchbar-field > form,
   button {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
+}
 
+@media (min-width: 882px) {
   #users-list-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   /* Temporary style for ProfileView temporary link (will be done with JS later) */
   #tmp-users-item-link {
-    width: 85%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
+    width: 45%;
   }
   /* End of temporary style */
 
   .users-list-item {
-    width: 85%;
+    width: 45%;
   }
 
   .users-list-item-title {
-    font-size: 3.5vmin;
+    font-size: 2vmin;
   }
 }
 </style>
