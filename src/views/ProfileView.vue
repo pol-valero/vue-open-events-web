@@ -88,6 +88,7 @@
 .info-container {
   padding-left: 50px;
 }
+
 .info-title {
   padding-bottom: 20px;
   padding-top: 20px;
@@ -96,7 +97,6 @@
 .statistics-container {
   display: flex;
   flex-direction: row;
-
   justify-content: space-around;
   padding: 20px;
 }
@@ -104,19 +104,38 @@
 .button-container {
   display: flex;
   flex-direction: row;
-
   justify-content: space-evenly;
   padding: 7px;
 }
 
 .edit-button {
+  background-color: #fefefe;
+  border-radius: 10px;
+  border: #7722ff solid 2px;
+  color: #7722ff;
   padding: 10px;
+  width: 100px;
+  transition: 0.1s;
+}
+
+.edit-button:hover {
+  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .logout-button {
   padding: 10px;
   background-color: black;
-  color: aliceblue;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  width: 100px;
+  transition: 0.1s;
+}
+
+.logout-button:hover {
+  background-color: #7722ff;
+  opacity: 1;
+  box-shadow: 4px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .info-component {
@@ -140,8 +159,8 @@
 }
 
 #nav-timeline:hover {
-  color: #25d366;
-  transition: 0.4s;
+  color: #7722ff;
+  transition: 0.2s;
   cursor: pointer;
 }
 </style>
