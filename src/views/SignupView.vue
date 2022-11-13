@@ -87,8 +87,8 @@
 .register-box {
   display: flex;
   flex-direction: column;
-  padding: 30px;
-  width: 50%;
+  padding: 30px 15px;    
+  width: 70%;
   justify-content: center;
   text-align: center;
   background-color: #eeeeff;
@@ -122,18 +122,16 @@
 
 #input-user-fullname {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
 }
 
 #input-user-name {
   background: url(src/assets/icon_user.svg) no-repeat scroll left;
-  width: 33%;
 }
 
 #input-user-lastname {
   background: url(src/assets/icon_user.svg) no-repeat scroll;
-  width: 33%;
 }
 
 #remaining-fields {
@@ -164,13 +162,13 @@
 #image-box {
   display: flex;
   justify-content: center;
-  padding-top: 80px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 0px;
 }
 
 #logo-image {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 
 #button-sign-up {
@@ -196,34 +194,42 @@
   transition: 0.2s;
 }
 
-@media (max-width: 530px) {
-  #image-box {
-    padding-bottom: 0px;
-    padding-top: 40px;
-  }
+#signup-heading {
+    font-size: 26px;
+}
 
+@media (min-width: 530px) {
+  #image-box {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+  
   #logo-image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 
   .register-box {
-    width: 60%;
-    padding: 30px 15px;
+    width: 50%;
+    padding: 30px;
   }
 
   #signup-heading {
-    font-size: 26px;
+    font-size: default;
   }
 
-  #signup-fields-box input {
-    width: 60%;
+  #remaining-fields input {
+    width: auto;
   }
 
   #input-user-fullname {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  #input-user-fullname input {
+    width: 33%;
   }
 }
 </style>

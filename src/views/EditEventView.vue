@@ -70,9 +70,6 @@
 </template>
 
 <style scoped>
-/*aside {
-  display: none;
-}*/
 
 #create-event-main {
   width: 100%;
@@ -92,9 +89,9 @@
 #forms-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 60%;
   align-self: center;
-  padding: 30px;
+  padding: 20px;
   background-color: #eeeeff;
   border-radius: 10px;
   margin-bottom: 50px;
@@ -134,7 +131,7 @@
 }
 
 .button-container {
-  margin: 30px;
+  margin: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -169,14 +166,20 @@
   outline: none;
 }
 
-@media (max-width: 650px) {
-  #forms-container {
+
+#forms-container {
     width: 60%;
     padding: 20px;
   }
 
+@media (min-width: 650px) {
+  #forms-container {
+    width: 40%;
+    padding: 30px;
+  }
+
   .button-container {
-    margin: 10px;
+    margin: 30px;
   }
 }
 </style>

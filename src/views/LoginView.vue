@@ -60,7 +60,7 @@ input:focus {
 }
 
 .login-box {
-  padding: 30px;
+  padding: 30px 15px;    
   width: 250px;
   text-align: center;
   background-color: #eeeeff;
@@ -70,7 +70,7 @@ input:focus {
 
 #main-login-box {
   display: flex;
-  justify-content: center;
+  justify-content:center;
 }
 
 .icon_message {
@@ -101,13 +101,13 @@ input:focus {
 #image-box {
   display: flex;
   justify-content: center;
-  padding-top: 80px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 0px;
 }
 
 #logo-image {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 
 #button-sign-in {
@@ -130,23 +130,23 @@ input:focus {
   transition: 0.2s;
 }
 
-@media (max-width: 530px) {
+@media (min-width: 530px) {
   .login-box {
-    padding: 30px 15px;
+    padding: 30px;
   }
 
   #logo-image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
 
   #image-box {
-    padding-top: 40px;
-    padding-bottom: 0px;
+    padding-top: 80px;
+    padding-bottom: 20px;
   }
 
   #login-heading {
-    font-size: 26px;
+    font-size: default;
   }
 }
 </style>

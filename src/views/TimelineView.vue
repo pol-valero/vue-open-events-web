@@ -74,17 +74,18 @@ img {
 }
 
 #container-timeline {
-  margin: 25px 90px;
+  margin: 25px;
   border-left: 5px solid #000;
   padding: 0 20px 0 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .event-timeline {
   background-color: #fafafa;
-  padding: 10px 25px;
+  padding: 5px 12px;
   box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   flex-basis: 30%;
@@ -96,6 +97,7 @@ img {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .img-date-title-timeline {
@@ -126,25 +128,34 @@ img {
   left: -40px;
 }
 
+h4 {
+  font-size: 0.9em;
+  font-weight: bold;
+
+}
+
+h5 {
+  font-size: 0.7em;
+}
+
 /*MEDIA QUERIES*/
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #container-timeline {
-    margin: 25px;
-    flex-wrap: wrap;
+    margin: 25px 90px;
+    flex-wrap: nowrap;
   }
 
   .event-timeline {
-    flex-wrap: wrap;
-    padding: 5px 12px;
+    flex-wrap: nowrap;
+    padding: 10px 25px;
   }
 
   h4 {
-    font-size: 0.9em;
-    font-weight: bold;
+    font-size: default;
   }
 
   h5 {
-    font-size: 0.7em;
+    font-size: default;
   }
 }
 </style>

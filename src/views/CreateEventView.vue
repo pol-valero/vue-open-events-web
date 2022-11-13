@@ -73,9 +73,6 @@
 </template>
 
 <style scoped>
-/*aside {
-  display: none;
-}*/
 
 #create-event-main {
   width: 100%;
@@ -95,9 +92,9 @@
 #forms-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
   align-self: center;
-  padding: 30px;
+  width: 70%;
+  padding: 15px;
   background-color: #eeeeff;
   border-radius: 10px;
   margin-bottom: 50px;
@@ -137,7 +134,7 @@
 }
 
 .button-container {
-  margin: 30px;
+  margin: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -172,14 +169,15 @@
   outline: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   #forms-container {
-    width: 70%;
-    padding: 15px;
+    width: 40%;
+    padding: 30px;
   }
 
   .button-container {
-    margin: 10px;
+    margin: 30px;
   }
 }
+
 </style>
