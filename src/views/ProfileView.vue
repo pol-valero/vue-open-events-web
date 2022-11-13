@@ -50,6 +50,7 @@
         <a href="/login">
           <button class="logout-button primary-button">LOGOUT</button>
         </a>
+        <button class="follow-button primary-button">FOLLOW</button>
         <a href="/editProfile">
           <button a class="edit-button secondary-button">EDIT</button>
         </a>
@@ -129,6 +130,11 @@
 }
 
 .logout-button {
+  padding: 10px;
+  width: 100px;
+}
+
+.follow-button {
   padding: 10px;
   width: 100px;
 }
