@@ -58,10 +58,16 @@
       </div>
 
       <div class="button-container">
-        <button onclick="location.href='/eventDetails';" class="save-button primary-button">
+        <button
+          onclick="location.href='/eventDetails';"
+          class="save-button primary-button"
+        >
           SAVE CHANGES
         </button>
-        <button onclick="location.href='/eventDetails';" class="cancel-button secondary-button">
+        <button
+          onclick="location.href='/eventDetails';"
+          class="cancel-button secondary-button"
+        >
           CANCEL
         </button>
       </div>
@@ -135,9 +141,9 @@
 }
 
 #forms-container {
-    width: 60%;
-    padding: 20px;
-  }
+  width: 60%;
+  padding: 20px;
+}
 
 @media (min-width: 650px) {
   #forms-container {

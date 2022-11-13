@@ -1,5 +1,5 @@
 <template>
-  <section id="container-timeline">    
+  <section id="container-timeline">
     <ul>
       <li>
         <div class="event-timeline">
@@ -13,7 +13,7 @@
           </div>
 
           <h5 class="event-location">Sao Paulo</h5>
-        </div>        
+        </div>
       </li>
 
       <li>
@@ -28,7 +28,7 @@
           </div>
 
           <h5 class="event-location">Qatar</h5>
-        </div>        
+        </div>
       </li>
 
       <li>
@@ -43,7 +43,7 @@
           </div>
 
           <h5 class="event-location">Qatar</h5>
-        </div>        
+        </div>
       </li>
 
       <li>
@@ -58,7 +58,7 @@
           </div>
 
           <h5 class="event-location">Costa Breve</h5>
-        </div>        
+        </div>
       </li>
 
       <li>
@@ -73,7 +73,7 @@
           </div>
 
           <h5 class="event-location">La Molina</h5>
-        </div>        
+        </div>
       </li>
     </ul>
   </section>
@@ -143,7 +143,6 @@ img {
 h4 {
   font-size: 0.9em;
   font-weight: bold;
-
 }
 
 h5 {

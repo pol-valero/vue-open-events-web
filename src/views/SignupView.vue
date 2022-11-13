@@ -83,7 +83,7 @@
 .register-box {
   display: flex;
   flex-direction: column;
-  padding: 30px 15px;    
+  padding: 30px 15px;
   width: 70%;
   justify-content: center;
   text-align: center;
@@ -191,7 +191,7 @@
 }
 
 #signup-heading {
-    font-size: 26px;
+  font-size: 26px;
 }
 
 @media (min-width: 530px) {
@@ -199,7 +199,7 @@
     padding-top: 80px;
     padding-bottom: 20px;
   }
-  
+
   #logo-image {
     width: 150px;
     height: 150px;

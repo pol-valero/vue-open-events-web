@@ -49,10 +49,16 @@
       </nav>
 
       <div class="button-container">
-        <button onclick="location.href='/profile';" class="save-button primary-button">
+        <button
+          onclick="location.href='/profile';"
+          class="save-button primary-button"
+        >
           SAVE CHANGES
         </button>
-        <button onclick="location.href='/profile';" class="cancel-button secondary-button">
+        <button
+          onclick="location.href='/profile';"
+          class="cancel-button secondary-button"
+        >
           CANCEL
         </button>
       </div>

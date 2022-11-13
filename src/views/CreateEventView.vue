@@ -64,7 +64,10 @@
         >
           CREATE EVENT
         </button>
-        <button onclick="location.href='/';" class="cancel-button secondary-button">
+        <button
+          onclick="location.href='/';"
+          class="cancel-button secondary-button"
+        >
           CANCEL
         </button>
       </div>

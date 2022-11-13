@@ -6,7 +6,11 @@
         <li>
           <button class="btn-chat">
             <div class="chat-person">
-              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
               <h5 class="name-padding">Ángel García</h5>
             </div>
           </button>
@@ -15,7 +19,11 @@
         <li>
           <button class="btn-chat">
             <div class="chat-person">
-              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
               <h5 class="name-padding">Claudia Lajara</h5>
             </div>
           </button>
@@ -24,7 +32,11 @@
         <li>
           <button class="btn-chat">
             <div class="chat-person">
-              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
               <h5 class="name-padding">Pol Valero</h5>
             </div>
           </button>
@@ -33,7 +45,11 @@
         <li>
           <button class="btn-chat">
             <div class="chat-person">
-              <img class="little-img" src="../assets/default_img.png" alt="logo" />
+              <img
+                class="little-img"
+                src="../assets/default_img.png"
+                alt="logo"
+              />
               <h5 class="name-padding">Marc Geremias</h5>
             </div>
           </button>
@@ -253,7 +269,7 @@ ul {
 }
 
 /*MEDIA QUERIES*/
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   #chat-main {
     flex-direction: row;
   }

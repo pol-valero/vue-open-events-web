@@ -60,7 +60,7 @@ input:focus {
 }
 
 .login-box {
-  padding: 30px 15px;    
+  padding: 30px 15px;
   width: 250px;
   text-align: center;
   background-color: #eeeeff;
@@ -70,7 +70,7 @@ input:focus {
 
 #main-login-box {
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
 
 .icon_message {
