@@ -2,10 +2,7 @@
   <section id="container-timeline">
     <div class="event-timeline">
       <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+        <img src="../assets/default_img.png" alt="logo" />
 
         <div class="date-title-timeline">
           <h5 class="event-datetime">13/11/2022 - 21:00</h5>
@@ -18,10 +15,7 @@
 
     <div class="event-timeline">
       <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+        <img src="../assets/default_img.png" alt="logo" />
 
         <div class="date-title-timeline">
           <h5 class="event-datetime">23/11/2022 - 17:00</h5>
@@ -34,10 +28,7 @@
 
     <div class="event-timeline">
       <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+        <img src="../assets/default_img.png" alt="logo" />
 
         <div class="date-title-timeline">
           <h5 class="event-datetime">18/12/2022 - 16:00</h5>
@@ -50,10 +41,7 @@
 
     <div class="event-timeline">
       <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+        <img src="../assets/default_img.png" alt="logo" />
 
         <div class="date-title-timeline">
           <h5 class="event-datetime">1/1/2023 - 23:00</h5>
@@ -66,10 +54,7 @@
 
     <div class="event-timeline">
       <div class="img-date-title-timeline">
-        <img
-          src="../assets/default_img.png"
-          alt="logo"
-        />
+        <img src="../assets/default_img.png" alt="logo" />
 
         <div class="date-title-timeline">
           <h5 class="event-datetime">12/2/2023 - 8:00</h5>
@@ -84,8 +69,9 @@
 
 <style scoped>
 
-aside{
-  display: none;
+img {
+  width: 50%;
+  height: fit-content;
 }
 
 #container-timeline {
@@ -151,6 +137,16 @@ aside{
   .event-timeline {
     flex-wrap: wrap;
     padding: 5px 12px;
+  }
+
+  h4{
+    font-size: 0.9em;
+    font-weight: bold;
+
+  }
+
+  h5 {
+    font-size: 0.7em;
   }
 }
 </style>

@@ -1,55 +1,69 @@
 <template>
   <div id="create-event-main">
-    <section id = "title-container">
+    <section id="title-container">
       <h2>Edit event</h2>
     </section>
 
     <section id="forms-container">
       <div class="single-form">
-        <h4 class="form-title">Title</h4>  
-        <input class="field" type="text"  placeholder="House BBQ"/>
+        <h4 class="form-title">Title</h4>
+        <input class="field" type="text" placeholder="House BBQ" />
       </div>
 
       <div class="single-form">
-        <h4 class="form-title">Description</h4>  
-        <textarea class="textarea" name="Text1" cols="40" rows="5" placeholder="This event is fun!"></textarea>
-      </div>
-      
-      <div class="dual-form">
-        <div class="single-form">
-          <h4 class="form-title">Start date</h4>  
-          <input class="field"  type="date" value = "2022-11-04" />
-        </div>
-        <div class="single-form">
-          <h4 class="form-title" >End date</h4>  
-          <input class="field"  type="date" value = "2022-11-06"/>
-        </div>
-      </div>
-
-      <div class="single-form">
-        <h4 class="form-title">Location</h4>  
-        <input class="field"  type="text"  placeholder="Teruel"/>
-      </div>
-
-      <div class="single-form">
-        <h4 class="form-title">Image</h4>  
-        <input class="field" type="url" placeholder="www.url-of-current-img.com"  />
+        <h4 class="form-title">Description</h4>
+        <textarea
+          class="textarea"
+          name="Text1"
+          cols="40"
+          rows="5"
+          placeholder="This event is fun!"
+        ></textarea>
       </div>
 
       <div class="dual-form">
         <div class="single-form">
-          <h4 class="form-title">Type</h4>  
-          <input class="field"  type="text" placeholder="Sports" />
+          <h4 class="form-title">Start date</h4>
+          <input class="field" type="date" value="2022-11-04" />
         </div>
         <div class="single-form">
-          <h4 class="form-title">Capacity</h4>  
-          <input class="field"  type="number" value="50"  />
+          <h4 class="form-title">End date</h4>
+          <input class="field" type="date" value="2022-11-06" />
+        </div>
+      </div>
+
+      <div class="single-form">
+        <h4 class="form-title">Location</h4>
+        <input class="field" type="text" placeholder="Teruel" />
+      </div>
+
+      <div class="single-form">
+        <h4 class="form-title">Image</h4>
+        <input
+          class="field"
+          type="url"
+          placeholder="www.url-of-current-img.com"
+        />
+      </div>
+
+      <div class="dual-form">
+        <div class="single-form">
+          <h4 class="form-title">Type</h4>
+          <input class="field" type="text" placeholder="Sports" />
+        </div>
+        <div class="single-form">
+          <h4 class="form-title">Capacity</h4>
+          <input class="field" type="number" value="50" />
         </div>
       </div>
 
       <div class="button-container">
-        <button onclick="location.href='/eventDetails';" class="save-button">SAVE CHANGES</button>
-        <button onclick="location.href='/eventDetails';" class="cancel-button">CANCEL</button>
+        <button onclick="location.href='/eventDetails';" class="save-button">
+          SAVE CHANGES
+        </button>
+        <button onclick="location.href='/eventDetails';" class="cancel-button">
+          CANCEL
+        </button>
       </div>
     </section>
   </div>
@@ -80,7 +94,7 @@
   flex-direction: column;
   width: 40%;
   align-self: center;
-  padding: 30px;    
+  padding: 30px;
   background-color: #eeeeff;
   border-radius: 10px;
   margin-bottom: 50px;
@@ -175,7 +189,7 @@
 }
 
 @media (max-width: 650px) {
-  #forms-container{
+  #forms-container {
     width: 60%;
     padding: 20px;
   }

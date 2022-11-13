@@ -1,6 +1,6 @@
 <template>
     <div id="image-box">
-        <img id="logo-image" src="src/assets/logo_image.png">
+        <img id="logo-image" src="src/assets/logo_image.png" />
     </div>
 
     <div id="main-register-box">

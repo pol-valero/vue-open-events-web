@@ -1,7 +1,7 @@
 <template>
-    <div id="image-box">
-        <img id="logo-image" src="src/assets/logo_image.png">
-    </div>
+  <div id="image-box">
+    <img id="logo-image" src="src/assets/logo_image.png" />
+  </div>
 
     <div id="main-login-box">
         <div class="login-box">
@@ -55,10 +55,10 @@ input:focus {
 }
 
 .icon_message {
-    background: url(src/assets/icon_lock.svg) no-repeat scroll left;
+  background: url(src/assets/icon_lock.svg) no-repeat scroll left;
     background-size: 20px;
     background-position: 8px;
-    padding-left:30px;
+    padding-left: 30px;
     background-color: white;
     border-radius: 10px;
     margin-bottom: 7px;
@@ -119,7 +119,7 @@ input:focus {
 
 #nav-login:hover {
   color: black;
-  transition: 0.4s;
+  transition: 0.2s;
 }
 
 @media (max-width: 530px) {

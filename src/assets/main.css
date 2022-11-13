@@ -185,6 +185,18 @@ footer {
     z-index: 3;
 }
 
+footer span::before {
+    content: "\00A9";
+}
+
+#hide-menu::before {
+    content: "\00d7";
+}
+
+#show-menu::before {
+    content: "\2261";
+}
+
 /* Other styles */
 p, h1, h2, h3, h4, h5, h6 {
     cursor: default;
