@@ -261,6 +261,7 @@ h2 {
     flex-wrap: nowrap;
     justify-content: flex-start;
     margin-right: 40px;
+    width: auto;
     min-width: 80%;
   }
 
