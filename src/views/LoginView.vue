@@ -1,3 +1,31 @@
+<script>
+export default {
+
+  methods: {
+    login(){
+      fetch('http://puigmal.salle.url.edu/api/v2/users/login', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },    
+        body: new URLSearchParams(
+          { 
+            email: document.getElementById('login-email').value, 
+            password: document.getElementById('login-password').value
+          })
+      })
+      .then(res => res.json())
+      .then(res=> {
+            console.log(res);
+      });
+
+    }
+  }
+
+}
+</script>
+
+
 <template>
   <div id="image-box">
     <img id="logo-image" src="src/assets/logo_image.png" />
@@ -5,7 +33,7 @@
 
   <div id="main-login-box">
     <div class="login-box">
-      <form action="">
+      <form>
         <h1 id="login-heading">Login</h1>
         <div id="signup-fields">
           <input
@@ -24,18 +52,15 @@
             required
             placeholder="Your password"
           />
-          <input
-            id="button-sign-in"
-            class="primary-button"
-            type="submit"
-            value="Sign In"
-          />
+          <!--<input id="button-sign-in" class="primary-button" type="submit" value="Sign In"/>-->
         </div>
         <div id="signup-link-box">
           <label>Not registered? </label>
           <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
         </div>
       </form>
+      <button v-on:click="login()" id="login-button">Login</button>
+
     </div>
   </div>
 </template>
