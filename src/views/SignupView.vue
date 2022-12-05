@@ -1,3 +1,33 @@
+<script>
+export default {
+
+  methods: {
+    signup(){
+      fetch('http://puigmal.salle.url.edu/api/v2/users', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },    
+        body: new URLSearchParams(
+          { 
+            name: document.getElementById('input-user-name').value,
+            last_name: document.getElementById('input-user-lastname').value,
+            email: document.getElementById('input-user-email').value, 
+            password: document.getElementById('input-password').value,
+            image: document.getElementById('input-profile-picture').value
+          })
+      })
+      .then(res => res.json())
+      .then(res=> {
+            console.log(res);
+      });
+
+    }
+  }
+
+}
+</script>
+
 <template>
   <div id="image-box">
     <img id="logo-image" src="src/assets/logo_image.png" />
@@ -40,20 +70,6 @@
               placeholder="Password"
             />
             <input
-              id="input-confirm-password"
-              type="password"
-              name="confirm-password"
-              required
-              placeholder="Confirm Password"
-            />
-            <input
-              id="input-birth-date"
-              type="text"
-              name="birth-date"
-              required
-              placeholder="Birth date"
-            />
-            <input
               id="input-profile-picture"
               type="text"
               name="profile-picture"
@@ -62,19 +78,15 @@
             />
           </div>
         </div>
-        <div>
-          <input
-            id="button-sign-up"
-            class="primary-button"
-            type="submit"
-            value="Register"
-          />
-        </div>
+        <!--<div>
+          <input id="button-sign-up" class="primary-button" type="submit" value="Register"/>
+        </div>-->
         <div id="login-link-box">
           <label>Already registered? </label>
           <RouterLink id="nav-signup" to="/login">Login</RouterLink>
         </div>
       </form>
+      <button v-on:click="signup()" class="primary-button" type="submit" value="Register" id="signup-button">Signup</button>
     </div>
   </div>
 </template>

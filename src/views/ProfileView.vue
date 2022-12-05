@@ -1,3 +1,33 @@
+<script>
+export default {
+  data(){
+    return{
+      text: "Sign In"
+    }
+  }, 
+
+  methods: {},
+
+  mounted(){
+    const token = localStorage.getItem('token');
+    fetch('http://puigmal.salle.url.edu/api/v2/users', {
+      method: 'GET',
+      headers:{
+        'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(res => res.json())
+    .then(res=> {
+          console.log(res);
+    });
+
+  }
+  
+
+}
+</script>
+
 <template>
   <div id="profile-main">
     <section id="container-full-profile">

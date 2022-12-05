@@ -16,8 +16,10 @@ export default {
       })
       .then(res => res.json())
       .then(res=> {
-            console.log(res);
+        localStorage.setItem('token', JSON.stringify(res));
+        console.log(res);
       });
+
 
     }
   }
