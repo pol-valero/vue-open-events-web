@@ -3,6 +3,9 @@ export default {
 
   methods: {
     signup(){
+      const passOK = this.checkPassword();
+      if(!passOK) return;
+
       fetch('http://puigmal.salle.url.edu/api/v2/users', {
         method: 'POST',
         headers:{
@@ -19,9 +22,26 @@ export default {
       })
       .then(res => res.json())
       .then(res=> {
+        let response = JSON.stringify(res);
+        if(response.includes("Error")) {
+          console.log(res);
+          // Alert saying that the credentials are not correct
+          alert("There is one or more credentials that are not correct");
+
+        } else {
+          console.log(res);
+          this.$router.push('/login');
+        }
             console.log(res);
       });
+    },
 
+    checkPassword(){
+      if(document.getElementById('input-password').value != document.getElementById('input-confirm-password').value){
+        alert("Passwords don't match");
+        return false;
+      }
+      return true;
     }
   }
 
@@ -64,10 +84,19 @@ export default {
             />
             <input
               id="input-password"
+              class="in-pass"
               type="password"
               name="password"
               required
               placeholder="Password"
+            />
+            <input
+              id="input-confirm-password"
+              class="in-pass"
+              type="password"
+              name="confirm-password"
+              required
+              placeholder="Confirm Password"
             />
             <input
               id="input-profile-picture"
@@ -78,15 +107,12 @@ export default {
             />
           </div>
         </div>
-        <!--<div>
-          <input id="button-sign-up" class="primary-button" type="submit" value="Register"/>
-        </div>-->
         <div id="login-link-box">
           <label>Already registered? </label>
           <RouterLink id="nav-signup" to="/login">Login</RouterLink>
         </div>
       </form>
-      <button v-on:click="signup()" class="primary-button" type="submit" value="Register" id="signup-button">Signup</button>
+      <button v-on:click="signup()" class="primary-button" type="submit" value="Register" id="button-sign-up">Signup</button>
     </div>
   </div>
 </template>
@@ -151,7 +177,7 @@ export default {
   background: url(src/assets/icon_message.svg) no-repeat scroll;
 }
 
-#input-password {
+.in-pass {
   background: url(src/assets/icon_lock.svg) no-repeat scroll;
 }
 
@@ -180,8 +206,7 @@ export default {
 }
 
 #button-sign-up {
-  height: 30px;
-  width: 170px;
+  height: 25px;
   margin: 10px;
 }
 

@@ -1,5 +1,37 @@
+<script>
+
+export default {
+  name: "App",
+  data() {
+    return {
+      user: {
+        name: "User",
+        image: "src/assets/default_img.png",
+      },
+    };
+  },
+
+  //created lifecycle method
+  created() {
+    let logged = false;
+
+    // If the user is logged in, we get the user info from local storage
+    if (localStorage.getItem("userInfo")) {
+      logged = true;
+      this.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
+      this.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+      console.log(this.user);
+    } else {
+      logged = false;
+      // If the user is not logged in, we redirect him to the login page
+      this.$router.push("/login");
+    }
+  },
+}
+</script>
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
+
 </script>
 
 <template>
@@ -12,10 +44,10 @@ import { RouterLink, RouterView } from "vue-router";
 
       <div id="user-photo">
         <RouterLink id="profile-btn" to="/profile">
-          <h2 class="title">USER</h2>
+          <h2 class="title">{{ user.name }}</h2>
         </RouterLink>
         <img
-          src="src\assets\default_img.png"
+          v-bind:src="user.image"
           alt="user photo"
           class="header-img"
         />

@@ -1,78 +1,55 @@
+<script>
+  export default {
+    name: "TimelineView",
+    data() {
+      return {
+        eventsAssisted: [],
+      };
+    },
+
+    methods: {
+      getEventsAssisted() {
+        const token = localStorage.getItem('token');
+        const userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+        let URL = "http://puigmal.salle.url.edu/api/v2/users/" + userID + "/assistances";
+
+        fetch(URL, {
+          method: "GET",
+          headers: {
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            this.eventsAssisted = res;
+            console.log(this.eventsAssisted);
+          });
+      },
+    },
+    created() {
+      this.getEventsAssisted();
+    },
+
+    
+  };
+</script>
+
 <template>
   <section id="container-timeline">
-    <ul>
+    
+    <ul v-for="event in eventsAssisted" v-bind:key="event.id" >
       <li>
         <div class="event-timeline">
           <div class="img-date-title-timeline">
-            <img src="../assets/default_img.png" alt="logo" />
-
+            <img v-bind:src="event.image" alt="event image" />
             <div class="date-title-timeline">
-              <h5 class="event-datetime">13/11/2022 - 21:00</h5>
-              <h4 class="event-title">GP F1 BRAZIL</h4>
+              <h5 class="event-datetime">{{ event.date.split("T")[0] + " / " + (event.date.split("T")[1]).substring(0, 5)  }}</h5>
+              <h4 class="event-title">{{ event.name }}</h4>
             </div>
           </div>
 
-          <h5 class="event-location">Sao Paulo</h5>
-        </div>
-      </li>
-
-      <li>
-        <div class="event-timeline">
-          <div class="img-date-title-timeline">
-            <img src="../assets/default_img.png" alt="logo" />
-
-            <div class="date-title-timeline">
-              <h5 class="event-datetime">23/11/2022 - 17:00</h5>
-              <h4 class="event-title">Spain - Costa Rica</h4>
-            </div>
-          </div>
-
-          <h5 class="event-location">Qatar</h5>
-        </div>
-      </li>
-
-      <li>
-        <div class="event-timeline">
-          <div class="img-date-title-timeline">
-            <img src="../assets/default_img.png" alt="logo" />
-
-            <div class="date-title-timeline">
-              <h5 class="event-datetime">18/12/2022 - 16:00</h5>
-              <h4 class="event-title">Final Mundial Qatar</h4>
-            </div>
-          </div>
-
-          <h5 class="event-location">Qatar</h5>
-        </div>
-      </li>
-
-      <li>
-        <div class="event-timeline">
-          <div class="img-date-title-timeline">
-            <img src="../assets/default_img.png" alt="logo" />
-
-            <div class="date-title-timeline">
-              <h5 class="event-datetime">1/1/2023 - 23:00</h5>
-              <h4 class="event-title">New year party</h4>
-            </div>
-          </div>
-
-          <h5 class="event-location">Costa Breve</h5>
-        </div>
-      </li>
-
-      <li>
-        <div class="event-timeline">
-          <div class="img-date-title-timeline">
-            <img src="../assets/default_img.png" alt="logo" />
-
-            <div class="date-title-timeline">
-              <h5 class="event-datetime">12/2/2023 - 8:00</h5>
-              <h4 class="event-title">LSSkying</h4>
-            </div>
-          </div>
-
-          <h5 class="event-location">La Molina</h5>
+          <h5 class="event-location">{{ event.location }}</h5>
         </div>
       </li>
     </ul>

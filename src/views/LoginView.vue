@@ -1,5 +1,14 @@
 <script>
+import { getCurrentInstance } from 'vue';
+
 export default {
+  name: "LoginView",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
 
   methods: {
     login(){
@@ -16,15 +25,40 @@ export default {
       })
       .then(res => res.json())
       .then(res=> {
-        localStorage.setItem('token', JSON.stringify(res));
-        console.log(res);
+        let response = JSON.stringify(res);
+        if(response.includes("accessToken")) {
+          localStorage.setItem('token', response);
+          console.log(res);
+          this.getUserID();
+          this.$router.push('/');
+        } else {
+          alert("Wrong email or password");
+        }
       });
-
-
-    }
+    },
+    
+    // We search for the user id and other fields of the actual user and save it to local storage
+    getUserID(){
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + document.getElementById('login-email').value;
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },        
+      })
+      .then(res => res.json())
+      .then(res=> {
+        // Saving the fields of res to local storage
+        localStorage.setItem('userInfo', JSON.stringify(res));
+        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].id));
+      });
+    },
   }
-
 }
+
+
 </script>
 
 
