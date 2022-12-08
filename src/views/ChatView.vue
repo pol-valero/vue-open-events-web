@@ -1,103 +1,159 @@
+<script>
+  export default{
+    name: "ChatView",
+    data() {
+      return {
+        userID: "",
+        userFriends: [],
+        userChatting: {
+          id: "",
+          name: "",
+          surname: "",
+          image: "",
+        },
+        messages: [],
+      };
+    },
+
+    //created lifecycle method
+    created(){
+
+      //Getting the user's ID
+      this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+      //Getting the user's token
+      const token = localStorage.getItem('token');
+      //Making a request to show the user's friends list
+      fetch("http://puigmal.salle.url.edu/api/v2/friends", {
+        method: "GET",
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+      .then(res => res.json())
+      .then(res=> {
+        let response = JSON.stringify(res);
+        if(response.length > 0) {
+          this.userFriends = res;
+          console.log(this.userFriends);
+
+        } else {
+          alert("You have no friends yet, try to add some!");
+        }
+      });
+    },
+
+    methods: {
+      showChat(friendChatting){
+        // We first change the user that we are chatting with
+        this.userChatting.id = friendChatting.id;
+        this.userChatting.name = friendChatting.name;
+        this.userChatting.surname = friendChatting.last_name;
+        this.userChatting.image = friendChatting.image;
+
+        // Then we make a request to get the messages between the two users
+        const token = localStorage.getItem('token');
+        const URL = "http://puigmal.salle.url.edu/api/v2/messages/" + friendChatting.id;
+        fetch(URL, {
+          method: "GET",
+          headers: {
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        })
+        .then(res => res.json())
+        .then(res=> {
+          let response = JSON.stringify(res);
+          if(response.length > 0) {
+            this.messages = res;
+            console.log(this.messages);
+          } else {
+            alert("You have no messages with this user yet!");
+          }
+        });
+      },
+
+      sendMessage(){
+        // We first get the message that the user has written
+        const message = document.getElementById("message-send").value;
+        // Then we make a request to send the message
+        const token = localStorage.getItem('token');
+        const URL = "http://puigmal.salle.url.edu/api/v2/messages";
+        fetch(URL, {
+          method: "POST",
+          headers: {
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(
+          { 
+            content: document.getElementById('input-user-name').value,
+            user_id_send: this.userID,
+            user_id_recived: this.userChatting.id, 
+          })
+        })
+
+
+        .then(res => res.json())
+        .then(res=> {
+          let response = JSON.stringify(res);
+          if(response.length > 0) {
+            this.messages = res;
+            console.log(this.messages);
+          } else {
+            alert("You have no messages with this user yet!");
+          }
+        });
+      }
+    }
+  }
+</script> 
+
 <template>
   <div id="chat-main">
     <section id="container-chat-person">
       <h4 id="chats-title">Friends</h4>
-      <ul>
+      <ul v-for="friend in userFriends" v-bind:key="friend.id">
         <li>
-          <button class="btn-chat">
+          <button v-on:click="showChat(friend)" class="btn-chat">
             <div class="chat-person">
               <img
                 class="little-img"
-                src="../assets/default_img.png"
+                v-bind:src="friend.image"
                 alt="logo"
               />
-              <h5 class="name-padding">Ángel García</h5>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button class="btn-chat">
-            <div class="chat-person">
-              <img
-                class="little-img"
-                src="../assets/default_img.png"
-                alt="logo"
-              />
-              <h5 class="name-padding">Claudia Lajara</h5>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button class="btn-chat">
-            <div class="chat-person">
-              <img
-                class="little-img"
-                src="../assets/default_img.png"
-                alt="logo"
-              />
-              <h5 class="name-padding">Pol Valero</h5>
-            </div>
-          </button>
-        </li>
-
-        <li>
-          <button class="btn-chat">
-            <div class="chat-person">
-              <img
-                class="little-img"
-                src="../assets/default_img.png"
-                alt="logo"
-              />
-              <h5 class="name-padding">Marc Geremias</h5>
+              <h5 class="name-padding">{{ friend.name + " " + friend.last_name }}</h5>
             </div>
           </button>
         </li>
       </ul>
     </section>
+
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
-        <img class="little-img" src="../assets/default_img.png" alt="logo" />
+        <img class="little-img" v-bind:src="userChatting.image" alt="logo" />
         <RouterLink to="/profile" id="friend-profile-btn">
-          <h5 id="name-big-padding">Marc Geremias</h5>
+          <h5 id="name-big-padding"> {{ userChatting.name + " " + userChatting.surname }}</h5>
         </RouterLink>
       </div>
 
-      <div id="container-full-chat">
-        <div class="my-message">
-          <h4 class="message">Com vas amb web?</h4>
-          <h6>9:03</h6>
-        </div>
+      <div v-for="message in messages" v-bind:key="message.id" id="container-full-chat">
+          <div v-if="(message.user_id_send === userID)"  class="my-message">
+          <h4 class="message">{{ message.content }}</h4>
+          <h6>{{ message.timeStamp.split("T")[0] + " / " + (message.timeStamp.split("T")[1]).substring(0, 5) }}</h6>
+        </div> 
 
-        <div class="other-message">
+        <div v-else class="other-message">
           <div>
-            <h4 class="message">Em falta 1 vista</h4>
-            <h6>9:32</h6>
-          </div>
-        </div>
-
-        <div class="my-message">
-          <h4 class="message">Jo estic acabant aquesta</h4>
-          <h6>9:54</h6>
-        </div>
-
-        <div class="my-message">
-          <h4 class="message">Recorda que s'entrega en poc</h4>
-          <h6>9:54</h6>
-        </div>
-
-        <div class="other-message">
-          <div>
-            <h4 class="message">Si si, demà ho acabo</h4>
-            <h6>9:32</h6>
+            <h4 class="message">{{ message.content }}</h4>
+            <h6>{{ message.timeStamp.split("T")[0] + " / " + (message.timeStamp.split("T")[1]).substring(0, 5) }}</h6>
           </div>
         </div>
       </div>
 
       <div id="container-chat-input">
-        <input type="text" placeholder="Message" />
-        <button class="btn-chat"><i class="material-icons">send</i></button>
+        <input id="message-send" type="text" placeholder="Message" />
+        <button v-on:click="sendMessage()" class="btn-chat"><i class="material-icons">send</i></button>
       </div>
     </section>
   </div>

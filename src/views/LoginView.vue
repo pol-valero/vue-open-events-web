@@ -1,3 +1,67 @@
+<script>
+import { getCurrentInstance } from 'vue';
+
+export default {
+  name: "LoginView",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+
+  methods: {
+    login(){
+      fetch('http://puigmal.salle.url.edu/api/v2/users/login', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },    
+        body: new URLSearchParams(
+          { 
+            email: document.getElementById('login-email').value, 
+            password: document.getElementById('login-password').value
+          })
+      })
+      .then(res => res.json())
+      .then(res=> {
+        let response = JSON.stringify(res);
+        if(response.includes("accessToken")) {
+          localStorage.setItem('token', response);
+          console.log(res);
+          this.getUserID();
+          this.$router.push('/');
+        } else {
+          alert("Wrong email or password");
+        }
+      });
+    },
+    
+    // We search for the user id and other fields of the actual user and save it to local storage
+    getUserID(){
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + document.getElementById('login-email').value;
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },        
+      })
+      .then(res => res.json())
+      .then(res=> {
+        // Saving the fields of res to local storage
+        localStorage.setItem('userInfo', JSON.stringify(res));
+        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].id));
+      });
+    },
+  }
+}
+
+
+</script>
+
+
 <template>
   <div id="image-box">
     <img id="logo-image" src="src/assets/logo_image.png" />
@@ -5,7 +69,7 @@
 
   <div id="main-login-box">
     <div class="login-box">
-      <form action="">
+      <form>
         <h1 id="login-heading">Login</h1>
         <div id="signup-fields">
           <input
@@ -24,18 +88,15 @@
             required
             placeholder="Your password"
           />
-          <input
-            id="button-sign-in"
-            class="primary-button"
-            type="submit"
-            value="Sign In"
-          />
+          <!--<input id="button-sign-in" class="primary-button" type="submit" value="Sign In"/>-->
         </div>
         <div id="signup-link-box">
           <label>Not registered? </label>
           <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
         </div>
       </form>
+      <button v-on:click="login()" id="login-button">Login</button>
+
     </div>
   </div>
 </template>

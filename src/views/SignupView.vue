@@ -1,3 +1,53 @@
+<script>
+export default {
+
+  methods: {
+    signup(){
+      const passOK = this.checkPassword();
+      if(!passOK) return;
+
+      fetch('http://puigmal.salle.url.edu/api/v2/users', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },    
+        body: new URLSearchParams(
+          { 
+            name: document.getElementById('input-user-name').value,
+            last_name: document.getElementById('input-user-lastname').value,
+            email: document.getElementById('input-user-email').value, 
+            password: document.getElementById('input-password').value,
+            image: document.getElementById('input-profile-picture').value
+          })
+      })
+      .then(res => res.json())
+      .then(res=> {
+        let response = JSON.stringify(res);
+        if(response.includes("Error")) {
+          console.log(res);
+          // Alert saying that the credentials are not correct
+          alert("There is one or more credentials that are not correct");
+
+        } else {
+          console.log(res);
+          this.$router.push('/login');
+        }
+            console.log(res);
+      });
+    },
+
+    checkPassword(){
+      if(document.getElementById('input-password').value != document.getElementById('input-confirm-password').value){
+        alert("Passwords don't match");
+        return false;
+      }
+      return true;
+    }
+  }
+
+}
+</script>
+
 <template>
   <div id="image-box">
     <img id="logo-image" src="src/assets/logo_image.png" />
@@ -34,6 +84,7 @@
             />
             <input
               id="input-password"
+              class="in-pass"
               type="password"
               name="password"
               required
@@ -41,17 +92,11 @@
             />
             <input
               id="input-confirm-password"
+              class="in-pass"
               type="password"
               name="confirm-password"
               required
               placeholder="Confirm Password"
-            />
-            <input
-              id="input-birth-date"
-              type="text"
-              name="birth-date"
-              required
-              placeholder="Birth date"
             />
             <input
               id="input-profile-picture"
@@ -62,19 +107,12 @@
             />
           </div>
         </div>
-        <div>
-          <input
-            id="button-sign-up"
-            class="primary-button"
-            type="submit"
-            value="Register"
-          />
-        </div>
         <div id="login-link-box">
           <label>Already registered? </label>
           <RouterLink id="nav-signup" to="/login">Login</RouterLink>
         </div>
       </form>
+      <button v-on:click="signup()" class="primary-button" type="submit" value="Register" id="button-sign-up">Signup</button>
     </div>
   </div>
 </template>
@@ -139,7 +177,7 @@
   background: url(src/assets/icon_message.svg) no-repeat scroll;
 }
 
-#input-password {
+.in-pass {
   background: url(src/assets/icon_lock.svg) no-repeat scroll;
 }
 
@@ -168,8 +206,7 @@
 }
 
 #button-sign-up {
-  height: 30px;
-  width: 170px;
+  height: 25px;
   margin: 10px;
 }
 
