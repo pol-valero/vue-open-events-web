@@ -3,7 +3,7 @@
     name: "ChatView",
     data() {
       return {
-        userID: "",
+        userID: -1,
         userFriends: [],
         userChatting: {
           id: "",
@@ -36,13 +36,14 @@
         if(response.length > 0) {
           this.userFriends = res;
           console.log(this.userFriends);
-
+          // We show the first friend's chat by default
+          this.showChat(this.userFriends[0]);
         } else {
           alert("You have no friends yet, try to add some!");
         }
       });
     },
-
+    
     methods: {
       showChat(friendChatting){
         // We first change the user that we are chatting with
@@ -74,6 +75,12 @@
       },
 
       sendMessage(){
+        const messageContent = document.getElementById("message-send").value;
+        if(messageContent.length == 0) {
+          alert("You can't send an empty message!");
+          return;
+        } 
+
         // We first get the message that the user has written
         const message = document.getElementById("message-send").value;
         // Then we make a request to send the message
@@ -87,7 +94,7 @@
           },
           body: new URLSearchParams(
           { 
-            content: document.getElementById('input-user-name').value,
+            content: messageContent,
             user_id_send: this.userID,
             user_id_recived: this.userChatting.id, 
           })
@@ -96,14 +103,17 @@
 
         .then(res => res.json())
         .then(res=> {
-          let response = JSON.stringify(res);
-          if(response.length > 0) {
-            this.messages = res;
-            console.log(this.messages);
-          } else {
-            alert("You have no messages with this user yet!");
-          }
-        });
+          console.log(res);
+          console.log("------------------");
+          console.log(res.user_id_send);
+          console.log(this.userID);
+
+          console.log(res.user_id_send == this.userID);
+          console.log("------------------");
+
+          this.messages.push(res);
+        })
+        .catch(error => alert("The message couldn't be sent! Try again later!"));
       }
     }
   }
@@ -120,7 +130,7 @@
               <img
                 class="little-img"
                 v-bind:src="friend.image"
-                alt="logo"
+                alt="friend image"
               />
               <h5 class="name-padding">{{ friend.name + " " + friend.last_name }}</h5>
             </div>
@@ -131,14 +141,14 @@
 
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
-        <img class="little-img" v-bind:src="userChatting.image" alt="logo" />
+        <img class="little-img" v-bind:src="userChatting.image" alt="friend image" />
         <RouterLink to="/profile" id="friend-profile-btn">
           <h5 id="name-big-padding"> {{ userChatting.name + " " + userChatting.surname }}</h5>
         </RouterLink>
       </div>
 
       <div v-for="message in messages" v-bind:key="message.id" id="container-full-chat">
-          <div v-if="(message.user_id_send === userID)"  class="my-message">
+          <div v-if="(message.user_id_send == userID)"  class="my-message">
           <h4 class="message">{{ message.content }}</h4>
           <h6>{{ message.timeStamp.split("T")[0] + " / " + (message.timeStamp.split("T")[1]).substring(0, 5) }}</h6>
         </div> 
