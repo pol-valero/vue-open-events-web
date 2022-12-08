@@ -19,7 +19,8 @@ export default {
     })
     .then(res => res.json())
     .then(res=> {
-          console.log(res);
+      //const obj = JSON.parse(res);
+      console.log(res);
     });
 
   }
