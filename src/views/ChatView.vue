@@ -3,7 +3,7 @@
     name: "ChatView",
     data() {
       return {
-        userID: "",
+        userID: -1,
         userFriends: [],
         userChatting: {
           id: "",
@@ -74,6 +74,12 @@
       },
 
       sendMessage(){
+        const messageContent = document.getElementById("message-send").value;
+        if(messageContent.length == 0) {
+          alert("You can't send an empty message!");
+          return;
+        } 
+
         // We first get the message that the user has written
         const message = document.getElementById("message-send").value;
         // Then we make a request to send the message
@@ -87,7 +93,7 @@
           },
           body: new URLSearchParams(
           { 
-            content: document.getElementById('input-user-name').value,
+            content: messageContent,
             user_id_send: this.userID,
             user_id_recived: this.userChatting.id, 
           })
@@ -98,10 +104,10 @@
         .then(res=> {
           let response = JSON.stringify(res);
           if(response.length > 0) {
-            this.messages = res;
-            console.log(this.messages);
+            console.log(res);
+            this.messages.push(res);
           } else {
-            alert("You have no messages with this user yet!");
+            alert("You have no messages with this user yet... Try to send one!");
           }
         });
       }
