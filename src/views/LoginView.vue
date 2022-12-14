@@ -15,9 +15,9 @@ export default {
       fetch('http://puigmal.salle.url.edu/api/v2/users/login', {
         method: 'POST',
         headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         },    
-        body: new URLSearchParams(
+        body: JSON.stringify(
           { 
             email: document.getElementById('login-email').value, 
             password: document.getElementById('login-password').value
@@ -30,6 +30,10 @@ export default {
           localStorage.setItem('token', response);
           console.log(res);
           this.getUserID();
+          console.log(this)
+          console.log(this.$root.$data)
+          console.log(this.$root.$data.user.coses)
+          // I need to communicate with the parent component to update the app.vue data
           this.$router.push('/');
         } else {
           alert("Wrong email or password");
@@ -45,14 +49,18 @@ export default {
         method: 'GET',
         headers:{
           'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },        
       })
       .then(res => res.json())
       .then(res=> {
+        
         // Saving the fields of res to local storage
         localStorage.setItem('userInfo', JSON.stringify(res));
-        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].id));
+        this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
+        this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].name));
+        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].image));
       });
     },
   }

@@ -9,9 +9,9 @@ export default {
       fetch('http://puigmal.salle.url.edu/api/v2/users', {
         method: 'POST',
         headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         },    
-        body: new URLSearchParams(
+        body: JSON.stringify(
           { 
             name: document.getElementById('input-user-name').value,
             last_name: document.getElementById('input-user-lastname').value,

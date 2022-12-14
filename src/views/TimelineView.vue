@@ -17,15 +17,31 @@
           method: "GET",
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
           },
         })
           .then((res) => res.json())
           .then((res) => {
             this.eventsAssisted = res;
+            res.map((event) => {
+              event.date = event.date.split("T")[0] + " / " + (event.date.split("T")[1]).substring(0, 5);
+            });
+            
+            res.map((event) => {
+              if(this.checkURL(event.image)) {
+                event.image = event.image;
+              } else {
+                event.image = "src/assets/default_img.png";
+              }
+            });
+            
             console.log(this.eventsAssisted);
           });
       },
+      
+      checkURL(url) {
+      return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+      }
     },
     created() {
       this.getEventsAssisted();
@@ -42,9 +58,9 @@
       <li>
         <div class="event-timeline">
           <div class="img-date-title-timeline">
-            <img v-bind:src="event.image" alt="event image" />
+            <img v-bind:src="event.image" alt="event image"/>
             <div class="date-title-timeline">
-              <h5 class="event-datetime">{{ event.date.split("T")[0] + " / " + (event.date.split("T")[1]).substring(0, 5)  }}</h5>
+              <h5 class="event-datetime">{{ event.date  }}</h5>
               <h4 class="event-title">{{ event.name }}</h4>
             </div>
           </div>
