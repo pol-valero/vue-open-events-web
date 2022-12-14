@@ -17,7 +17,7 @@
           method: "GET",
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
           },
         })
           .then((res) => res.json())

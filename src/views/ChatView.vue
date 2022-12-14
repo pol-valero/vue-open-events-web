@@ -27,14 +27,14 @@
         method: "GET",
         headers: {
           'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
       })
       .then(res => res.json())
       .then(res=> {
         let response = JSON.stringify(res);
         if(response.length > 0) {
-          this.userFriends = res;
+          this.userFriends = res; //recorrer i transformar la imatge amb .map
           console.log(this.userFriends);
           // We show the first friend's chat by default
           this.showChat(this.userFriends[0]);
@@ -59,7 +59,7 @@
           method: "GET",
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
           },
         })
         .then(res => res.json())
@@ -90,9 +90,9 @@
           method: "POST",
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
           },
-          body: new URLSearchParams(
+          body: JSON.stringify(
           { 
             content: messageContent,
             user_id_send: this.userID,
