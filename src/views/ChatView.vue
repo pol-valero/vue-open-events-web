@@ -35,6 +35,15 @@
         let response = JSON.stringify(res);
         if(response.length > 0) {
           this.userFriends = res; //recorrer i transformar la imatge amb .map
+          console.log("MAP: ");
+          res.map((friend) => {
+            if(this.checkURL(friend.image)){
+              friend.image = friend.image;
+            } else{
+              friend.image = "src/assets/default_img.png";
+            }  
+          });
+          
           console.log(this.userFriends);
           // We show the first friend's chat by default
           this.showChat(this.userFriends[0]);
@@ -50,7 +59,12 @@
         this.userChatting.id = friendChatting.id;
         this.userChatting.name = friendChatting.name;
         this.userChatting.surname = friendChatting.last_name;
-        this.userChatting.image = friendChatting.image;
+
+        if(this.checkURL(friendChatting.image)){
+          this.userChatting.image = friendChatting.image;
+        } else{
+        this.userChatting.image = "src/assets/default_img.png";
+        }  
 
         // Then we make a request to get the messages between the two users
         const token = localStorage.getItem('token');
@@ -114,6 +128,10 @@
           this.messages.push(res);
         })
         .catch(error => alert("The message couldn't be sent! Try again later!"));
+      },
+
+      checkURL(url) {
+      return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
       }
     }
   }

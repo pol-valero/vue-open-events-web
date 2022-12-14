@@ -22,11 +22,10 @@ export default {
       let img = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       if(this.checkURL (img)){
         this.user.image = img;
-      }
-      else{
+      } else{
         this.user.image = "src/assets/default_img.png";
       }  
-      
+
       console.log(this.user);
     } else {
       logged = false;
