@@ -1,3 +1,20 @@
+<script>
+
+  export default {
+    name: "DiscoverView",
+    data() {
+      return {
+        users: [], //TODO: posar al gust
+      };
+    },
+
+    mounted() {
+      // We show the aside
+      this.$root.$data.show.aside = true;
+    },
+  };
+</script>
+
 <template>
   <!-- Main content -->
   <section id="discover-users-list-main">

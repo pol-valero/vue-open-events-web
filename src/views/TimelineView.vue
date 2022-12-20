@@ -1,4 +1,5 @@
 <script>
+  // We define the eventsAssisted array to store the events the user have assisted
   export default {
     name: "TimelineView",
     data() {
@@ -8,12 +9,14 @@
     },
 
     methods: {
+      // We get the events the user have assisted
       getEventsAssisted() {
+        // We get the token from local storage and the user id
         const token = localStorage.getItem('token');
         const userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
         let URL = "http://puigmal.salle.url.edu/api/v2/users/" + userID + "/assistances";
         console.log(JSON.parse(token).accessToken);
-
+        // We make the request to the API to get the events the user have assisted
         fetch(URL, {
           method: "GET",
           headers: {
@@ -24,10 +27,11 @@
           .then((res) => res.json())
           .then((res) => {
             this.eventsAssisted = res;
+            // We format the date and time of the events to show it in the timeline
             res.map((event) => {
               event.date = event.date.split("T")[0] + " / " + (event.date.split("T")[1]).substring(0, 5);
             });
-            
+            // We check if the event has an image and if it has not, we put a default image
             res.map((event) => {
               if(this.checkURL(event.image)) {
                 event.image = event.image;
@@ -40,16 +44,16 @@
             console.log(this.eventsAssisted);
           });
       },
-      
+      // Function to check if an image is valid
       checkURL(url) {
       return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
       }
     },
+
     created() {
       this.getEventsAssisted();
     },
-
-    
+  
   };
 </script>
 

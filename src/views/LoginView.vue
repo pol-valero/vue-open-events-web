@@ -10,6 +10,17 @@ export default {
     };
   },
 
+  mounted() {
+    // If the user is logged in, we redirect him to the home page
+    if (localStorage.getItem("token")) {
+      this.$router.push("/");
+    }
+
+    // We hide the aside and the header
+    this.$root.$data.show.aside = false;
+    this.$root.$data.show.header = false;
+  },
+
   methods: {
     login(){
       fetch('http://puigmal.salle.url.edu/api/v2/users/login', {

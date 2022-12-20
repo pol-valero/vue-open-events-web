@@ -1,4 +1,6 @@
 <script>
+  
+  // We define the data that we will use to show the chat
   export default{
     name: "ChatView",
     data() {
@@ -14,10 +16,8 @@
         messages: [],
       };
     },
-
     //created lifecycle method
     created(){
-
       //Getting the user's ID
       this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
       //Getting the user's token
@@ -33,10 +33,12 @@
       .then(res => res.json())
       .then(res=> {
         let response = JSON.stringify(res);
+        // We check if the user has friends
         if(response.length > 0) {
-          this.userFriends = res; //recorrer i transformar la imatge amb .map
+          this.userFriends = res;
           console.log("MAP: ");
           res.map((friend) => {
+            // We check if the friend has a valid profile picture
             if(this.checkURL(friend.image)){
               friend.image = friend.image;
             } else{
@@ -51,6 +53,10 @@
           alert("You have no friends yet, try to add some!");
         }
       });
+
+      // We hide the aside of the app.vue
+      this.$root.$data.show.aside = false;
+
     },
     
     methods: {
@@ -59,7 +65,7 @@
         this.userChatting.id = friendChatting.id;
         this.userChatting.name = friendChatting.name;
         this.userChatting.surname = friendChatting.last_name;
-
+        // We check if the friend has a valid profile picture
         if(this.checkURL(friendChatting.image)){
           this.userChatting.image = friendChatting.image;
         } else{
@@ -79,6 +85,7 @@
         .then(res => res.json())
         .then(res=> {
           let response = JSON.stringify(res);
+          // We check if the user has messages with the friend
           if(response.length > 0) {
             this.messages = res;
             console.log(this.messages);
@@ -88,8 +95,10 @@
         });
       },
 
+      // We send the message when the input is filled and the button is clicked
       sendMessage(){
         const messageContent = document.getElementById("message-send").value;
+        // We check if the message is empty
         if(messageContent.length == 0) {
           alert("You can't send an empty message!");
           return;
@@ -114,7 +123,7 @@
           })
         })
 
-
+        // We add the message to the messages array or we show an error if the message couldn't be sent
         .then(res => res.json())
         .then(res=> {
           console.log(res);
@@ -130,6 +139,7 @@
         .catch(error => alert("The message couldn't be sent! Try again later!"));
       },
 
+      // We check if the URL is valid
       checkURL(url) {
       return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
       }
