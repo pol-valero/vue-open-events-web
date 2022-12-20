@@ -23,6 +23,9 @@ export default {
       console.log(res);
     });
 
+    // We hide the aside
+    this.$root.$data.show.aside = false;
+
   }
   
 

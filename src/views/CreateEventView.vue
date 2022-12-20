@@ -1,3 +1,24 @@
+<script>
+ 
+ export default {
+  name: "CreateEventView",
+  data() {
+    return {
+      events: [], //TODO: posar al gust
+    };
+  },
+ 
+  mounted() {
+    // We show the aside and the header
+    this.$root.$data.show.aside = false;
+  },
+ 
+  methods: {
+ 
+  },
+};
+</script>
+
 <template>
   <div id="create-event-main">
     <section id="title-container">

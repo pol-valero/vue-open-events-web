@@ -1,5 +1,18 @@
 <script>
 export default {
+  name: "SignupView",
+
+  mounted() {
+    // We hide the aside and the header
+    this.$root.$data.show.aside = false;
+    this.$root.$data.show.header = false;
+
+    // We check if the user is logged in
+    if (localStorage.getItem("userInfo")) {
+      // If the user is logged in, we redirect him to the home page
+      this.$router.push("/");
+    }
+  },
 
   methods: {
     signup(){

@@ -1,3 +1,25 @@
+<script>
+  export default {
+    name: "HomeView",
+    data() {
+      return {
+        events: [], //TODO: posar al gust
+      };
+    },
+
+    mounted() {
+      // We show the aside and the header
+      this.$root.$data.show.aside = true;
+      this.$root.$data.show.header = true;
+    },
+
+    methods: {
+
+    },
+  };
+
+</script>
+
 <template>
   <section id="home-events-list-section">
     <!-- Events header -->
