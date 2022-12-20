@@ -77,7 +77,8 @@ export default {
 
   <div id="main-login-box">
     <div class="login-box">
-      <form>
+      <!--On keydown enter press execute login()-->
+      <form @keydown.enter="login()">
         <h1 id="login-heading">Login</h1>
         <div id="signup-fields">
           <input

@@ -26,7 +26,7 @@ export default {
         this.user.image = "src/assets/default_img.png";
       }  
 
-      console.log(this.user);
+      //console.log(this.user);
     } else {
       logged = false;
       // If the user is not logged in, we redirect him to the login page
