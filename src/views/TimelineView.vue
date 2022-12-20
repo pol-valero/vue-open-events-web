@@ -12,6 +12,7 @@
         const token = localStorage.getItem('token');
         const userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
         let URL = "http://puigmal.salle.url.edu/api/v2/users/" + userID + "/assistances";
+        console.log(JSON.parse(token).accessToken);
 
         fetch(URL, {
           method: "GET",
@@ -31,6 +32,7 @@
               if(this.checkURL(event.image)) {
                 event.image = event.image;
               } else {
+                console.log("Posant default image");
                 event.image = "src/assets/default_img.png";
               }
             });
@@ -58,7 +60,7 @@
       <li>
         <div class="event-timeline">
           <div class="img-date-title-timeline">
-            <img v-bind:src="event.image" alt="event image"/>
+            <img v-bind:src="event.image" onerror="this.src = 'src/assets/default_img.png'" alt="event image"/>
             <div class="date-title-timeline">
               <h5 class="event-datetime">{{ event.date  }}</h5>
               <h4 class="event-title">{{ event.name }}</h4>
@@ -74,7 +76,7 @@
 
 <style scoped>
 img {
-  width: 50%;
+  width: 20%;
   height: fit-content;
 }
 

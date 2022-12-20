@@ -148,6 +148,7 @@
               <img
                 class="little-img"
                 v-bind:src="friend.image"
+                onerror="this.src = 'src/assets/default_img.png'"
                 alt="friend image"
               />
               <h5 class="name-padding">{{ friend.name + " " + friend.last_name }}</h5>
@@ -159,22 +160,24 @@
 
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
-        <img class="little-img" v-bind:src="userChatting.image" alt="friend image" />
+        <img class="little-img" v-bind:src="userChatting.image" onerror="this.src = 'src/assets/default_img.png'" alt="friend image" />
         <RouterLink to="/profile" id="friend-profile-btn">
           <h5 id="name-big-padding"> {{ userChatting.name + " " + userChatting.surname }}</h5>
         </RouterLink>
       </div>
 
-      <div v-for="message in messages" v-bind:key="message.id" id="container-full-chat">
-          <div v-if="(message.user_id_send == userID)"  class="my-message">
-          <h4 class="message">{{ message.content }}</h4>
-          <h6>{{ message.timeStamp.split("T")[0] + " / " + (message.timeStamp.split("T")[1]).substring(0, 5) }}</h6>
-        </div> 
-
-        <div v-else class="other-message">
-          <div>
+      <div class="scroller">
+        <div v-for="message in messages" v-bind:key="message.id" id="container-full-chat">
+            <div v-if="(message.user_id_send == userID)"  class="my-message">
             <h4 class="message">{{ message.content }}</h4>
             <h6>{{ message.timeStamp.split("T")[0] + " / " + (message.timeStamp.split("T")[1]).substring(0, 5) }}</h6>
+          </div> 
+
+          <div v-else class="other-message">
+            <div>
+              <h4 class="message">{{ message.content }}</h4>
+              <h6>{{ message.timeStamp.split("T")[0] + " / " + (message.timeStamp.split("T")[1]).substring(0, 5) }}</h6>
+            </div>
           </div>
         </div>
       </div>
@@ -350,6 +353,13 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.scroller {
+  height: 550px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
 }
 
 /*MEDIA QUERIES*/

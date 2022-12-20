@@ -67,6 +67,7 @@ import { RouterLink, RouterView } from "vue-router";
         </RouterLink>
         <img
           v-bind:src="user.image"
+          onerror="this.src = 'src/assets/default_img.png'"
           alt="user photo"
           class="header-img"
         />
