@@ -1,5 +1,6 @@
 <script>
 
+// We give to the singleton the data we want to share between components 
 export default {
   name: "App",
   data() {
@@ -8,18 +9,22 @@ export default {
         name: "User",
         image: "src/assets/default_img.png",
       },
+      show: {
+        aside: true,
+        header: true,
+      },
     };
   },
 
   //created lifecycle method
   mounted() {
-    let logged = false;
-
     // If the user is logged in, we get the user info from local storage
     if (localStorage.getItem("userInfo")) {
       logged = true;
       this.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
       let img = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+      
+      // We check if the image is a valid URL
       if(this.checkURL (img)){
         this.user.image = img;
       } else{
@@ -28,7 +33,6 @@ export default {
 
       //console.log(this.user);
     } else {
-      logged = false;
       // If the user is not logged in, we redirect him to the login page
       this.$router.push("/login");
     }
@@ -54,7 +58,8 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header>
+  <!-- Make an v-if showing the content if showHeader is true -->
+  <header v-if="show.header">
     <div id="top-header">
       <div id="title-logo">
         <img src="src\assets\logo_image.png" alt="logo" class="header-img" />
@@ -67,6 +72,7 @@ import { RouterLink, RouterView } from "vue-router";
         </RouterLink>
         <img
           v-bind:src="user.image"
+          onerror="this.src = 'src/assets/default_img.png'"
           alt="user photo"
           class="header-img"
         />
@@ -99,7 +105,7 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterView />
     </main>
 
-    <aside>
+    <aside v-if="show.aside">
       <h3 class="title">REQUESTS</h3>
 
       <div class="request-container">

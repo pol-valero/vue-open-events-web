@@ -1,4 +1,5 @@
 <script>
+<<<<<<< HEAD
 export default {
   data(){
     return{
@@ -59,6 +60,24 @@ export default {
 </script>
 
 
+=======
+
+  export default {
+    name: "DiscoverView",
+    data() {
+      return {
+        users: [], //TODO: posar al gust
+      };
+    },
+
+    mounted() {
+      // We show the aside
+      this.$root.$data.show.aside = true;
+    },
+  };
+</script>
+
+>>>>>>> 1fe33b28d8ba2e0715038a6e38c064909a037ff2
 <template>
   <!-- Main content -->
   <section id="discover-users-list-main">

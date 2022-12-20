@@ -48,6 +48,10 @@ export default {
     .then(res=> {
       console.log(res);
     });
+
+    // We hide the aside
+    this.$root.$data.show.aside = false;
+
   }
   
 

@@ -1,3 +1,29 @@
+<script>
+
+export default {
+  name: "EditEventView",
+  data() {
+    return { //TODO: posar al gust
+      title: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      image: "",
+      type: "",
+    };
+  },
+
+  mounted() {
+    // We hide the aside
+    this.$root.$data.show.aside = false;
+  },
+
+  methods: {
+  },
+};
+</script>
+
 <template>
   <div id="create-event-main">
     <section id="title-container">
