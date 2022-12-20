@@ -1,3 +1,64 @@
+<script>
+export default {
+  data(){
+    return{
+      usersSearched: [],
+    }
+  }, 
+
+  methods: {
+    searchUsers(){
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + document.getElementById("users-searchbar-placeholder").value;
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(res => res.json())
+      .then(res=> {
+        let response = JSON.stringify(res);
+        if(response.length > 0) {
+          this.usersSearched = res; //recorrer i transformar la imatge amb .map
+
+          res.map((friend) => {
+            if(this.checkURL(friend.image)){
+              friend.image = "src/assets/default_img.png";
+            } else{
+              friend.image = "src/assets/default_img.png";
+            }  
+          });
+
+        }
+      });
+    },
+
+    imageExists(image_url){
+      var http = new XMLHttpRequest();
+
+      http.open('HEAD', image_url, false);
+      http.send();
+
+      return http.status != 404;
+    },
+
+    checkURL(url) {
+      return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    }
+
+  },
+
+  mounted(){
+    this.searchUsers();
+  }
+  
+
+}
+</script>
+
+
 <template>
   <!-- Main content -->
   <section id="discover-users-list-main">
@@ -8,11 +69,18 @@
       <article id="users-searchbar-field" class="searchbar-field">
         <form action="">
           <input
+          v-on:input="searchUsers()"
+          id="users-searchbar-placeholder"
+          class="searchbar-placeholder"
+          placeholder="Search"
+          type="text">
+          <!--
+          <input
             id="users-searchbar-placeholder"
             class="searchbar-placeholder"
             type="text"
             placeholder="Search"
-          />
+          />-->
         </form>
         <button class="filters-show-button">Filters</button>
       </article>
@@ -37,6 +105,21 @@
     </section>
     <!-- Users list -->
     <section id="users-list-section">
+      <!--
+      <article class="users-list-item">
+        <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture" />
+        <h2 class="users-list-item-title">User 4</h2>
+      </article>-->
+
+      <ul v-for="friend in usersSearched" v-bind:key="friend.id">
+        <li>
+          <article class="users-list-item"> 
+            <img class="users-list-item-picture" v-bind:src="friend.image" alt="User's profile picture" />
+            <h2 class="users-list-item-title">{{ friend.name + " " + friend.last_name }}</h2>
+          </article>
+        </li>
+      </ul>
+      <!--
       <RouterLink id="tmp-users-item-link" to="/profile">
         <article class="users-list-item">
           <img
@@ -102,7 +185,7 @@
           class="users-list-item-picture"
         />
         <h2 class="users-list-item-title">User 8</h2>
-      </article>
+      </article>-->
     </section>
   </section>
 </template>
@@ -158,7 +241,8 @@ button {
   background: #fafafa;
   margin-top: 20px;
   margin-right: 10px;
-  width: 85%;
+  width: 380px;
+  height: 80px;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -220,12 +304,19 @@ button {
   }
   /* End of temporary style */
 
-  .users-list-item {
+  /*.users-list-item {
     width: 45%;
-  }
+  }*/
 
   .users-list-item-title {
     font-size: 2vmin;
   }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
 }
 </style>
