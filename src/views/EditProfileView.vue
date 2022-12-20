@@ -1,3 +1,113 @@
+<script>
+export default {
+  data(){
+    return{
+      userName: "",
+      userLastName: "",
+      userEmail: "",
+      //userPassword: "",
+      //userConfirmedPassword: "",
+      userImage: "",
+    }
+  }, 
+
+  methods: {
+    editProfile(){
+
+      // Checking if the fields are empty
+      if(document.getElementById('name-input').value == "" 
+      || document.getElementById('lastname-input').value == "" 
+      || document.getElementById('email-input').value == "" 
+      || document.getElementById('password-input').value == "" 
+      || document.getElementById('confirmed-password-input').value == ""
+      || document.getElementById('image-input').value == ""){
+        alert("All fields must be filled");
+        return;
+      }
+
+      // Checking if the password is at least 8 characters long
+      if(document.getElementById('password-input').value.length < 8){
+        alert("Password must be at least 8 characters long");
+        return;
+      }
+
+      // Checking if the password and confirmed password match
+      if((document.getElementById('password-input').value).
+      localeCompare(document.getElementById('confirmed-password-input').value) != 0){
+        alert("Passwords don't match");
+        return;
+      }
+
+      //Getting the user's token
+      const token = localStorage.getItem('token');
+
+      fetch('http://puigmal.salle.url.edu/api/v2/users/', {
+        method: 'PUT',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json'
+        },    
+        body: JSON.stringify(
+          { 
+            name: document.getElementById('name-input').value, 
+            last_name: document.getElementById('lastname-input').value,
+            email: document.getElementById('email-input').value,
+            password: document.getElementById('password-input').value,
+            image: document.getElementById('image-input').value
+          })
+      })
+
+      // Once is done, we update the user's info and redirect to the user's profile
+      //.then(res => res.json())
+      // We search for the user id and other fields of the actual user and save it to local storage
+      /*
+      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + this.userEmail;
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(res => res.json())
+      .then(res=> {
+        // Saving the fields of res to local storage
+        localStorage.setItem('userInfo', JSON.stringify(res));
+        
+        this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
+        this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+        this.$router.push('/profile');
+      });*/
+    
+
+
+
+
+
+
+
+    },
+
+  },
+
+  mounted(){
+    // Getting the user's info
+    this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
+    this.userLastName = JSON.parse(localStorage.getItem("userInfo"))[0].last_name;
+    this.userEmail = JSON.parse(localStorage.getItem("userInfo"))[0].email;
+    this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+    
+    // Set placeholders from user's info
+    document.getElementById('name-input').value = this.userName;
+    document.getElementById('lastname-input').value = this.userLastName;
+    document.getElementById('email-input').value = this.userEmail;
+    document.getElementById('image-input').value = this.userImage;
+  }
+  
+
+}
+</script>
+
 <template>
   <div id="edit-profile-main">
     <section id="title-container">
@@ -8,22 +118,23 @@
       <div class="dual-form">
         <div class="single-form">
           <h4 class="form-title">Name</h4>
-          <input class="field" type="text" placeholder="Firstname" />
+          <input id="name-input" class="field" type="text" placeholder="Name" />
         </div>
         <div class="single-form">
           <h4 class="form-title">Lastname</h4>
-          <input class="field" type="text" placeholder="Lastname" />
+          <input id="lastname-input" class="field" type="text" placeholder="Lastname" />
         </div>
       </div>
 
       <div class="single-form">
         <h4 class="form-title">Email</h4>
-        <input class="field" type="text" placeholder="Ex.- email@gmail.com" />
+        <input id="email-input" class="field" type="text" placeholder="Ex.- email@gmail.com" />
       </div>
 
       <div class="single-form">
         <h4 class="form-title">Password</h4>
         <input
+          id="password-input"
           class="field"
           type="password"
           placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
@@ -33,15 +144,22 @@
       <div class="single-form">
         <h4 class="form-title">Confirm password</h4>
         <input
+          id="confirmed-password-input"
           class="field"
           type="password"
           placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
         />
       </div>
 
+      <!--
       <div class="single-form">
         <h4 class="form-title">Birth date</h4>
         <input class="field" type="date" />
+      </div>-->
+
+      <div class="single-form">
+        <h4 class="form-title">Image</h4>
+        <input id="image-input" class="field" type="text" placeholder="www.salleurl.edu/salle_en.png" />
       </div>
 
       <nav id="delete-account-link">
@@ -49,12 +167,17 @@
       </nav>
 
       <div class="button-container">
+        <!--
         <button
           onclick="location.href='/profile';"
           class="save-button primary-button"
         >
           SAVE CHANGES
         </button>
+        -->
+        <button v-on:click="editProfile()" class="save-button primary-button">SAVE CHANGES</button>
+
+
         <button
           onclick="location.href='/profile';"
           class="cancel-button secondary-button"
