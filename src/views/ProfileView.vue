@@ -13,6 +13,11 @@ export default {
   methods: {
     checkURL(url) {
       return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    },
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userInfo");
+      this.$router.push("/login");
     }
   },
 
@@ -97,9 +102,8 @@ export default {
 
     <section id="container-full-profile">
       <div class="button-container">
-        <!--TEMPORAL PER HTML I CSS-->
         <a href="/login">
-          <button class="logout-button primary-button">LOGOUT</button>
+          <button v-on:click="logout()" class="logout-button primary-button">LOGOUT</button>
         </a>
         <button class="follow-button primary-button">FOLLOW</button>
         <a href="/editProfile">
