@@ -20,7 +20,6 @@ export default {
   mounted() {
     // If the user is logged in, we get the user info from local storage
     if (localStorage.getItem("userInfo")) {
-      logged = true;
       this.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
       let img = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       
@@ -31,7 +30,7 @@ export default {
         this.user.image = "src/assets/default_img.png";
       }  
 
-      console.log(this.user);
+      //console.log(this.user);
     } else {
       // If the user is not logged in, we redirect him to the login page
       this.$router.push("/login");

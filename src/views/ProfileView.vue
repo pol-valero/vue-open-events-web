@@ -2,26 +2,52 @@
 export default {
   data(){
     return{
-      text: "Sign In"
+      userID: -1,
+      userName: "",
+      userLastName: "",
+      userEmail: "",
+      userImage: "",
+
+      id: this.$route.params.id //this is the id from the browser
     }
   }, 
 
-  methods: {},
+  methods: {
+    checkURL(url) {
+      return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    },
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userInfo");
+      this.$router.push("/login");
+    }
+  },
 
   mounted(){
+    //Getting the user's info
+    this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+    this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
+    this.userLastName = JSON.parse(localStorage.getItem("userInfo"))[0].last_name;
+    this.userEmail = JSON.parse(localStorage.getItem("userInfo"))[0].email;
+    this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+    
+    // We check if the user has a profile picture
+    if(!this.checkURL(this.userImage)){
+        this.userImage = "src/assets/default_img.png";
+    } 
+
+    //Getting the user's token
     const token = localStorage.getItem('token');
-    fetch('http://puigmal.salle.url.edu/api/v2/users', {
-      method: 'GET',
-      headers:{
-        'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    })
+
+    fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID + "/statistics", {
+        method: "GET",
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },
+      })
     .then(res => res.json())
-    .then(res=> {
-      //const obj = JSON.parse(res);
-      console.log(res);
-    });
+    // TODO: Get the user's statistics and show them in the table
 
     // We hide the aside
     this.$root.$data.show.aside = false;
@@ -39,14 +65,14 @@ export default {
 
       <div class="main-container">
         <div class="profile-info">
-          <img id="profile-img" src="../assets/default_img.png" alt="logo" />
+          <img v-bind:src="userImage" alt="logo" id="profile-img"/>
         </div>
 
         <div class="info-container">
           <h2 class="info-title">Name</h2>
-          <p class="user-name">Firstname Lastname</p>
+          <p class="user-name">{{userName + " " + userLastName}}</p>
           <h2 class="info-title">Email</h2>
-          <p class="user-name">email@email.com</p>
+          <p class="user-name">{{userEmail}}</p>
         </div>
       </div>
     </section>
@@ -54,7 +80,7 @@ export default {
     <section id="container-full-profile">
       <table class="stats-table">
         <thead>
-          <h1 id="statistics-title">Statistics</h1>
+          <h1 id="statistics-title">Statistics (id={{this.id}})</h1>
         </thead>
         <tbody>
           <tr>
@@ -80,9 +106,8 @@ export default {
 
     <section id="container-full-profile">
       <div class="button-container">
-        <!--TEMPORAL PER HTML I CSS-->
         <a href="/login">
-          <button class="logout-button primary-button">LOGOUT</button>
+          <button v-on:click="logout()" class="logout-button primary-button">LOGOUT</button>
         </a>
         <button class="follow-button primary-button">FOLLOW</button>
         <a href="/editProfile">
