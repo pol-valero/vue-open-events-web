@@ -76,6 +76,26 @@ export default {
       this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       this.$router.push('/profile');      
     },
+    deleteProfile(){
+      //Getting the user's token
+      const token = localStorage.getItem('token');
+
+      fetch('http://puigmal.salle.url.edu/api/v2/users/', {
+        method: 'DELETE',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json'
+        },
+      })
+
+      // We remove the token and the user's info from localStorage
+      .then(
+        localStorage.removeItem("token"),
+        localStorage.removeItem("userInfo"),
+        this.$router.push("/login"),
+        alert("Account successfully deleted")
+      )
+    }
   },
 
   mounted(){
@@ -152,10 +172,12 @@ export default {
         <h4 class="form-title">Image</h4>
         <input id="image-input" class="field" type="text" placeholder="www.salleurl.edu/salle_en.png" />
       </div>
-
+      <!--
       <nav id="delete-account-link">
         <RouterLink id="nav-delete-account" to="/">Delete account</RouterLink>
-      </nav>
+      </nav>--> 
+      
+      <nav id="nav-delete-account" v-on:click="deleteProfile()">Delete account</nav>
 
       <div class="button-container">
         <!--
