@@ -20,7 +20,6 @@ export default {
   mounted() {
     // If the user is logged in, we get the user info from local storage
     if (localStorage.getItem("userInfo")) {
-      logged = true;
       this.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
       let img = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       

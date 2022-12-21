@@ -45,9 +45,7 @@ export default {
         },
       })
     .then(res => res.json())
-    .then(res=> {
-      console.log(res);
-    });
+    // TODO: Get the user's statistics and show them in the table
 
     // We hide the aside
     this.$root.$data.show.aside = false;

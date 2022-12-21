@@ -14,6 +14,12 @@ export default {
   methods: {
     editProfile(){
 
+      // Checking if the name and last name are alphanumeric
+      if (!(document.getElementById('name-input').value).match(/^[0-9a-z]+$/)){
+        alert("Name must be alphanumeric");
+        return;
+      }
+
       // Checking if the fields are empty
       if(document.getElementById('name-input').value == "" 
       || document.getElementById('lastname-input').value == "" 
@@ -57,37 +63,19 @@ export default {
           })
       })
 
-      // Once is done, we update the user's info and redirect to the user's profile
-      //.then(res => res.json())
-      // We search for the user id and other fields of the actual user and save it to local storage
-      /*
-      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + this.userEmail;
-      fetch(URL, {
-        method: 'GET',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },     
-      })
-      .then(res => res.json())
-      .then(res=> {
-        // Saving the fields of res to local storage
-        localStorage.setItem('userInfo', JSON.stringify(res));
-        
-        this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
-        this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-        this.$router.push('/profile');
-      });*/
-    
+      let user = JSON.parse(localStorage.getItem("userInfo"));
+      user[0].name = document.getElementById('name-input').value;
+      user[0].last_name = document.getElementById('lastname-input').value;
+      user[0].email = document.getElementById('email-input').value;
+      user[0].image = document.getElementById('image-input').value;
+      localStorage.removeItem('userInfo');
+      localStorage.setItem('userInfo', JSON.stringify(user));
 
-
-
-
-
-
-
+      // Updating the user's info from App.vue
+      this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
+      this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+      this.$router.push('/profile');      
     },
-
   },
 
   mounted(){
@@ -102,6 +90,9 @@ export default {
     document.getElementById('lastname-input').value = this.userLastName;
     document.getElementById('email-input').value = this.userEmail;
     document.getElementById('image-input').value = this.userImage;
+  
+    // We hide the aside
+    this.$root.$data.show.aside = false;
   }
   
 

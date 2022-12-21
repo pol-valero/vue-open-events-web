@@ -1,5 +1,4 @@
 <script>
-<<<<<<< HEAD
 export default {
   data(){
     return{
@@ -60,24 +59,6 @@ export default {
 </script>
 
 
-=======
-
-  export default {
-    name: "DiscoverView",
-    data() {
-      return {
-        users: [], //TODO: posar al gust
-      };
-    },
-
-    mounted() {
-      // We show the aside
-      this.$root.$data.show.aside = true;
-    },
-  };
-</script>
-
->>>>>>> 1fe33b28d8ba2e0715038a6e38c064909a037ff2
 <template>
   <!-- Main content -->
   <section id="discover-users-list-main">
@@ -132,6 +113,7 @@ export default {
 
       <ul v-for="friend in usersSearched" v-bind:key="friend.id">
         <li>
+          <!-- v-on:click="this.$router.push('/vejeri/{friend.id}')" -->
           <article class="users-list-item"> 
             <img class="users-list-item-picture" v-bind:src="friend.image" alt="User's profile picture" />
             <h2 class="users-list-item-title">{{ friend.name + " " + friend.last_name }}</h2>
