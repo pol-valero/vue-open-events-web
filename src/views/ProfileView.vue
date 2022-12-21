@@ -7,6 +7,8 @@ export default {
       userLastName: "",
       userEmail: "",
       userImage: "",
+
+      id: this.$route.params.id //this is the id from the browser
     }
   }, 
 
@@ -78,7 +80,7 @@ export default {
     <section id="container-full-profile">
       <table class="stats-table">
         <thead>
-          <h1 id="statistics-title">Statistics</h1>
+          <h1 id="statistics-title">Statistics (id={{this.id}})</h1>
         </thead>
         <tbody>
           <tr>

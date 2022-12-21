@@ -111,7 +111,7 @@ export default {
         <h2 class="users-list-item-title">User 4</h2>
       </article>-->
 
-      <ul v-for="friend in usersSearched" v-bind:key="friend.id">
+      <ul v-for="friend in usersSearched" v-bind:key="friend.id" v-on:click="this.$router.push('/profile/' + friend.id)">
         <li>
           <!-- v-on:click="this.$router.push('/vejeri/{friend.id}')" -->
           <article class="users-list-item"> 
