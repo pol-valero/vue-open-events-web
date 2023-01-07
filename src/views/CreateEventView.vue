@@ -1,21 +1,19 @@
 <script>
+import FormInput from "../components/formInput.vue";
  
  export default {
-  name: "CreateEventView",
-  data() {
-    return {
-      events: [], //TODO: posar al gust
-    };
-  },
- 
-  mounted() {
-    // We show the aside and the header
-    this.$root.$data.show.aside = false;
-  },
- 
-  methods: {
- 
-  },
+    name: "CreateEventView",
+    data() {
+        return {
+            events: [], //TODO: posar al gust
+        };
+    },
+    mounted() {
+        // We show the aside and the header
+        this.$root.$data.show.aside = false;
+    },
+    methods: {},
+    components: { FormInput }
 };
 </script>
 
@@ -27,8 +25,9 @@
 
     <section id="forms-container">
       <div class="single-form">
-        <h4 class="form-title">Title</h4>
-        <input class="field" type="text" placeholder="Ex.- House BBQ" />
+        <FormInput
+        />
+
       </div>
 
       <div class="single-form">
