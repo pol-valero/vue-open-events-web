@@ -1,19 +1,29 @@
 <script>
-import FormInput from "../components/formInput.vue";
+
+import FormInput from "../components/formInputText.vue";
+
+let testVariable;
  
  export default {
     name: "CreateEventView",
+    components: { FormInput },
+    properties: {
+      formTitle: ''
+    },
     data() {
         return {
-            events: [], //TODO: posar al gust
         };
     },
     mounted() {
         // We show the aside and the header
         this.$root.$data.show.aside = false;
     },
-    methods: {},
-    components: { FormInput }
+    methods: {
+      prova(text) {
+        testVariable = text
+        alert(testVariable);
+      }
+    },
 };
 </script>
 
@@ -26,8 +36,10 @@ import FormInput from "../components/formInput.vue";
     <section id="forms-container">
       <div class="single-form">
         <FormInput
+          v-on:update-modelValue="prova" 
+          title =  "Title"
+          defaultTxt = "Ex.- House BBQ"
         />
-
       </div>
 
       <div class="single-form">

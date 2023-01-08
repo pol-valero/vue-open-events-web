@@ -2,15 +2,16 @@
 
 <h4 >{{ title }}</h4>
 <input 
+    v-model="model"
+    v-on:input="$emit('update-modelValue', model)"
+    class = field
     :placeholder= "defaultTxt" 
-    :value = "modelValue"
-    @input = "$emit('update:modelValue', modelValue)"
     />
 </template>
 
 <script>
 export default {
-    properties:  {
+    props:  {
         title: {
             type: String,
             default: 'Text'
@@ -18,9 +19,6 @@ export default {
         defaultTxt: {
             type: String,
             default: 'Text'
-        },
-        modelValue: {
-            type: [String, Number]
         }
     }
 
