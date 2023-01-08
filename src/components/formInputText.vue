@@ -2,8 +2,8 @@
 
 <h4 >{{ title }}</h4>
 <input 
-    v-model="model"
-    v-on:input="$emit('update-modelValue', model)"
+    v-model="input"
+    v-on:input="$emit('update-modelValue', input)"
     class = field
     :placeholder= "defaultTxt" 
     />

@@ -2,16 +2,19 @@
 
 import FormInput from "../components/formInputText.vue";
 
-let testVariable;
- 
  export default {
     name: "CreateEventView",
     components: { FormInput },
-    properties: {
-      formTitle: ''
-    },
     data() {
         return {
+          eventTitle: '',
+          eventDescription: '',
+          eventStartDate: '',
+          eventEndDate: '',
+          eventLocation: '',
+          eventImage:'',
+          eventType:'',
+          eventCapacity: 0
         };
     },
     mounted() {
@@ -19,9 +22,18 @@ let testVariable;
         this.$root.$data.show.aside = false;
     },
     methods: {
-      prova(text) {
-        testVariable = text
-        alert(testVariable);
+      prova () {
+        if (this.eventTitle === "prova") {
+          alert("Bien")
+        } else {
+          alert('Mal')
+        }
+      },
+      goToHome () {
+        this.$router.push("/")
+      },
+      goToEventDetails () {
+        this.$router.push("/eventDetails")
       }
     },
 };
@@ -36,7 +48,7 @@ let testVariable;
     <section id="forms-container">
       <div class="single-form">
         <FormInput
-          v-on:update-modelValue="prova" 
+          v-on:update-modelValue="(x) => this.eventTitle = x"
           title =  "Title"
           defaultTxt = "Ex.- House BBQ"
         />
@@ -65,23 +77,28 @@ let testVariable;
       </div>
 
       <div class="single-form">
-        <h4 class="form-title">Location</h4>
-        <input class="field" type="text" placeholder="Ex.- Teruel" />
+        <FormInput
+          v-on:update-modelValue="(x) => this.eventLocation = x"
+          title =  "Location"
+          defaultTxt = "Ex.- Teruel"
+        />
       </div>
 
       <div class="single-form">
-        <h4 class="form-title">Image</h4>
-        <input
-          class="field"
-          type="url"
-          placeholder="Ex.- www.url-of-current-img.com"
+        <FormInput
+          v-on:update-modelValue="(x) => this.eventImage = x"
+          title =  "Image"
+          defaultTxt = "Ex.- www.url-of-current-img.com"
         />
       </div>
 
       <div class="dual-form">
         <div class="single-form">
-          <h4 class="form-title">Type</h4>
-          <input class="field" type="text" placeholder="Ex.- Sports" />
+          <FormInput
+          v-on:update-modelValue="(x) => this.eventType = x"
+          title =  "Type"
+          defaultTxt = "Ex.- Sports"
+          />
         </div>
         <div class="single-form">
           <h4 class="form-title">Capacity</h4>
@@ -91,13 +108,13 @@ let testVariable;
 
       <div class="button-container">
         <button
-          onclick="location.href='/eventDetails';"
+          v-on:click="goToEventDetails()"
           class="create-event-button primary-button"
         >
           CREATE EVENT
         </button>
         <button
-          onclick="location.href='/';"
+          v-on:click="goToHome()"
           class="cancel-button secondary-button"
         >
           CANCEL
