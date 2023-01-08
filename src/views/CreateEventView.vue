@@ -2,10 +2,11 @@
 
 import FormInput from "../components/formInputText.vue";
 import FormInputTextArea from "../components/formInputTextArea.vue";
+import FormInputDate from "../components/formInputDate.vue";
 
  export default {
     name: "CreateEventView",
-    components: { FormInput, FormInputTextArea },
+    components: { FormInput, FormInputTextArea, FormInputDate },
     data() {
         return {
           eventTitle: '',
@@ -24,7 +25,7 @@ import FormInputTextArea from "../components/formInputTextArea.vue";
     },
     methods: {
       prova () {
-        if (this.eventDescription === "prova") {
+        if (this.eventStartDate === "2023-10-10") {
           alert("Bien")
         } else {
           alert('Mal')
@@ -65,12 +66,16 @@ import FormInputTextArea from "../components/formInputTextArea.vue";
 
       <div class="dual-form">
         <div class="single-form">
-          <h4 class="form-title">Start date</h4>
-          <input class="field" type="date" />
+          <FormInputDate
+            v-on:update-modelValue="(x) => this.eventStartDate = x"
+            title =  "Start date"
+          />
         </div>
         <div class="single-form">
-          <h4 class="form-title">End date</h4>
-          <input class="field" type="date" />
+          <FormInputDate
+            v-on:update-modelValue="(x) => this.eventEndDate = x"
+            title =  "End date"
+          />
         </div>
       </div>
 
