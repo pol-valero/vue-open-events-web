@@ -1,10 +1,11 @@
 <script>
 
 import FormInput from "../components/formInputText.vue";
+import FormInputTextArea from "../components/formInputTextArea.vue";
 
  export default {
     name: "CreateEventView",
-    components: { FormInput },
+    components: { FormInput, FormInputTextArea },
     data() {
         return {
           eventTitle: '',
@@ -23,7 +24,7 @@ import FormInput from "../components/formInputText.vue";
     },
     methods: {
       prova () {
-        if (this.eventTitle === "prova") {
+        if (this.eventDescription === "prova") {
           alert("Bien")
         } else {
           alert('Mal')
@@ -55,14 +56,11 @@ import FormInput from "../components/formInputText.vue";
       </div>
 
       <div class="single-form">
-        <h4 class="form-title">Description</h4>
-        <textarea
-          class="textarea field"
-          name="Text1"
-          cols="40"
-          rows="5"
-          placeholder="Ex.- This event is fun!"
-        ></textarea>
+        <FormInputTextArea
+          v-on:update-modelValue="(x) => this.eventDescription = x"
+          title =  "Description"
+          defaultTxt = "Ex.- This event is fun!"
+        />
       </div>
 
       <div class="dual-form">
@@ -114,7 +112,7 @@ import FormInput from "../components/formInputText.vue";
           CREATE EVENT
         </button>
         <button
-          v-on:click="goToHome()"
+          v-on:click="goToHome(), prova()"
           class="cancel-button secondary-button"
         >
           CANCEL
