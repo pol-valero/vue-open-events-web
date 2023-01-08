@@ -1,12 +1,12 @@
 <script>
 
-import FormInput from "../components/formInputText.vue";
+import FormInputTxtAndNum from "../components/formInputTxtAndNum.vue";
 import FormInputTextArea from "../components/formInputTextArea.vue";
 import FormInputDate from "../components/formInputDate.vue";
 
  export default {
     name: "CreateEventView",
-    components: { FormInput, FormInputTextArea, FormInputDate },
+    components: { FormInputTxtAndNum, FormInputTextArea, FormInputDate },
     data() {
         return {
           eventTitle: '',
@@ -25,7 +25,7 @@ import FormInputDate from "../components/formInputDate.vue";
     },
     methods: {
       prova () {
-        if (this.eventStartDate === "2023-10-10") {
+        if (this.eventCapacity == 5) {
           alert("Bien")
         } else {
           alert('Mal')
@@ -49,7 +49,7 @@ import FormInputDate from "../components/formInputDate.vue";
 
     <section id="forms-container">
       <div class="single-form">
-        <FormInput
+        <FormInputTxtAndNum
           v-on:update-modelValue="(x) => this.eventTitle = x"
           title =  "Title"
           defaultTxt = "Ex.- House BBQ"
@@ -80,7 +80,7 @@ import FormInputDate from "../components/formInputDate.vue";
       </div>
 
       <div class="single-form">
-        <FormInput
+        <FormInputTxtAndNum
           v-on:update-modelValue="(x) => this.eventLocation = x"
           title =  "Location"
           defaultTxt = "Ex.- Teruel"
@@ -88,7 +88,7 @@ import FormInputDate from "../components/formInputDate.vue";
       </div>
 
       <div class="single-form">
-        <FormInput
+        <FormInputTxtAndNum
           v-on:update-modelValue="(x) => this.eventImage = x"
           title =  "Image"
           defaultTxt = "Ex.- www.url-of-current-img.com"
@@ -97,15 +97,19 @@ import FormInputDate from "../components/formInputDate.vue";
 
       <div class="dual-form">
         <div class="single-form">
-          <FormInput
+          <FormInputTxtAndNum
           v-on:update-modelValue="(x) => this.eventType = x"
           title =  "Type"
           defaultTxt = "Ex.- Sports"
           />
         </div>
         <div class="single-form">
-          <h4 class="form-title">Capacity</h4>
-          <input class="field" type="number" placeholder="Ex.- 50" />
+          <FormInputTxtAndNum
+            v-on:update-modelValue="(x) => this.eventCapacity = x"
+            title =  "Capacity"
+            defaultTxt = "Ex.- 50"
+            fieldType = "number"
+          />
         </div>
       </div>
 

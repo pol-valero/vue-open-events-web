@@ -5,6 +5,7 @@
     v-model="input"
     v-on:input="$emit('update-modelValue', input)"
     class = field
+    :type= "fieldType"
     :placeholder= "defaultTxt" 
     />
 </template>
@@ -19,6 +20,10 @@ export default {
         defaultTxt: {
             type: String,
             default: 'Text'
+        },
+        fieldType: {
+            type: String,
+            default: 'text' 
         }
     }
 
