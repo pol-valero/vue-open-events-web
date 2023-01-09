@@ -14,7 +14,7 @@ import FormInputDate from "../components/formInputDate.vue";
           eventStartDate: '',
           eventEndDate: '',
           eventLocation: '',
-          eventImage:'',
+          eventImage:'https://i.imgur.com/YtopGYz.jpeg',
           eventType:'',
           eventCapacity: 0
         };
@@ -24,13 +24,6 @@ import FormInputDate from "../components/formInputDate.vue";
         this.$root.$data.show.aside = false;
     },
     methods: {
-      prova () {
-        if (this.eventCapacity == 5) {
-          alert("Bien")
-        } else {
-          alert('Mal')
-        }
-      },
       goToHome () {
         this.$router.push("/")
       },
@@ -64,9 +57,21 @@ import FormInputDate from "../components/formInputDate.vue";
           .then(res => res.json())
           .then(res=> {
             let response = JSON.stringify(res);
-              this.$router.push("/eventDetails")
+            this.updateEventToDisplayInfo();
+            this.$router.push("/eventDetails")
           });
         }
+      },
+      updateEventToDisplayInfo () {
+        this.$root.$data.eventToDisplay.title = this.eventTitle;
+        this.$root.$data.eventToDisplay.description = this.eventDescription;
+        this.$root.$data.eventToDisplay.startDate = this.eventStartDate;
+        this.$root.$data.eventToDisplay.endDate = this.eventEndDate;
+        this.$root.$data.eventToDisplay.location = this.eventLocation;
+        this.$root.$data.eventToDisplay.image = this.eventImage;
+        this.$root.$data.eventToDisplay.type = this.eventType;
+        this.$root.$data.eventToDisplay.capacity = this.eventCapacity;
+        this.$root.$data.eventToDisplay.organizer = this.$root.$data.user.name;
       },
       checkFields () {
 
