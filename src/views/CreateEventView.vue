@@ -34,38 +34,11 @@ import FormInputDate from "../components/formInputDate.vue";
       goToHome () {
         this.$router.push("/")
       },
-      checkFields () {
-        alert("end")
-
-        if (this.eventTitle == '' || this.eventImage == '' || this.eventLocation == ''
-        || this.eventDescription == ''  || this.type == '') {
-          alert("Some fields have not been filled");
-          return false;
-        }
-
-        if (this.n_participators < 1) {
-          alert("The capacity for the event must be at least 1");
-          return false;
-        } 
-
-        if (this.eventStartDate == this.eventEndDate) {
-          alert("The start and end dates must be different");
-          return false;
-        }
-
-        if (this.eventStartDate > this.eventEndDate || this.eventStartDate < Date()) {
-          alert("The start date or the end date are not valid");
-          return false;
-        }
-        
-        alert("prova")
-        return true;
-      },
       createEvent () {
-        //alert("prova2")
+
         const token = localStorage.getItem('token');
         
-        const validInformation = checkFields();
+        const validInformation = this.checkFields();
 
         if(validInformation) {
           fetch('http://puigmal.salle.url.edu/api/v2/events', {
@@ -91,10 +64,34 @@ import FormInputDate from "../components/formInputDate.vue";
           .then(res => res.json())
           .then(res=> {
             let response = JSON.stringify(res);
-              alert(response)
               this.$router.push("/eventDetails")
           });
         }
+      },
+      checkFields () {
+
+        if (this.eventTitle == '' || this.eventImage == '' || this.eventLocation == ''
+        || this.eventDescription == ''  || this.eventType == '') {
+          alert("Some fields have not been filled");
+          return false;
+        }
+
+        if (this.eventCapacity < 1) {
+          alert("The capacity for the event must be at least 1");
+          return false;
+        } 
+
+        if (this.eventStartDate == this.eventEndDate) {
+          alert("The start and end dates must be different");
+          return false;
+        }
+
+        if (this.eventStartDate > this.eventEndDate) {
+          alert("The start date or the end date are not valid");
+          return false;
+        }
+        
+        return true;
       }
     },
 };
