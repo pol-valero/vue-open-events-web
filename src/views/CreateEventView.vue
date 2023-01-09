@@ -34,8 +34,67 @@ import FormInputDate from "../components/formInputDate.vue";
       goToHome () {
         this.$router.push("/")
       },
-      goToEventDetails () {
-        this.$router.push("/eventDetails")
+      checkFields () {
+        alert("end")
+
+        if (this.eventTitle == '' || this.eventImage == '' || this.eventLocation == ''
+        || this.eventDescription == ''  || this.type == '') {
+          alert("Some fields have not been filled");
+          return false;
+        }
+
+        if (this.n_participators < 1) {
+          alert("The capacity for the event must be at least 1");
+          return false;
+        } 
+
+        if (this.eventStartDate == this.eventEndDate) {
+          alert("The start and end dates must be different");
+          return false;
+        }
+
+        if (this.eventStartDate > this.eventEndDate || this.eventStartDate < Date()) {
+          alert("The start date or the end date are not valid");
+          return false;
+        }
+        
+        alert("prova")
+        return true;
+      },
+      createEvent () {
+        //alert("prova2")
+        const token = localStorage.getItem('token');
+        
+        const validInformation = checkFields();
+
+        if(validInformation) {
+          fetch('http://puigmal.salle.url.edu/api/v2/events', {
+          method: 'POST',
+          headers:{
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json'
+          },    
+          body: JSON.stringify(
+            { 
+              name: this.eventTitle,
+              image: this.eventImage,
+              location: this.eventLocation,
+              latitude: null,
+              longitude: null,
+              description: this.eventDescription,
+              eventStart_date: this.eventStartDate,
+              eventEnd_date: this.eventEndDate,
+              n_participators: this.eventCapacity,
+              type: this.eventType
+            })
+          })
+          .then(res => res.json())
+          .then(res=> {
+            let response = JSON.stringify(res);
+              alert(response)
+              this.$router.push("/eventDetails")
+          });
+        }
       }
     },
 };
@@ -115,13 +174,13 @@ import FormInputDate from "../components/formInputDate.vue";
 
       <div class="button-container">
         <button
-          v-on:click="goToEventDetails()"
+          v-on:click="createEvent()"
           class="create-event-button primary-button"
         >
           CREATE EVENT
         </button>
         <button
-          v-on:click="goToHome(), prova()"
+          v-on:click="goToHome()"
           class="cancel-button secondary-button"
         >
           CANCEL

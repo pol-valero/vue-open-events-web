@@ -5,7 +5,7 @@
     v-model="input"
     v-on:input="$emit('update-modelValue', input)"
     class = field
-    type="date"
+    type="datetime-local"
     />
 </template>
 
