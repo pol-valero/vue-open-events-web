@@ -13,6 +13,7 @@
 <script>
 export default {
     props:  {
+        //We define some properties so that the parent can modify them as needed
         title: {
             type: String,
             default: 'Text'

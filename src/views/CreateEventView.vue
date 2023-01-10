@@ -1,5 +1,6 @@
 <script>
 
+//We import the diferent components used in the form
 import FormInputTxtAndNum from "../components/formInputTxtAndNum.vue";
 import FormInputTextArea from "../components/formInputTextArea.vue";
 import FormInputDate from "../components/formInputDate.vue";
@@ -14,7 +15,7 @@ import FormInputDate from "../components/formInputDate.vue";
           eventStartDate: '',
           eventEndDate: '',
           eventLocation: '',
-          eventImage:'',
+          eventImage:'https://i.imgur.com/YtopGYz.jpeg',
           eventType:'',
           eventCapacity: 0
         };
@@ -24,22 +25,20 @@ import FormInputDate from "../components/formInputDate.vue";
         this.$root.$data.show.aside = false;
     },
     methods: {
-      prova () {
-        if (this.eventCapacity == 5) {
-          alert("Bien")
-        } else {
-          alert('Mal')
-        }
-      },
+      //Function used to go to the home page
       goToHome () {
         this.$router.push("/")
       },
+      //Function used to create an event
       createEvent () {
 
+        //We get the token of the current user
         const token = localStorage.getItem('token');
         
+        //We check if the information that was entered in the fields is valid
         const validInformation = this.checkFields();
 
+        //Only if the information is valid we do the request
         if(validInformation) {
           fetch('http://puigmal.salle.url.edu/api/v2/events', {
           method: 'POST',
@@ -64,9 +63,21 @@ import FormInputDate from "../components/formInputDate.vue";
           .then(res => res.json())
           .then(res=> {
             let response = JSON.stringify(res);
-              this.$router.push("/eventDetails")
+            this.updateEventToDisplayInfo();      //We pass the event information to the root so that the eventDetailsView can have access to the event's information
+            this.$router.push("/eventDetails")
           });
         }
+      },
+      updateEventToDisplayInfo () {
+        this.$root.$data.eventToDisplay.title = this.eventTitle;
+        this.$root.$data.eventToDisplay.description = this.eventDescription;
+        this.$root.$data.eventToDisplay.startDate = this.eventStartDate;
+        this.$root.$data.eventToDisplay.endDate = this.eventEndDate;
+        this.$root.$data.eventToDisplay.location = this.eventLocation;
+        this.$root.$data.eventToDisplay.image = this.eventImage;
+        this.$root.$data.eventToDisplay.type = this.eventType;
+        this.$root.$data.eventToDisplay.capacity = this.eventCapacity;
+        this.$root.$data.eventToDisplay.organizer = this.$root.$data.user.name;
       },
       checkFields () {
 

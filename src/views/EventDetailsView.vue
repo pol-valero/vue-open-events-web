@@ -4,21 +4,56 @@ export default {
   name: "EventDetailsView",
   data() {
     return {
-      event: { //TODO: posar al gust
-        title: "Event title",
-        date: "DD/MM/YYYY",
-        time: "HH:MM - HH:MM",
-        location: "Location name",
-        address: "Address",
-        organizer: "Firstname Lastname",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      event: { 
+        title: this.$root.$data.eventToDisplay.title,
+        description: this.$root.$data.eventToDisplay.description,
+        startDate: this.$root.$data.eventToDisplay.startDate,
+        endDate: this.$root.$data.eventToDisplay.endDate,
+        location: this.$root.$data.eventToDisplay.location,
+        image: this.$root.$data.eventToDisplay.image,
+        type: this.$root.$data.eventToDisplay.type,
+        capacity: this.$root.$data.eventToDisplay.capacity,
+        organizer: this.$root.$data.eventToDisplay.organizer
       },
+      date: {
+        day: '',
+        month: '',
+        year: '',
+        hour: '',
+        minute: '',
+        endDay: '',
+        endMonth: '',
+        endYear: '',
+        endHour: '',
+        endMinute: ''
+      
+      }
     };
   },
 
   mounted() {
     // We hide the aside
     this.$root.$data.show.aside = false;
+
+    // We set the background image
+    document.getElementById('title-container').style.backgroundImage = "url('" + this.event.image + "')"
+
+    // We change the date format so that we can display it more easily
+    var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
+    this.date.day = startTime.getDate()
+    this.date.month = startTime.getMonth() + 1
+    this.date.year = startTime.getFullYear()
+    this.date.hour = startTime.getHours()
+    this.date.minute = startTime.getMinutes()
+
+    // We change the date format so that we can display it more easily
+    var endTime = new Date (this.$root.$data.eventToDisplay.endDate)
+    this.date.endDay = endTime.getDate()
+    this.date.endMonth = endTime.getMonth() + 1
+    this.date.endYear = endTime.getFullYear()
+    this.date.endHour = endTime.getHours()
+    this.date.endMinute = endTime.getMinutes()
+
   },
   
   methods: {
@@ -30,7 +65,7 @@ export default {
   <div id="event-details-main">
     <section id="title-container">
       <div id="text-title">
-        <h2>Event title</h2>
+        <h2>{{this.event.title}}</h2>
       </div>
 
       <div id="share-button">
@@ -42,24 +77,23 @@ export default {
       <div class="detail">
         <img src="../assets/calendar-img.png" class="users-list-item-picture" />
         <div class="detail-text">
-          <h4>DD/MM/YYYY</h4>
-          <text>Day, HH:MM - HH:MM</text>
+          <h4>From {{this.date.day}}/{{this.date.month}}/{{this.date.year}} - {{ this.date.hour }}:{{ this.date.minute }}</h4>
+          <p>to {{this.date.endDay}}/{{this.date.endMonth}}/{{this.date.endYear}} - {{ this.date.endHour }}:{{ this.date.endMinute }}</p>
         </div>
       </div>
 
       <div class="detail">
         <img src="../assets/location-img.png" class="users-list-item-picture" />
         <div class="detail-text">
-          <h4>Location name</h4>
-          <text>Address</text>
+          <h4>{{ this.event.location }}</h4>
         </div>
       </div>
 
       <div class="detail">
         <img src="../assets/user-img.png" class="users-list-item-picture" />
         <div class="detail-text">
-          <h4>Firstname Lastname</h4>
-          <text>Organizer</text>
+          <h4>{{this.event.organizer}}</h4>
+          <p>Organizer</p>
         </div>
         <button id="follow-button" class="secondary-button">Follow</button>
       </div>
@@ -67,19 +101,9 @@ export default {
 
     <section id="event-description">
       <h4>About event</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo. sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco
-      </p>
+      <p>Event type: {{ this.event.type }}</p>
+      <p>Capacity: {{ this.event.capacity }}</p>
+      <p>{{ this.event.description }}</p>
     </section>
 
     <div class="event-details-bottom-buttons">
@@ -101,7 +125,6 @@ export default {
 }
 
 #title-container {
-  background-image: url("../assets/event-details-background.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 40%;
