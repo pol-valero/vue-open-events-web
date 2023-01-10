@@ -38,14 +38,14 @@ export default {
 
     var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
     this.date.day = startTime.getDate()
-    this.date.month = startTime.getMonth()
+    this.date.month = startTime.getMonth() + 1
     this.date.year = startTime.getFullYear()
     this.date.hour = startTime.getHours()
     this.date.minute = startTime.getMinutes()
 
     var endTime = new Date (this.$root.$data.eventToDisplay.endDate)
     this.date.endDay = endTime.getDate()
-    this.date.endMonth = endTime.getMonth()
+    this.date.endMonth = endTime.getMonth() + 1
     this.date.endYear = endTime.getFullYear()
     this.date.endHour = endTime.getHours()
     this.date.endMinute = endTime.getMinutes()
@@ -121,7 +121,6 @@ export default {
 }
 
 #title-container {
-  background-image:'https://i.imgur.com/XkpO1DW.png';
   background-repeat: no-repeat;
   background-size: cover;
   height: 40%;

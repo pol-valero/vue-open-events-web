@@ -19,7 +19,7 @@ export default {
         startDate: '2023-06-22T08:22:00.000Z',
         endDate: '2023-06-23T10:45:00.000Z',
         location: 'Location name',
-        image:'https://i.imgur.com/XkpO1DW.png',
+        image:'src/assets/event-details-background.png',
         type:'Type',
         capacity: 0,
         organizer:'Firstname Lastname'
