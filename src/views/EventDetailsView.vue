@@ -4,7 +4,7 @@ export default {
   name: "EventDetailsView",
   data() {
     return {
-      event: { //TODO: posar al gust
+      event: { 
         title: this.$root.$data.eventToDisplay.title,
         description: this.$root.$data.eventToDisplay.description,
         startDate: this.$root.$data.eventToDisplay.startDate,
@@ -34,8 +34,11 @@ export default {
   mounted() {
     // We hide the aside
     this.$root.$data.show.aside = false;
+
+    // We set the background image
     document.getElementById('title-container').style.backgroundImage = "url('" + this.event.image + "')"
 
+    // We change the date format so that we can display it more easily
     var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
     this.date.day = startTime.getDate()
     this.date.month = startTime.getMonth() + 1
@@ -43,6 +46,7 @@ export default {
     this.date.hour = startTime.getHours()
     this.date.minute = startTime.getMinutes()
 
+    // We change the date format so that we can display it more easily
     var endTime = new Date (this.$root.$data.eventToDisplay.endDate)
     this.date.endDay = endTime.getDate()
     this.date.endMonth = endTime.getMonth() + 1

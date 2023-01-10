@@ -11,6 +11,7 @@
 
 <script>
 export default {
+    //We define some properties so that the parent can modify them as needed
     props:  {
         title: {
             type: String,

@@ -1,5 +1,6 @@
 <script>
 
+//We import the diferent components used in the form
 import FormInputTxtAndNum from "../components/formInputTxtAndNum.vue";
 import FormInputTextArea from "../components/formInputTextArea.vue";
 import FormInputDate from "../components/formInputDate.vue";
@@ -24,15 +25,20 @@ import FormInputDate from "../components/formInputDate.vue";
         this.$root.$data.show.aside = false;
     },
     methods: {
+      //Function used to go to the home page
       goToHome () {
         this.$router.push("/")
       },
+      //Function used to create an event
       createEvent () {
 
+        //We get the token of the current user
         const token = localStorage.getItem('token');
         
+        //We check if the information that was entered in the fields is valid
         const validInformation = this.checkFields();
 
+        //Only if the information is valid we do the request
         if(validInformation) {
           fetch('http://puigmal.salle.url.edu/api/v2/events', {
           method: 'POST',
@@ -57,7 +63,7 @@ import FormInputDate from "../components/formInputDate.vue";
           .then(res => res.json())
           .then(res=> {
             let response = JSON.stringify(res);
-            this.updateEventToDisplayInfo();
+            this.updateEventToDisplayInfo();      //We pass the event information to the root so that the eventDetailsView can have access to the event's information
             this.$router.push("/eventDetails")
           });
         }
