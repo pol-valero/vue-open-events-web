@@ -14,7 +14,7 @@ export default {
         header: true,
       },
       eventToDisplay: {
-        title: 'Title',
+        /*title: 'Title',
         description: 'Description',
         startDate: '2023-06-22T08:22:00.000Z',
         endDate: '2023-06-23T10:45:00.000Z',
@@ -22,7 +22,11 @@ export default {
         image:'src/assets/event-details-background.png',
         type:'Type',
         capacity: 0,
-        organizer:'Firstname Lastname'
+        organizer:'Firstname Lastname',*/
+
+        //When an event is clicked in the HomeView, we will change this attribute with the id of the clicked event. 
+        //To get the id of the clicked event, we will do the same as in the "DiscoverView" when a user is clicked
+        id: 1390
       }
     };
   },

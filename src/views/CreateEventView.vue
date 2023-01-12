@@ -63,12 +63,18 @@ import FormInputDate from "../components/formInputDate.vue";
           .then(res => res.json())
           .then(res=> {
             let response = JSON.stringify(res);
-            this.updateEventToDisplayInfo();      //We pass the event information to the root so that the eventDetailsView can have access to the event's information
-            this.$router.push("/eventDetails")
+            //this.updateEventToDisplayInfo();      //We pass the event information to the root so that the eventDetailsView can have access to the event's information
+            //this.$router.push("/eventDetails")
+            
+            //Instead of going to the eventDetails view when an event is created, we will go to the homeView because there is no way of 
+            //knowing the id that the event has when it is created (and we need the event ID so that if the user presses the "participate"
+            //button, we can send to the API the event ID to create the assistance of the authenticated user
+
+            this.$router.push("/")
           });
         }
       },
-      updateEventToDisplayInfo () {
+      /*updateEventToDisplayInfo () {
         this.$root.$data.eventToDisplay.title = this.eventTitle;
         this.$root.$data.eventToDisplay.description = this.eventDescription;
         this.$root.$data.eventToDisplay.startDate = this.eventStartDate;
@@ -78,7 +84,7 @@ import FormInputDate from "../components/formInputDate.vue";
         this.$root.$data.eventToDisplay.type = this.eventType;
         this.$root.$data.eventToDisplay.capacity = this.eventCapacity;
         this.$root.$data.eventToDisplay.organizer = this.$root.$data.user.name;
-      },
+      },*/
       checkFields () {
 
         if (this.eventTitle == '' || this.eventImage == '' || this.eventLocation == ''
