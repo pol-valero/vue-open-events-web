@@ -98,7 +98,14 @@ export default {
         this.event.organizer_id = res[0].owner_id;
 
         // We set the background image
-        document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')"
+        /*if (this.imageExists(res[0].image)) {
+          alert("Image exists")
+          document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')"
+        } else {
+          alert("Image no exists")
+          document.getElementById('title-container').style.backgroundImage = "url('../assets/event-details-background.png')"
+        }*/
+        document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')";
 
         this.getUser();
 

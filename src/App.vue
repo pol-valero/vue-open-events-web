@@ -26,7 +26,7 @@ export default {
 
         //When an event is clicked in the HomeView, we will change this attribute with the id of the clicked event. 
         //To get the id of the clicked event, we will do the same as in the "DiscoverView" when a user is clicked
-        id: 1376
+        id: 1390
       }
     };
   },
