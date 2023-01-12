@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       event: { 
-        title: this.$root.$data.eventToDisplay.title,
+        /*title: this.$root.$data.eventToDisplay.title,
         description: this.$root.$data.eventToDisplay.description,
         startDate: this.$root.$data.eventToDisplay.startDate,
         endDate: this.$root.$data.eventToDisplay.endDate,
@@ -13,7 +13,19 @@ export default {
         image: this.$root.$data.eventToDisplay.image,
         type: this.$root.$data.eventToDisplay.type,
         capacity: this.$root.$data.eventToDisplay.capacity,
-        organizer: this.$root.$data.eventToDisplay.organizer
+        organizer: this.$root.$data.eventToDisplay.organizer*/
+
+        title: 'Title',
+        description: 'Description',
+        startDate: '2023-06-22T08:22:00.000Z',
+        endDate: '2023-06-23T10:45:00.000Z',
+        location: 'Location name',
+        image: 'src/assets/event-details-background.png',
+        type: 'Type',
+        capacity: 0,
+        organizer: 'Firstname Lastname',
+        organizer_id: null,
+        id: this.$root.$data.eventToDisplay.id
       },
       date: {
         day: '',
@@ -35,11 +47,11 @@ export default {
     // We hide the aside
     this.$root.$data.show.aside = false;
 
-    // We set the background image
-    document.getElementById('title-container').style.backgroundImage = "url('" + this.event.image + "')"
+    this.getEvent()
 
     // We change the date format so that we can display it more easily
-    var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
+    //var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
+    var startTime = new Date (this.event.startDate)
     this.date.day = startTime.getDate()
     this.date.month = startTime.getMonth() + 1
     this.date.year = startTime.getFullYear()
@@ -47,7 +59,8 @@ export default {
     this.date.minute = startTime.getMinutes()
 
     // We change the date format so that we can display it more easily
-    var endTime = new Date (this.$root.$data.eventToDisplay.endDate)
+    //var endTime = new Date (this.$root.$data.eventToDisplay.endDate)
+    var endTime = new Date (this.event.endDate)
     this.date.endDay = endTime.getDate()
     this.date.endMonth = endTime.getMonth() + 1
     this.date.endYear = endTime.getFullYear()
@@ -57,6 +70,56 @@ export default {
   },
   
   methods: {
+    participate () {
+
+    },
+    getEvent(){
+
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id;
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(res => res.json())
+      .then(res=> {
+
+        this.event.title = res[0].name;
+        this.event.description = res[0].description;
+        this.event.startDate = res[0].eventStart_date;
+        this.event.endDate = res[0].eventStart_date;
+        this.event.location = res[0].location;
+        //this.event.image = res[0].image;
+        this.event.type = res[0].type;
+        this.event.capacity = res[0].n_participators;
+        this.event.organizer_id = res[0].owner_id;
+
+        // We set the background image
+        document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')"
+
+        this.getUser();
+
+      });
+    },
+    getUser() {
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/users/' + this.event.organizer_id;
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(res => res.json())
+      .then(res=> {
+
+        this.event.organizer = res[0].name;
+      });
+    }
   },
 };
 </script>
@@ -107,11 +170,7 @@ export default {
     </section>
 
     <div class="event-details-bottom-buttons">
-      <!-- One will be hidden with JS (edit only for event creator) -->
-      <button class="primary-button">PARTICIPATE</button>
-      <button class="primary-button" onclick="location.href='/editEvent';">
-        EDIT
-      </button>
+      <button v-on:click="participate()" class="primary-button">PARTICIPATE</button>
     </div>
   </div>
 </template>
