@@ -70,7 +70,7 @@ import FormInputDate from "../components/formInputDate.vue";
             //knowing the id that the event has when it is created (and we need the event ID so that if the user presses the "participate"
             //button, we can send to the API the event ID to create the assistance of the authenticated user
 
-            this.$router.push("/homeView")
+            this.$router.push("/")
           });
         }
       },

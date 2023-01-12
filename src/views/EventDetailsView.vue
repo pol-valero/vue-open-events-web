@@ -71,7 +71,21 @@ export default {
   
   methods: {
     participate () {
+      const token = localStorage.getItem('token');
 
+      fetch('http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances', {
+          method: 'POST',
+          headers:{
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json'
+          }
+          })
+          .then(res => res.json())
+          .then(res=> {
+            let response = JSON.stringify(res);
+
+            this.$router.push("/")
+          });
     },
     getEvent(){
 
