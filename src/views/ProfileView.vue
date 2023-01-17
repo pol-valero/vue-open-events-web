@@ -2,13 +2,17 @@
 export default {
   data(){
     return{
-      userID: -1,
+      userID: this.$route.params.userID, //this is the id from the browser
+      //userID: -1,
       userName: "",
       userLastName: "",
       userEmail: "",
       userImage: "",
 
-      id: this.$route.params.id //this is the id from the browser
+      rating: 0,
+      comments: 0,
+      usersBehind: 0,
+
     }
   }, 
 
@@ -23,21 +27,43 @@ export default {
     }
   },
 
+  // TODO: In case you are already in /profile:id and you want to go to /profile
   mounted(){
-    //Getting the user's info
-    this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-    this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
-    this.userLastName = JSON.parse(localStorage.getItem("userInfo"))[0].last_name;
-    this.userEmail = JSON.parse(localStorage.getItem("userInfo"))[0].email;
-    this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-    
-    // We check if the user has a profile picture
-    if(!this.checkURL(this.userImage)){
-        this.userImage = "src/assets/default_img.png";
-    } 
-
     //Getting the user's token
     const token = localStorage.getItem('token');
+    
+    // Case when profile is the user's own profile
+    if(this.userID == undefined){
+      //this.id = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+
+      //Getting the user's info
+      this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+      this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
+      this.userLastName = JSON.parse(localStorage.getItem("userInfo"))[0].last_name;
+      this.userEmail = JSON.parse(localStorage.getItem("userInfo"))[0].email;
+      this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+      
+    }else{
+      // Case when profile is another user's profile
+      fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID, {
+          method: "GET",
+          headers: {
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json',
+          },
+        })
+      .then(res => res.json())
+      .then(res=> {
+        if(res) { // check if the response is not empty
+          this.userID = res[0].id;
+          this.userName = res[0].name;
+          this.userLastName = res[0].last_name;
+          this.userEmail = res[0].email;
+          this.userImage = res[0].image;
+        }
+      });
+    }
+
 
     fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID + "/statistics", {
         method: "GET",
@@ -47,10 +73,15 @@ export default {
         },
       })
     .then(res => res.json())
-    // TODO: Get the user's statistics and show them in the table
-
-    // We hide the aside
-    this.$root.$data.show.aside = false;
+    .then(res=> {
+      if(res) {
+        // check if the response is not null
+        res[0].avg_score == null ? res[0].avg_score = 0 : this.rating = res[0].avg_score;
+        res[0].num_comments == null ? res[0].num_comments = 0 : this.comments = res[0].num_comments;
+        res[0].percentage_commenters_below == null ? res[0].percentage_commenters_below = 0 
+        : this.usersBehind = res[0].percentage_commenters_below;
+      }
+    });
 
   }
   
@@ -65,7 +96,11 @@ export default {
 
       <div class="main-container">
         <div class="profile-info">
-          <img v-bind:src="userImage" alt="logo" id="profile-img"/>
+          <img 
+          v-bind:src="userImage" 
+          onerror="this.src = '/src/assets/default_img.png'"
+          alt="logo" 
+          id="profile-img"/>
         </div>
 
         <div class="info-container">
@@ -78,15 +113,13 @@ export default {
     </section>
 
     <section id="container-full-profile">
+      <h1 id="statistics-title">Statistics</h1>
       <table class="stats-table">
-        <thead>
-          <h1 id="statistics-title">Statistics (id={{this.id}})</h1>
-        </thead>
         <tbody>
           <tr>
-            <td><h2>7.5</h2></td>
-            <td><h2>201</h2></td>
-            <td><h2>38%</h2></td>
+            <td><h2>{{ rating }}</h2></td>
+            <td><h2>{{ comments }}</h2></td>
+            <td><h2>{{ usersBehind + "%" }}</h2></td>
           </tr>
           <tr>
             <td><h3>rating</h3></td>

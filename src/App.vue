@@ -8,6 +8,7 @@ export default {
       user: {
         name: "User",
         image: "src/assets/default_img.png",
+        id: 0,
       },
       show: {
         aside: true,
@@ -36,6 +37,7 @@ export default {
     // If the user is logged in, we get the user info from local storage
     if (localStorage.getItem("userInfo")) {
       this.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
+      this.user.id = JSON.parse(localStorage.getItem("userInfo"))[0].id;
       let img = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       
       // We check if the image is a valid URL
@@ -63,6 +65,7 @@ export default {
     checkURL(url) {
     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
     },
+
   },
 }
 </script>
@@ -79,11 +82,13 @@ import { RouterLink, RouterView } from "vue-router";
         <img src="src\assets\logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
+      <div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">
+        <h2 class="title">{{ user.name }}</h2>
 
-      <div id="user-photo">
+        <!--
         <RouterLink id="profile-btn" to="/profile">
           <h2 class="title">{{ user.name }}</h2>
-        </RouterLink>
+        </RouterLink>-->
         <img
           v-bind:src="user.image"
           onerror="this.src = 'src/assets/default_img.png'"

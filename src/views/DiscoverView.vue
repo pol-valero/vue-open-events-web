@@ -23,6 +23,16 @@ export default {
         let response = JSON.stringify(res);
         if(response.length > 0) {
           this.usersSearched = res; //recorrer i transformar la imatge amb .map
+          
+          res.map((friend) => {
+            if(this.checkURL(friend.image)){
+              friend.image = friend.image;
+            } else{
+              friend.image = "src/assets/default_img.png";
+            }  
+          });
+
+
 
           /*res.map((friend) => {
             if(this.checkURL(friend.image)){
@@ -96,7 +106,10 @@ export default {
         <li>
           <!-- v-on:click="this.$router.push('/vejeri/{friend.id}')" -->
           <article class="users-list-item"> 
-            <img class="users-list-item-picture" v-bind:src="friend.image" alt="User's profile picture" />
+            <img 
+            onerror="this.src = 'src/assets/default_img.png'"
+            class="users-list-item-picture" v-bind:src="friend.image" 
+            alt="User's profile picture" />
             <h2 class="users-list-item-title">{{ friend.name + " " + friend.last_name }}</h2>
           </article>
         </li>
