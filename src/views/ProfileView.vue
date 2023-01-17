@@ -13,6 +13,7 @@ export default {
       comments: 0,
       usersBehind: 0,
 
+      show : false,
     }
   }, 
 
@@ -24,6 +25,19 @@ export default {
       localStorage.removeItem("token");
       localStorage.removeItem("userInfo");
       this.$router.push("/login");
+    },
+    followUser(){
+      const token = localStorage.getItem('token');
+
+      fetch("http://puigmal.salle.url.edu/api/v2/friends/" + this.userID, {
+        method: "POST",
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(alert("Friend request sended!"));
+
     }
   },
 
@@ -31,11 +45,13 @@ export default {
   mounted(){
     //Getting the user's token
     const token = localStorage.getItem('token');
-    
-    // Case when profile is the user's own profile
-    if(this.userID == undefined){
-      //this.id = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+    var localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+    //console.log("localUserID: " + localUserID);
+    //console.log("this.userID: " + this.userID);
 
+    // Case when profile is the user's own profile
+    if(this.userID == localUserID){
+      this.show = true;
       //Getting the user's info
       this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
       this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
@@ -44,14 +60,15 @@ export default {
       this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       
     }else{
+      this.show = false;
       // Case when profile is another user's profile
       fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID, {
-          method: "GET",
-          headers: {
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json',
-          },
-        })
+        method: "GET",
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },
+      })
       .then(res => res.json())
       .then(res=> {
         if(res) { // check if the response is not empty
@@ -97,8 +114,8 @@ export default {
       <div class="main-container">
         <div class="profile-info">
           <img 
+          onerror="this.src = 'src/assets/default_img.png'"
           v-bind:src="userImage" 
-          onerror="this.src = '/src/assets/default_img.png'"
           alt="logo" 
           id="profile-img"/>
         </div>
@@ -139,12 +156,12 @@ export default {
 
     <section id="container-full-profile">
       <div class="button-container">
-        <a href="/login">
+        <a href="/login"  v-if="show">
           <button v-on:click="logout()" class="logout-button primary-button">LOGOUT</button>
         </a>
-        <button class="follow-button primary-button">FOLLOW</button>
+        <button v-on:click="followUser()" class="follow-button primary-button" v-if="!show">FOLLOW</button>
         <a href="/editProfile">
-          <button a class="edit-button secondary-button">EDIT</button>
+          <button a class="edit-button secondary-button" v-if="show">EDIT</button>
         </a>
       </div>
     </section>

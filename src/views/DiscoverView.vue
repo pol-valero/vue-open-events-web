@@ -79,7 +79,7 @@ export default {
           placeholder="Search"
           type="text">
         </form>
-        <button class="filters-show-button">Filters</button>
+        <!--<button class="filters-show-button">Filters</button>-->
       </article>
     </section>
     <!-- Filters selector 

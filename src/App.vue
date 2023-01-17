@@ -82,6 +82,7 @@ import { RouterLink, RouterView } from "vue-router";
         <img src="src\assets\logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
+      <!--<div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">-->
       <div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">
         <h2 class="title">{{ user.name }}</h2>
 
