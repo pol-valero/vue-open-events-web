@@ -3,13 +3,14 @@ export default {
   data(){
     return{
       usersSearched: [],
+      searchbar: "",
     }
   }, 
 
   methods: {
     searchUsers(){
       const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + document.getElementById("users-searchbar-placeholder").value;
+      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + this.searchbar;
       fetch(URL, {
         method: 'GET',
         headers:{
@@ -23,25 +24,16 @@ export default {
         if(response.length > 0) {
           this.usersSearched = res; //recorrer i transformar la imatge amb .map
 
-          res.map((friend) => {
+          /*res.map((friend) => {
             if(this.checkURL(friend.image)){
               friend.image = "src/assets/default_img.png";
             } else{
               friend.image = "src/assets/default_img.png";
             }  
-          });
+          });*/
 
         }
       });
-    },
-
-    imageExists(image_url){
-      var http = new XMLHttpRequest();
-
-      http.open('HEAD', image_url, false);
-      http.send();
-
-      return http.status != 404;
     },
 
     checkURL(url) {
@@ -68,24 +60,19 @@ export default {
     <section id="users-searchbar" class="searchbar">
       <article id="users-searchbar-field" class="searchbar-field">
         <form action="">
+          <!-- Bind input value to "searchbar" variable -->
           <input
+          v-model="searchbar"
           v-on:input="searchUsers()"
           id="users-searchbar-placeholder"
           class="searchbar-placeholder"
           placeholder="Search"
           type="text">
-          <!--
-          <input
-            id="users-searchbar-placeholder"
-            class="searchbar-placeholder"
-            type="text"
-            placeholder="Search"
-          />-->
         </form>
         <button class="filters-show-button">Filters</button>
       </article>
     </section>
-    <!-- Filters selector -->
+    <!-- Filters selector 
     <section id="users-filters-box" class="filters-box">
       <img
         src="../assets/filter-icon.svg"
@@ -102,15 +89,9 @@ export default {
       <article class="filter">
         <p class="user-filter-text">Location</p>
       </article>
-    </section>
+    </section>-->
     <!-- Users list -->
     <section id="users-list-section">
-      <!--
-      <article class="users-list-item">
-        <img src="../assets/default_img.png" alt="User's profile picture" class="users-list-item-picture" />
-        <h2 class="users-list-item-title">User 4</h2>
-      </article>-->
-
       <ul v-for="friend in usersSearched" v-bind:key="friend.id" v-on:click="this.$router.push('/profile/' + friend.id)">
         <li>
           <!-- v-on:click="this.$router.push('/vejeri/{friend.id}')" -->
@@ -120,73 +101,6 @@ export default {
           </article>
         </li>
       </ul>
-      <!--
-      <RouterLink id="tmp-users-item-link" to="/profile">
-        <article class="users-list-item">
-          <img
-            src="../assets/default_img.png"
-            alt="User's profile picture"
-            class="users-list-item-picture"
-          />
-          <h2 class="users-list-item-title">User 1</h2>
-        </article>
-      </RouterLink>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 2</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 3</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 4</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 5</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 6</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 7</h2>
-      </article>
-      <article class="users-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="User's profile picture"
-          class="users-list-item-picture"
-        />
-        <h2 class="users-list-item-title">User 8</h2>
-      </article>-->
     </section>
   </section>
 </template>
