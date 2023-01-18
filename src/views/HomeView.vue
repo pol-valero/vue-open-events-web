@@ -3,18 +3,84 @@
     name: "HomeView",
     data() {
       return {
-        events: [], //TODO: posar al gust
+        events: [],
       };
+    },
+
+    methods: {
+      checkURL(url) {
+        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+      },
+
+      searchEvents() {
+        const token = localStorage.getItem('token');
+        let location = document.getElementById("events-location-searchbar-placeholder").value;
+        let name = document.getElementById("events-name-searchbar-placeholder").value;
+        let date = document.getElementById("events-date-searchbar-placeholder").value;
+        let URL = 'http://puigmal.salle.url.edu/api/v2/events/search?';
+        
+        // prepare URL for API request
+        if (location != "") {
+          // search by location
+          URL += 'location=' + location;
+          if (name != "") {
+            // search by location and name
+            URL += '&keyword=' + name;
+            if (date != "") {
+              // search by location and name and date
+              URL += '&date=' + date;
+            }
+          } else if (date != "") {
+            // search by location and date
+            URL += '&date=' + date;
+          }
+        } else if (name != "") {
+          // search by name
+          URL += 'keyword=' + name;
+          if (date != "") {
+            // search by name and date
+            URL += '&date=' + date;
+          }
+        } else if (date != "") {
+          // search by date
+          URL += 'date=' + date;
+        } else {
+          // no search
+          URL = 'http://puigmal.salle.url.edu/api/v2/events/best';
+        }
+
+        fetch(URL, {
+          method: 'GET',
+          headers:{
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then(res => res.json())
+        .then(res => {
+          let response = JSON.stringify(res);
+          if(response.length > 0) {
+            this.events = res;
+            res.map((event) => {
+              // remove time from date
+              event.eventStart_date = event.eventStart_date.split('T')[0];
+              // get the image of the event
+              if(this.checkURL(event.image)){
+                event.image = "src/assets/default_img.png";
+              } else{
+                event.image = "src/assets/default_img.png";
+              }  
+            });
+          }
+        });
+      }
     },
 
     mounted() {
       // We show the aside and the header
       this.$root.$data.show.aside = true;
       this.$root.$data.show.header = true;
-    },
-
-    methods: {
-
+      this.searchEvents();
     },
   };
 
@@ -26,129 +92,65 @@
     <h1 id="events-list-header">Events</h1>
     <!-- Searchbar -->
     <section id="events-searchbar" class="searchbar">
-      <article id="events-searchbar-field" class="searchbar-field">
+      <!-- Name searchbar -->
+      <article id="events-name-searchbar" class="searchbar-field events-searchbar-field">
         <form action="">
           <input
-            id="events-searchbar-placeholder"
-            class="searchbar-placeholder"
+            v-on:input="searchEvents()"
+            id="events-name-searchbar-placeholder"
+            class="searchbar-placeholder events-searchbar-placeholder"
             type="text"
-            placeholder="Search"
+            placeholder="Name"
           />
         </form>
-        <button class="filters-show-button">Filters</button>
+      </article>
+      <!-- Location searchbar -->
+      <article id="events-location-searchbar" class="searchbar-field events-searchbar-field">
+        <form action="">
+          <input
+            v-on:input="searchEvents()"
+            id="events-location-searchbar-placeholder"
+            class="searchbar-placeholder events-searchbar-placeholder"
+            type="text"
+            placeholder="Location"
+          />
+        </form>
+      </article>
+      <!-- Date searchbar -->
+      <article id="events-date-searchbar" class="searchbar-field events-searchbar-field">
+        <form action="">
+          <input
+            v-on:input="searchEvents()"
+            id="events-date-searchbar-placeholder"
+            class="searchbar-placeholder events-searchbar-placeholder"
+            type="date"
+            placeholder="Date"
+          />
+        </form>
       </article>
       <!-- Create event button -->
       <a href="/createEvent">
         <button id="create-event-button" type="button">Create event</button>
       </a>
     </section>
-    <!-- Filters selector -->
-    <section id="events-filters-box" class="filters-box">
-      <img
-        src="../assets/filter-icon.svg"
-        alt="Close filters"
-        id="events-filters-close-button"
-        class="filters-close-button"
-      />
-      <article class="filter">
-        <p class="event-filter-text">Name</p>
-      </article>
-      <article class="filter">
-        <p class="event-filter-text">Date</p>
-      </article>
-      <article class="filter">
-        <p class="event-filter-text">Location</p>
-      </article>
-    </section>
     <!-- Events list -->
     <section id="events-list-section">
-      <!-- Temporary link to EventDetailsView -->
-      <RouterLink id="tmp-events-item-link" to="/eventDetails">
-        <article class="events-list-item">
-          <img
-            src="../assets/default_img.png"
-            alt="Picture of the event"
-            class="events-list-item-picture"
-          />
-          <div class="event-preview-content">
-            <p class="events-list-item-date">20/11/2022 - 15:08</p>
-            <h2 class="events-list-item-title">House BBQ</h2>
-            <p class="events-list-item-location">Alabama</p>
-          </div>
-        </article>
-      </RouterLink>
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">01/12/2022 - 11:20</p>
-          <h2 class="events-list-item-title">Mushroom harvesting</h2>
-          <p class="events-list-item-location">Hawaii</p>
-        </div>
-      </article>
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">27/11/2022 - 20:00</p>
-          <h2 class="events-list-item-title">Ping pong tournament</h2>
-          <p class="events-list-item-location">Owensboro</p>
-        </div>
-      </article>
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">13/12/2022 - 9:45</p>
-          <h2 class="events-list-item-title">LOTR marathon</h2>
-          <p class="events-list-item-location">Milan</p>
-        </div>
-      </article>
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">11/02/2023 - 14:00</p>
-          <h2 class="events-list-item-title">Private car race</h2>
-          <p class="events-list-item-location">Barcelona</p>
-        </div>
-      </article>
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">01/01/2023 - 22:55</p>
-          <h2 class="events-list-item-title">New year party #2</h2>
-          <p class="events-list-item-location">Tokyo</p>
-        </div>
-      </article>
-      <article class="events-list-item">
-        <img
-          src="../assets/default_img.png"
-          alt="Picture of the event"
-          class="events-list-item-picture"
-        />
-        <div class="event-preview-content">
-          <p class="events-list-item-date">10/11/2022 - 18:15</p>
-          <h2 class="events-list-item-title">Interdimensional cable</h2>
-          <p class="events-list-item-location">C-137</p>
-        </div>
-      </article>
+      <ul>
+        <li v-for="event in events" v-bind:key="event.id" v-on:click="this.$router.push('/eventDetails/' + event.id)">
+          <article class="events-list-item">
+            <img
+              v-bind:src="event.image"
+              alt="Picture of the event"
+              class="events-list-item-picture"
+            />
+            <div class="event-preview-content">
+              <p class="events-list-item-date">{{event.eventStart_date}}</p>
+              <h2 class="events-list-item-title">{{event.name}}</h2>
+              <p class="events-list-item-location">{{event.location}}</p>
+            </div>
+          </article>
+        </li>
+      </ul>
     </section>
   </section>
 </template>
@@ -159,7 +161,7 @@
 }
 
 /* Searchbar */
-#events-searchbar-field {
+.events-searchbar-field {
   max-width: 100%;
   width: 100%;
   flex-wrap: wrap;
@@ -167,9 +169,12 @@
   margin-right: 0px;
 }
 
-#events-searchbar-field > form {
-  min-width: 65%;
-  margin-right: 10px;
+.events-searchbar-field > form {
+  min-width: 100%;
+}
+
+.events-searchbar-placeholder {
+  width: 95%;
 }
 
 /* Create event */
@@ -187,13 +192,6 @@
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Filters */
-/* Will be hidden until "Filters" button is pressed
-#events-filters-box {
-  display: none;
-}
-*/
-
 /* Events list */
 #events-list-section {
   display: flex;
@@ -202,29 +200,24 @@
   flex-wrap: wrap;
 }
 
-/* Temporary style for link to EventDetailsView (will be done with JS later) */
-#tmp-events-item-link {
-  width: 85%;
+ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-#tmp-events-item-link > .events-list-item {
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   width: 100%;
+  align-content: center;
 }
 
-#tmp-events-item-link p,
-h2 {
-  color: #000;
+li {
+  width: 85%;
 }
-/* End of temporary style */
 
 .events-list-item {
   background: #fafafa;
   margin-top: 10px;
-  width: 85%;
   height: auto;
   padding: 10px;
   display: flex;
@@ -279,37 +272,32 @@ h2 {
     padding-right: 30px;
   }
 
-  #events-searchbar-field {
+  .events-searchbar-field {
     flex-wrap: nowrap;
     justify-content: flex-start;
-    margin-right: 40px;
     width: auto;
-    min-width: 80%;
+    min-width: 25%;
   }
 
-  #events-searchbar-field > form {
-    min-width: 85%;
-    margin-right: 40px;
+  .events-searchbar-field > form {
+    min-width: 90%;
   }
 
-  /*#events-searchbar-placeholder {
-    max-width: 100%;
+  .events-searchbar-placeholder {
     width: 100%;
-  }*/
+  }
 
   #events-list-section {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  /* Temporary style for link to EventDetailsView (will be done with JS later) */
-  #tmp-events-item-link {
-    display: block;
-    width: 45%;
+  ul {
+    flex-direction: row;
+    justify-content: space-between;
   }
-  /* End of temporary style */
 
-  .events-list-item {
+  li {
     width: 45%;
   }
 
