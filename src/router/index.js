@@ -59,7 +59,7 @@ const router = createRouter({
     },
     {
       //this.router.push(/view/222)
-      path: "/profile/:id",
+      path: "/profile/:userID",
       name: "userprofile",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
