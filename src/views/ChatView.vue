@@ -36,7 +36,7 @@
         // We check if the user has friends
         if(response.length > 0) {
           this.userFriends = res;
-          console.log("MAP: ");
+          //console.log("MAP: ");
           res.map((friend) => {
             // We check if the friend has a valid profile picture
             if(this.checkURL(friend.image)){
@@ -46,7 +46,7 @@
             }  
           });
           
-          console.log(this.userFriends);
+          //console.log(this.userFriends);
           // We show the first friend's chat by default
           this.showChat(this.userFriends[0]);
         } else {
@@ -88,7 +88,7 @@
           // We check if the user has messages with the friend
           if(response.length > 0) {
             this.messages = res;
-            console.log(this.messages);
+            //console.log(this.messages);
           } else {
             alert("You have no messages with this user yet!");
           }
@@ -126,13 +126,13 @@
         // We add the message to the messages array or we show an error if the message couldn't be sent
         .then(res => res.json())
         .then(res=> {
-          console.log(res);
-          console.log("------------------");
-          console.log(res.user_id_send);
-          console.log(this.userID);
+          //console.log(res);
+          //console.log("------------------");
+          //console.log(res.user_id_send);
+          //console.log(this.userID);
 
-          console.log(res.user_id_send == this.userID);
-          console.log("------------------");
+          //console.log(res.user_id_send == this.userID);
+          //console.log("------------------");
 
           this.messages.push(res);
         })
@@ -171,9 +171,12 @@
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
         <img class="little-img" v-bind:src="userChatting.image" onerror="this.src = 'src/assets/default_img.png'" alt="friend image" />
+        <h5 id="name-big-padding" v-on:click="this.$router.push('/profile/' + userChatting.id)"> {{ userChatting.name + " " + userChatting.surname }}</h5>
+
+        <!--
         <RouterLink to="/profile" id="friend-profile-btn">
           <h5 id="name-big-padding"> {{ userChatting.name + " " + userChatting.surname }}</h5>
-        </RouterLink>
+        </RouterLink>-->
       </div>
 
       <div class="scroller">

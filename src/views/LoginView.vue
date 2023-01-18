@@ -39,11 +39,11 @@ export default {
         let response = JSON.stringify(res);
         if(response.includes("accessToken")) {
           localStorage.setItem('token', response);
-          console.log(res);
+          //console.log(res);
           this.getUserID();
-          console.log(this)
-          console.log(this.$root.$data)
-          console.log(this.$root.$data.user.coses)
+          //console.log(this)
+          //console.log(this.$root.$data)
+          //console.log(this.$root.$data.user.coses)
           // I need to communicate with the parent component to update the app.vue data
           this.$router.push('/');
         } else {
@@ -70,8 +70,8 @@ export default {
         localStorage.setItem('userInfo', JSON.stringify(res));
         this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
         this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].name));
-        console.log((JSON.parse(localStorage.getItem('userInfo'))[0].image));
+        //console.log((JSON.parse(localStorage.getItem('userInfo'))[0].name));
+        //console.log((JSON.parse(localStorage.getItem('userInfo'))[0].image));
       });
     },
   }

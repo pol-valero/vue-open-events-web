@@ -14,22 +14,70 @@ export default {
         aside: true,
         header: true,
       },
-      eventToDisplay: {
-        /*title: 'Title',
-        description: 'Description',
-        startDate: '2023-06-22T08:22:00.000Z',
-        endDate: '2023-06-23T10:45:00.000Z',
-        location: 'Location name',
-        image:'src/assets/event-details-background.png',
-        type:'Type',
-        capacity: 0,
-        organizer:'Firstname Lastname',*/
-
-        //When an event is clicked in the HomeView, we will change this attribute with the id of the clicked event. 
-        //To get the id of the clicked event, we will do the same as in the "DiscoverView" when a user is clicked
-        id: 1390
-      }
+      friendsRequests: [],
     };
+  },
+
+
+
+  methods: {
+    // We log out the user and redirect him to the login page
+    logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userInfo");
+      this.$router.push("/login");
+    },
+
+    checkURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    },
+
+    getFriendsRequests(){
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/requests'
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(res => res.json())
+      .then(res=> {
+        let response = JSON.stringify(res);
+        if(response.length > 0) {
+          this.friendsRequests = res;
+        }
+      });
+    },
+
+    acceptFriendRequest(id){
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/' + id;
+      fetch(URL, {
+        method: 'PUT',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(this.getFriendsRequests()) // Update the friends requests
+    },
+
+    rejectFriendRequest(id){
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/' + id;
+      fetch(URL, {
+        method: 'DELETE',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },     
+      })
+      .then(this.getFriendsRequests()) // Update the friends requests
+    },
+
+
   },
 
   //created lifecycle method
@@ -46,27 +94,15 @@ export default {
       } else{
         this.user.image = "src/assets/default_img.png";
       }  
+      this.getFriendsRequests();
+      setInterval(this.getFriendsRequests, 5000); // We update the friends requests every 5 seconds
 
-      //console.log(this.user);
     } else {
       // If the user is not logged in, we redirect him to the login page
       this.$router.push("/login");
     }
   },
 
-  methods: {
-    // We log out the user and redirect him to the login page
-    logout() {
-      localStorage.removeItem("token");
-      localStorage.removeItem("userInfo");
-      this.$router.push("/login");
-    },
-
-    checkURL(url) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-    },
-
-  },
 }
 </script>
 <script setup>
@@ -128,29 +164,17 @@ import { RouterLink, RouterView } from "vue-router";
     <aside v-if="show.aside">
       <h3 class="title">REQUESTS</h3>
 
-      <div class="request-container">
-        <p id="name-request">Ángel García</p>
-        <div id="answer-buttons">
-          <button class="accept-button">Accept</button>
-          <button class="reject-button">Reject</button>
-        </div>
-      </div>
-
-      <div class="request-container">
-        <p id="name-request">Pol Valero</p>
-        <div id="answer-buttons">
-          <button class="accept-button">Accept</button>
-          <button class="reject-button">Reject</button>
-        </div>
-      </div>
-
-      <div id="last-request" class="request-container">
-        <p id="name-request">Daniel Amo</p>
-        <div id="answer-buttons">
-          <button class="accept-button">Accept</button>
-          <button class="reject-button">Reject</button>
-        </div>
-      </div>
+      <ul v-for="friend in friendsRequests" v-bind:key="friend.id">
+        <li>
+          <div class="request-container"> 
+            <p id="name-request">{{ friend.name + " " + friend.last_name }}</p>
+            <div id="answer-buttons">
+              <button class="accept-button" v-on:click=acceptFriendRequest(friend.id)>Accept</button>
+              <button class="reject-button" v-on:click=rejectFriendRequest(friend.id)>Reject</button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </aside>
   </div>
 
