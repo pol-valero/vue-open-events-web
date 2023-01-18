@@ -32,7 +32,7 @@ export default {
                     "Content-Type": "application/json",
                 },
             })
-                .then(alert("Friend request sended!"));
+                .then(alert("Friend request sent!"));
         }
     },
     // TODO: In case you are already in /profile:id and you want to go to /profile
@@ -102,8 +102,8 @@ export default {
       <div class="main-container">
         <div class="profile-info">
           <img 
+          v-bind:src="userImage"
           onerror="this.src = '/src/assets/default_img.png'"
-          v-bind:src="userImage" 
           alt="logo" 
           id="profile-img"/>
         </div>
