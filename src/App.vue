@@ -77,7 +77,15 @@ export default {
       .then(this.getFriendsRequests()) // Update the friends requests
     },
 
+    showProfile() {
+      this.$router.push(`/profile/${this.user.id}`);
 
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
+
+    }
+  
   },
 
   //created lifecycle method
@@ -119,7 +127,7 @@ import { RouterLink, RouterView } from "vue-router";
         <h2 class="title">OPEN EVENTS</h2>
       </div>
       <!--<div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">-->
-      <div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">
+      <div id="user-photo" v-on:click="showProfile()">
         <h2 class="title">{{ user.name }}</h2>
 
         <!--
