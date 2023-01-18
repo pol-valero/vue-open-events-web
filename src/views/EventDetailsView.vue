@@ -1,20 +1,9 @@
 <script>
-
 export default {
   name: "EventDetailsView",
   data() {
     return {
       event: { 
-        /*title: this.$root.$data.eventToDisplay.title,
-        description: this.$root.$data.eventToDisplay.description,
-        startDate: this.$root.$data.eventToDisplay.startDate,
-        endDate: this.$root.$data.eventToDisplay.endDate,
-        location: this.$root.$data.eventToDisplay.location,
-        image: this.$root.$data.eventToDisplay.image,
-        type: this.$root.$data.eventToDisplay.type,
-        capacity: this.$root.$data.eventToDisplay.capacity,
-        organizer: this.$root.$data.eventToDisplay.organizer*/
-
         title: 'Title',
         description: 'Description',
         startDate: '2023-06-22T08:22:00.000Z',
@@ -25,7 +14,7 @@ export default {
         capacity: 0,
         organizer: 'Firstname Lastname',
         organizer_id: null,
-        id: this.$root.$data.eventToDisplay.id
+        id: this.$route.params.eventID
       },
       date: {
         day: '',
@@ -39,7 +28,9 @@ export default {
         endHour: '',
         endMinute: ''
       
-      }
+      },
+      comments: [],
+      isParticipating: true
     };
   },
 
@@ -47,7 +38,8 @@ export default {
     // We hide the aside
     this.$root.$data.show.aside = false;
 
-    this.getEvent()
+    this.getEvent();
+    this.getAssistances();
 
     // We change the date format so that we can display it more easily
     //var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
@@ -66,7 +58,6 @@ export default {
     this.date.endYear = endTime.getFullYear()
     this.date.endHour = endTime.getHours()
     this.date.endMinute = endTime.getMinutes()
-
   },
   
   methods: {
@@ -81,14 +72,13 @@ export default {
           }
           })
           .then(res => res.json())
-          .then(res=> {
+          .then(res => {
             let response = JSON.stringify(res);
-
             this.$router.push("/")
           });
     },
-    getEvent(){
 
+    getEvent(){
       const token = localStorage.getItem('token');
       const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id;
       fetch(URL, {
@@ -99,8 +89,7 @@ export default {
         },     
       })
       .then(res => res.json())
-      .then(res=> {
-
+      .then(res => {
         this.event.title = res[0].name;
         this.event.description = res[0].description;
         this.event.startDate = res[0].eventStart_date;
@@ -120,11 +109,42 @@ export default {
           document.getElementById('title-container').style.backgroundImage = "url('../assets/event-details-background.png')"
         }*/
         document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')";
-
         this.getUser();
-
       });
     },
+
+    getAssistances() {
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances';
+      let localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+
+      fetch(URL, {
+        method: 'GET',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => res.json())
+      .then(res => {
+        let response = JSON.stringify(res);
+        let tmpBool = false;
+
+        if (response.length > 0) {
+          // prepare comments and ratings
+          this.comments = res;
+          // check if user is participating
+          this.comments.forEach((comment) => {
+            if (comment.id == localUserID) {
+              tmpBool = true;
+            }
+          });
+
+          this.isParticipating = tmpBool;
+        }
+      });
+    },
+
     getUser() {
       const token = localStorage.getItem('token');
       const URL = 'http://puigmal.salle.url.edu/api/v2/users/' + this.event.organizer_id;
@@ -137,9 +157,23 @@ export default {
       })
       .then(res => res.json())
       .then(res=> {
-
         this.event.organizer = res[0].name;
       });
+    },
+
+    followUser() {
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/' + this.event.organizer_id;
+
+      // send friend request
+      fetch(URL, {
+        method: 'POST',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(alert("Friend request sent!"));
     }
   },
 };
@@ -179,7 +213,7 @@ export default {
           <h4>{{this.event.organizer}}</h4>
           <p>Organizer</p>
         </div>
-        <button id="follow-button" class="secondary-button">Follow</button>
+        <button v-on:click="followUser()" id="follow-button" class="secondary-button">Follow</button>
       </div>
     </section>
 
@@ -190,7 +224,7 @@ export default {
       <p>{{ this.event.description }}</p>
     </section>
 
-    <div class="event-details-bottom-buttons">
+    <div class="event-details-bottom-buttons" v-if="!isParticipating">
       <button v-on:click="participate()" class="primary-button">PARTICIPATE</button>
     </div>
   </div>
@@ -344,9 +378,7 @@ export default {
   }
 
   #event-description {
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-top: 40px;
+    margin: 40px 80px 50px 80px;
     line-height: 200%;
   }
 
@@ -355,7 +387,7 @@ export default {
   }
 
   .event-details-bottom-buttons {
-    margin-top: 60px;
+    margin-top: 0px;
   }
 
   .event-details-bottom-buttons button {

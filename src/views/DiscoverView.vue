@@ -53,6 +53,7 @@ export default {
   },
 
   mounted(){
+    this.$root.$data.show.aside = true;
     this.searchUsers();
   }
   
