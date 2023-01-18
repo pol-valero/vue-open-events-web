@@ -1,108 +1,96 @@
 <script>
 export default {
-  data(){
-    return{
-      userID: this.$route.params.userID, //this is the id from the browser
-      //userID: -1,
-      userName: "",
-      userLastName: "",
-      userEmail: "",
-      userImage: "",
-
-      rating: 0,
-      comments: 0,
-      usersBehind: 0,
-
-      show : false,
-    }
-  }, 
-
-  methods: {
-    checkURL(url) {
-      return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    data() {
+        return {
+            userID: this.$route.params.userID,
+            //userID: -1,
+            userName: "",
+            userLastName: "",
+            userEmail: "",
+            userImage: "",
+            rating: 0,
+            comments: 0,
+            usersBehind: 0,
+            show: false,
+        };
     },
-    logout() {
-      localStorage.removeItem("token");
-      localStorage.removeItem("userInfo");
-      this.$router.push("/login");
-    },
-    followUser(){
-      const token = localStorage.getItem('token');
-
-      fetch("http://puigmal.salle.url.edu/api/v2/friends/" + this.userID, {
-        method: "POST",
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
+    methods: {
+        checkURL(url) {
+            return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
         },
-      })
-      .then(alert("Friend request sended!"));
-
-    }
-  },
-
-  // TODO: In case you are already in /profile:id and you want to go to /profile
-  mounted(){
-    //Getting the user's token
-    const token = localStorage.getItem('token');
-    var localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-    //console.log("localUserID: " + localUserID);
-    //console.log("this.userID: " + this.userID);
-
-    // Case when profile is the user's own profile
-    if(this.userID == localUserID){
-      this.show = true;
-      //Getting the user's info
-      this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-      this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
-      this.userLastName = JSON.parse(localStorage.getItem("userInfo"))[0].last_name;
-      this.userEmail = JSON.parse(localStorage.getItem("userInfo"))[0].email;
-      this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-      
-    }else{
-      this.show = false;
-      // Case when profile is another user's profile
-      fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID, {
-        method: "GET",
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
+        logout() {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userInfo");
+            this.$router.push("/login");
         },
-      })
-      .then(res => res.json())
-      .then(res=> {
-        if(res) { // check if the response is not empty
-          this.userID = res[0].id;
-          this.userName = res[0].name;
-          this.userLastName = res[0].last_name;
-          this.userEmail = res[0].email;
-          this.userImage = res[0].image;
+        followUser() {
+            const token = localStorage.getItem("token");
+            fetch("http://puigmal.salle.url.edu/api/v2/friends/" + this.userID, {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + JSON.parse(token).accessToken,
+                    "Content-Type": "application/json",
+                },
+            })
+                .then(alert("Friend request sended!"));
         }
-      });
-    }
-
-
-    fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID + "/statistics", {
-        method: "GET",
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },
-      })
-    .then(res => res.json())
-    .then(res=> {
-      if(res) {
-        // check if the response is not null
-        res[0].avg_score == null ? res[0].avg_score = 0 : this.rating = res[0].avg_score;
-        res[0].num_comments == null ? res[0].num_comments = 0 : this.comments = res[0].num_comments;
-        res[0].percentage_commenters_below == null ? res[0].percentage_commenters_below = 0 
-        : this.usersBehind = res[0].percentage_commenters_below;
-      }
-    });
-
-  }
-  
-
+    },
+    // TODO: In case you are already in /profile:id and you want to go to /profile
+    mounted() {
+        //Getting the user's token
+        const token = localStorage.getItem("token");
+        var localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+        //console.log("localUserID: " + localUserID);
+        //console.log("this.userID: " + this.userID);
+        // Case when profile is the user's own profile
+        if (this.userID == localUserID) {
+            this.show = true;
+            //Getting the user's info
+            this.userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+            this.userName = JSON.parse(localStorage.getItem("userInfo"))[0].name;
+            this.userLastName = JSON.parse(localStorage.getItem("userInfo"))[0].last_name;
+            this.userEmail = JSON.parse(localStorage.getItem("userInfo"))[0].email;
+            this.userImage = JSON.parse(localStorage.getItem("userInfo"))[0].image;
+        }
+        else {
+            this.show = false;
+            // Case when profile is another user's profile
+            fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID, {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + JSON.parse(token).accessToken,
+                    "Content-Type": "application/json",
+                },
+            })
+                .then(res => res.json())
+                .then(res => {
+                if (res) { // check if the response is not empty
+                    this.userID = res[0].id;
+                    this.userName = res[0].name;
+                    this.userLastName = res[0].last_name;
+                    this.userEmail = res[0].email;
+                    this.userImage = res[0].image;
+                }
+            });
+        }
+        fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID + "/statistics", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + JSON.parse(token).accessToken,
+                "Content-Type": "application/json",
+            },
+        })
+            .then(res => res.json())
+            .then(res => {
+            if (res) {
+                // check if the response is not null
+                res[0].avg_score == null ? res[0].avg_score = 0 : this.rating = res[0].avg_score;
+                res[0].num_comments == null ? res[0].num_comments = 0 : this.comments = res[0].num_comments;
+                res[0].percentage_commenters_below == null ? res[0].percentage_commenters_below = 0
+                    : this.usersBehind = res[0].percentage_commenters_below;
+            }
+        });
+    },
 }
 </script>
 
