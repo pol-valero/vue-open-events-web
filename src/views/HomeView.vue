@@ -103,7 +103,6 @@
             placeholder="Name"
           />
         </form>
-        <!--<button class="filters-show-button">Filters</button>-->
       </article>
       <!-- Location searchbar -->
       <article id="events-location-searchbar" class="searchbar-field events-searchbar-field">
