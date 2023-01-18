@@ -68,7 +68,7 @@
               if(this.checkURL(event.image)){
                 event.image = event.image;
               } else{
-                event.image = "src/assets/default_img.png";
+                event.image = "/src/assets/default_img.png";
               }  
             });
           }
@@ -140,7 +140,7 @@
           <article class="events-list-item">
             <img
               v-bind:src="event.image"
-              onerror="this.src = 'src/assets/default_img.png'"
+              onerror="this.src = '/src/assets/default_img.png'"
               alt="Picture of the event"
               class="events-list-item-picture"
             />

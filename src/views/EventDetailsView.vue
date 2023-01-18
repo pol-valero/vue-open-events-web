@@ -61,7 +61,7 @@ export default {
   },
   
   methods: {
-    participate () {
+    participate() {
       const token = localStorage.getItem('token');
 
       fetch('http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances', {
@@ -78,7 +78,7 @@ export default {
           });
     },
 
-    getEvent(){
+    getEvent() {
       const token = localStorage.getItem('token');
       const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id;
       fetch(URL, {
@@ -227,6 +227,16 @@ export default {
     <div class="event-details-bottom-buttons" v-if="!isParticipating">
       <button v-on:click="participate()" class="primary-button">PARTICIPATE</button>
     </div>
+
+    <!-- Add comment and rating -->
+    <!-- Show all comments and ratings -->
+    <article id="event-comments-list">
+      <ul>
+        <li v-for="comment in comments" v-bind:key="comment.id">
+          //
+        </li>
+      </ul>
+    </article>
   </div>
 </template>
 
@@ -320,9 +330,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: fit-content;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 20px;
+  margin: 20px 50px 40px 50px;
   line-height: 150%;
 }
 
@@ -333,7 +341,6 @@ export default {
 }
 
 .event-details-bottom-buttons {
-  margin-top: 40px;
   align-self: center;
   display: flex;
   justify-content: center;
