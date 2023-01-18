@@ -102,7 +102,7 @@ export default {
       <div class="main-container">
         <div class="profile-info">
           <img 
-          onerror="this.src = 'src/assets/default_img.png'"
+          onerror="this.src = '/src/assets/default_img.png'"
           v-bind:src="userImage" 
           alt="logo" 
           id="profile-img"/>
@@ -138,7 +138,7 @@ export default {
 
     <section id="container-full-profile">
       <nav>
-        <RouterLink id="nav-timeline" to="/timeline">View timeline</RouterLink>
+        <RouterLink id="nav-timeline" to="/timeline" v-if="show">View timeline</RouterLink>
       </nav>
     </section>
 

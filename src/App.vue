@@ -95,6 +95,7 @@ export default {
         this.user.image = "src/assets/default_img.png";
       }  
       this.getFriendsRequests();
+      setInterval(this.getFriendsRequests, 5000); // We update the friends requests every 5 seconds
 
     } else {
       // If the user is not logged in, we redirect him to the login page

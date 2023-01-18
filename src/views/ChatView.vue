@@ -171,9 +171,12 @@
     <section id="container-chat-interactive">
       <div id="container-chat-person-selected">
         <img class="little-img" v-bind:src="userChatting.image" onerror="this.src = 'src/assets/default_img.png'" alt="friend image" />
+        <h5 id="name-big-padding" v-on:click="this.$router.push('/profile/' + userChatting.id)"> {{ userChatting.name + " " + userChatting.surname }}</h5>
+
+        <!--
         <RouterLink to="/profile" id="friend-profile-btn">
           <h5 id="name-big-padding"> {{ userChatting.name + " " + userChatting.surname }}</h5>
-        </RouterLink>
+        </RouterLink>-->
       </div>
 
       <div class="scroller">
