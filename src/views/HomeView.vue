@@ -8,37 +8,71 @@
     },
 
     methods: {
-      getEvents() {
+      checkURL(url) {
+        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+      },
+
+      searchEvents() {
         const token = localStorage.getItem('token');
-        const URL = 'http://puigmal.salle.url.edu/api/v2/events/best';
+        let location = document.getElementById("events-location-searchbar-placeholder").value;
+        let name = document.getElementById("events-name-searchbar-placeholder").value;
+        let date = document.getElementById("events-date-searchbar-placeholder").value;
+        let URL = 'http://puigmal.salle.url.edu/api/v2/events/search?';
+        
+        // prepare URL for API request
+        if (location != "") {
+          // search by location
+          URL += 'location=' + location;
+          if (name != "") {
+            // search by location and name
+            URL += '&keyword=' + name;
+            if (date != "") {
+              // search by location and name and date
+              URL += '&date=' + date;
+            }
+          } else if (date != "") {
+            // search by location and date
+            URL += '&date=' + date;
+          }
+        } else if (name != "") {
+          // search by name
+          URL += 'keyword=' + name;
+          if (date != "") {
+            // search by name and date
+            URL += '&date=' + date;
+          }
+        } else if (date != "") {
+          // search by date
+          URL += 'date=' + date;
+        } else {
+          // no search
+          URL = 'http://puigmal.salle.url.edu/api/v2/events/best';
+        }
+
         fetch(URL, {
           method: 'GET',
           headers:{
             'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
             'Content-Type': 'application/json',
-          },     
+          },
         })
         .then(res => res.json())
         .then(res => {
           let response = JSON.stringify(res);
           if(response.length > 0) {
             this.events = res;
-            // get the image of the event
             res.map((event) => {
-              event.date = event.date.split('T')[0];
+              // remove time from date
+              event.eventStart_date = event.eventStart_date.split('T')[0];
+              // get the image of the event
               if(this.checkURL(event.image)){
                 event.image = "src/assets/default_img.png";
               } else{
                 event.image = "src/assets/default_img.png";
               }  
             });
-
           }
         });
-      },
-      
-      checkURL(url) {
-        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
       }
     },
 
@@ -46,7 +80,7 @@
       // We show the aside and the header
       this.$root.$data.show.aside = true;
       this.$root.$data.show.header = true;
-      this.getEvents();
+      this.searchEvents();
     },
   };
 
@@ -62,8 +96,9 @@
       <article id="events-name-searchbar" class="searchbar-field events-searchbar-field">
         <form action="">
           <input
-            id="events-searchbar-placeholder"
-            class="searchbar-placeholder"
+            v-on:input="searchEvents()"
+            id="events-name-searchbar-placeholder"
+            class="searchbar-placeholder events-searchbar-placeholder"
             type="text"
             placeholder="Name"
           />
@@ -74,8 +109,9 @@
       <article id="events-location-searchbar" class="searchbar-field events-searchbar-field">
         <form action="">
           <input
-            id="events-searchbar-placeholder"
-            class="searchbar-placeholder"
+            v-on:input="searchEvents()"
+            id="events-location-searchbar-placeholder"
+            class="searchbar-placeholder events-searchbar-placeholder"
             type="text"
             placeholder="Location"
           />
@@ -85,8 +121,9 @@
       <article id="events-date-searchbar" class="searchbar-field events-searchbar-field">
         <form action="">
           <input
-            id="events-searchbar-placeholder"
-            class="searchbar-placeholder"
+            v-on:input="searchEvents()"
+            id="events-date-searchbar-placeholder"
+            class="searchbar-placeholder events-searchbar-placeholder"
             type="date"
             placeholder="Date"
           />
@@ -108,7 +145,7 @@
               class="events-list-item-picture"
             />
             <div class="event-preview-content">
-              <p class="events-list-item-date">{{event.date}}</p>
+              <p class="events-list-item-date">{{event.eventStart_date}}</p>
               <h2 class="events-list-item-title">{{event.name}}</h2>
               <p class="events-list-item-location">{{event.location}}</p>
             </div>
@@ -134,8 +171,11 @@
 }
 
 .events-searchbar-field > form {
-  min-width: 65%;
-  margin-right: 10px;
+  min-width: 100%;
+}
+
+.events-searchbar-placeholder {
+  width: 95%;
 }
 
 /* Create event */
@@ -242,7 +282,10 @@ li {
 
   .events-searchbar-field > form {
     min-width: 90%;
-    margin-right: 0px;
+  }
+
+  .events-searchbar-placeholder {
+    width: 100%;
   }
 
   #events-list-section {
