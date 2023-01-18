@@ -422,6 +422,12 @@ button:hover {
   outline: none;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* Adapt to device */
 @media(min-width: 768px) {
   /* Header */
