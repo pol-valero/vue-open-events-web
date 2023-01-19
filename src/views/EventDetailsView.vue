@@ -170,7 +170,8 @@ export default {
               tmpBool = true;
             }
             // add to comments array if it has a rating or a commentary
-            if ((comment.puntuation != null) || (comment.commentary != null)) {
+            if ((comment.puntuation != null) || (comment.comentary != null)) {
+              if (comment.puntuation != null) comment.puntuation += "/10";
               this.comments.push(comment);
             }
           });

@@ -1,7 +1,7 @@
 <template>
     <h4>{{name}} {{lastname}}</h4>
     <p>{{comment}}</p>
-    <p>{{rating}}/10</p>
+    <p>{{rating}}</p>
 </template>
 
 <script>
