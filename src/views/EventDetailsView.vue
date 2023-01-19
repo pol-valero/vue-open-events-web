@@ -228,6 +228,13 @@ export default {
     clearForm() {
       document.getElementById("comment-form-text").value = "";
       document.getElementById("comment-form-rating").value = "";
+    },
+
+    shareEvent() {
+      // prepare URL for sharing
+      let url = window.location.href;
+      // show URL to copy
+      alert("URL to share: " + url);
     }
   },
 };
@@ -241,7 +248,7 @@ export default {
       </div>
 
       <div id="share-button">
-        <button class="primary-button">SHARE!</button>
+        <button v-on:click="shareEvent()" class="primary-button">SHARE!</button>
       </div>
     </section>
 
