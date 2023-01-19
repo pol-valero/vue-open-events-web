@@ -115,11 +115,11 @@ import { RouterLink, RouterView } from "vue-router";
   <header v-if="show.header">
     <div id="top-header">
       <div id="title-logo">
-        <img src="src\assets\logo_image.png" alt="logo" class="header-img" />
+        <img src="\src\assets\logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
       <!--<div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">-->
-      <div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">
+      <button id="user-photo" v-on:click="$router.push(`/profile/${user.id}`)" >
         <h2 class="title">{{ user.name }}</h2>
 
         <!--
@@ -132,7 +132,7 @@ import { RouterLink, RouterView } from "vue-router";
           alt="user photo"
           class="header-img"
         />
-      </div>
+      </button>
     </div>
 
     <div id="bot-header">
