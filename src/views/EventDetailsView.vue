@@ -1,6 +1,9 @@
 <script>
+import CommentItem from "../components/commentItem.vue";
+
 export default {
   name: "EventDetailsView",
+  components: {CommentItem},
   data() {
     return {
       event: { 
@@ -42,7 +45,6 @@ export default {
     this.getAssistances();
 
     // We change the date format so that we can display it more easily
-    //var startTime = new Date (this.$root.$data.eventToDisplay.startDate)
     var startTime = new Date (this.event.startDate)
     this.date.day = startTime.getDate()
     this.date.month = startTime.getMonth() + 1
@@ -51,7 +53,6 @@ export default {
     this.date.minute = startTime.getMinutes()
 
     // We change the date format so that we can display it more easily
-    //var endTime = new Date (this.$root.$data.eventToDisplay.endDate)
     var endTime = new Date (this.event.endDate)
     this.date.endDay = endTime.getDate()
     this.date.endMonth = endTime.getMonth() + 1
@@ -95,19 +96,11 @@ export default {
         this.event.startDate = res[0].eventStart_date;
         this.event.endDate = res[0].eventStart_date;
         this.event.location = res[0].location;
-        //this.event.image = res[0].image;
         this.event.type = res[0].type;
         this.event.capacity = res[0].n_participators;
         this.event.organizer_id = res[0].owner_id;
 
         // We set the background image
-        /*if (this.imageExists(res[0].image)) {
-          alert("Image exists")
-          document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')"
-        } else {
-          alert("Image no exists")
-          document.getElementById('title-container').style.backgroundImage = "url('../assets/event-details-background.png')"
-        }*/
         document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')";
         this.getUser();
       });
@@ -129,14 +122,19 @@ export default {
       .then(res => {
         let response = JSON.stringify(res);
         let tmpBool = false;
+        let tmpComments = [];
 
         if (response.length > 0) {
           // prepare comments and ratings
-          this.comments = res;
-          // check if user is participating
-          this.comments.forEach((comment) => {
+          tmpComments = res;
+          tmpComments.forEach((comment) => {
+            // check if user is participating
             if (comment.id == localUserID) {
               tmpBool = true;
+            }
+            // add to comments array if it has a rating or a commentary
+            if ((comment.puntuation != null) || (comment.commentary != null)) {
+              this.comments.push(comment);
             }
           });
 
@@ -174,6 +172,62 @@ export default {
         },
       })
       .then(alert("Friend request sent!"));
+    },
+
+    addComment() {
+      const token = localStorage.getItem('token');
+      const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances';
+      let commentary = document.getElementById("comment-form-text").value;
+      let rating = document.getElementById("comment-form-rating").value;
+
+      if ((rating != "") && (commentary == "")) {
+        // send only rating
+        fetch(URL, {
+          method: 'PUT',
+          headers:{
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "puntuation": rating
+          })
+        });
+      } else if ((rating == "") && (commentary != "")) {
+        // send only commentary
+        fetch(URL, {
+          method: 'PUT',
+          headers:{
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "comentary": commentary
+          })
+        });
+      } else if ((rating != "") && (commentary != "")) {
+        // send both
+        fetch(URL, {
+          method: 'PUT',
+          headers:{
+            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "puntuation": rating,
+            "comentary": commentary
+          })
+        });
+      } else {
+        // send nothing
+        alert("You must write a comment or rate the event!");
+      }
+
+      this.clearForm();
+    },
+
+    clearForm() {
+      document.getElementById("comment-form-text").value = "";
+      document.getElementById("comment-form-rating").value = "";
     }
   },
 };
@@ -228,14 +282,32 @@ export default {
       <button v-on:click="participate()" class="primary-button">PARTICIPATE</button>
     </div>
 
-    <!-- Add comment and rating -->
-    <!-- Show all comments and ratings -->
-    <article id="event-comments-list">
-      <ul>
-        <li v-for="comment in comments" v-bind:key="comment.id">
-          //
-        </li>
-      </ul>
+    <article id="event-comments">
+      <!-- Show all comments and ratings -->
+      <section id="event-comments-list">
+        <h3>Comments</h3>
+        <ul>
+          <li v-for="comment in comments" v-bind:key="comment.id" class="comment-list-item">
+            <CommentItem
+              :name="comment.name"
+              :lastname="comment.last_name"
+              :comment="comment.comentary"
+              :rating="comment.puntuation"
+            />
+          </li>
+        </ul>
+      </section>
+      <!-- Add comment and rating -->
+      <section id="event-comments-add-section">
+        <h3>Add comment</h3>
+        <form id="comment-form" action="">
+          <textarea id="comment-form-text" class="field" cols="30" rows="10" placeholder="Write your comment here..."/>
+          <div id="comment-form-box">
+            <input type="number" id="comment-form-rating" class="field" min="0" max="10" placeholder="Rating (0-10)"/>
+            <button v-on:click="addComment()" id="comment-form-submit-button" class="primary-button">COMMENT</button>
+          </div>
+        </form>
+      </section>
     </article>
   </div>
 </template>
@@ -354,6 +426,60 @@ export default {
   margin: 0px 40px 30px 40px;
 }
 
+#event-comments {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 40px;
+}
+
+#event-comments-add-section {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 15px;
+  height: fit-content;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#comment-form textarea {
+  width: 92%;
+}
+
+#comment-form-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#comment-form-box input {
+  height: max-content;
+}
+
+#comment-form-submit-button {
+  height: 40px;
+}
+
+#event-comments-list {
+  margin-bottom: 40px;
+}
+
+.comment-list-item {
+  background: #fafafa;
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
 @media (min-width: 596px) {
   .users-list-item-picture {
     width: 70px;
@@ -407,6 +533,36 @@ export default {
 
   #follow-button {
     margin-top: 0px;
+  }
+
+  #event-comments {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 40px;
+  }
+
+  #event-comments-add-section {
+    width: 50%;
+  }
+
+  #comment-form {
+    flex-direction: row;
+  }
+
+  #comment-form textarea {
+    width: 50%;
+  }
+
+  #comment-form-box {
+    width: 40%;
+  }
+
+  #event-comments-list {
+    width: 30%;
+    margin-bottom: 0px;
   }
 }
 </style>
