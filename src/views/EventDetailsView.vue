@@ -33,7 +33,8 @@ export default {
       
       },
       comments: [],
-      isParticipating: true
+      isParticipating: true,
+      isFriend: false
     };
   },
 
@@ -75,13 +76,46 @@ export default {
           .then(res => res.json())
           .then(res => {
             let response = JSON.stringify(res);
-            this.$router.push("/")
+            this.$router.push("/eventDetails/" + this.event.id);
+            //this.window.location.reload();
+            setTimeout(() => {
+              window.location.reload();
+            }, 50);
           });
+    },
+
+    checkFriend() {
+      const token = localStorage.getItem('token');
+      let localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+
+      // check owner is not the user
+      if (this.event.organizer_id == localUserID) {
+        this.isFriend = true;
+        return;
+      }
+
+      // get list of friends
+      fetch("http://puigmal.salle.url.edu/api/v2/friends", {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        res.forEach((friend) => {
+          if (friend.id == this.event.organizer_id) {
+            this.isFriend = true;
+          }
+        });
+      });
     },
 
     getEvent() {
       const token = localStorage.getItem('token');
       const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id;
+
       fetch(URL, {
         method: 'GET',
         headers:{
@@ -99,6 +133,9 @@ export default {
         this.event.type = res[0].type;
         this.event.capacity = res[0].n_participators;
         this.event.organizer_id = res[0].owner_id;
+        
+        // check if owner is a friend
+        this.checkFriend();
 
         // We set the background image
         document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')";
@@ -228,6 +265,13 @@ export default {
     clearForm() {
       document.getElementById("comment-form-text").value = "";
       document.getElementById("comment-form-rating").value = "";
+    },
+
+    shareEvent() {
+      // prepare URL for sharing
+      let url = window.location.href;
+      // show URL to copy
+      alert("URL to share: " + url);
     }
   },
 };
@@ -241,7 +285,7 @@ export default {
       </div>
 
       <div id="share-button">
-        <button class="primary-button">SHARE!</button>
+        <button v-on:click="shareEvent()" class="primary-button">SHARE!</button>
       </div>
     </section>
 
@@ -267,7 +311,7 @@ export default {
           <h4>{{this.event.organizer}}</h4>
           <p>Organizer</p>
         </div>
-        <button v-on:click="followUser()" id="follow-button" class="secondary-button">Follow</button>
+        <button v-if="!isFriend" v-on:click="followUser()" id="follow-button" class="secondary-button">Follow</button>
       </div>
     </section>
 
@@ -298,7 +342,7 @@ export default {
         </ul>
       </section>
       <!-- Add comment and rating -->
-      <section id="event-comments-add-section">
+      <section id="event-comments-add-section" v-if="isParticipating">
         <h3>Add comment</h3>
         <form id="comment-form" action="">
           <textarea id="comment-form-text" class="field" cols="30" rows="10" placeholder="Write your comment here..."/>
@@ -323,6 +367,7 @@ export default {
 #title-container {
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #eeeeff;
   height: 40%;
   min-height: 200px;
   width: 100%;
@@ -417,6 +462,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .event-details-bottom-buttons button {
