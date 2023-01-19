@@ -15,7 +15,7 @@ export default {
     editProfile(){
 
       // Checking if the name and last name are alphanumeric
-      if (!(document.getElementById('name-input').value).match(/^[0-9a-z]+$/)){
+      if (!(document.getElementById('name-input').value).match(/^[a-zA-Z0-9]+$/)){
         alert("Name must be alphanumeric");
         return;
       }
@@ -74,7 +74,7 @@ export default {
       // Updating the user's info from App.vue
       this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
       this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-      this.$router.push('/profile');      
+      this.$router.push('/profile/' + JSON.parse(localStorage.getItem("userInfo"))[0].id);
     },
     deleteProfile(){
       //Getting the user's token

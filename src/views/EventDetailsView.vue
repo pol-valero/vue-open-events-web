@@ -67,21 +67,20 @@ export default {
       const token = localStorage.getItem('token');
 
       fetch('http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances', {
-          method: 'POST',
-          headers:{
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json'
-          }
-          })
-          .then(res => res.json())
-          .then(res => {
-            let response = JSON.stringify(res);
-            this.$router.push("/eventDetails/" + this.event.id);
-            //this.window.location.reload();
-            setTimeout(() => {
-              window.location.reload();
-            }, 50);
-          });
+        method: 'POST',
+        headers:{
+          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        let response = JSON.stringify(res);
+        this.$router.push("/eventDetails/" + this.event.id);
+        setTimeout(() => {
+          window.location.reload();
+        }, 50);
+      });
     },
 
     checkFriend() {
@@ -104,11 +103,17 @@ export default {
       })
       .then(res => res.json())
       .then(res => {
-        res.forEach((friend) => {
-          if (friend.id == this.event.organizer_id) {
-            this.isFriend = true;
+        let response = JSON.stringify(res);
+
+        if (response.length > 0) {
+          if (!response.includes("Error")) {
+            res.forEach((friend) => {
+              if (friend.id == this.event.organizer_id) {
+                this.isFriend = true;
+              }
+            });
           }
-        });
+        }
       });
     },
 
@@ -162,23 +167,25 @@ export default {
         let tmpComments = [];
 
         if (response.length > 0) {
-          // prepare comments and ratings
-          tmpComments = res;
-          tmpComments.forEach((comment) => {
-            // check if user is participating
-            if (comment.id == localUserID) {
-              tmpBool = true;
-            }
-            // add to comments array if it has a rating or a commentary
-            if ((comment.puntuation != null) || (comment.comentary != null)) {
-              if (comment.puntuation != null) {
-                comment.puntuation += "/10";
+          if (!response.includes("Error")) {
+            // prepare comments and ratings
+            tmpComments = res;
+            tmpComments.forEach((comment) => {
+              // check if user is participating
+              if (comment.id == localUserID) {
+                tmpBool = true;
               }
-              this.comments.push(comment);
-            }
-          });
+              // add to comments array if it has a rating or a commentary
+              if ((comment.puntuation != null) || (comment.comentary != null)) {
+                if (comment.puntuation != null) {
+                  comment.puntuation += "/10";
+                }
+                this.comments.push(comment);
+              }
+            });
 
-          this.isParticipating = tmpBool;
+            this.isParticipating = tmpBool;
+          }
         }
       });
     },
