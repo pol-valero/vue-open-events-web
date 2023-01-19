@@ -124,14 +124,8 @@ import { RouterLink, RouterView } from "vue-router";
         <img src="/src/assets/logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
-      <!--<div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">-->
       <button id="user-photo" v-on:click="showProfile()" >
         <h2 class="title">{{ user.name }}</h2>
-
-        <!--
-        <RouterLink id="profile-btn" to="/profile">
-          <h2 class="title">{{ user.name }}</h2>
-        </RouterLink>-->
         <img
           v-bind:src="user.image"
           onerror="this.src = 'src/assets/default_img.png'"

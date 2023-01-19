@@ -47,8 +47,8 @@ header {
   display: flex;
   align-items: center;
   max-width: 45%;
-  background: #fafafa;
-  border: #fafafa;
+  background: #f8f8fa;
+  border: #f8f8fa;
 }
 
 #profile-btn {
@@ -441,23 +441,4 @@ ul {
   }
 
   /* Other styles */
-  /* Filters */
-  .filters-box {
-    max-width: 40%;
-  }
-
-  .filters-close-button {
-    width: 10%;
-    height: fit-content;
-    margin-right: 20px;
-  }
-
-  .filter {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .filter > p {
-    font-size: 1.6vmin;
-  }
 }
