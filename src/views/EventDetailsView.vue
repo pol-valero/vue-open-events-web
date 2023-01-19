@@ -298,7 +298,7 @@ export default {
         </ul>
       </section>
       <!-- Add comment and rating -->
-      <section id="event-comments-add-section">
+      <section id="event-comments-add-section" v-if="isParticipating">
         <h3>Add comment</h3>
         <form id="comment-form" action="">
           <textarea id="comment-form-text" class="field" cols="30" rows="10" placeholder="Write your comment here..."/>
@@ -417,6 +417,7 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .event-details-bottom-buttons button {
