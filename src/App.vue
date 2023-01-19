@@ -127,7 +127,7 @@ import { RouterLink, RouterView } from "vue-router";
         <h2 class="title">OPEN EVENTS</h2>
       </div>
       <!--<div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">-->
-      <button id="user-photo" v-on:click="$router.push(`/profile/${user.id}`)" >
+      <button id="user-photo" v-on:click="showProfile()" >
         <h2 class="title">{{ user.name }}</h2>
 
         <!--
