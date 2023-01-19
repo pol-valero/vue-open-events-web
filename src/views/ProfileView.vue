@@ -12,6 +12,7 @@ export default {
             comments: 0,
             usersBehind: 0,
             show: false,
+            showFollow: false,
         };
     },
     methods: {
@@ -72,7 +73,27 @@ export default {
                     this.userImage = res[0].image;
                 }
             });
+
+            // Check if the user is already following the profile
+            fetch("http://puigmal.salle.url.edu/api/v2/friends", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + JSON.parse(token).accessToken,
+                    "Content-Type": "application/json",
+                },
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (res) { // check if the response is not empty
+                    for (var i = 0; i < res.length; i++) {
+                        if (res[i].id == this.userID) {
+                            this.showFollow = true;
+                        }
+                    }
+                }
+            });
         }
+
         fetch("http://puigmal.salle.url.edu/api/v2/users/" + this.userID + "/statistics", {
             method: "GET",
             headers: {
@@ -147,7 +168,7 @@ export default {
         <a href="/login"  v-if="show">
           <button v-on:click="logout()" class="logout-button primary-button">LOGOUT</button>
         </a>
-        <button v-on:click="followUser()" class="follow-button primary-button" v-if="!show">FOLLOW</button>
+        <button v-on:click="followUser()" class="follow-button primary-button" v-if="!show&&!showFollow">FOLLOW</button>
         <a href="/editProfile">
           <button a class="edit-button secondary-button" v-if="show">EDIT</button>
         </a>
