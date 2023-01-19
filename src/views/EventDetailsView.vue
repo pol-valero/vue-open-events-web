@@ -323,6 +323,7 @@ export default {
 #title-container {
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #eeeeff;
   height: 40%;
   min-height: 200px;
   width: 100%;
