@@ -37,15 +37,12 @@ export default {
       .then(res=> {
         let response = JSON.stringify(res);
         if(response.includes("Error")) {
-          console.log(res);
           // Alert saying that the credentials are not correct
           alert("There is one or more credentials that are not correct");
 
         } else {
-          console.log(res);
           this.$router.push('/login');
         }
-            console.log(res);
       });
     },
 

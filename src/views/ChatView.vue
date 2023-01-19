@@ -36,7 +36,6 @@
         // We check if the user has friends
         if(response.length > 0) {
           this.userFriends = res;
-          //console.log("MAP: ");
           res.map((friend) => {
             // We check if the friend has a valid profile picture
             if(this.checkURL(friend.image)){
@@ -46,7 +45,6 @@
             }  
           });
           
-          //console.log(this.userFriends);
           // We show the first friend's chat by default
           this.showChat(this.userFriends[0]);
         } else {
@@ -88,7 +86,6 @@
           // We check if the user has messages with the friend
           if(response.length > 0) {
             this.messages = res;
-            //console.log(this.messages);
           } else {
             alert("You have no messages with this user yet!");
           }
@@ -126,14 +123,6 @@
         // We add the message to the messages array or we show an error if the message couldn't be sent
         .then(res => res.json())
         .then(res=> {
-          //console.log(res);
-          //console.log("------------------");
-          //console.log(res.user_id_send);
-          //console.log(this.userID);
-
-          //console.log(res.user_id_send == this.userID);
-          //console.log("------------------");
-
           this.messages.push(res);
         })
         .catch(error => alert("The message couldn't be sent! Try again later!"));

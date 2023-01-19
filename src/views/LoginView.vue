@@ -39,11 +39,7 @@ export default {
         let response = JSON.stringify(res);
         if(response.includes("accessToken")) {
           localStorage.setItem('token', response);
-          //console.log(res);
           this.getUserID();
-          //console.log(this)
-          //console.log(this.$root.$data)
-          //console.log(this.$root.$data.user.coses)
           // I need to communicate with the parent component to update the app.vue data
           this.$router.push('/');
         } else {
@@ -65,19 +61,14 @@ export default {
       })
       .then(res => res.json())
       .then(res=> {
-        
         // Saving the fields of res to local storage
         localStorage.setItem('userInfo', JSON.stringify(res));
         this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
         this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-        //console.log((JSON.parse(localStorage.getItem('userInfo'))[0].name));
-        //console.log((JSON.parse(localStorage.getItem('userInfo'))[0].image));
       });
     },
   }
 }
-
-
 </script>
 
 
@@ -85,7 +76,6 @@ export default {
   <div id="image-box">
     <img id="logo-image" src="src/assets/logo_image.png" />
   </div>
-
   <div id="main-login-box">
     <div class="login-box">
       <!--On keydown enter press execute login()-->
@@ -115,8 +105,7 @@ export default {
           <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
         </div>
       </form>
-      <button v-on:click="login()" id="login-button">Login</button>
-
+      <button v-on:click="login()" id="login-button" class="primary-button">Login</button>
     </div>
   </div>
 </template>
@@ -209,6 +198,10 @@ input:focus {
 #nav-login:hover {
   color: black;
   transition: 0.2s;
+}
+
+#login-button {
+  padding: 10px 20px;
 }
 
 @media (min-width: 530px) {

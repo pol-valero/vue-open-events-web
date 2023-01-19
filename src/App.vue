@@ -1,5 +1,4 @@
 <script>
-
 // We give to the singleton the data we want to share between components 
 export default {
   name: "App",
@@ -17,8 +16,6 @@ export default {
       friendsRequests: [],
     };
   },
-
-
 
   methods: {
     // We log out the user and redirect him to the login page
@@ -101,7 +98,8 @@ export default {
         this.user.image = img;
       } else{
         this.user.image = "src/assets/default_img.png";
-      }  
+      }
+
       this.getFriendsRequests();
       setInterval(this.getFriendsRequests, 5000); // We update the friends requests every 5 seconds
 

@@ -20,8 +20,8 @@ export default {
             default: ''
         },
         rating: {
-            type: Number,
-            default: 0
+            type: String,
+            default: ''
         }
     }
 };

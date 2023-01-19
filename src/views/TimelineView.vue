@@ -15,7 +15,7 @@
         const token = localStorage.getItem('token');
         const userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
         let URL = "http://puigmal.salle.url.edu/api/v2/users/" + userID + "/assistances";
-        console.log(JSON.parse(token).accessToken);
+
         // We make the request to the API to get the events the user have assisted
         fetch(URL, {
           method: "GET",
@@ -36,12 +36,9 @@
               if(this.checkURL(event.image)) {
                 event.image = event.image;
               } else {
-                console.log("Posant default image");
                 event.image = "src/assets/default_img.png";
               }
             });
-            
-            console.log(this.eventsAssisted);
           });
       },
       // Function to check if an image is valid

@@ -63,7 +63,9 @@
             this.events = res;
             res.map((event) => {
               // remove time from date
-              event.eventStart_date = event.eventStart_date.split('T')[0];
+              if (event.eventStart_date != null) {
+                event.eventStart_date = event.eventStart_date.split('T')[0];
+              }
               // get the image of the event
               if(this.checkURL(event.image)){
                 event.image = event.image;

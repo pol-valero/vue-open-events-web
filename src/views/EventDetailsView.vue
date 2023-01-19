@@ -171,7 +171,9 @@ export default {
             }
             // add to comments array if it has a rating or a commentary
             if ((comment.puntuation != null) || (comment.comentary != null)) {
-              if (comment.puntuation != null) comment.puntuation += "/10";
+              if (comment.puntuation != null) {
+                comment.puntuation += "/10";
+              }
               this.comments.push(comment);
             }
           });

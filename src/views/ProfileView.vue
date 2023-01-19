@@ -41,8 +41,7 @@ export default {
         //Getting the user's token
         const token = localStorage.getItem("token");
         var localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-        //console.log("localUserID: " + localUserID);
-        //console.log("this.userID: " + this.userID);
+        
         // Case when profile is the user's own profile
         if (this.userID == localUserID) {
             this.show = true;
