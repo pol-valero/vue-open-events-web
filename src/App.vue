@@ -77,7 +77,15 @@ export default {
       .then(this.getFriendsRequests()) // Update the friends requests
     },
 
+    showProfile() {
+      this.$router.push(`/profile/${this.user.id}`);
 
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
+
+    }
+  
   },
 
   //created lifecycle method
@@ -115,7 +123,7 @@ import { RouterLink, RouterView } from "vue-router";
   <header v-if="show.header">
     <div id="top-header">
       <div id="title-logo">
-        <img src="\src\assets\logo_image.png" alt="logo" class="header-img" />
+        <img src="/src/assets/logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
       <!--<div id="user-photo" v-on:click="this.$router.push(`/profile/${user.id}`)">-->
