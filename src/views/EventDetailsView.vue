@@ -43,22 +43,6 @@ export default {
 
     this.getEvent();
     this.getAssistances();
-
-    // We change the date format so that we can display it more easily
-    var startTime = new Date(this.event.startDate);
-    this.date.day = startTime.getDate();
-    this.date.month = startTime.getMonth() + 1;
-    this.date.year = startTime.getFullYear();
-    this.date.hour = startTime.getHours();
-    this.date.minute = startTime.getMinutes();
-
-    // We change the date format so that we can display it more easily
-    var endTime = new Date(this.event.endDate);
-    this.date.endDay = endTime.getDate();
-    this.date.endMonth = endTime.getMonth() + 1;
-    this.date.endYear = endTime.getFullYear();
-    this.date.endHour = endTime.getHours();
-    this.date.endMinute = endTime.getMinutes();
   },
 
   methods: {
@@ -136,11 +120,39 @@ export default {
           this.event.title = res[0].name;
           this.event.description = res[0].description;
           this.event.startDate = res[0].eventStart_date;
-          this.event.endDate = res[0].eventStart_date;
+          this.event.endDate = res[0].eventEnd_date;
           this.event.location = res[0].location;
           this.event.type = res[0].type;
           this.event.capacity = res[0].n_participators;
           this.event.organizer_id = res[0].owner_id;
+
+          // We change the date format so that we can display it more easily
+          var startTime = new Date(this.event.startDate);
+          this.date.day = startTime.getDate();
+          this.date.month = startTime.getMonth() + 1;
+          this.date.year = startTime.getFullYear();
+          this.date.hour = startTime.getHours();
+          if (this.date.hour < 10) {
+            this.date.hour = "0" + this.date.hour;
+          }
+          this.date.minute = startTime.getMinutes();
+          if (this.date.minute < 10) {
+            this.date.minute = "0" + this.date.minute;
+          }
+
+          // We change the date format so that we can display it more easily
+          var endTime = new Date(this.event.endDate);
+          this.date.endDay = endTime.getDate();
+          this.date.endMonth = endTime.getMonth() + 1;
+          this.date.endYear = endTime.getFullYear();
+          this.date.endHour = endTime.getHours();
+          if (this.date.endHour < 10) {
+            this.date.endHour = "0" + this.date.endHour;
+          }
+          this.date.endMinute = endTime.getMinutes();
+          if (this.date.endMinute < 10) {
+            this.date.endMinute = "0" + this.date.endMinute;
+          }
 
           // check if owner is a friend
           this.checkFriend();
