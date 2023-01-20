@@ -1,5 +1,5 @@
 <script>
-// We give to the singleton the data we want to share between components 
+// We give to the singleton the data we want to share between components
 export default {
   name: "App",
   data() {
@@ -26,52 +26,50 @@ export default {
     },
 
     checkURL(url) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+      return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
     },
 
-    getFriendsRequests(){
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/requests'
+    getFriendsRequests() {
+      const token = localStorage.getItem("token");
+      const URL = "http://puigmal.salle.url.edu/api/v2/friends/requests";
       fetch(URL, {
-        method: 'GET',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },     
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
       })
-      .then(res => res.json())
-      .then(res=> {
-        let response = JSON.stringify(res);
-        if(response.length > 0) {
-          this.friendsRequests = res;
-        }
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          let response = JSON.stringify(res);
+          if (response.length > 0) {
+            this.friendsRequests = res;
+          }
+        });
     },
 
-    acceptFriendRequest(id){
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/' + id;
+    acceptFriendRequest(id) {
+      const token = localStorage.getItem("token");
+      const URL = "http://puigmal.salle.url.edu/api/v2/friends/" + id;
       fetch(URL, {
-        method: 'PUT',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },     
-      })
-      .then(this.getFriendsRequests()) // Update the friends requests
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
+      }).then(this.getFriendsRequests()); // Update the friends requests
     },
 
-    rejectFriendRequest(id){
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/' + id;
+    rejectFriendRequest(id) {
+      const token = localStorage.getItem("token");
+      const URL = "http://puigmal.salle.url.edu/api/v2/friends/" + id;
       fetch(URL, {
-        method: 'DELETE',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },     
-      })
-      .then(this.getFriendsRequests()) // Update the friends requests
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
+      }).then(this.getFriendsRequests()); // Update the friends requests
     },
 
     showProfile() {
@@ -80,40 +78,33 @@ export default {
       setTimeout(() => {
         window.location.reload();
       }, 50);
+    },
 
-    }
-  
+    setDefaultUserImage() {
+      this.user.image = "/src/assets/default_img.png";
+    },
   },
 
   //created lifecycle method
   mounted() {
     // If the user is logged in, we get the user info from local storage
     if (localStorage.getItem("userInfo")) {
-      this.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
+      this.user.name = JSON.parse(
+        localStorage.getItem("userInfo")
+      )[0].name.toUpperCase();
       this.user.id = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-      let img = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-      
-      // We check if the image is a valid URL
-      if(this.checkURL (img)){
-        this.user.image = img;
-      } else{
-        this.user.image = "src/assets/default_img.png";
-      }
-
+      this.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
       this.getFriendsRequests();
       setInterval(this.getFriendsRequests, 5000); // We update the friends requests every 5 seconds
-
     } else {
       // If the user is not logged in, we redirect him to the login page
       this.$router.push("/login");
     }
   },
-
-}
+};
 </script>
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-
 </script>
 
 <template>
@@ -124,11 +115,11 @@ import { RouterLink, RouterView } from "vue-router";
         <img src="/src/assets/logo_image.png" alt="logo" class="header-img" />
         <h2 class="title">OPEN EVENTS</h2>
       </div>
-      <button id="user-photo" v-on:click="showProfile()" >
+      <button id="user-photo" v-on:click="showProfile()">
         <h2 class="title">{{ user.name }}</h2>
         <img
           v-bind:src="user.image"
-          onerror="this.src = 'src/assets/default_img.png'"
+          @error="setDefaultUserImage()"
           alt="user photo"
           class="header-img"
         />
@@ -166,11 +157,21 @@ import { RouterLink, RouterView } from "vue-router";
 
       <ul v-for="friend in friendsRequests" v-bind:key="friend.id">
         <li>
-          <div class="request-container"> 
+          <div class="request-container">
             <p id="name-request">{{ friend.name + " " + friend.last_name }}</p>
             <div id="answer-buttons">
-              <button class="accept-button" v-on:click=acceptFriendRequest(friend.id)>Accept</button>
-              <button class="reject-button" v-on:click=rejectFriendRequest(friend.id)>Reject</button>
+              <button
+                class="accept-button"
+                v-on:click="acceptFriendRequest(friend.id)"
+              >
+                Accept
+              </button>
+              <button
+                class="reject-button"
+                v-on:click="rejectFriendRequest(friend.id)"
+              >
+                Reject
+              </button>
             </div>
           </div>
         </li>

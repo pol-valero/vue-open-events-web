@@ -1,6 +1,4 @@
 <script>
-import { getCurrentInstance } from 'vue';
-
 export default {
   name: "LoginView",
   data() {
@@ -22,56 +20,62 @@ export default {
   },
 
   methods: {
-    login(){
-      fetch('http://puigmal.salle.url.edu/api/v2/users/login', {
-        method: 'POST',
-        headers:{
-          'Content-Type': 'application/json'
-        },    
-        body: JSON.stringify(
-          { 
-            email: document.getElementById('login-email').value, 
-            password: document.getElementById('login-password').value
-          })
+    login() {
+      fetch("http://puigmal.salle.url.edu/api/v2/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: document.getElementById("login-email").value,
+          password: document.getElementById("login-password").value,
+        }),
       })
-      .then(res => res.json())
-      .then(res=> {
-        let response = JSON.stringify(res);
-        if(response.includes("accessToken")) {
-          localStorage.setItem('token', response);
-          this.getUserID();
-          // I need to communicate with the parent component to update the app.vue data
-          this.$router.push('/');
-        } else {
-          alert("Wrong email or password");
-        }
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          let response = JSON.stringify(res);
+          if (response.includes("accessToken")) {
+            localStorage.setItem("token", response);
+            this.getUserID();
+            // I need to communicate with the parent component to update the app.vue data
+            this.$router.push("/");
+          } else {
+            alert("Wrong email or password");
+          }
+        });
     },
-    
-    // We search for the user id and other fields of the actual user and save it to local storage
-    getUserID(){
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/users/search?s=' + document.getElementById('login-email').value;
-      fetch(URL, {
-        method: 'GET',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },        
-      })
-      .then(res => res.json())
-      .then(res=> {
-        // Saving the fields of res to local storage
-        localStorage.setItem('userInfo', JSON.stringify(res));
-        this.$root.$data.user.name = (JSON.parse(localStorage.getItem("userInfo"))[0].name).toUpperCase();
-        this.$root.$data.user.image = JSON.parse(localStorage.getItem("userInfo"))[0].image;
-        this.$root.$data.user.id = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-      });
-    },
-  }
-}
-</script>
 
+    // We search for the user id and other fields of the actual user and save it to local storage
+    getUserID() {
+      const token = localStorage.getItem("token");
+      const URL =
+        "http://puigmal.salle.url.edu/api/v2/users/search?s=" +
+        document.getElementById("login-email").value;
+      fetch(URL, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          // Saving the fields of res to local storage
+          localStorage.setItem("userInfo", JSON.stringify(res));
+          this.$root.$data.user.name = JSON.parse(
+            localStorage.getItem("userInfo")
+          )[0].name.toUpperCase();
+          this.$root.$data.user.image = JSON.parse(
+            localStorage.getItem("userInfo")
+          )[0].image;
+          this.$root.$data.user.id = JSON.parse(
+            localStorage.getItem("userInfo")
+          )[0].id;
+        });
+    },
+  },
+};
+</script>
 
 <template>
   <div id="image-box">
@@ -106,7 +110,9 @@ export default {
           <RouterLink id="nav-login" to="/signup">Signup</RouterLink>
         </div>
       </form>
-      <button v-on:click="login()" id="login-button" class="primary-button">Login</button>
+      <button v-on:click="login()" id="login-button" class="primary-button">
+        Login
+      </button>
     </div>
   </div>
 </template>

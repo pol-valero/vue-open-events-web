@@ -15,51 +15,51 @@ export default {
   },
 
   methods: {
-    signup(){
+    signup() {
       const passOK = this.checkPassword();
-      if(!passOK) return;
-      let userImage = document.getElementById('input-profile-picture').value;
+      if (!passOK) return;
+      let userImage = document.getElementById("input-profile-picture").value;
       if (userImage == "") {
-        userImage = "/src/assets/default_user_image.png"
+        userImage = "/src/assets/default_user_image.png";
       }
 
-      fetch('http://puigmal.salle.url.edu/api/v2/users', {
-        method: 'POST',
-        headers:{
-          'Content-Type': 'application/json'
-        },    
-        body: JSON.stringify(
-          { 
-            name: document.getElementById('input-user-name').value,
-            last_name: document.getElementById('input-user-lastname').value,
-            email: document.getElementById('input-user-email').value, 
-            password: document.getElementById('input-password').value,
-            image: userImage
-          })
+      fetch("http://puigmal.salle.url.edu/api/v2/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: document.getElementById("input-user-name").value,
+          last_name: document.getElementById("input-user-lastname").value,
+          email: document.getElementById("input-user-email").value,
+          password: document.getElementById("input-password").value,
+          image: userImage,
+        }),
       })
-      .then(res => res.json())
-      .then(res=> {
-        let response = JSON.stringify(res);
-        if(response.includes("Error")) {
-          // Alert saying that the credentials are not correct
-          alert("There is one or more credentials that are not correct");
-
-        } else {
-          this.$router.push('/login');
-        }
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          let response = JSON.stringify(res);
+          if (response.includes("Error")) {
+            // Alert saying that the credentials are not correct
+            alert("There is one or more credentials that are not correct");
+          } else {
+            this.$router.push("/login");
+          }
+        });
     },
 
-    checkPassword(){
-      if(document.getElementById('input-password').value != document.getElementById('input-confirm-password').value){
+    checkPassword() {
+      if (
+        document.getElementById("input-password").value !=
+        document.getElementById("input-confirm-password").value
+      ) {
         alert("Passwords don't match");
         return false;
       }
       return true;
-    }
-  }
-
-}
+    },
+  },
+};
 </script>
 
 <template>
@@ -126,7 +126,15 @@ export default {
           <RouterLink id="nav-signup" to="/login">Login</RouterLink>
         </div>
       </form>
-      <button v-on:click="signup()" class="primary-button" type="submit" value="Register" id="button-sign-up">Signup</button>
+      <button
+        v-on:click="signup()"
+        class="primary-button"
+        type="submit"
+        value="Register"
+        id="button-sign-up"
+      >
+        Signup
+      </button>
     </div>
   </div>
 </template>

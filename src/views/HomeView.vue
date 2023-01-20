@@ -1,91 +1,94 @@
 <script>
-  export default {
-    name: "HomeView",
-    data() {
-      return {
-        events: [],
-      };
+export default {
+  name: "HomeView",
+  data() {
+    return {
+      events: [],
+    };
+  },
+
+  methods: {
+    checkURL(url) {
+      return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
     },
 
-    methods: {
-      checkURL(url) {
-        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-      },
+    searchEvents() {
+      const token = localStorage.getItem("token");
+      let location = document.getElementById(
+        "events-location-searchbar-placeholder"
+      ).value;
+      let name = document.getElementById(
+        "events-name-searchbar-placeholder"
+      ).value;
+      let date = document.getElementById(
+        "events-date-searchbar-placeholder"
+      ).value;
+      let URL = "http://puigmal.salle.url.edu/api/v2/events/search?";
 
-      searchEvents() {
-        const token = localStorage.getItem('token');
-        let location = document.getElementById("events-location-searchbar-placeholder").value;
-        let name = document.getElementById("events-name-searchbar-placeholder").value;
-        let date = document.getElementById("events-date-searchbar-placeholder").value;
-        let URL = 'http://puigmal.salle.url.edu/api/v2/events/search?';
-        
-        // prepare URL for API request
-        if (location != "") {
-          // search by location
-          URL += 'location=' + location;
-          if (name != "") {
-            // search by location and name
-            URL += '&keyword=' + name;
-            if (date != "") {
-              // search by location and name and date
-              URL += '&date=' + date;
-            }
-          } else if (date != "") {
-            // search by location and date
-            URL += '&date=' + date;
-          }
-        } else if (name != "") {
-          // search by name
-          URL += 'keyword=' + name;
+      // prepare URL for API request
+      if (location != "") {
+        // search by location
+        URL += "location=" + location;
+        if (name != "") {
+          // search by location and name
+          URL += "&keyword=" + name;
           if (date != "") {
-            // search by name and date
-            URL += '&date=' + date;
+            // search by location and name and date
+            URL += "&date=" + date;
           }
         } else if (date != "") {
-          // search by date
-          URL += 'date=' + date;
-        } else {
-          // no search
-          URL = 'http://puigmal.salle.url.edu/api/v2/events/best';
+          // search by location and date
+          URL += "&date=" + date;
         }
+      } else if (name != "") {
+        // search by name
+        URL += "keyword=" + name;
+        if (date != "") {
+          // search by name and date
+          URL += "&date=" + date;
+        }
+      } else if (date != "") {
+        // search by date
+        URL += "date=" + date;
+      } else {
+        // no search
+        URL = "http://puigmal.salle.url.edu/api/v2/events/best";
+      }
 
-        fetch(URL, {
-          method: 'GET',
-          headers:{
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json',
-          },
-        })
-        .then(res => res.json())
-        .then(res => {
+      fetch(URL, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
           let response = JSON.stringify(res);
-          if(response.length > 0) {
+          if (response.length > 0) {
             this.events = res;
             res.map((event) => {
               // remove time from date
               if (event.eventStart_date != null) {
-                event.eventStart_date = event.eventStart_date.split('T')[0];
+                event.eventStart_date = event.eventStart_date.split("T")[0];
               }
               // get the image of the event
-              if(this.checkURL(event.image)){
-                event.image = event.image;
-              } else{
+              if (!this.checkURL(event.image)) {
                 event.image = "/src/assets/default_img.png";
-              }  
+              }
             });
           }
         });
-      }
     },
+  },
 
-    mounted() {
-      // We show the aside and the header
-      this.$root.$data.show.aside = true;
-      this.$root.$data.show.header = true;
-      this.searchEvents();
-    },
-  };
-
+  mounted() {
+    // We show the aside and the header
+    this.$root.$data.show.aside = true;
+    this.$root.$data.show.header = true;
+    this.searchEvents();
+  },
+};
 </script>
 
 <template>
@@ -95,7 +98,10 @@
     <!-- Searchbar -->
     <section id="events-searchbar" class="searchbar">
       <!-- Name searchbar -->
-      <article id="events-name-searchbar" class="searchbar-field events-searchbar-field">
+      <article
+        id="events-name-searchbar"
+        class="searchbar-field events-searchbar-field"
+      >
         <form action="">
           <input
             v-on:input="searchEvents()"
@@ -107,7 +113,10 @@
         </form>
       </article>
       <!-- Location searchbar -->
-      <article id="events-location-searchbar" class="searchbar-field events-searchbar-field">
+      <article
+        id="events-location-searchbar"
+        class="searchbar-field events-searchbar-field"
+      >
         <form action="">
           <input
             v-on:input="searchEvents()"
@@ -119,7 +128,10 @@
         </form>
       </article>
       <!-- Date searchbar -->
-      <article id="events-date-searchbar" class="searchbar-field events-searchbar-field">
+      <article
+        id="events-date-searchbar"
+        class="searchbar-field events-searchbar-field"
+      >
         <form action="">
           <input
             v-on:input="searchEvents()"
@@ -138,7 +150,11 @@
     <!-- Events list -->
     <section id="events-list-section">
       <ul>
-        <li v-for="event in events" v-bind:key="event.id" v-on:click="this.$router.push('/eventDetails/' + event.id)">
+        <li
+          v-for="event in events"
+          v-bind:key="event.id"
+          v-on:click="this.$router.push('/eventDetails/' + event.id)"
+        >
           <article class="events-list-item">
             <img
               v-bind:src="event.image"
@@ -147,9 +163,9 @@
               class="events-list-item-picture"
             />
             <div class="event-preview-content">
-              <p class="events-list-item-date">{{event.eventStart_date}}</p>
-              <h2 class="events-list-item-title">{{event.name}}</h2>
-              <p class="events-list-item-location">{{event.location}}</p>
+              <p class="events-list-item-date">{{ event.eventStart_date }}</p>
+              <h2 class="events-list-item-title">{{ event.name }}</h2>
+              <p class="events-list-item-location">{{ event.location }}</p>
             </div>
           </article>
         </li>

@@ -1,116 +1,103 @@
 <script>
-
 //We import the diferent components used in the form
 import FormInputTxtAndNum from "../components/formInputTxtAndNum.vue";
 import FormInputTextArea from "../components/formInputTextArea.vue";
 import FormInputDate from "../components/formInputDate.vue";
 
- export default {
-    name: "CreateEventView",
-    components: { FormInputTxtAndNum, FormInputTextArea, FormInputDate },
-    data() {
-        return {
-          eventTitle: '',
-          eventDescription: '',
-          eventStartDate: '',
-          eventEndDate: '',
-          eventLocation: '',
-          eventImage:'https://i.imgur.com/YtopGYz.jpeg',
-          eventType:'',
-          eventCapacity: 0
-        };
+export default {
+  name: "CreateEventView",
+  components: { FormInputTxtAndNum, FormInputTextArea, FormInputDate },
+  data() {
+    return {
+      eventTitle: "",
+      eventDescription: "",
+      eventStartDate: "",
+      eventEndDate: "",
+      eventLocation: "",
+      eventImage: "https://i.imgur.com/YtopGYz.jpeg",
+      eventType: "",
+      eventCapacity: 0,
+    };
+  },
+  mounted() {
+    // We show the aside and the header
+    this.$root.$data.show.aside = false;
+  },
+  methods: {
+    //Function used to go to the home page
+    goToHome() {
+      this.$router.push("/");
     },
-    mounted() {
-        // We show the aside and the header
-        this.$root.$data.show.aside = false;
-    },
-    methods: {
-      //Function used to go to the home page
-      goToHome () {
-        this.$router.push("/")
-      },
-      //Function used to create an event
-      createEvent () {
+    //Function used to create an event
+    createEvent() {
+      //We get the token of the current user
+      const token = localStorage.getItem("token");
 
-        //We get the token of the current user
-        const token = localStorage.getItem('token');
-        
-        //We check if the information that was entered in the fields is valid
-        const validInformation = this.checkFields();
+      //We check if the information that was entered in the fields is valid
+      const validInformation = this.checkFields();
 
-        //Only if the information is valid we do the request
-        if(validInformation) {
-          fetch('http://puigmal.salle.url.edu/api/v2/events', {
-          method: 'POST',
-          headers:{
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json'
-          },    
-          body: JSON.stringify(
-            { 
-              name: this.eventTitle,
-              image: this.eventImage,
-              location: this.eventLocation,
-              latitude: null,
-              longitude: null,
-              description: this.eventDescription,
-              eventStart_date: this.eventStartDate,
-              eventEnd_date: this.eventEndDate,
-              n_participators: this.eventCapacity,
-              type: this.eventType
-            })
-          })
-          .then(res => res.json())
-          .then(res=> {
-            let response = JSON.stringify(res);
-            //this.updateEventToDisplayInfo();      //We pass the event information to the root so that the eventDetailsView can have access to the event's information
-            //this.$router.push("/eventDetails")
-            
-            //Instead of going to the eventDetails view when an event is created, we will go to the homeView because there is no way of 
-            //knowing the id that the event has when it is created (and we need the event ID so that if the user presses the "participate"
-            //button, we can send to the API the event ID to create the assistance of the authenticated user
-
-            this.$router.push("/")
+      //Only if the information is valid we do the request
+      if (validInformation) {
+        fetch("http://puigmal.salle.url.edu/api/v2/events", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + JSON.parse(token).accessToken,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: this.eventTitle,
+            image: this.eventImage,
+            location: this.eventLocation,
+            latitude: null,
+            longitude: null,
+            description: this.eventDescription,
+            eventStart_date: this.eventStartDate,
+            eventEnd_date: this.eventEndDate,
+            n_participators: this.eventCapacity,
+            type: this.eventType,
+          }),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            /*
+            Instead of going to the eventDetails view when an event is created, we will go to the homeView because there is no way of 
+            knowing the id that the event has when it is created (and we need the event ID so that if the user presses the "participate"
+            button, we can send to the API the event ID to create the assistance of the authenticated user
+            */
+            this.$router.push("/");
           });
-        }
-      },
-      /*updateEventToDisplayInfo () {
-        this.$root.$data.eventToDisplay.title = this.eventTitle;
-        this.$root.$data.eventToDisplay.description = this.eventDescription;
-        this.$root.$data.eventToDisplay.startDate = this.eventStartDate;
-        this.$root.$data.eventToDisplay.endDate = this.eventEndDate;
-        this.$root.$data.eventToDisplay.location = this.eventLocation;
-        this.$root.$data.eventToDisplay.image = this.eventImage;
-        this.$root.$data.eventToDisplay.type = this.eventType;
-        this.$root.$data.eventToDisplay.capacity = this.eventCapacity;
-        this.$root.$data.eventToDisplay.organizer = this.$root.$data.user.name;
-      },*/
-      checkFields () {
-
-        if (this.eventTitle == '' || this.eventImage == '' || this.eventLocation == ''
-        || this.eventDescription == ''  || this.eventType == '') {
-          alert("Some fields have not been filled");
-          return false;
-        }
-
-        if (this.eventCapacity < 1) {
-          alert("The capacity for the event must be at least 1");
-          return false;
-        } 
-
-        if (this.eventStartDate == this.eventEndDate) {
-          alert("The start and end dates must be different");
-          return false;
-        }
-
-        if (this.eventStartDate > this.eventEndDate) {
-          alert("The start date or the end date are not valid");
-          return false;
-        }
-        
-        return true;
       }
     },
+    checkFields() {
+      if (
+        this.eventTitle == "" ||
+        this.eventImage == "" ||
+        this.eventLocation == "" ||
+        this.eventDescription == "" ||
+        this.eventType == ""
+      ) {
+        alert("Some fields have not been filled");
+        return false;
+      }
+
+      if (this.eventCapacity < 1) {
+        alert("The capacity for the event must be at least 1");
+        return false;
+      }
+
+      if (this.eventStartDate == this.eventEndDate) {
+        alert("The start and end dates must be different");
+        return false;
+      }
+
+      if (this.eventStartDate > this.eventEndDate) {
+        alert("The start date or the end date are not valid");
+        return false;
+      }
+
+      return true;
+    },
+  },
 };
 </script>
 
@@ -123,65 +110,65 @@ import FormInputDate from "../components/formInputDate.vue";
     <section id="forms-container">
       <div class="single-form">
         <FormInputTxtAndNum
-          v-on:update-modelValue="(x) => this.eventTitle = x"
-          title =  "Title"
-          defaultTxt = "Ex.- House BBQ"
+          v-on:update-modelValue="(x) => (this.eventTitle = x)"
+          title="Title"
+          defaultTxt="Ex.- House BBQ"
         />
       </div>
 
       <div class="single-form">
         <FormInputTextArea
-          v-on:update-modelValue="(x) => this.eventDescription = x"
-          title =  "Description"
-          defaultTxt = "Ex.- This event is fun!"
+          v-on:update-modelValue="(x) => (this.eventDescription = x)"
+          title="Description"
+          defaultTxt="Ex.- This event is fun!"
         />
       </div>
 
       <div class="dual-form">
         <div class="single-form">
           <FormInputDate
-            v-on:update-modelValue="(x) => this.eventStartDate = x"
-            title =  "Start date"
+            v-on:update-modelValue="(x) => (this.eventStartDate = x)"
+            title="Start date"
           />
         </div>
         <div class="single-form">
           <FormInputDate
-            v-on:update-modelValue="(x) => this.eventEndDate = x"
-            title =  "End date"
+            v-on:update-modelValue="(x) => (this.eventEndDate = x)"
+            title="End date"
           />
         </div>
       </div>
 
       <div class="single-form">
         <FormInputTxtAndNum
-          v-on:update-modelValue="(x) => this.eventLocation = x"
-          title =  "Location"
-          defaultTxt = "Ex.- Teruel"
+          v-on:update-modelValue="(x) => (this.eventLocation = x)"
+          title="Location"
+          defaultTxt="Ex.- Teruel"
         />
       </div>
 
       <div class="single-form">
         <FormInputTxtAndNum
-          v-on:update-modelValue="(x) => this.eventImage = x"
-          title =  "Image"
-          defaultTxt = "Ex.- www.url-of-current-img.com"
+          v-on:update-modelValue="(x) => (this.eventImage = x)"
+          title="Image"
+          defaultTxt="Ex.- www.url-of-current-img.com"
         />
       </div>
 
       <div class="dual-form">
         <div class="single-form">
           <FormInputTxtAndNum
-          v-on:update-modelValue="(x) => this.eventType = x"
-          title =  "Type"
-          defaultTxt = "Ex.- Sports"
+            v-on:update-modelValue="(x) => (this.eventType = x)"
+            title="Type"
+            defaultTxt="Ex.- Sports"
           />
         </div>
         <div class="single-form">
           <FormInputTxtAndNum
-            v-on:update-modelValue="(x) => this.eventCapacity = x"
-            title =  "Capacity"
-            defaultTxt = "Ex.- 50"
-            fieldType = "number"
+            v-on:update-modelValue="(x) => (this.eventCapacity = x)"
+            title="Capacity"
+            defaultTxt="Ex.- 50"
+            fieldType="number"
           />
         </div>
       </div>
@@ -193,10 +180,7 @@ import FormInputDate from "../components/formInputDate.vue";
         >
           CREATE EVENT
         </button>
-        <button
-          v-on:click="goToHome()"
-          class="cancel-button secondary-button"
-        >
+        <button v-on:click="goToHome()" class="cancel-button secondary-button">
           CANCEL
         </button>
       </div>

@@ -3,38 +3,37 @@ import CommentItem from "../components/commentItem.vue";
 
 export default {
   name: "EventDetailsView",
-  components: {CommentItem},
+  components: { CommentItem },
   data() {
     return {
-      event: { 
-        title: 'Title',
-        description: 'Description',
-        startDate: '2023-06-22T08:22:00.000Z',
-        endDate: '2023-06-23T10:45:00.000Z',
-        location: 'Location name',
-        image: 'src/assets/event-details-background.png',
-        type: 'Type',
+      event: {
+        title: "Title",
+        description: "Description",
+        startDate: "2023-06-22T08:22:00.000Z",
+        endDate: "2023-06-23T10:45:00.000Z",
+        location: "Location name",
+        image: "src/assets/event-details-background.png",
+        type: "Type",
         capacity: 0,
-        organizer: 'Firstname Lastname',
+        organizer: "Firstname Lastname",
         organizer_id: null,
-        id: this.$route.params.eventID
+        id: this.$route.params.eventID,
       },
       date: {
-        day: '',
-        month: '',
-        year: '',
-        hour: '',
-        minute: '',
-        endDay: '',
-        endMonth: '',
-        endYear: '',
-        endHour: '',
-        endMinute: ''
-      
+        day: "",
+        month: "",
+        year: "",
+        hour: "",
+        minute: "",
+        endDay: "",
+        endMonth: "",
+        endYear: "",
+        endHour: "",
+        endMinute: "",
       },
       comments: [],
       isParticipating: true,
-      isFriend: false
+      isFriend: false,
     };
   },
 
@@ -46,45 +45,49 @@ export default {
     this.getAssistances();
 
     // We change the date format so that we can display it more easily
-    var startTime = new Date (this.event.startDate)
-    this.date.day = startTime.getDate()
-    this.date.month = startTime.getMonth() + 1
-    this.date.year = startTime.getFullYear()
-    this.date.hour = startTime.getHours()
-    this.date.minute = startTime.getMinutes()
+    var startTime = new Date(this.event.startDate);
+    this.date.day = startTime.getDate();
+    this.date.month = startTime.getMonth() + 1;
+    this.date.year = startTime.getFullYear();
+    this.date.hour = startTime.getHours();
+    this.date.minute = startTime.getMinutes();
 
     // We change the date format so that we can display it more easily
-    var endTime = new Date (this.event.endDate)
-    this.date.endDay = endTime.getDate()
-    this.date.endMonth = endTime.getMonth() + 1
-    this.date.endYear = endTime.getFullYear()
-    this.date.endHour = endTime.getHours()
-    this.date.endMinute = endTime.getMinutes()
+    var endTime = new Date(this.event.endDate);
+    this.date.endDay = endTime.getDate();
+    this.date.endMonth = endTime.getMonth() + 1;
+    this.date.endYear = endTime.getFullYear();
+    this.date.endHour = endTime.getHours();
+    this.date.endMinute = endTime.getMinutes();
   },
-  
+
   methods: {
     participate() {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
 
-      fetch('http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances', {
-        method: 'POST',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json'
+      fetch(
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+          this.event.id +
+          "/assistances",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + JSON.parse(token).accessToken,
+            "Content-Type": "application/json",
+          },
         }
-      })
-      .then(res => res.json())
-      .then(res => {
-        let response = JSON.stringify(res);
-        this.$router.push("/eventDetails/" + this.event.id);
-        setTimeout(() => {
-          window.location.reload();
-        }, 50);
-      });
+      )
+        .then((res) => res.json())
+        .then(() => {
+          this.$router.push("/eventDetails/" + this.event.id);
+          setTimeout(() => {
+            window.location.reload();
+          }, 50);
+        });
     },
 
     checkFriend() {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       let localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
 
       // check owner is not the user
@@ -95,174 +98,183 @@ export default {
 
       // get list of friends
       fetch("http://puigmal.salle.url.edu/api/v2/friends", {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json'
-        }
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
       })
-      .then(res => res.json())
-      .then(res => {
-        let response = JSON.stringify(res);
+        .then((res) => res.json())
+        .then((res) => {
+          let response = JSON.stringify(res);
 
-        if (response.length > 0) {
-          if (!response.includes("Error")) {
-            res.forEach((friend) => {
-              if (friend.id == this.event.organizer_id) {
-                this.isFriend = true;
-              }
-            });
+          if (response.length > 0) {
+            if (!response.includes("Error")) {
+              res.forEach((friend) => {
+                if (friend.id == this.event.organizer_id) {
+                  this.isFriend = true;
+                }
+              });
+            }
           }
-        }
-      });
+        });
     },
 
     getEvent() {
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id;
+      const token = localStorage.getItem("token");
+      const URL = "http://puigmal.salle.url.edu/api/v2/events/" + this.event.id;
 
       fetch(URL, {
-        method: 'GET',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },     
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
       })
-      .then(res => res.json())
-      .then(res => {
-        this.event.title = res[0].name;
-        this.event.description = res[0].description;
-        this.event.startDate = res[0].eventStart_date;
-        this.event.endDate = res[0].eventStart_date;
-        this.event.location = res[0].location;
-        this.event.type = res[0].type;
-        this.event.capacity = res[0].n_participators;
-        this.event.organizer_id = res[0].owner_id;
-        
-        // check if owner is a friend
-        this.checkFriend();
+        .then((res) => res.json())
+        .then((res) => {
+          this.event.title = res[0].name;
+          this.event.description = res[0].description;
+          this.event.startDate = res[0].eventStart_date;
+          this.event.endDate = res[0].eventStart_date;
+          this.event.location = res[0].location;
+          this.event.type = res[0].type;
+          this.event.capacity = res[0].n_participators;
+          this.event.organizer_id = res[0].owner_id;
 
-        // We set the background image
-        document.getElementById('title-container').style.backgroundImage = "url('" + res[0].image + "')";
-        this.getUser();
-      });
+          // check if owner is a friend
+          this.checkFriend();
+
+          // We set the background image
+          document.getElementById("title-container").style.backgroundImage =
+            "url('" + res[0].image + "')";
+          this.getUser();
+        });
     },
 
     getAssistances() {
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances';
+      const token = localStorage.getItem("token");
+      const URL =
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        this.event.id +
+        "/assistances";
       let localUserID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
 
       fetch(URL, {
-        method: 'GET',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
         },
       })
-      .then(res => res.json())
-      .then(res => {
-        let response = JSON.stringify(res);
-        let tmpBool = false;
-        let tmpComments = [];
+        .then((res) => res.json())
+        .then((res) => {
+          let response = JSON.stringify(res);
+          let tmpBool = false;
+          let tmpComments = [];
 
-        if (response.length > 0) {
-          if (!response.includes("Error")) {
-            // prepare comments and ratings
-            tmpComments = res;
-            tmpComments.forEach((comment) => {
-              // check if user is participating
-              if (comment.id == localUserID) {
-                tmpBool = true;
-              }
-              // add to comments array if it has a rating or a commentary
-              if ((comment.puntuation != null) || (comment.comentary != null)) {
-                if (comment.puntuation != null) {
-                  comment.puntuation += "/10";
+          if (response.length > 0) {
+            if (!response.includes("Error")) {
+              // prepare comments and ratings
+              tmpComments = res;
+              tmpComments.forEach((comment) => {
+                // check if user is participating
+                if (comment.id == localUserID) {
+                  tmpBool = true;
                 }
-                this.comments.push(comment);
-              }
-            });
+                // add to comments array if it has a rating or a commentary
+                if (comment.puntuation != null || comment.comentary != null) {
+                  if (comment.puntuation != null) {
+                    comment.puntuation += "/10";
+                  }
+                  this.comments.push(comment);
+                }
+              });
 
-            this.isParticipating = tmpBool;
+              this.isParticipating = tmpBool;
+            }
           }
-        }
-      });
+        });
     },
 
     getUser() {
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/users/' + this.event.organizer_id;
+      const token = localStorage.getItem("token");
+      const URL =
+        "http://puigmal.salle.url.edu/api/v2/users/" + this.event.organizer_id;
       fetch(URL, {
-        method: 'GET',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
-        },     
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
       })
-      .then(res => res.json())
-      .then(res=> {
-        this.event.organizer = res[0].name;
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          this.event.organizer = res[0].name;
+        });
     },
 
     followUser() {
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/friends/' + this.event.organizer_id;
+      const token = localStorage.getItem("token");
+      const URL =
+        "http://puigmal.salle.url.edu/api/v2/friends/" +
+        this.event.organizer_id;
 
       // send friend request
       fetch(URL, {
-        method: 'POST',
-        headers:{
-          'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-          'Content-Type': 'application/json',
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
         },
-      })
-      .then(alert("Friend request sent!"));
+      }).then(alert("Friend request sent!"));
     },
 
     addComment() {
-      const token = localStorage.getItem('token');
-      const URL = 'http://puigmal.salle.url.edu/api/v2/events/' + this.event.id + '/assistances';
+      const token = localStorage.getItem("token");
+      const URL =
+        "http://puigmal.salle.url.edu/api/v2/events/" +
+        this.event.id +
+        "/assistances";
       let commentary = document.getElementById("comment-form-text").value;
       let rating = document.getElementById("comment-form-rating").value;
 
-      if ((rating != "") && (commentary == "")) {
+      if (rating != "" && commentary == "") {
         // send only rating
         fetch(URL, {
-          method: 'PUT',
-          headers:{
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json',
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + JSON.parse(token).accessToken,
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            "puntuation": rating
-          })
+            puntuation: rating,
+          }),
         });
-      } else if ((rating == "") && (commentary != "")) {
+      } else if (rating == "" && commentary != "") {
         // send only commentary
         fetch(URL, {
-          method: 'PUT',
-          headers:{
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json',
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + JSON.parse(token).accessToken,
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            "comentary": commentary
-          })
+            comentary: commentary,
+          }),
         });
-      } else if ((rating != "") && (commentary != "")) {
+      } else if (rating != "" && commentary != "") {
         // send both
         fetch(URL, {
-          method: 'PUT',
-          headers:{
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            'Content-Type': 'application/json',
+          method: "PUT",
+          headers: {
+            Authorization: "Bearer " + JSON.parse(token).accessToken,
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            "puntuation": rating,
-            "comentary": commentary
-          })
+            puntuation: rating,
+            comentary: commentary,
+          }),
         });
       } else {
         // send nothing
@@ -282,7 +294,7 @@ export default {
       let url = window.location.href;
       // show URL to copy
       alert("URL to share: " + url);
-    }
+    },
   },
 };
 </script>
@@ -291,7 +303,7 @@ export default {
   <div id="event-details-main">
     <section id="title-container">
       <div id="text-title">
-        <h2>{{this.event.title}}</h2>
+        <h2>{{ this.event.title }}</h2>
       </div>
 
       <div id="share-button">
@@ -303,8 +315,18 @@ export default {
       <div class="detail">
         <img src="../assets/calendar-img.png" class="users-list-item-picture" />
         <div class="detail-text">
-          <h4>From {{this.date.day}}/{{this.date.month}}/{{this.date.year}} - {{ this.date.hour }}:{{ this.date.minute }}</h4>
-          <p>to {{this.date.endDay}}/{{this.date.endMonth}}/{{this.date.endYear}} - {{ this.date.endHour }}:{{ this.date.endMinute }}</p>
+          <h4>
+            From {{ this.date.day }}/{{ this.date.month }}/{{
+              this.date.year
+            }}
+            - {{ this.date.hour }}:{{ this.date.minute }}
+          </h4>
+          <p>
+            to {{ this.date.endDay }}/{{ this.date.endMonth }}/{{
+              this.date.endYear
+            }}
+            - {{ this.date.endHour }}:{{ this.date.endMinute }}
+          </p>
         </div>
       </div>
 
@@ -318,10 +340,17 @@ export default {
       <div class="detail">
         <img src="../assets/user-img.png" class="users-list-item-picture" />
         <div class="detail-text">
-          <h4>{{this.event.organizer}}</h4>
+          <h4>{{ this.event.organizer }}</h4>
           <p>Organizer</p>
         </div>
-        <button v-if="!isFriend" v-on:click="followUser()" id="follow-button" class="secondary-button">Follow</button>
+        <button
+          v-if="!isFriend"
+          v-on:click="followUser()"
+          id="follow-button"
+          class="secondary-button"
+        >
+          Follow
+        </button>
       </div>
     </section>
 
@@ -333,7 +362,9 @@ export default {
     </section>
 
     <div class="event-details-bottom-buttons" v-if="!isParticipating">
-      <button v-on:click="participate()" class="primary-button">PARTICIPATE</button>
+      <button v-on:click="participate()" class="primary-button">
+        PARTICIPATE
+      </button>
     </div>
 
     <article id="event-comments">
@@ -341,7 +372,11 @@ export default {
       <section id="event-comments-list">
         <h3>Comments</h3>
         <ul>
-          <li v-for="comment in comments" v-bind:key="comment.id" class="comment-list-item">
+          <li
+            v-for="comment in comments"
+            v-bind:key="comment.id"
+            class="comment-list-item"
+          >
             <CommentItem
               :name="comment.name"
               :lastname="comment.last_name"
@@ -355,10 +390,29 @@ export default {
       <section id="event-comments-add-section" v-if="isParticipating">
         <h3>Add comment</h3>
         <form id="comment-form" action="">
-          <textarea id="comment-form-text" class="field" cols="30" rows="10" placeholder="Write your comment here..."/>
+          <textarea
+            id="comment-form-text"
+            class="field"
+            cols="30"
+            rows="10"
+            placeholder="Write your comment here..."
+          />
           <div id="comment-form-box">
-            <input type="number" id="comment-form-rating" class="field" min="0" max="10" placeholder="Rating (0-10)"/>
-            <button v-on:click="addComment()" id="comment-form-submit-button" class="primary-button">COMMENT</button>
+            <input
+              type="number"
+              id="comment-form-rating"
+              class="field"
+              min="0"
+              max="10"
+              placeholder="Rating (0-10)"
+            />
+            <button
+              v-on:click="addComment()"
+              id="comment-form-submit-button"
+              class="primary-button"
+            >
+              COMMENT
+            </button>
           </div>
         </form>
       </section>

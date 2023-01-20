@@ -1,69 +1,73 @@
 <script>
-  // We define the eventsAssisted array to store the events the user have assisted
-  export default {
-    name: "TimelineView",
-    data() {
-      return {
-        eventsAssisted: [],
-      };
-    },
+// We define the eventsAssisted array to store the events the user have assisted
+export default {
+  name: "TimelineView",
+  data() {
+    return {
+      eventsAssisted: [],
+    };
+  },
 
-    methods: {
-      // We get the events the user have assisted
-      getEventsAssisted() {
-        // We get the token from local storage and the user id
-        const token = localStorage.getItem('token');
-        const userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
-        let URL = "http://puigmal.salle.url.edu/api/v2/users/" + userID + "/assistances";
+  methods: {
+    // We get the events the user have assisted
+    getEventsAssisted() {
+      // We get the token from local storage and the user id
+      const token = localStorage.getItem("token");
+      const userID = JSON.parse(localStorage.getItem("userInfo"))[0].id;
+      let URL =
+        "http://puigmal.salle.url.edu/api/v2/users/" + userID + "/assistances";
 
-        // We make the request to the API to get the events the user have assisted
-        fetch(URL, {
-          method: "GET",
-          headers: {
-            'Authorization': 'Bearer ' + JSON.parse(token).accessToken,
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            this.eventsAssisted = res;
-            // We format the date and time of the events to show it in the timeline
-            res.map((event) => {
-              event.date = event.date.split("T")[0] + " / " + (event.date.split("T")[1]).substring(0, 5);
-            });
-            // We check if the event has an image and if it has not, we put a default image
-            res.map((event) => {
-              if(this.checkURL(event.image)) {
-                event.image = event.image;
-              } else {
-                event.image = "src/assets/default_img.png";
-              }
-            });
+      // We make the request to the API to get the events the user have assisted
+      fetch(URL, {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token).accessToken,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          this.eventsAssisted = res;
+          // We format the date and time of the events to show it in the timeline
+          res.map((event) => {
+            event.date =
+              event.date.split("T")[0] +
+              " / " +
+              event.date.split("T")[1].substring(0, 5);
           });
-      },
-      // Function to check if an image is valid
-      checkURL(url) {
-      return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-      }
+          // We check if the event has an image and if it has not, we put a default image
+          res.map((event) => {
+            if (!this.checkURL(event.image)) {
+              event.image = "src/assets/default_img.png";
+            }
+          });
+        });
     },
+    // Function to check if an image is valid
+    checkURL(url) {
+      return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    },
+  },
 
-    created() {
-      this.getEventsAssisted();
-    },
-  
-  };
+  created() {
+    this.getEventsAssisted();
+  },
+};
 </script>
 
 <template>
   <section id="container-timeline">
-    
-    <ul v-for="event in eventsAssisted" v-bind:key="event.id" >
+    <ul v-for="event in eventsAssisted" v-bind:key="event.id">
       <li>
         <div class="event-timeline">
           <div class="img-date-title-timeline">
-            <img v-bind:src="event.image" onerror="this.src = 'src/assets/default_img.png'" alt="event image"/>
+            <img
+              v-bind:src="event.image"
+              onerror="this.src = 'src/assets/default_img.png'"
+              alt="event image"
+            />
             <div class="date-title-timeline">
-              <h5 class="event-datetime">{{ event.date  }}</h5>
+              <h5 class="event-datetime">{{ event.date }}</h5>
               <h4 class="event-title">{{ event.name }}</h4>
             </div>
           </div>
