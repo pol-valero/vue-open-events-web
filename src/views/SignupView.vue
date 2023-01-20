@@ -18,6 +18,10 @@ export default {
     signup(){
       const passOK = this.checkPassword();
       if(!passOK) return;
+      let userImage = document.getElementById('input-profile-picture').value;
+      if (userImage == "") {
+        userImage = "/src/assets/default_user_image.png"
+      }
 
       fetch('http://puigmal.salle.url.edu/api/v2/users', {
         method: 'POST',
@@ -30,7 +34,7 @@ export default {
             last_name: document.getElementById('input-user-lastname').value,
             email: document.getElementById('input-user-email').value, 
             password: document.getElementById('input-password').value,
-            image: document.getElementById('input-profile-picture').value
+            image: userImage
           })
       })
       .then(res => res.json())
