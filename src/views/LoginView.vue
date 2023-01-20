@@ -41,9 +41,7 @@ export default {
           localStorage.setItem('token', response);
           this.getUserID();
           // I need to communicate with the parent component to update the app.vue data
-          setTimeout(() => {
-            this.$router.push('/');
-          }, 1000);
+          this.$router.push('/');
         } else {
           alert("Wrong email or password");
         }
