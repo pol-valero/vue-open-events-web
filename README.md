@@ -1,6 +1,8 @@
-# clean-project
+# Open Events – Group 1
 
-This template should help get you started developing with Vue 3 in Vite.
+Webpage to find events and meet people.
+
+GitHub repository: https://github.com/claudialajara/open-events-g1
 
 ## Recommended IDE Setup
 
