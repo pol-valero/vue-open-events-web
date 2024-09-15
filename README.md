@@ -1,10 +1,10 @@
-# Open Events – Group 1
+# Open Events website
 
-Webpage to find events and meet people.
+Webpage where users can find events and meet new people. Created using the "Vue" framework and API calls as backend. 
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/)
 
 ## Customize configuration
 
@@ -33,3 +33,13 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Authors
+[Pol Valero] (https://github.com/pol-valero) 
+
+[Angel Garcia] (https://github.com/TheAngel11)
+
+[Claudia Lajara] (https://github.com/claudialajara)
+
+[Marc Geremias] (https://github.com/marcgeremias)
+
